@@ -1,0 +1,33 @@
+附件是用classbench生成的五元组测试例文件，实际有些会不到256k条规则。
+每条规则的格式为：
+@189.20.234.205/32 96.111.165.205/32 0 : 65535 1490 : 1490 0x06/0xFF 0x0000/0x0200 
+
+@源IP地址/前缀长度 目的IP地址/前缀长度 源端口号闭区间起始 : 终止 目的端口号闭区间起始 : 终止  16进制协议号/16bit掩码  最后一个可以忽略，我也不知道是什么
+
+其中协议号的掩码为0时表示通配 * ，为0xff时就看前面的协议号。端口号 0 : 65535也相当于通配了，1490 : 1490 相当于准确匹配。
+规则的优先级就按默认顺序，文件开头第一条规则优先级最高，最后一条规则优先级最低。
+
+
+
+运行开始的时候调用一下这个函数，结束的时候再调用一下，两者相减就是指令周期数结果了。
+要注意线程绑定CPU核，避免线程切换和迁移。
+
+uint64_t inline GetCPUCycle () 
+{
+#ifdef __x86_64__
+    unsigned int lo,hi;
+    __asm__ __volatile__ ("lfence" : : : "memory");
+    __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+    return ((uint64_t)hi << 32) | lo;
+#elif __aarch64__
+    uint64_t v = 0;
+    asm volatile("isb" : : : "memory");
+    asm volatile("mrs %0, cntvct_el0" : "=r"(v));
+    return v;
+#else
+    printf("unknown arch\n");
+    return 0;
+#endif
+}
+
+ulimit -s unlimited;taskset -c 2 ./hello
