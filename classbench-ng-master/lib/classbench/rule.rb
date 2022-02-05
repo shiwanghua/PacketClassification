@@ -19,7 +19,7 @@ module Classbench
 			dst_ip = match[:dst_ip]+"/"+match[:dst_ip_prefix]
 			src_port_range = (match[:src_port_from].to_i..match[:src_port_to].to_i)
 			dst_port_range = (match[:dst_port_from].to_i..match[:dst_port_to].to_i)
-			protocol = match[:proto].to_i(16)
+			protocol = match_solution1[:proto].to_i(16)
 
 			#p [src_ip, dst_ip, protocol, src_port_range, dst_port_range]
 			r = Rule.new({"nw_proto" => protocol,

@@ -111,7 +111,7 @@ module Classbench
 
 			nw_dst_trie = Trie.new
 			rules.map {|r| r.attributes["nw_dst"]}.compact.each do |ip|
-				nw_dst_trie.insert Classbench::ip_to_binary_string(ip)
+				nw_dst_trie.insert_solution1 Classbench::ip_to_binary_string(ip)
 			end
 
 			nw_dst_stats = nw_dst_trie.get_stats

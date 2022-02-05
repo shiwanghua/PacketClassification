@@ -27,7 +27,7 @@ int main() {
 	for (int q = 0; q < 12; q++) {
 		ACL_rules datasets = {0, 0, 0};
 		ACL_messages message_sets = {0, 0, 0};
-		Cell *index = (Cell *) calloc(CELL_SIZE, sizeof(Cell));
+		Cell *index = (Cell *) calloc(CELL_SIZE_solution2, sizeof(Cell));
 
 		char tmpFileName[100]="classbench_256k/";
 		strcat(tmpFileName,ruleFileName[q]);
@@ -38,7 +38,7 @@ int main() {
 		read_messages(tmpFileName, &message_sets);
 
 		for (int i = 0; i < datasets.size; i++)
-			insert(index, datasets.list + i);
+			insert_solution2(index, datasets.list + i);
 
 		printf("%s\n%d %d %d n_rule=%d, n_head=%d\n",ruleFileName[q], sizeof(data), sizeof(rule), sizeof(Cell),datasets.size, message_sets.size);
 		printf("MemoryUse: %f MB\n", get_memory(index));
@@ -47,9 +47,9 @@ int main() {
 		strcat(tmpFileName, ruleFileName[q]);
 		analyse_log2(&datasets,tmpFileName);
 
-		strcpy(tmpFileName,"output/cell_size_");
+		strcpy(tmpFileName,"output/CELL_SIZE_solution1_");
 		strcat(tmpFileName, ruleFileName[q]);
-		get_cell_size(index,tmpFileName);
+//		get_cell_size(index,tmpFileName);
 
 		int res = 0;
 		int cycle = 0;
@@ -63,7 +63,7 @@ int main() {
 		int checkNumList[message_sets.size];
 
 		for (int i = 0; i < message_sets.size; i++) {
-			res = match_with_log(index, &message_sets.list[i], &cycle);
+			res = match_with_log_solution2(index, &message_sets.list[i], &cycle);
 //		res = match_with_log2(index, &message_sets.list[i], &cycle,&checkNum);
 			cycleList[i] = cycle;
 //		checkNumList[i]=checkNum;
@@ -74,20 +74,19 @@ int main() {
 		visualize(cycleList, checkNumList, message_sets.size);
 
 		// simple_match
-		printf("simple_match %s\n",ruleFileName[q]);
-		strcpy(tmpFileName,"output/simple_match_cycle_");
-		strcat(tmpFileName, ruleFileName[q]);
-		res_fp = fopen(tmpFileName, "w");
-		for (int i = 0; i < message_sets.size; i++) {
-			res = simple_match(&datasets, &message_sets.list[i], &cycle);
-			cycleList[i] = cycle;
-			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, cycle);
-		}
-		fclose(res_fp);
+//		printf("simple_match %s\n",ruleFileName[q]);
+//		strcpy(tmpFileName,"output/simple_match_cycle_");
+//		strcat(tmpFileName, ruleFileName[q]);
+//		res_fp = fopen(tmpFileName, "w");
+//		for (int i = 0; i < message_sets.size; i++) {
+//			res = simple_match(&datasets, &message_sets.list[i], &cycle);
+//			cycleList[i] = cycle;
+//			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, cycle);
+//		}
+//		fclose(res_fp);
+//		visualize(cycleList, checkNumList, message_sets.size);
 
-		visualize(cycleList, checkNumList, message_sets.size);
-
-		for (int i = 0; i < CELL_SIZE; i++)free(index[i].list);
+		for (int i = 0; i < CELL_SIZE_solution1; i++)free(index[i].list);
 		free(index);
 		free(message_sets.list);
 		free(datasets.list);

@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/swh/桌面/MyProgram/ACL/src/core.c
+core.h
+/home/swh/桌面/MyProgram/ACL/src/core.h
+
 /home/swh/桌面/MyProgram/ACL/src/core.h
 tool.h
 /home/swh/桌面/MyProgram/ACL/src/tool.h

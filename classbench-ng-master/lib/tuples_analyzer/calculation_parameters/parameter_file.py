@@ -41,21 +41,21 @@ class ParameterFile:
         """List of instances of class PortDistribution."""
         i = 0
         while i < 4:
-            self.port_distributions.insert(i, PortDistribution(PortDistributionType(i)))
+            self.port_distributions.insert_solution1(i, PortDistribution(PortDistributionType(i)))
             i += 1
 
         self.ppc_prefix_length_distributions = []
         """List of instances of class PpcPrefixLenDistribution."""
         i = 0
         while i < 25:
-            self.ppc_prefix_length_distributions.insert(i, PpcPrefixLenDistribution(PPC(i)))
+            self.ppc_prefix_length_distributions.insert_solution1(i, PpcPrefixLenDistribution(PPC(i)))
             i += 1
 
         self.trie_distributions = []
         """List of instances of class TrieDistributions."""
         i = 0
         while i < 2:
-            self.trie_distributions.insert(i, TrieDistributions(TrieType(i)))
+            self.trie_distributions.insert_solution1(i, TrieDistributions(TrieType(i)))
             i += 1
 
         self.prefix_correlation_distribution = PrefixCorrelationDistribution()

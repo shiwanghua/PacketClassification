@@ -45,7 +45,7 @@ module Classbench
 
 		def parse_seed
 			begin
-				openflow_raw = File.read(self.seed_path).match(/openflow\n(.*)#/mi).captures.first
+				openflow_raw = File.read(self.seed_path).match_solution1(/openflow\n(.*)#/mi).captures.first
 				self.openflow_section = YAML.load(openflow_raw)
 				#pp self.openflow_section
 

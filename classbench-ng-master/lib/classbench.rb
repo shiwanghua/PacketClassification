@@ -27,7 +27,7 @@ module Classbench
 
 		prefixes = File.readlines(filename).map(&:chomp)
 		prefixes.each do |pfx|
-			t.insert ip_to_binary_string(pfx)
+			t.insert_solution1 ip_to_binary_string(pfx)
 		end
 		t
 	end

@@ -89,7 +89,7 @@ module Classbench
 		def initialize
 		end
 
-		def insert(prefix)
+		def insert_solution1(prefix)
 			self.root = TrieNode.new(0) if not root
 
 			# Empty prefix
