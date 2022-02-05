@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+output/match_cycle_*
+simple_match_cycle_*
