@@ -3,16 +3,18 @@
 #include <unistd.h>
 
 int test1() {
-	unsigned char c[4];
-	unsigned int a=66;
-	c[0]=(unsigned char)a;
-	c[1]=0;
-	c[2]=0;
-	c[3]=0;
-	unsigned int s;
-	memcpy(&s, c, 4);
-	printf("%d\n",(unsigned int)c[0]);
-	printf("%d\n",s);
+	unsigned int a=32;
+	printf("%d",a>>32);
+//	unsigned char c[4];
+//	unsigned int a=66;
+//	c[0]=(unsigned char)a;
+//	c[1]=0;
+//	c[2]=0;
+//	c[3]=0;
+//	unsigned int s;
+//	memcpy(&s, c, 4);
+//	printf("%d\n",(unsigned int)c[0]);
+//	printf("%d\n",s);
 }
 
 int main() {
@@ -47,9 +49,9 @@ int main() {
 		strcat(tmpFileName, ruleFileName[q]);
 		analyse_log2(&datasets,tmpFileName);
 
-		strcpy(tmpFileName,"output/CELL_SIZE_solution1_");
+		strcpy(tmpFileName,"output/CELL_SIZE_");
 		strcat(tmpFileName, ruleFileName[q]);
-//		get_cell_size(index,tmpFileName);
+		get_cell_size(index,tmpFileName);
 
 		int res = 0;
 		int cycle = 0;
