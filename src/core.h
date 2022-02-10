@@ -2,6 +2,7 @@
 #define __CORE_H_
 
 #include"tool.h"
+#include "math.h"
 
 #define LEVEL_solution1 4
 #define LEVEL_solution2 4
@@ -74,7 +75,7 @@ int match_with_log2_solution1(Cell *_c, message *p, int *_cycle, int *checkNum);
 int match_with_log_solution2(Cell *_c, message *p, int *_cycle);
 
 //void check(ACL_rules* r, message* m);
-void get_cell_size(Cell *c, char[]);
+void get_cell_size(Cell *c, char[],int);
 
 void analyse_log(ACL_rules *data);
 

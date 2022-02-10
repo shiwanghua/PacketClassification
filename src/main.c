@@ -40,7 +40,7 @@ int main() {
 		read_messages(tmpFileName, &message_sets);
 
 		for (int i = 0; i < datasets.size; i++)
-			insert_solution2(index, datasets.list + i);
+			insert_solution1(index, datasets.list + i);
 
 		printf("%s\n%d %d %d n_rule=%d, n_head=%d\n",ruleFileName[q], sizeof(data), sizeof(rule), sizeof(Cell),datasets.size, message_sets.size);
 		printf("MemoryUse: %f MB\n", get_memory(index));
@@ -51,7 +51,7 @@ int main() {
 
 		strcpy(tmpFileName,"output/CELL_SIZE_");
 		strcat(tmpFileName, ruleFileName[q]);
-		get_cell_size(index,tmpFileName);
+		get_cell_size(index,tmpFileName,CELL_SIZE_solution2);
 
 		int res = 0;
 		int cycle = 0;
@@ -65,7 +65,7 @@ int main() {
 		int checkNumList[message_sets.size];
 
 		for (int i = 0; i < message_sets.size; i++) {
-			res = match_with_log_solution2(index, &message_sets.list[i], &cycle);
+			res = match_with_log_solution1(index, &message_sets.list[i], &cycle);
 //		res = match_with_log2(index, &message_sets.list[i], &cycle,&checkNum);
 			cycleList[i] = cycle;
 //		checkNumList[i]=checkNum;

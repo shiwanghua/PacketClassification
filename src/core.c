@@ -664,7 +664,7 @@ int match_with_log_solution2(Cell *_c, message *p, int *_cycle) {
 	return res;
 }
 
-void get_cell_size(Cell *c, char outputFileName[]) {
+void get_cell_size(Cell *c, char outputFileName[],int cellSize) {
 	int nullN = 0, maxV = 0;
 	FILE *fp = NULL;
 //	fp = fopen(outputFileName, "w");
@@ -675,7 +675,7 @@ void get_cell_size(Cell *c, char outputFileName[]) {
 	}
 //	fclose(fp);
 	printf("maxCell: %d; nullCell: %d; cellNum: %d; nullPercent: %f\n", maxV, nullN, CELL_SIZE_solution2,
-		   (double) nullN / CELL_SIZE_solution2);
+		   (double) nullN / cellSize);
 }
 
 void analyse_log(ACL_rules *data) {
@@ -855,17 +855,42 @@ void analyse_log2(ACL_rules *data, char outputFileName[]) {
 		if ((unsigned int) p->protocol[0] == 0) protocal[0]++;
 		else protocal[(unsigned int) p->protocol[1]]++;
 	}
+
+	long long int var[8],avg[8];
+	memset(var,0,sizeof(var));
+	memset(avg,0,sizeof(avg));
+	for(int i=0;i<257;i++){
+		for(int j=0;j<4;j++){
+			avg[j]+=srcIP[j][i];
+			avg[j+4]+=dstIP[j][i];
+		}
+	}
+	for(int i=0;i<4;i++)
+		avg[i]/=257;
+
+
+
+	for(int i=0;i<257;i++){
+		for(int j=0;j<4;j++){
+			var[j]+=pow(srcIP[j][i]-avg[j],2);
+			var[j+4]+=pow(dstIP[j][i]-avg[j+4],2);
+		}
+	}
+	for(int i=0;i<8;i++)
+		var[i]= (int)sqrt((double)var[i]/257);
+
 	FILE *fp = NULL;
 	fp = fopen(outputFileName, "w");
 	for (int i = 0; i < 15; i++) {
 		if(i>0&&i%5==0)fprintf(fp,"\n");
-		fprintf(fp, "P%d=%d\t",i, protocal[i]);
+		fprintf(fp, "P%d=%-6d\t",i, protocal[i]);
 	}
 	fprintf(fp, "\n\nIP\tsrc1\tsrc2\tsrc3\tsrc4\tdst1\tdst2\tdst3\tdst4\n");
 	for (int i = 0; i < 257; i++) {
 		fprintf(fp, "%d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\n", i, srcIP[0][i], srcIP[1][i], srcIP[2][i],
 				srcIP[3][i], dstIP[0][i], dstIP[1][i], dstIP[2][i], dstIP[3][i]);
 	}
+	fprintf(fp,"var\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld",var[0],var[1],var[2],var[3],var[4],var[5],var[6],var[7]);
 	fclose(fp);
 	free(srcIP[0]),free(srcIP), free(dstIP[0]),free(dstIP),free(protocal);
 }
