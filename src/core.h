@@ -3,9 +3,12 @@
 
 #include"tool.h"
 #include "math.h"
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 #define LEVEL_solution1 4
 #define LEVEL_solution2 4
+#define LEVEL_solution3 4
 
 #define srcIP_LAYER_1 0
 #define srcIP_SIZE_1 33
@@ -16,6 +19,11 @@
 #define srcIP_SIZE_2 257
 #define srcIP_END_CELL_2 256
 #define srcIP_WIDTH_2 0
+
+#define srcIP_LAYER_3 2
+#define srcIP_SIZE_1 33
+#define srcIP_END_CELL_1 32
+#define srcIP_WIDTH_1 3
 
 #define dstIP_LAYER_1 0
 #define dstIP_SIZE_1 257//33
@@ -36,13 +44,33 @@
 #define PROTO_SIZE 15  // protocol layer cell number
 #define PROTO_END_CELL 14  // protocol layer cell end id
 
+#define layer1 0
+#define layer2 1
+#define layer3 2
+#define layer4 3
+
+// ------solution3------
+#define LAYER1_SIZE 15
+#define LAYER1_END_CELL 14
+#define LAYER1_WIDTH 0
+#define LAYER2_SIZE 33
+#define LAYER2_END_CELL 32
+#define LAYER2_WIDTH 3
+#define LAYER3_SIZE 65
+#define LAYER3_END_CELL 64
+#define LAYER3_WIDTH 2
+#define LAYER4_SIZE 33
+#define LAYER4_END_CELL 32
+#define LAYER4_WIDTH 3
+
 //#define LAYER_0 srcIP_SIZE_1
 //#define LAYER_1 srcIP_SIZE_2
 //#define LAYER_2 PORT_SIZE
 //#define LAYER_3 PROTO_SIZE
 
-#define CELL_SIZE_solution1 8268975
-#define CELL_SIZE_solution2 64397775//8268975
+#define CELL_SIZE_solution1 8268975 // srcIP1/srcIP2/dstPort/protocol
+#define CELL_SIZE_solution2 64397775//8268975 // dtsIP1/dstIP2/dstPort/protocol
+#define CELL_SIZE_solution3 1061775 // srcIP1/srcIP2/srcIP3/protocol
 
 #define ICMP 0x01    // 1
 #define IGMP 0x02    // 2
@@ -64,6 +92,8 @@ void insert_solution1(Cell *c_list, rule *p);
 
 void insert_solution2(Cell *c_list, rule *p);
 
+void insert_solution3(Cell *c_list, rule *p);
+
 int simple_match(ACL_rules* a, message* p,int*);
 
 int match_solution1(Cell *_c, message *p);
@@ -73,6 +103,8 @@ int match_with_log_solution1(Cell *_c, message *p, int *_cycle);
 int match_with_log2_solution1(Cell *_c, message *p, int *_cycle, int *checkNum);
 
 int match_with_log_solution2(Cell *_c, message *p, int *_cycle);
+
+int match_with_log_solution3(Cell *_c, message *p, int *_cycle);
 
 //void check(ACL_rules* r, message* m);
 void get_cell_size(Cell *c, char[],int);

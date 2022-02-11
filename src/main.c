@@ -1,10 +1,14 @@
 #include"core.h"
 #include"read.h"
 #include <unistd.h>
+#include <sys/time.h>
+#include <time.h>
 
 int test1() {
 	unsigned int a=32;
-	printf("%d",a>>32);
+	printf("%d\n",a>>32);
+	printf("%d\n",16-__builtin_ctz(65-1));
+	printf("%d\n",16-__builtin_ctz(257-1));
 //	unsigned char c[4];
 //	unsigned int a=66;
 //	c[0]=(unsigned char)a;
@@ -51,29 +55,42 @@ int main() {
 
 		strcpy(tmpFileName,"output/CELL_SIZE_");
 		strcat(tmpFileName, ruleFileName[q]);
-		get_cell_size(index,tmpFileName,CELL_SIZE_solution2);
+		get_cell_size(index,tmpFileName,CELL_SIZE_solution3);
 
 		int res = 0;
-		int cycle = 0;
+		double cycle = 0;
 		int checkNum = 0;
+		int cycleList[message_sets.size];
+		int checkNumList[message_sets.size];
 		FILE *res_fp;
 		strcpy(tmpFileName,"output/match_cycle_");
 		strcat(tmpFileName, ruleFileName[q]);
 		res_fp = fopen(tmpFileName, "w");
 
-		int cycleList[message_sets.size];
-		int checkNumList[message_sets.size];
-
+		uint64_t time_1, time_2;
+		time_1 = GetCPUCycle();
+		struct timeval starttime,endtime;
+		gettimeofday(&starttime,0);
+//		clock_t start = clock();
 		for (int i = 0; i < message_sets.size; i++) {
-			res = match_with_log_solution1(index, &message_sets.list[i], &cycle);
-//		res = match_with_log2(index, &message_sets.list[i], &cycle,&checkNum);
-			cycleList[i] = cycle;
+			res = match_with_log_solution3(index, &message_sets.list[i], &cycle);
+//		res = match_with_log2_solution1(index, &message_sets.list[i], &cycle,&checkNum);
+//			cycleList[i] = cycle;
 //		checkNumList[i]=checkNum;
-			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, cycle);
+//			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, cycle);
 		}
+		time_2 = GetCPUCycle();
+		cycle = (double)(time_2 - time_1)/message_sets.size;
+		printf("avgCycle= %f\n\n\n", cycle);
+		gettimeofday(&endtime,0);
+		double timeuse = 1000000*(endtime.tv_sec - starttime.tv_sec) + endtime.tv_usec - starttime.tv_usec;
+		printf("avgMatchTime= %fus\n\n\n",timeuse/message_sets.size);
+//		clock_t stop = clock();
+//		double elapsed = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC;
+//		printf("Time elapsed in ms: %f\n\n\n", elapsed);
 		fclose(res_fp);
 
-		visualize(cycleList, checkNumList, message_sets.size);
+//		visualize(cycleList, checkNumList, message_sets.size);
 
 		// simple_match
 //		printf("simple_match %s\n",ruleFileName[q]);

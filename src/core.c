@@ -87,7 +87,7 @@ void insert_solution1(Cell *c_list, rule *p) {
 	add_data(c_list + ((c_id[0] * srcIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
 }
 
-// solution2: destinationIP_3 && destinationIP_4 && destinationPort && protocal
+// solution2: destinationIP_2 && destinationIP_3 && destinationPort && protocal
 void insert_solution2(Cell *c_list, rule *p) {
 	unsigned int c_id[LEVEL_solution2]; //index cell id
 	data _d;
@@ -175,6 +175,99 @@ void insert_solution2(Cell *c_list, rule *p) {
 	add_data(c_list + ((c_id[0] * dstIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
 }
 
+// solution3: protocal && sourceIP_2 && destinationIP_2 && destinationIP_3
+void insert_solution3(Cell *c_list, rule *p) {
+	unsigned int c_id[4]; //index cell id
+	data _d;
+	memcpy(&_d, p, sizeof(data));
+	_d.source_mask = (unsigned short) p->source_mask;
+	_d.destination_mask = (unsigned short) p->destination_mask;
+
+	if ((unsigned int) p->protocol[0] == 0)c_id[layer1] = LAYER1_END_CELL;
+	else {
+		switch ((unsigned int) p->protocol[1]) {
+			case ICMP:
+				c_id[layer1] = 0;
+				break;
+			case IGMP:
+				c_id[layer1] = 1;
+				break;
+			case GGP:
+				c_id[layer1] = 2;
+				break;
+			case IP:
+				c_id[layer1] = 3;
+				break;
+			case ST:
+				c_id[layer1] = 4;
+				break;
+			case TCP:
+				c_id[layer1] = 5;
+				break;
+			case CBT:
+				c_id[layer1] = 6;
+				break;
+			case EGP:
+				c_id[layer1] = 7;
+				break;
+			case UDP:
+				c_id[layer1] = 8;
+				break;
+			case GRE:
+				c_id[layer1] = 9;
+				break;
+			case ESP:
+				c_id[layer1] = 10;
+				break;
+			case AH:
+				c_id[layer1] = 11;
+				break;
+			case EIGRP:
+				c_id[layer1] = 12;
+				break;
+			case OSPFIGP:
+				c_id[layer1] = 13;
+				break;
+			default:
+				fprintf(stderr, "Rule %d Error - unknown message protocol %u !\n", p->PRI, p->protocol[1]);
+				c_id[layer1] = PROTO_END_CELL;
+				return;
+		}
+	}
+	unsigned int s_mask = (unsigned int) (p->source_mask >> 3);
+	if(s_mask<2)
+		c_id[layer2]=LAYER2_END_CELL;
+	else
+		c_id[layer2]=p->source_ip[2]>>LAYER2_WIDTH;
+	s_mask = (unsigned int) (p->destination_mask >> 3);
+	switch (s_mask) {
+		case 0: // 0-7
+		case 1: // 8-15
+			c_id[layer3] = LAYER3_END_CELL;
+			c_id[layer4] = LAYER4_END_CELL;
+			break;
+		case 2:
+			c_id[layer3] = p->destination_ip[2] >> LAYER3_WIDTH;
+			c_id[layer4] = LAYER4_END_CELL;
+			break;
+		default:
+			c_id[layer3] = p->destination_ip[2] >> LAYER3_WIDTH;
+			c_id[layer4] = p->destination_ip[1] >> LAYER4_WIDTH;
+			break;
+	}
+//	if (p->destination_port[0] == p->destination_port[1])c_id[PORT_LAYER] = p->destination_port[0] >> PORT_WIDTH;
+//	else if (p->destination_port[0] >> PORT_WIDTH == p->destination_port[1] >> PORT_WIDTH)
+//		c_id[PORT_LAYER] = p->destination_port[0] >> PORT_WIDTH;
+//	else c_id[PORT_LAYER] = PORT_END_CELL;
+
+//	int id = ((c_id[0] * srcIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3];
+//	printf("%d %d\n", p->PRI, id);
+//	for(int i=0;i<LEVEL_solution1;i++)printf("%d ", c_id[i]);
+//	printf("\n");
+
+	add_data(c_list + ((c_id[0] * LAYER2_SIZE + c_id[1]) * LAYER3_SIZE + c_id[2]) * LAYER4_SIZE + c_id[3], &_d);
+}
+
 int simple_match(ACL_rules *a, message *p, int *_cycle) {
 	uint64_t time_1, time_2;
 	time_1 = GetCPUCycle();
@@ -186,8 +279,8 @@ int simple_match(ACL_rules *a, message *p, int *_cycle) {
 		p_sip_mv[i] = p_sip >> i;
 		p_dip_mv[i] = p_dip >> i;
 	}
-	if(p_sip_mv[32]){
-		printf("simple_match source IP mov32 = %u",p_sip_mv[32]);
+	if (p_sip_mv[32]) {
+		printf("simple_match source IP mov32 = %u", p_sip_mv[32]);
 	}
 	for (int i = 0; i < a->size; i++) {
 		unsigned int m_bit = 32 - (unsigned int) a->list[i].source_mask;
@@ -316,8 +409,8 @@ int match_solution1(Cell *_c, message *p) {
 }
 
 int match_with_log_solution1(Cell *_c, message *p, int *_cycle) {
-	uint64_t time_1, time_2;
-	time_1 = GetCPUCycle();
+//	uint64_t time_1, time_2;
+//	time_1 = GetCPUCycle();
 	unsigned int e_protocol, es_ip, ed_ip;
 	unsigned short es_port, ed_port;
 	e_protocol = p->protocol;
@@ -396,13 +489,11 @@ int match_with_log_solution1(Cell *_c, message *p, int *_cycle) {
 					//int id_4 = id_3 + c_id[3][w];
 					Cell *q = _c + id_3 + c_id[3][w];
 					//int _size = _c[id_4].size;
-					int _size = q->size;
-					if (_size == 0)continue;
+					if (q->size == 0)continue;
 					//data* _list = _c[id_4].list;
-					data *_d = q->list - 1;
+					data *_d = q->list;
 					unsigned int _ip;
-					for (int u = 0; u < _size; u++) { //check in cell
-						++_d;
+					for (int u = 0; u < q->size; u++,++_d) { //check in cell
 						if (res < _d->PRI)break;
 						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->source_ip, 4);
@@ -424,9 +515,9 @@ int match_with_log_solution1(Cell *_c, message *p, int *_cycle) {
 
 	if (res == 0x7FFFFFFF)res = -1;
 
-	time_2 = GetCPUCycle();
+//	time_2 = GetCPUCycle();
 
-	*_cycle = (int) (time_2 - time_1);
+//	*_cycle = (int) (time_2 - time_1);
 	//printf("matching instruction cycle : %d\n", instruction_cycle);
 
 	return res;
@@ -434,8 +525,8 @@ int match_with_log_solution1(Cell *_c, message *p, int *_cycle) {
 
 int match_with_log2_solution1(Cell *_c, message *p, int *_cycle, int *checkNum) {
 	*checkNum = 0;
-	uint64_t time_1, time_2;
-	time_1 = GetCPUCycle();
+//	uint64_t time_1, time_2;
+//	time_1 = GetCPUCycle();
 	unsigned int e_protocol, es_ip, ed_ip;
 	unsigned short es_port, ed_port;
 	e_protocol = p->protocol;
@@ -514,14 +605,12 @@ int match_with_log2_solution1(Cell *_c, message *p, int *_cycle, int *checkNum) 
 					//int id_4 = id_3 + c_id[3][w];
 					Cell *q = _c + id_3 + c_id[3][w];
 					//int _size = _c[id_4].size;
-					int _size = q->size;
-					*checkNum = *checkNum + _size;
-					if (_size == 0)continue;
+					if (q->size == 0)continue;
+					*checkNum = *checkNum + q->size;
 					//data* _list = _c[id_4].list;
-					data *_d = q->list - 1;
+					data *_d = q->list;
 					unsigned int _ip;
-					for (int u = 0; u < _size; u++) { //check in cell
-						++_d;
+					for (int u = 0; u < q->size; u++,++_d) { //check in cell
 						if (res < _d->PRI)break;
 						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->source_ip, 4);
@@ -543,17 +632,17 @@ int match_with_log2_solution1(Cell *_c, message *p, int *_cycle, int *checkNum) 
 
 	if (res == 0x7FFFFFFF)res = -1;
 
-	time_2 = GetCPUCycle();
+//	time_2 = GetCPUCycle();
 
-	*_cycle = (int) (time_2 - time_1);
+//	*_cycle = (int) (time_2 - time_1);
 	//printf("matching instruction cycle : %d\n", instruction_cycle);
 
 	return res;
 }
 
 int match_with_log_solution2(Cell *_c, message *p, int *_cycle) {
-	uint64_t time_1, time_2;
-	time_1 = GetCPUCycle();
+//	uint64_t time_1, time_2;
+//	time_1 = GetCPUCycle();
 	unsigned short es_port = p->source_port, ed_port = p->destination_port;
 	unsigned int e_protocol = p->protocol, es_ip, ed_ip;
 	memcpy(&es_ip, p->source_ip, 4);
@@ -628,13 +717,11 @@ int match_with_log_solution2(Cell *_c, message *p, int *_cycle) {
 					//int id_4 = id_3 + c_id[3][w];
 					Cell *q = _c + id_3 + c_id[PROTO_LAYER][w];
 					//int _size = _c[id_4].size;
-					int _size = q->size;
-					if (_size == 0)continue;
+					if (q->size == 0)continue;
 					//data* _list = _c[id_4].list;
-					data *_d = q->list - 1;
+					data *_d = q->list;
 					unsigned int _ip;
-					for (int u = 0; u < _size; u++) { //check in cell
-						++_d;
+					for (int u = 0; u < q->size; u++,++_d) { //check in cell
 						if (res < _d->PRI)break;
 						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->source_ip, 4);
@@ -656,15 +743,124 @@ int match_with_log_solution2(Cell *_c, message *p, int *_cycle) {
 
 	if (res == 0x7FFFFFFF)res = -1;
 
-	time_2 = GetCPUCycle();
+//	time_2 = GetCPUCycle();
 
-	*_cycle = (int) (time_2 - time_1);
+//	*_cycle = (int) (time_2 - time_1);
 	//printf("matching instruction cycle : %d\n", instruction_cycle);
 
 	return res;
 }
 
-void get_cell_size(Cell *c, char outputFileName[],int cellSize) {
+// solution3: protocal && sourceIP_2 && destinationIP_2 && destinationIP_3
+int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
+//	uint64_t time_1, time_2;
+//	time_1 = GetCPUCycle();
+	unsigned short es_port = p->source_port, ed_port = p->destination_port;
+	unsigned int e_protocol = p->protocol, es_ip, ed_ip;
+	memcpy(&es_ip, p->source_ip, 4);
+	memcpy(&ed_ip, p->destination_ip, 4);
+	unsigned int c_id[LEVEL_solution3][2];
+
+	c_id[layer1][1] = PROTO_END_CELL;
+	c_id[layer2][0] = p->source_ip[2] >> LAYER2_WIDTH;
+	c_id[layer2][1] = LAYER2_END_CELL;
+	c_id[layer3][0] = p->destination_ip[2] >> LAYER3_WIDTH;
+	c_id[layer3][1] = LAYER3_END_CELL;
+	c_id[layer4][0] = p->destination_ip[1] >> LAYER4_WIDTH;
+	c_id[layer4][1] = LAYER4_END_CELL;
+	switch ((unsigned int) p->protocol) {
+		case ICMP:
+			c_id[layer1][0] = 0;
+			break;
+		case IGMP:
+			c_id[layer1][0] = 1;
+			break;
+		case GGP:
+			c_id[layer1][0] = 2;
+			break;
+		case IP:
+			c_id[layer1][0] = 3;
+			break;
+		case ST:
+			c_id[layer1][0] = 4;
+			break;
+		case TCP:
+			c_id[layer1][0] = 5;
+			break;
+		case CBT:
+			c_id[layer1][0] = 6;
+			break;
+		case EGP:
+			c_id[layer1][0] = 7;
+			break;
+		case UDP:
+			c_id[layer1][0] = 8;
+			break;
+		case GRE:
+			c_id[layer1][0] = 9;
+			break;
+		case ESP:
+			c_id[layer1][0] = 10;
+			break;
+		case AH:
+			c_id[layer1][0] = 11;
+			break;
+		case EIGRP:
+			c_id[layer1][0] = 12;
+			break;
+		case OSPFIGP:
+			c_id[layer1][0] = 13;
+			break;
+		default:
+//			fprintf(stderr, "Solution2 Message Error - unknown message protocol %u!\n", e_protocol);
+			c_id[layer1][0] = PROTO_END_CELL;
+			break;
+	}
+
+	int res = 0x7FFFFFFF;
+
+	for (int i = 0; i < 2; i++) {
+		int id_1 = c_id[layer1][i] * LAYER2_SIZE;
+		for (int j = 0; j < 2; j++) {
+			int id_2 = (id_1 + c_id[layer2][j]) * LAYER3_SIZE;
+			for (int v = 0; v < 2; v++) {
+				int id_3 = (id_2 + c_id[layer3][v]) * LAYER4_SIZE;
+				for (int w = 0; w < 2; w++) {
+					Cell *q = _c + id_3 + c_id[layer4][w];
+					if (q->size == 0)continue;
+					data *_d = q->list;
+					unsigned int _ip;
+					for (int u = 0; u < q->size; u++,++_d) { //check in cell
+						if (res < _d->PRI)break;
+						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
+						memcpy(&_ip, _d->source_ip, 4);
+						if (es_ip >> m_bit != _ip >> m_bit)continue;  //if source ip not match, check next
+						m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
+						memcpy(&_ip, _d->destination_ip, 4);
+						if (ed_ip >> m_bit != _ip >> m_bit)continue;  //if destination ip not match, check next
+						if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
+							continue;  //if source port not match, check next
+						if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)
+							continue;  //if destination port not match, check next
+						res = _d->PRI;
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (res == 0x7FFFFFFF)res = -1;
+
+//	time_2 = GetCPUCycle();
+
+//	*_cycle = (int) (time_2 - time_1);
+	//printf("matching instruction cycle : %d\n", instruction_cycle);
+
+	return res;
+}
+
+void get_cell_size(Cell *c, char outputFileName[], int cellSize) {
 	int nullN = 0, maxV = 0;
 	FILE *fp = NULL;
 //	fp = fopen(outputFileName, "w");
@@ -773,27 +969,36 @@ void analyse_log(ACL_rules *data) {
 
 // Rule Distribution
 void analyse_log2(ACL_rules *data, char outputFileName[]) {
+	int *protocal = (int *) calloc(15, sizeof(int));
+
 	void *storage = (void *) calloc(4 * 257, sizeof(int));
 	int **srcIP = (void **) malloc(4 * sizeof(void *));
 	for (int i = 0; i < 4; i++) {
 		srcIP[i] = storage + i * 257 * sizeof(int); // 服务器环境
 	}
-
 	storage = (void *) calloc(4 * 257, sizeof(int));
 	int **dstIP = (void **) malloc(4 * sizeof(void *));
 	for (int i = 0; i < 4; i++) {
 		dstIP[i] = storage + i * 257 * sizeof(int); // 服务器环境
 	}
-
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 257; j++)
 			if (srcIP[i][j] != 0 || dstIP[i][j] != 0)
 				printf("%d %d\n", srcIP[i][j], dstIP[i][j]);
 
-	int *protocal = (int *) calloc(15, sizeof(int));
+	const int portCellNum = 257;
+	int portShift = 16 - __builtin_ctz(portCellNum - 1); // 区间长度是2的多少次方
+	int srcPort[portCellNum];
+	int dstPort[portCellNum];
+	memset(srcPort, 0, sizeof(srcPort));
+	memset(dstPort, 0, sizeof(dstPort));
 
 	for (int i = 0; i < data->size; i++) {
 		rule *p = data->list + i;
+
+		if ((unsigned int) p->protocol[0] == 0) protocal[0]++;
+		else protocal[(unsigned int) p->protocol[1]]++;
+
 		switch ((unsigned int) (p->source_mask >> 3)) {
 			case 0:
 				srcIP[0][256]++;
@@ -852,52 +1057,94 @@ void analyse_log2(ACL_rules *data, char outputFileName[]) {
 				printf("Error dst_mask: %d\n", p->destination_mask >> 3);
 		}
 
-		if ((unsigned int) p->protocol[0] == 0) protocal[0]++;
-		else protocal[(unsigned int) p->protocol[1]]++;
+		int portCell = p->source_port[0] >> portShift;
+		if (portCell == p->source_port[1] >> portShift)
+			srcPort[portCell]++;
+		else srcPort[portCellNum - 1]++;
+
+		portCell = p->destination_port[0] >> portShift;
+		if (portCell == p->destination_port[1] >> portShift)
+			dstPort[portCell]++;
+		else dstPort[portCellNum - 1]++;
 	}
 
-	long long int var[8],avg[8];
-	memset(var,0,sizeof(var));
-	memset(avg,0,sizeof(avg));
-	for(int i=0;i<257;i++){
-		for(int j=0;j<4;j++){
-			avg[j]+=srcIP[j][i];
-			avg[j+4]+=dstIP[j][i];
+	long long int protocolAvg = 0, protocalVar = 0,protocolNum=0;
+	for (int i = 0; i < 15; i++)
+		if(protocal[i]>0){
+			protocolAvg += protocal[i];
+			protocolNum++;
+		}
+	protocolAvg /= protocolNum;
+	for (int i = 0; i < 15; i++)
+		if(protocal[i]>0)
+		protocalVar += pow(protocal[i] - protocolAvg, 2);
+	protocalVar = sqrt(protocalVar / protocolNum);
+
+	long long int IPvar[8], IPavg[8];
+	memset(IPvar, 0, sizeof(IPvar));
+	memset(IPavg, 0, sizeof(IPavg));
+	for (int i = 0; i < 257; i++) {
+		for (int j = 0; j < 4; j++) {
+			IPavg[j] += srcIP[j][i];
+			IPavg[j + 4] += dstIP[j][i];
 		}
 	}
-	for(int i=0;i<4;i++)
-		avg[i]/=257;
-
-
-
-	for(int i=0;i<257;i++){
-		for(int j=0;j<4;j++){
-			var[j]+=pow(srcIP[j][i]-avg[j],2);
-			var[j+4]+=pow(dstIP[j][i]-avg[j+4],2);
+	for (int i = 0; i < 8; i++)
+		IPavg[i] /= 257;
+	for (int i = 0; i < 257; i++) {
+		for (int j = 0; j < 4; j++) {
+			IPvar[j] += pow(srcIP[j][i] - IPavg[j], 2);
+			IPvar[j + 4] += pow(dstIP[j][i] - IPavg[j + 4], 2);
 		}
 	}
-	for(int i=0;i<8;i++)
-		var[i]= (int)sqrt((double)var[i]/257);
+	for (int i = 0; i < 8; i++)
+		IPvar[i] = (int) sqrt((double) IPvar[i] / 257);
+
+	long long int portVar[2], portAvg[2];
+	memset(portVar, 0, sizeof(portVar));
+	memset(portAvg, 0, sizeof(portAvg));
+	for (int i = 0; i < portCellNum; i++) {
+		portAvg[0] += srcPort[i];
+		portAvg[1] += dstPort[i];
+	}
+	portAvg[0] /= portCellNum;
+	portAvg[1] /= portCellNum;
+	for (int i = 0; i < 257; i++) {
+		portVar[0] += pow(srcPort[i] - portAvg[0], 2);
+		portVar[1] += pow(dstPort[i] - portAvg[1], 2);
+	}
+	for (int i = 0; i < 2; i++)
+		portVar[i] = (int) sqrt((double) portVar[i] / portCellNum);
 
 	FILE *fp = NULL;
 	fp = fopen(outputFileName, "w");
 	for (int i = 0; i < 15; i++) {
-		if(i>0&&i%5==0)fprintf(fp,"\n");
-		fprintf(fp, "P%d=%-6d\t",i, protocal[i]);
+		if (i > 0 && i % 5 == 0)fprintf(fp, "\n");
+		fprintf(fp, "P%d=%-6d\t", i, protocal[i]);
 	}
-	fprintf(fp, "\n\nIP\tsrc1\tsrc2\tsrc3\tsrc4\tdst1\tdst2\tdst3\tdst4\n");
-	for (int i = 0; i < 257; i++) {
-		fprintf(fp, "%d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\n", i, srcIP[0][i], srcIP[1][i], srcIP[2][i],
-				srcIP[3][i], dstIP[0][i], dstIP[1][i], dstIP[2][i], dstIP[3][i]);
+	fprintf(fp, "\nprotocalVar= %d", protocalVar);
+
+	fprintf(fp, "\n\nIP\tsrc1\tsrc2\tsrc3\tsrc4\tdst1\tdst2\tdst3\tdst4\tsrcPort\tdstPort\n");
+	for (int i = 0; i < MAX(257, portCellNum); i++) {
+		if (i < MIN(257, portCellNum))
+			fprintf(fp, "%d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\n", i, srcIP[0][i], srcIP[1][i],
+					srcIP[2][i], srcIP[3][i], dstIP[0][i], dstIP[1][i], dstIP[2][i], dstIP[3][i], srcPort[i], dstPort[i]);
+		else if (i < 257)
+			fprintf(fp, "%d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\t%4d\n", i, srcIP[0][i], srcIP[1][i], srcIP[2][i],
+					srcIP[3][i], dstIP[0][i], dstIP[1][i], dstIP[2][i], dstIP[3][i]);
+		else
+			fprintf(fp, "%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%4d\t%4d\n", i, srcPort[i], dstPort[i]);
 	}
-	fprintf(fp,"var\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld",var[0],var[1],var[2],var[3],var[4],var[5],var[6],var[7]);
+	fprintf(fp, "var\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld\t%4ld", IPvar[0], IPvar[1], IPvar[2], IPvar[3], IPvar[4],
+			IPvar[5], IPvar[6], IPvar[7],portVar[0],portVar[1]);
+
 	fclose(fp);
-	free(srcIP[0]),free(srcIP), free(dstIP[0]),free(dstIP),free(protocal);
+	free(srcIP[0]), free(srcIP), free(dstIP[0]), free(dstIP), free(protocal);
 }
 
 double get_memory(Cell *c_list) {
-	size_t mem = CELL_SIZE_solution1 * sizeof(Cell);
-	for (int i = 0; i < CELL_SIZE_solution1; i++) {
+	size_t mem = CELL_SIZE_solution3 * sizeof(Cell);
+	for (int i = 0; i < CELL_SIZE_solution3; i++) {
 		mem = mem + (c_list + i)->capacity * sizeof(data);
 	}
 //	printf("%u B\n", mem);

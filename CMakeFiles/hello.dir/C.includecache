@@ -20,18 +20,6 @@ math.h
 stdio.h
 -
 
-/home/swh/桌面/MyProgram/ACL/src/main.c
-core.h
-/home/swh/桌面/MyProgram/ACL/src/core.h
-read.h
-/home/swh/桌面/MyProgram/ACL/src/read.h
-unistd.h
--
-
-/home/swh/桌面/MyProgram/ACL/src/read.h
-tool.h
-/home/swh/桌面/MyProgram/ACL/src/tool.h
-
 /home/swh/桌面/MyProgram/ACL/src/tool.h
 string.h
 -
