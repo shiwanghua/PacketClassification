@@ -812,7 +812,7 @@ int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
 			c_id[layer1][0] = 13;
 			break;
 		default:
-//			fprintf(stderr, "Solution2 Message Error - unknown message protocol %u!\n", e_protocol);
+//			fprintf(stderr, "Solution3 Message Error - unknown message protocol %u!\n", e_protocol);
 			c_id[layer1][0] = PROTO_END_CELL;
 			break;
 	}
@@ -864,13 +864,13 @@ void get_cell_size(Cell *c, char outputFileName[], int cellSize) {
 	int nullN = 0, maxV = 0;
 	FILE *fp = NULL;
 //	fp = fopen(outputFileName, "w");
-	for (int i = 0; i < CELL_SIZE_solution2; i++) {
+	for (int i = 0; i < CELL_SIZE_solution3; i++) {
 //		fprintf(fp, "ID: %d size: %d\n", i, (c + i)->size);
 		if ((c[i].size) == 0) nullN++;
 		else if (c[i].size > maxV)maxV = c[i].size;
 	}
 //	fclose(fp);
-	printf("maxCell: %d; nullCell: %d; cellNum: %d; nullPercent: %f\n", maxV, nullN, CELL_SIZE_solution2,
+	printf("maxCell: %d; nullCell: %d; cellNum: %d; nullPercent: %f\n", maxV, nullN, CELL_SIZE_solution3,
 		   (double) nullN / cellSize);
 }
 

@@ -33,7 +33,7 @@ int main() {
 	for (int q = 0; q < 12; q++) {
 		ACL_rules datasets = {0, 0, 0};
 		ACL_messages message_sets = {0, 0, 0};
-		Cell *index = (Cell *) calloc(CELL_SIZE_solution2, sizeof(Cell));
+		Cell *index = (Cell *) calloc(CELL_SIZE_solution3, sizeof(Cell));
 
 		char tmpFileName[100]="classbench_256k/";
 		strcat(tmpFileName,ruleFileName[q]);
@@ -44,7 +44,7 @@ int main() {
 		read_messages(tmpFileName, &message_sets);
 
 		for (int i = 0; i < datasets.size; i++)
-			insert_solution1(index, datasets.list + i);
+			insert_solution3(index, datasets.list + i);
 
 		printf("%s\n%d %d %d n_rule=%d, n_head=%d\n",ruleFileName[q], sizeof(data), sizeof(rule), sizeof(Cell),datasets.size, message_sets.size);
 		printf("MemoryUse: %f MB\n", get_memory(index));
@@ -105,7 +105,7 @@ int main() {
 //		fclose(res_fp);
 //		visualize(cycleList, checkNumList, message_sets.size);
 
-		for (int i = 0; i < CELL_SIZE_solution1; i++)free(index[i].list);
+		for (int i = 0; i < CELL_SIZE_solution3; i++)free(index[i].list);
 		free(index);
 		free(message_sets.list);
 		free(datasets.list);
