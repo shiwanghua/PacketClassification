@@ -30,6 +30,7 @@ int main() {
 								 "acl4_256k_trace.txt", "acl5_256k_trace.txt", "fw1_256k_trace.txt",
 								 "fw2_256k_trace.txt", "fw3_256k_trace.txt", "fw4_256k_trace.txt", "fw5_256k_trace.txt",
 								 "ipc1_256k_trace.txt", "ipc2_256k_trace.txt"};
+	double totalCycle=0;
 	for (int q = 0; q < 12; q++) {
 		ACL_rules datasets = {0, 0, 0};
 		ACL_messages message_sets = {0, 0, 0};
@@ -81,6 +82,7 @@ int main() {
 		}
 		time_2 = GetCPUCycle();
 		cycle = (double)(time_2 - time_1)/message_sets.size;
+		totalCycle+=cycle;
 		printf("avgCycle= %f\n\n\n", cycle);
 		gettimeofday(&endtime,0);
 		double timeuse = 1000000*(endtime.tv_sec - starttime.tv_sec) + endtime.tv_usec - starttime.tv_usec;
@@ -110,6 +112,7 @@ int main() {
 		free(message_sets.list);
 		free(datasets.list);
 	}
+	printf("\n\navgTotalCycle= %f\n",totalCycle/12);
 	return 0;
 }
 

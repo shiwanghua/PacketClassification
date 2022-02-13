@@ -759,6 +759,12 @@ int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
 	unsigned int e_protocol = p->protocol, es_ip, ed_ip;
 	memcpy(&es_ip, p->source_ip, 4);
 	memcpy(&ed_ip, p->destination_ip, 4);
+	unsigned int p_sip_mv[33], p_dip_mv[33];
+	for (int i = 0; i < 33; i++) {
+		p_sip_mv[i] = es_ip >> i;
+		p_dip_mv[i] = ed_ip >> i;
+	}
+
 	unsigned int c_id[LEVEL_solution3][2];
 
 	c_id[layer1][1] = PROTO_END_CELL;
@@ -834,10 +840,10 @@ int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
 						if (res < _d->PRI)break;
 						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->source_ip, 4);
-						if (es_ip >> m_bit != _ip >> m_bit)continue;  //if source ip not match, check next
+						if (p_sip_mv[m_bit] != _ip >> m_bit)continue;  //if source ip not match, check next
 						m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->destination_ip, 4);
-						if (ed_ip >> m_bit != _ip >> m_bit)continue;  //if destination ip not match, check next
+						if (p_dip_mv[m_bit] != _ip >> m_bit)continue;  //if destination ip not match, check next
 						if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
 							continue;  //if source port not match, check next
 						if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)

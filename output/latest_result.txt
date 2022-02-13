@@ -1,119 +1,178 @@
-cl1_256k.txt
+s_ip_1 2 33 32 3
+s_ip_2 0 65 64 2
+d_ip_2 1 65 64 2
+d_ip_3 3 33 32 3
+65 65 33 33
+
+
+acl1_256k.txt
 24 24 16 n_rule=253884, n_head=1300000
-MemoryUse: 17.314499 MB
-maxCell: 277; nullCell: 64347673; cellNum: 64397775; nullPercent: 60.603869
-avgCycle= 85.163242
+MemoryUse: 76.580521 MB
+maxCell: 474; nullCell: 4594433; cellNum: 4601025; nullPercent: 0.998567
+avgMatchTime= 0.936847us
+
+maxCycle= 4436, eID= 14103
+avgCycle= 40.528292
+>=1k: 168(0.000129%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.023014us
 
 
 acl2_256k.txt
 24 24 16 n_rule=141807, n_head=650000
-MemoryUse: 16.646530 MB
-maxCell: 2708; nullCell: 64395219; cellNum: 64397775; nullPercent: 60.648649
-avgCycle= 98.044649
+MemoryUse: 73.756851 MB
+maxCell: 2832; nullCell: 4598225; cellNum: 4601025; nullPercent: 0.999391
+avgMatchTime= 2.037305us
+
+maxCycle= 5639, eID= 216710
+avgCycle= 142.489977
+>=1k: 475(0.000731%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.026505us
 
 
 acl3_256k.txt
 24 24 16 n_rule=254389, n_head=1170000
-MemoryUse: 17.499252 MB
-maxCell: 6529; nullCell: 64317397; cellNum: 64397775; nullPercent: 60.575354
-avgCycle= 119.285628
+MemoryUse: 103.770401 MB
+maxCell: 621; nullCell: 4423522; cellNum: 4601025; nullPercent: 0.961421
+avgMatchTime= 0.999126us
+
+maxCycle= 5507, eID= 12446
+avgCycle= 44.589569
+>=1k: 182(0.000156%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.032244us
 
 
 acl4_256k.txt
 24 24 16 n_rule=251505, n_head=1170000
-MemoryUse: 17.536789 MB
-maxCell: 3715; nullCell: 64311537; cellNum: 64397775; nullPercent: 60.569835
-avgCycle= 105.722377
+MemoryUse: 81.043350 MB
+maxCell: 474; nullCell: 4557699; cellNum: 4601025; nullPercent: 0.990583
+avgMatchTime= 0.966809us
+
+maxCycle= 3749, eID= 15556
+avgCycle= 42.081827
+>=1k: 165(0.000141%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.028579us
 
 
 acl5_256k.txt
 24 24 16 n_rule=256000, n_head=1186171
-MemoryUse: 17.307999 MB
-maxCell: 259; nullCell: 64353644; cellNum: 64397775; nullPercent: 60.609493
-avgCycle= 70.005855
+MemoryUse: 95.195572 MB
+maxCell: 20; nullCell: 4466443; cellNum: 4601025; nullPercent: 0.970750
+avgMatchTime= 0.537229us
+
+maxCycle= 2859, eID= 285021
+avgCycle= 9.438244
+>=1k: 20(0.000017%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.018924us
 
 
 fw1_256k.txt
 24 24 16 n_rule=194677, n_head=650000
-MemoryUse: 16.398972 MB
-maxCell: 87730; nullCell: 64396803; cellNum: 64397775; nullPercent: 60.650141
-avgCycle= 84.629018
+MemoryUse: 76.755753 MB
+maxCell: 1564; nullCell: 4586378; cellNum: 4601025; nullPercent: 0.996817
+avgMatchTime= 0.940612us
+
+maxCycle= 14588, eID= 373444
+avgCycle= 39.837314
+>=1k: 86(0.000132%)
+>=10k: 1(0.000002%)
 
 
-avgMatchTime= 0.022878us
 
 
 fw2_256k.txt
 24 24 16 n_rule=244972, n_head=650000
-MemoryUse: 16.201401 MB
-maxCell: 19701; nullCell: 64380476; cellNum: 64397775; nullPercent: 60.634763
-avgCycle= 88.104969
+MemoryUse: 83.028946 MB
+maxCell: 840; nullCell: 4553924; cellNum: 4601025; nullPercent: 0.989763
+avgMatchTime= 1.199682us
+
+maxCycle= 5376, eID= 173108
+avgCycle= 64.988029
+>=1k: 159(0.000245%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.023818us
 
 
 fw3_256k.txt
 24 24 16 n_rule=181065, n_head=650000
-MemoryUse: 16.281326 MB
-maxCell: 83706; nullCell: 64396948; cellNum: 64397775; nullPercent: 60.650277
-avgCycle= 86.105034
+MemoryUse: 75.150467 MB
+maxCell: 1803; nullCell: 4594452; cellNum: 4601025; nullPercent: 0.998571
+avgMatchTime= 0.869118us
+
+maxCycle= 2303, eID= 124551
+avgCycle= 33.209385
+>=1k: 58(0.000089%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.023277us
 
 
 fw4_256k.txt
 24 24 16 n_rule=212035, n_head=650000
-MemoryUse: 16.201401 MB
-maxCell: 65656; nullCell: 64381643; cellNum: 64397775; nullPercent: 60.635863
-avgCycle= 88.207089
+MemoryUse: 76.004654 MB
+maxCell: 4023; nullCell: 4588587; cellNum: 4601025; nullPercent: 0.997297
+avgMatchTime= 1.064866us
+
+maxCycle= 14299, eID= 27559
+avgCycle= 51.263472
+>=1k: 128(0.000197%)
+>=10k: 1(0.000002%)
 
 
-avgMatchTime= 0.023845us
 
 
 fw5_256k.txt
 24 24 16 n_rule=180709, n_head=650000
-MemoryUse: 16.370865 MB
-maxCell: 71008; nullCell: 64395698; cellNum: 64397775; nullPercent: 60.649100
-avgCycle= 85.494192
+MemoryUse: 74.975418 MB
+maxCell: 1973; nullCell: 4595775; cellNum: 4601025; nullPercent: 0.998859
+avgMatchTime= 0.914526us
+
+maxCycle= 2992, eID= 550258
+avgCycle= 37.447091
+>=1k: 91(0.000140%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.023111us
 
 
 ipc1_256k.txt
 24 24 16 n_rule=253951, n_head=1300007
-MemoryUse: 17.226059 MB
-maxCell: 7614; nullCell: 64338480; cellNum: 64397775; nullPercent: 60.595211
-avgCycle= 115.678056
+MemoryUse: 104.147598 MB
+maxCell: 1044; nullCell: 4420928; cellNum: 4601025; nullPercent: 0.960857
+avgMatchTime= 0.580708us
+
+maxCycle= 5344, eID= 21545
+avgCycle= 11.735781
+>=1k: 34(0.000026%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.031268us
 
 
 ipc2_256k.txt
 24 24 16 n_rule=256000, n_head=1301922
-MemoryUse: 17.123703 MB
-maxCell: 77194; nullCell: 64377576; cellNum: 64397775; nullPercent: 60.632032
-avgCycle= 81.568857
+MemoryUse: 89.804581 MB
+maxCell: 91; nullCell: 4512611; cellNum: 4601025; nullPercent: 0.980784
+avgMatchTime= 0.553982us
+
+maxCycle= 3389, eID= 1087096
+avgCycle= 10.471206
+>=1k: 22(0.000017%)
+>=10k: 0(0.000000%)
 
 
-avgMatchTime= 0.022049us
+
+
+
+avgTotalCycle= 44.006682
 

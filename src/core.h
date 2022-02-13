@@ -53,12 +53,12 @@
 #define LAYER1_SIZE 15
 #define LAYER1_END_CELL 14
 #define LAYER1_WIDTH 0
-#define LAYER2_SIZE 33
-#define LAYER2_END_CELL 32
-#define LAYER2_WIDTH 3
-#define LAYER3_SIZE 65
-#define LAYER3_END_CELL 64
-#define LAYER3_WIDTH 2
+#define LAYER2_SIZE 129
+#define LAYER2_END_CELL 128
+#define LAYER2_WIDTH 1
+#define LAYER3_SIZE 129
+#define LAYER3_END_CELL 128
+#define LAYER3_WIDTH 1
 #define LAYER4_SIZE 33
 #define LAYER4_END_CELL 32
 #define LAYER4_WIDTH 3
@@ -69,8 +69,8 @@
 //#define LAYER_3 PROTO_SIZE
 
 #define CELL_SIZE_solution1 8268975 // srcIP1/srcIP2/dstPort/protocol
-#define CELL_SIZE_solution2 64397775//8268975 // dtsIP1/dstIP2/dstPort/protocol
-#define CELL_SIZE_solution3 1061775 // srcIP1/srcIP2/srcIP3/protocol
+#define CELL_SIZE_solution2 64397775 // dtsIP1/dstIP2/dstPort/protocol
+#define CELL_SIZE_solution3 8237295 // srcIP1/srcIP2/srcIP3/protocol
 
 #define ICMP 0x01    // 1
 #define IGMP 0x02    // 2
