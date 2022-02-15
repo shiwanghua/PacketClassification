@@ -4,9 +4,14 @@
 #include<malloc.h>
 #include <stdint.h>
 #include"data_structure.h"
+#include<stdlib.h>
+#include<time.h>
+
+void generateMessage();
 
 void add_rule(ACL_rules* rules, rule* r);
 void add_data(Cell* c, data* d);
+void add_data_ordered(Cell *c, data *d);
 void add_message(ACL_messages* messages, message* m);
 
 uint64_t GetCPUCycle();

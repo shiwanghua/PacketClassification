@@ -3,6 +3,9 @@
 * ulimit -s unlimited;taskset -c 2 ./hello
 * gcc -o hello ./src/*.c ./src/*.h -lm
 
+* gcc -g src/* -o debug.out -lm
+* gdb debug.out
+
 * output文件夹的rule_distribution文件格式说明
   * 第1列表示IP某个字节上要求的固定值 0-255
   * 第2-5列表示源IP的第1-4个字节

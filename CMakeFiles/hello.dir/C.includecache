@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/swh/桌面/MyProgram/ACL/src/core.c
-core.h
-/home/swh/桌面/MyProgram/ACL/src/core.h
-
 /home/swh/桌面/MyProgram/ACL/src/core.h
 tool.h
 /home/swh/桌面/MyProgram/ACL/src/tool.h
@@ -29,8 +25,6 @@ unistd.h
 -
 sys/time.h
 -
-time.h
--
 
 /home/swh/桌面/MyProgram/ACL/src/read.h
 tool.h
@@ -45,4 +39,8 @@ stdint.h
 -
 data_structure.h
 /home/swh/桌面/MyProgram/ACL/src/data_structure.h
+stdlib.h
+-
+time.h
+-
 

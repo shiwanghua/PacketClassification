@@ -31,5 +31,7 @@
 *.out
 *.app
 
-#output/match_cycle_*
-#simple_match_cycle_*
+output/match_cycle_*
+simple_match_cycle_*
+output/simple*
+classbench_256k_s

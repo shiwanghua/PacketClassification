@@ -84,7 +84,7 @@ void insert_solution1(Cell *c_list, rule *p) {
 //	for(int i=0;i<LEVEL_solution1;i++)printf("%d ", c_id[i]);
 //	printf("\n");
 
-	add_data(c_list + ((c_id[0] * srcIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
+	add_data_ordered(c_list + ((c_id[0] * srcIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
 }
 
 // solution2: destinationIP_2 && destinationIP_3 && destinationPort && protocal
@@ -172,7 +172,7 @@ void insert_solution2(Cell *c_list, rule *p) {
 //	for(int i=0;i<LEVEL_solution1;i++)printf("%d ", c_id[i]);
 //	printf("\n");
 
-	add_data(c_list + ((c_id[0] * dstIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
+	add_data_ordered(c_list + ((c_id[0] * dstIP_SIZE_2 + c_id[1]) * PORT_SIZE + c_id[2]) * PROTO_SIZE + c_id[3], &_d);
 }
 
 // solution3: protocal && sourceIP_2 && destinationIP_2 && destinationIP_3
@@ -265,7 +265,7 @@ void insert_solution3(Cell *c_list, rule *p) {
 //	for(int i=0;i<LEVEL_solution1;i++)printf("%d ", c_id[i]);
 //	printf("\n");
 
-	add_data(c_list + ((c_id[0] * LAYER2_SIZE + c_id[1]) * LAYER3_SIZE + c_id[2]) * LAYER4_SIZE + c_id[3], &_d);
+	add_data_ordered(c_list + ((c_id[0] * LAYER2_SIZE + c_id[1]) * LAYER3_SIZE + c_id[2]) * LAYER4_SIZE + c_id[3], &_d);
 }
 
 int simple_match(ACL_rules *a, message *p, int *_cycle) {
@@ -279,16 +279,16 @@ int simple_match(ACL_rules *a, message *p, int *_cycle) {
 		p_sip_mv[i] = p_sip >> i;
 		p_dip_mv[i] = p_dip >> i;
 	}
-	if (p_sip_mv[32]) {
-		printf("simple_match source IP mov32 = %u", p_sip_mv[32]);
-	}
+//	if (p_sip_mv[32]) {
+//		printf("simple_match source IP mov32 = %u", p_sip_mv[32]);
+//	}
 	for (int i = 0; i < a->size; i++) {
 		unsigned int m_bit = 32 - (unsigned int) a->list[i].source_mask;
 		memcpy(&r_ip, a->list[i].source_ip, 4);
-		if (p_sip_mv[m_bit] != r_ip >> m_bit)continue;  //if source ip not match, check next
+		if (m_bit!=32&&p_sip_mv[m_bit] != r_ip >> m_bit)continue;  //if source ip not match, check next
 		m_bit = 32 - (unsigned int) a->list[i].destination_mask;  //comput the bit number need to move
 		memcpy(&r_ip, a->list[i].destination_ip, 4);
-		if (p_dip_mv[m_bit] != r_ip >> m_bit)continue;  //if destination ip not match, check next
+		if (m_bit!=32&&p_dip_mv[m_bit] != r_ip >> m_bit)continue;  //if destination ip not match, check next
 		if (p->source_port < a->list[i].source_port[0] || a->list[i].source_port[1] < p->source_port)
 			continue;  //if source port not match, check next
 		if (p->destination_port < a->list[i].destination_port[0] ||
@@ -840,10 +840,10 @@ int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
 						if (res < _d->PRI)break;
 						unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->source_ip, 4);
-						if (p_sip_mv[m_bit] != _ip >> m_bit)continue;  //if source ip not match, check next
+						if (m_bit!=32&&p_sip_mv[m_bit] != _ip >> m_bit)continue;  //if source ip not match, check next
 						m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
 						memcpy(&_ip, _d->destination_ip, 4);
-						if (p_dip_mv[m_bit] != _ip >> m_bit)continue;  //if destination ip not match, check next
+						if (m_bit!=32&&p_dip_mv[m_bit] != _ip >> m_bit)continue;  //if destination ip not match, check next
 						if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
 							continue;  //if source port not match, check next
 						if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)

@@ -87,6 +87,8 @@
 #define EIGRP 0x58   // 88
 #define OSPFIGP 0x59 // 89
 
+#define useShuffleHeader 1
+#define useShuffleRule 1
 
 void insert_solution1(Cell *c_list, rule *p);
 
