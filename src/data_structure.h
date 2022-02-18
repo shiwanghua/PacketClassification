@@ -31,12 +31,31 @@ typedef struct data
 	unsigned short destination_port[2];
 }data;
 
+typedef struct data2
+{
+	int PRI;
+	unsigned char protocol[2];
+	unsigned char source_mask;
+	unsigned char destination_mask;
+	unsigned char source_ip[4];
+	unsigned char destination_ip[4];
+	unsigned short source_port[2];
+	unsigned short destination_port[2];
+}data2;
+
 typedef struct Cell
 {
 	int size;
 	int capacity;
 	data* list;
 }Cell;
+
+typedef struct Cell2
+{
+	int size;
+	int capacity;
+	data2* list;
+}Cell2;
 
 typedef struct message
 {

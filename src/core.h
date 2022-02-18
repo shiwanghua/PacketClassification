@@ -9,6 +9,7 @@
 #define LEVEL_solution1 4
 #define LEVEL_solution2 4
 #define LEVEL_solution3 4
+#define LEVEL_solution4 4
 
 #define srcIP_LAYER_1 0
 #define srcIP_SIZE_1 33
@@ -50,15 +51,29 @@
 #define layer4 3
 
 // ------solution3------
-#define LAYER1_SIZE 15
-#define LAYER1_END_CELL 14
-#define LAYER1_WIDTH 0
-#define LAYER2_SIZE 129
-#define LAYER2_END_CELL 128
-#define LAYER2_WIDTH 1
-#define LAYER3_SIZE 129
-#define LAYER3_END_CELL 128
-#define LAYER3_WIDTH 1
+//#define LAYER1_SIZE 15
+//#define LAYER1_END_CELL 14
+//#define LAYER1_WIDTH 0
+//#define LAYER2_SIZE 129
+//#define LAYER2_END_CELL 128
+//#define LAYER2_WIDTH 1
+//#define LAYER3_SIZE 129
+//#define LAYER3_END_CELL 128
+//#define LAYER3_WIDTH 1
+//#define LAYER4_SIZE 33
+//#define LAYER4_END_CELL 32
+//#define LAYER4_WIDTH 3
+
+// ------solution4------
+#define LAYER1_SIZE 65
+#define LAYER1_END_CELL 64
+#define LAYER1_WIDTH 2
+#define LAYER2_SIZE 65
+#define LAYER2_END_CELL 64
+#define LAYER2_WIDTH 2
+#define LAYER3_SIZE 33
+#define LAYER3_END_CELL 32
+#define LAYER3_WIDTH 3
 #define LAYER4_SIZE 33
 #define LAYER4_END_CELL 32
 #define LAYER4_WIDTH 3
@@ -69,8 +84,9 @@
 //#define LAYER_3 PROTO_SIZE
 
 #define CELL_SIZE_solution1 8268975 // srcIP1/srcIP2/dstPort/protocol
-#define CELL_SIZE_solution2 64397775 // dtsIP1/dstIP2/dstPort/protocol
-#define CELL_SIZE_solution3 8237295 // srcIP1/srcIP2/srcIP3/protocol
+#define CELL_SIZE_solution2 64397775 // dtsIP2/dstIP3/dstPort/protocol
+#define CELL_SIZE_solution3 8237295 // protocol/srcIP2/dstIP2/dstIP3
+#define CELL_SIZE_solution4 4601025 // srcIP2 && dstIP2 && srcIP1 && dstIP3
 
 #define ICMP 0x01    // 1
 #define IGMP 0x02    // 2
@@ -96,6 +112,8 @@ void insert_solution2(Cell *c_list, rule *p);
 
 void insert_solution3(Cell *c_list, rule *p);
 
+void insert_solution4(Cell2 *c_list, rule *p,unsigned char**bitset);
+
 int simple_match(ACL_rules* a, message* p,int*);
 
 int match_solution1(Cell *_c, message *p);
@@ -108,15 +126,24 @@ int match_with_log_solution2(Cell *_c, message *p, int *_cycle);
 
 int match_with_log_solution3(Cell *_c, message *p, int *_cycle);
 
+int match_with_log_solution4(Cell2 *_c, message *p, int *_cycle,unsigned char**bitset);
+
 //void check(ACL_rules* r, message* m);
 void get_cell_size(Cell *c, char[],int);
+void get_cell_size2(Cell2 *c, char[],int);
 
 void analyse_log(ACL_rules *data);
-
 void analyse_log2(ACL_rules *data, char[]);
 
 double get_memory(Cell *c_list);
+double get_memory2(Cell2 *c_list);
 
 void visualize(int c[], int checkNum[], int size);
+
+//int totalSrcMaskType[33];
+//int totalDstMaskType[33];
+
+extern int hit;
+extern int miss;
 
 #endif // !__CORE_H_

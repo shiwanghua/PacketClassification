@@ -47,13 +47,20 @@ int test1() {
 //	q=q>>31;
 //	printf("%x\n",q);
 
-	int a[50000]={1,2,3,4,5};
-	for(int i=0;i<50000;i++)
-		a[i]=i;
-	memmove(a+10000 ,a,40000*sizeof(int));
-	printf("%d ",a[9999]);
-	printf("%d ",a[10000]);
-	printf("%d ",a[45678]);
+//	int a[50000]={1,2,3,4,5};
+//	for(int i=0;i<50000;i++)
+//		a[i]=i;
+//	memmove(a+10000 ,a,40000*sizeof(int));
+//	printf("%d ",a[9999]);
+//	printf("%d ",a[10000]);
+//	printf("%d ",a[45678]);
+
+	printf("%d\n", sizeof(unsigned long));
+	printf("%d\n", sizeof(unsigned long int));
+	printf("%d\n", sizeof(unsigned long long));
+	printf("%d\n", sizeof(unsigned long long int));
+	printf("%d\n", sizeof(int64_t)); // signed long int
+//	printf("%d",sizeof(unsigned int64_t));
 
 }
 
@@ -74,7 +81,7 @@ int main() {
 	for (int q = 0; q < 12; q++) {
 		ACL_rules datasets = {0, 0, 0};
 		ACL_messages message_sets = {0, 0, 0};
-		Cell *index = (Cell *) calloc(CELL_SIZE_solution3, sizeof(Cell));
+		Cell2 *index = (Cell2 *) calloc(CELL_SIZE_solution4, sizeof(Cell2));
 
 #if useShuffleRule // 这里其实不用分,两个文件夹下的规则集是一样的
 		char tmpFileName[100] = "classbench_256k_s/";
@@ -101,25 +108,34 @@ int main() {
 		strcat(tmpFileName, headFileName[q]);
 		read_messages(tmpFileName, &message_sets);
 
-		double cycle = GetCPUCycle();;
-		for (int i = 0; i < datasets.size; i++)
-			insert_solution3(index, datasets.list + i);
-		cycle =  ((double)GetCPUCycle() - cycle) / datasets.size;
-		totalInsertCycle+=cycle;
-		printf("%s\navgInsertCycle= %f\n%d %d %d n_rule=%d, n_head=%d\n", ruleFileName[q], cycle,sizeof(data), sizeof(rule), sizeof(Cell),
-			   datasets.size, message_sets.size);
-		printf("MemoryUse: %f MB\n", get_memory(index));
+		int numUnit = (datasets.size + sizeof(char) - 1) / sizeof(char);
+		unsigned char ** bitset=(unsigned char **) malloc(14 * sizeof(unsigned char*));
+		for(int i=0;i<14;i++){
+			bitset[i]=(unsigned char *) calloc(numUnit, sizeof(unsigned char));
+		}
 
-		strcpy(tmpFileName, "output/rule_distribution_");
-		strcat(tmpFileName, ruleFileName[q]);
-		analyse_log2(&datasets, tmpFileName);
+		double iCycle = GetCPUCycle();;
+		for (int i = 0; i < datasets.size; i++)
+			insert_solution4(index, datasets.list + i,bitset);
+		iCycle = ((double) GetCPUCycle() - iCycle) / datasets.size;
+		totalInsertCycle += iCycle;
+		printf("%s\navgInsertCycle= %f\n%d %d %d n_rule=%d, n_head=%d\n", ruleFileName[q], iCycle, sizeof(data),
+			   sizeof(rule), sizeof(Cell),
+			   datasets.size, message_sets.size);
+		printf("MemoryUse: %f MB\n", get_memory2(index));
+
+//		strcpy(tmpFileName, "output/rule_distribution_");
+//		strcat(tmpFileName, ruleFileName[q]);
+//		analyse_log2(&datasets, tmpFileName);
 
 		strcpy(tmpFileName, "output/CELL_SIZE_");
 		strcat(tmpFileName, ruleFileName[q]);
-		get_cell_size(index, tmpFileName, CELL_SIZE_solution3);
+		get_cell_size2(index, tmpFileName, CELL_SIZE_solution4);
 
 		int res = 0;
-		int checkNum = 0;
+		int mCycle = 0;
+		double setCycle = 0;
+//		int checkNum = 0;
 		int cycleList[message_sets.size];
 		int checkNumList[message_sets.size];
 		FILE *res_fp;
@@ -133,16 +149,18 @@ int main() {
 		gettimeofday(&starttime, 0);
 //		clock_t start = clock();
 		for (int i = 0; i < message_sets.size; i++) {
-			res = match_with_log_solution3(index, &message_sets.list[i], &cycle);
+			res = match_with_log_solution4(index, &message_sets.list[i], &mCycle,bitset);
+//			setCycle += mCycle;
 //		res = match_with_log2_solution1(index, &message_sets.list[i], &cycle,&checkNum);
-//			cycleList[i] = cycle;
+//			cycleList[i] = mCycle;
 //		checkNumList[i]=checkNum;
-			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, cycle);
+//			fprintf(res_fp, "message %d match_rule %d cycle %d\n", i, res, mCycle);
 		}
 		time_2 = GetCPUCycle();
-		cycle = (double) (time_2 - time_1) / message_sets.size;
-		totalMatchCycle += cycle;
-		printf("avgMatchCycle= %f\n\n", cycle);
+		totalMatchCycle += (time_2 - time_1) / message_sets.size;
+		printf("avgMatchCycle= %f\n\n", (double)(time_2 - time_1) / message_sets.size);
+//		totalMatchCycle += setCycle / message_sets.size;
+
 		gettimeofday(&endtime, 0);
 		double timeuse = 1000000 * (endtime.tv_sec - starttime.tv_sec) + endtime.tv_usec - starttime.tv_usec;
 		printf("avgMatchTime= %fus\n\n", timeuse / message_sets.size);
@@ -165,11 +183,23 @@ int main() {
 //		fclose(res_fp);
 //		visualize(cycleList, checkNumList, message_sets.size);
 
-		for (int i = 0; i < CELL_SIZE_solution3; i++)free(index[i].list);
+		for (int i = 0; i < CELL_SIZE_solution4; i++)free(index[i].list);
 		free(index);
 		free(message_sets.list);
 		free(datasets.list);
 	}
+//	FILE *fp =  fopen("output/TotalStatistic.txt", "w");
+//	fprintf(fp, "\ntotalSrcMask=0: %d\n", totalSrcMaskType[0]);
+//	for (int i = 1; i < 33; i++) {
+//		fprintf(fp, "%2d: %4d\t", i, totalSrcMaskType[i]);
+//		if (i % 8 == 0) fprintf(fp, "\n");
+//	}
+//	fprintf(fp, "\n\ntotalDstMask=0: %d\n", totalDstMaskType[0]);
+//	for (int i = 1; i < 33; i++) {
+//		fprintf(fp, "%2d: %4d\t", i, totalDstMaskType[i]);
+//		if (i % 8 == 0) fprintf(fp, "\n");
+//	}
+//	fclose(fp);
 	printf("\n\navgTotalCycle= %f\n", totalMatchCycle / 12);
 	printf("\n\navgInsertCycle= %f\n", totalInsertCycle / 12);
 	return 0;

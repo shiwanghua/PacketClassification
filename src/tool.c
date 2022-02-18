@@ -144,6 +144,28 @@ void add_data_ordered(Cell *c, data *d) {
 	c->size++;
 }
 
+void add_data_ordered2(Cell2 *c, data2 *d) {
+	if (c->size >= c->capacity) {
+		c->capacity += 4;
+		data2 *p = (data *) realloc(c->list, c->capacity * sizeof(data2));
+		if (p == NULL) {
+			fprintf(stderr, "Error - unable to allocate required memory\n");
+		} else {
+			c->list = p;
+		}
+	}
+	int i = 0,j=c->size-1,m;
+	while (i <= j){
+		m=i+((j-i)>>1);
+		if (c->list[m].PRI < d->PRI)
+			i=m+1;
+		else j=m-1;
+	}
+	memmove(c->list + i + 1, c->list + i, sizeof(data2) * (c->size - i));
+	memcpy(c->list + i, d, sizeof(data2));
+	c->size++;
+}
+
 void add_message(ACL_messages *messages, message *m) {
 	if (messages->size < messages->capacity) {
 		memcpy(messages->list + messages->size, m, sizeof(message));
