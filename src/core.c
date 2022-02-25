@@ -318,62 +318,62 @@ void insert_solution4(Cell2 *c_list, rule *p, unsigned char **bitset) {
 //				bitset[i][unitNo] = bitset[i][unitNo]|1<<offset;
 //		}
 //	}
-	if ((unsigned int) p->protocol[0] != 0){
-		int bitsetNo=-1;
-		int unitNo=p->PRI/8;
-		int offset=p->PRI&7;
-		switch ((unsigned int) p->protocol[1]) {
-			case ICMP:
-				bitsetNo=0;
-				break;
-			case IGMP:
-				bitsetNo = 1;
-				break;
-			case GGP:
-				bitsetNo = 2;
-				break;
-			case IP:
-				bitsetNo = 3;
-				break;
-			case ST:
-				bitsetNo = 4;
-				break;
-			case TCP:
-				bitsetNo = 5;
-				break;
-			case CBT:
-				bitsetNo = 6;
-				break;
-			case EGP:
-				bitsetNo = 7;
-				break;
-			case UDP:
-				bitsetNo = 8;
-				break;
-			case GRE:
-				bitsetNo = 9;
-				break;
-			case ESP:
-				bitsetNo = 10;
-				break;
-			case AH:
-				bitsetNo = 11;
-				break;
-			case EIGRP:
-				bitsetNo = 12;
-				break;
-			case OSPFIGP:
-				bitsetNo = 13;
-				break;
-			default:
-				fprintf(stderr, "Rule %d Error - unknown message protocol %u !\n", p->PRI, p->protocol[1]);
-				return;
-		}
-		for (int i = 0; i < 14; i++) {
-			if(i!=bitsetNo)
-				bitset[i][unitNo] = bitset[i][unitNo] | 1 << offset;
-		}
-	}
+//	if ((unsigned int) p->protocol[0] != 0){
+//		int bitsetNo=-1;
+//		int unitNo=p->PRI/8;
+//		int offset=p->PRI&7;
+//		switch ((unsigned int) p->protocol[1]) {
+//			case ICMP:
+//				bitsetNo=0;
+//				break;
+//			case IGMP:
+//				bitsetNo = 1;
+//				break;
+//			case GGP:
+//				bitsetNo = 2;
+//				break;
+//			case IP:
+//				bitsetNo = 3;
+//				break;
+//			case ST:
+//				bitsetNo = 4;
+//				break;
+//			case TCP:
+//				bitsetNo = 5;
+//				break;
+//			case CBT:
+//				bitsetNo = 6;
+//				break;
+//			case EGP:
+//				bitsetNo = 7;
+//				break;
+//			case UDP:
+//				bitsetNo = 8;
+//				break;
+//			case GRE:
+//				bitsetNo = 9;
+//				break;
+//			case ESP:
+//				bitsetNo = 10;
+//				break;
+//			case AH:
+//				bitsetNo = 11;
+//				break;
+//			case EIGRP:
+//				bitsetNo = 12;
+//				break;
+//			case OSPFIGP:
+//				bitsetNo = 13;
+//				break;
+//			default:
+//				fprintf(stderr, "Rule %d Error - unknown message protocol %u !\n", p->PRI, p->protocol[1]);
+//				return;
+//		}
+//		for (int i = 0; i < 14; i++) {
+//			if(i!=bitsetNo)
+//				bitset[i][unitNo] = bitset[i][unitNo] | 1 << offset;
+//		}
+//	}
 
 	add_data_ordered2(c_list + ((c_id[0] * LAYER2_SIZE + c_id[1]) * LAYER3_SIZE + c_id[2]) * LAYER4_SIZE + c_id[3],
 					  &_d);
@@ -980,8 +980,9 @@ int match_with_log_solution3(Cell *_c, message *p, int *_cycle) {
 	return res;
 }
 
-int hit=0;
-int miss=0;
+int hit = 0;
+int miss = 0;
+
 // solution4: sourceIP_2 && destinationIP_2 && sourceIP_1 && destinationIP_3
 int match_with_log_solution4(Cell2 *_c, message *p, int *_cycle, unsigned char **bitset) {
 	uint64_t time_1, time_2;
@@ -996,52 +997,53 @@ int match_with_log_solution4(Cell2 *_c, message *p, int *_cycle, unsigned char *
 		p_sip_mv[i] = es_ip >> i;
 		p_dip_mv[i] = ed_ip >> i;
 	}
-	int bitsetNo;//=(int) p->destination_ip[3];
-	switch (e_protocol) {
-		case ICMP:
-			bitsetNo = 0;
-			break;
-		case IGMP:
-			bitsetNo = 1;
-			break;
-		case GGP:
-			bitsetNo = 2;
-			break;
-		case IP:
-			bitsetNo = 3;
-			break;
-		case ST:
-			bitsetNo = 4;
-			break;
-		case TCP:
-			bitsetNo = 5;
-			break;
-		case CBT:
-			bitsetNo = 6;
-			break;
-		case EGP:
-			bitsetNo = 7;
-			break;
-		case UDP:
-			bitsetNo = 8;
-			break;
-		case GRE:
-			bitsetNo = 9;
-			break;
-		case ESP:
-			bitsetNo = 10;
-			break;
-		case AH:
-			bitsetNo = 11;
-			break;
-		case EIGRP:
-			bitsetNo = 12;
-			break;
-		case OSPFIGP:
-			bitsetNo = 13;
-			break;
-	}
-	unsigned char* bitset_=bitset[bitsetNo];
+
+//	int bitsetNo;//=(int) p->destination_ip[3];
+//	switch (e_protocol) {
+//		case ICMP:
+//			bitsetNo = 0;
+//			break;
+//		case IGMP:
+//			bitsetNo = 1;
+//			break;
+//		case GGP:
+//			bitsetNo = 2;
+//			break;
+//		case IP:
+//			bitsetNo = 3;
+//			break;
+//		case ST:
+//			bitsetNo = 4;
+//			break;
+//		case TCP:
+//			bitsetNo = 5;
+//			break;
+//		case CBT:
+//			bitsetNo = 6;
+//			break;
+//		case EGP:
+//			bitsetNo = 7;
+//			break;
+//		case UDP:
+//			bitsetNo = 8;
+//			break;
+//		case GRE:
+//			bitsetNo = 9;
+//			break;
+//		case ESP:
+//			bitsetNo = 10;
+//			break;
+//		case AH:
+//			bitsetNo = 11;
+//			break;
+//		case EIGRP:
+//			bitsetNo = 12;
+//			break;
+//		case OSPFIGP:
+//			bitsetNo = 13;
+//			break;
+//	}
+//	unsigned char* bitset_=bitset[bitsetNo];
 
 	unsigned int c_id[LEVEL_solution4][2];
 
@@ -1066,68 +1068,68 @@ int match_with_log_solution4(Cell2 *_c, message *p, int *_cycle, unsigned char *
 					Cell2 *q = _c + id_3 + c_id[layer4][w];
 					if (q->size == 0)continue;
 					data2 *_d = q->list;
-					unsigned int _ip;
-					if(q->size>3000){
-						for (int u = 0; u < q->size; u++, ++_d) { //check in cell
-							if (res < _d->PRI)break;
-
-							if(bitset_[_d->PRI>>3]&1<<(_d->PRI&7)) {
-								hit++;
-//								if(hit%1000000==0)
-//								printf("if Cell%d %d, hit=%d\n",id_3 + c_id[3][w],_d->PRI,hit);
-								continue;
-							}
-//							else{
-//								miss++;
-//								if(miss%1000000==0)
-//								printf("else Cell%d %d, miss=%d\n",id_3 + c_id[3][w],_d->PRI,miss);
+					unsigned int _ip, m_bit;
+//					if(q->size>3000){
+//						for (int u = 0; u < q->size; u++, ++_d) { //check in cell
+//							if (res < _d->PRI)break;
+//
+//							if(bitset_[_d->PRI>>3]&1<<(_d->PRI&7)) {
+//								hit++;
+////								if(hit%1000000==0)
+////								printf("if Cell%d %d, hit=%d\n",id_3 + c_id[3][w],_d->PRI,hit);
+//								continue;
 //							}
+////							else{
+////								miss++;
+////								if(miss%1000000==0)
+////								printf("else Cell%d %d, miss=%d\n",id_3 + c_id[3][w],_d->PRI,miss);
+////							}
+//
+//							if (_d->protocol[0] != 0 && e_protocol != _d->protocol[1]) continue;
+//
+//							if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
+//								continue;  //if source port not match, check next
+//							if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)
+//								continue;  //if destination port not match, check next
 
-							if (_d->protocol[0] != 0 && e_protocol != _d->protocol[1]) continue;
+//							 m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
+//							memcpy(&_ip, _d->source_ip, 4);
+//							if (m_bit != 32 && p_sip_mv[m_bit] != _ip >> m_bit)
+//								continue;  //if source ip not match, check next
+//
+//							m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
+//							memcpy(&_ip, _d->destination_ip, 4);
+//							if (m_bit != 32 && p_dip_mv[m_bit] != _ip >> m_bit)
+//								continue;  //if destination ip not match, check next
 
-							unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
-							memcpy(&_ip, _d->source_ip, 4);
-							if (m_bit != 32 && p_sip_mv[m_bit] != _ip >> m_bit)
-								continue;  //if source ip not match, check next
+//							res = _d->PRI;
+//							break;
+//						}
+//					}else{
+					for (int u = 0; u < q->size; u++, ++_d) { //check in cell
+//						if (res < _d->PRI)break;
 
-							m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
-							memcpy(&_ip, _d->destination_ip, 4);
-							if (m_bit != 32 && p_dip_mv[m_bit] != _ip >> m_bit)
-								continue;  //if destination ip not match, check next
+//						if (_d->protocol[0] != 0 && e_protocol != _d->protocol[1]) continue;
 
-							if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
-								continue;  //if source port not match, check next
-							if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)
-								continue;  //if destination port not match, check next
+						m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
+						memcpy(&_ip, _d->destination_ip, 4);
+						if (m_bit != 32 && p_dip_mv[m_bit] != _ip >> m_bit)
+//						if (m_bit != 32 && es_ip>>m_bit != _ip >> m_bit)
+							continue;  //if destination ip not match, check next
 
-							res = _d->PRI;
-							break;
-						}
-					}else{
-						for (int u = 0; u < q->size; u++, ++_d) { //check in cell
-							if (res < _d->PRI)break;
+						m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
+						memcpy(&_ip, _d->source_ip, 4);
+						if (m_bit != 32 && p_sip_mv[m_bit] != _ip >> m_bit)
+//						if (m_bit != 32 && ed_ip>>m_bit != _ip >> m_bit)
+							continue;  //if source ip not match, check next
 
-							if (_d->protocol[0] != 0 && e_protocol != _d->protocol[1]) continue;
+						if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port||es_port < _d->source_port[0] || _d->source_port[1] < es_port||_d->protocol[0] != 0 && e_protocol != _d->protocol[1])
+							continue;  //if destination or source port not match, check next
 
-							unsigned int m_bit = 32 - (unsigned int) _d->source_mask;  //comput the bit number need to move
-							memcpy(&_ip, _d->source_ip, 4);
-							if (m_bit != 32 && p_sip_mv[m_bit] != _ip >> m_bit)
-								continue;  //if source ip not match, check next
-
-							m_bit = 32 - (unsigned int) _d->destination_mask;  //comput the bit number need to move
-							memcpy(&_ip, _d->destination_ip, 4);
-							if (m_bit != 32 && p_dip_mv[m_bit] != _ip >> m_bit)
-								continue;  //if destination ip not match, check next
-
-							if (es_port < _d->source_port[0] || _d->source_port[1] < es_port)
-								continue;  //if source port not match, check next
-							if (ed_port < _d->destination_port[0] || _d->destination_port[1] < ed_port)
-								continue;  //if destination port not match, check next
-
-							res = _d->PRI;
-							break;
-						}
+						res = _d->PRI;
+						break;
 					}
+//					}
 
 				}
 			}

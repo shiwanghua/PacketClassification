@@ -55,12 +55,52 @@ int test1() {
 //	printf("%d ",a[10000]);
 //	printf("%d ",a[45678]);
 
-	printf("%d\n", sizeof(unsigned long));
+/*	printf("%d\n", sizeof(unsigned long));
 	printf("%d\n", sizeof(unsigned long int));
 	printf("%d\n", sizeof(unsigned long long));
 	printf("%d\n", sizeof(unsigned long long int));
-	printf("%d\n", sizeof(int64_t)); // signed long int
+	printf("%d\n", sizeof(int64_t)); // signed long int*/
 //	printf("%d",sizeof(unsigned int64_t));
+	ACL_rules datasets = {0, 0, 0};
+	ACL_messages message_sets = {0, 0, 0};
+	read_rules("classbench_256k_s/acl1_256k.txt", &datasets);
+	read_messages("classbench_256k_s/acl1_256k_trace.txt", &message_sets);
+	double iCycle, oneMatch=0,memoryAccess=0;
+	unsigned int m_bit, r_ip;
+	int num = 1000000, count;
+	message p = message_sets.list[rand() % message_sets.size];
+	rule r = datasets.list[rand() % datasets.size];
+	count = 0;
+	iCycle = GetCPUCycle();
+	for (int i = 0; i < num; i++) {
+
+//		iCycle = GetCPUCycle();
+		rule r = datasets.list[rand() % datasets.size];
+		message p = message_sets.list[rand() % message_sets.size];
+//		memoryAccess+=(double) GetCPUCycle() - iCycle;
+
+//		iCycle = GetCPUCycle();
+
+		unsigned int p_sip, p_dip, r_ip;
+		memcpy(&p_sip, p.source_ip, 4);
+		memcpy(&p_dip, p.destination_ip, 4);
+		m_bit = 32 - (unsigned int) r.source_mask;
+		memcpy(&r_ip, r.source_ip, 4);
+		if (m_bit != 32 && p_sip >> m_bit != r_ip >> m_bit)count++;  //if source ip not match, check next
+		m_bit = 32 - (unsigned int) r.destination_mask;  //comput the bit number need to move
+		memcpy(&r_ip, r.destination_ip, 4);
+		if (m_bit != 32 && p_dip >> m_bit != r_ip >> m_bit)count++;  //if destination ip not match, check next
+		if (p.source_port < r.source_port[0] || r.source_port[1] < p.source_port)
+			count++;  //if source port not match, check next
+		if (p.destination_port < r.destination_port[0] ||
+			r.destination_port[1] < p.destination_port)
+			count++;  //if destination port not match, check next
+		if (r.protocol[0] != 0 && p.protocol != (unsigned int) r.protocol[1]) count++;
+//		oneMatch += (double) GetCPUCycle() - iCycle;
+	}
+	oneMatch+=(double) GetCPUCycle() - iCycle;
+	printf("count=%d, num=%d, oneMessageMatchOneRule= %f\n\nmemoryAccess=%f\n", count, num,oneMatch / num,memoryAccess/(2*num));
+
 
 }
 
@@ -108,15 +148,15 @@ int main() {
 		strcat(tmpFileName, headFileName[q]);
 		read_messages(tmpFileName, &message_sets);
 
-		int numUnit = (datasets.size + sizeof(char) - 1) / sizeof(char);
-		unsigned char ** bitset=(unsigned char **) malloc(14 * sizeof(unsigned char*));
-		for(int i=0;i<14;i++){
-			bitset[i]=(unsigned char *) calloc(numUnit, sizeof(unsigned char));
-		}
+//		int numUnit = (datasets.size + sizeof(char) - 1) / sizeof(char);
+		unsigned char **bitset = (unsigned char **) malloc(14 * sizeof(unsigned char *));
+//		for (int i = 0; i < 14; i++) {
+//			bitset[i] = (unsigned char *) calloc(numUnit, sizeof(unsigned char));
+//		}
 
 		double iCycle = GetCPUCycle();;
 		for (int i = 0; i < datasets.size; i++)
-			insert_solution4(index, datasets.list + i,bitset);
+			insert_solution4(index, datasets.list + i, bitset);
 		iCycle = ((double) GetCPUCycle() - iCycle) / datasets.size;
 		totalInsertCycle += iCycle;
 		printf("%s\navgInsertCycle= %f\n%d %d %d n_rule=%d, n_head=%d\n", ruleFileName[q], iCycle, sizeof(data),
@@ -149,7 +189,7 @@ int main() {
 		gettimeofday(&starttime, 0);
 //		clock_t start = clock();
 		for (int i = 0; i < message_sets.size; i++) {
-			res = match_with_log_solution4(index, &message_sets.list[i], &mCycle,bitset);
+			res = match_with_log_solution4(index, &message_sets.list[i], &mCycle, bitset);
 //			setCycle += mCycle;
 //		res = match_with_log2_solution1(index, &message_sets.list[i], &cycle,&checkNum);
 //			cycleList[i] = mCycle;
@@ -158,7 +198,7 @@ int main() {
 		}
 		time_2 = GetCPUCycle();
 		totalMatchCycle += (time_2 - time_1) / message_sets.size;
-		printf("avgMatchCycle= %f\n\n", (double)(time_2 - time_1) / message_sets.size);
+		printf("avgMatchCycle= %f\n\n", (double) (time_2 - time_1) / message_sets.size);
 //		totalMatchCycle += setCycle / message_sets.size;
 
 		gettimeofday(&endtime, 0);
