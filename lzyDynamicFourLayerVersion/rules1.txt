@@ -1,0 +1,6 @@
+sip=1.2.3.4/32,dip=4.5.6.0/24,sport=1:10,dport=90:100,proto=6,index=1
+sip=11.2.3.4/32,dip=4.5.6.0/24,sport=1:10,dport=900:1000,proto=6,index=2
+sip=11.2.3.4/32,dip=4.5.6.0/24,sport=14:100,dport=900:1000,proto=17,index=3
+sip=100.1.2.3/32,dip=200.4.5.254/31,sport=5:5,dport=0:65535,proto=0,index=4
+sip=100.1.2.0/28,dip=200.4.5.128/25,sport=0:10,dport=0:65535,proto=6,index=5
+sip=100.1.0.0/16,dip=200.4.5.0/24,sport=0:65535,dport=0:65535,proto=6,index=6

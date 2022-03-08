@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/core.c
+core.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/core.h
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/core.h
+tool.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/tool.h
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/data_structure.h
+stdio.h
+-
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/main.c
+core.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/core.h
+read.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/read.h
+sys/time.h
+-
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/read.h
+tool.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/tool.h
+
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/tool.h
+string.h
+-
+malloc.h
+-
+stdint.h
+-
+data_structure.h
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/data_structure.h
+stdlib.h
+-
+time.h
+-
+

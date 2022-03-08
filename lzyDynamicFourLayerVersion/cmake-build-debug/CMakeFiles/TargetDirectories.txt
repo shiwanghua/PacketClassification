@@ -1,0 +1,3 @@
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/cmake-build-debug/CMakeFiles/hello.dir

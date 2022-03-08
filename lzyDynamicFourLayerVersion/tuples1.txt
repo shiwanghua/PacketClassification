@@ -1,0 +1,10 @@
+sip=1.2.3.4,dip=4.5.6.7,sport=1,dport=90,proto=6,index=1
+sip=11.2.3.4,dip=4.5.6.17,sport=1,dport=900,proto=6,index=2
+sip=121.2.3.4,dip=4.5.6.17,sport=1,dport=900,proto=6,index=0
+sip=222.2.3.4,dip=4.5.6.17,sport=1,dport=800,proto=6,index=0
+sip=100.1.2.3,dip=200.4.5.254,sport=10,dport=100,proto=6,index=5
+sip=100.1.2.3,dip=200.4.5.254,sport=5,dport=100,proto=6,index=4
+sip=100.1.2.3,dip=200.4.5.254,sport=5,dport=100,proto=17,index=4
+sip=100.1.3.0,dip=200.4.5.1,sport=5,dport=100,proto=6,index=6
+sip=100.1.4.0,dip=200.4.5.5,sport=5,dport=100,proto=17,index=0
+
