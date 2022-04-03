@@ -51,6 +51,61 @@ void read_rules(const char* file_name, ACL_rules* rules)
 	printf("read_rules %d done %s\n", i, file_name);
 }
 
+void read_rules_bitset(const char* file_name, ACL_rules* rules)
+{
+//	printf("Bitset Version: read_rules begin %s ...\n", file_name);
+
+	rule r;
+	r.PRI = 0;
+//	add_rule(rules, &r); // 第0号位不存有效规则，占位
+
+	FILE* fp = NULL;
+	fp = fopen(file_name, "r");
+	unsigned int sIp[5];
+	unsigned int dIp[5];
+	unsigned int sPort[2];
+	unsigned int dPort[2];
+	unsigned int protocol;
+	unsigned int index;
+	int i = 0;
+	while (fscanf(fp, "sip=%u.%u.%u.%u/%u,dip=%u.%u.%u.%u/%u,sport=%u:%u,dport=%u:%u,proto=%u,index=%u\n", &sIp[0], &sIp[1], &sIp[2], &sIp[3], &sIp[4],
+				  &dIp[0], &dIp[1], &dIp[2], &dIp[3], &dIp[4],
+				  &sPort[0], &sPort[1], &dPort[0], &dPort[1], &protocol, &index) != EOF) {
+
+		/*
+		printf("sip=%u.%u.%u.%u/%u,dip=%u.%u.%u.%u/%u,sport=%u:%u,dport=%u:%u,proto=%u,index=%u\n", sIp[0], sIp[1], sIp[2], sIp[3], sIp[4],
+		dIp[0], dIp[1], dIp[2], dIp[3], dIp[4], sPort[0], sPort[1], dPort[0], dPort[1], protocol, index);
+		*/
+
+		r.PRI = index;
+
+		if (protocol == 0) {
+			r.protocol[0] = 0;
+			r.protocol[1] = 0;
+		}
+		else {
+			r.protocol[0] = 1;
+			r.protocol[1] = (unsigned char)protocol;
+		}
+
+		r.source_mask = (unsigned char)sIp[4];
+		r.destination_mask = (unsigned char)dIp[4];
+		int k = 4;
+		for (int j = 0; j < 4; j++) {
+//			r.source_ip[j] = (unsigned char)sIp[--k];
+//			r.destination_ip[j] = (unsigned char)dIp[k];
+			r.source_ip[j] = (unsigned char)sIp[j];
+			r.destination_ip[j] = (unsigned char)dIp[j];
+		}
+		r.source_port[0] = (unsigned short)sPort[0]; r.source_port[1] = (unsigned short)sPort[1];
+		r.destination_port[0] = (unsigned short)dPort[0]; r.destination_port[1] = (unsigned short)dPort[1];
+		add_rule(rules, &r);
+		i++;
+	}
+	fclose(fp);
+//	printf("read_rules %d done %s\n", i, file_name);
+}
+
 void read_messages(const char* file_name, ACL_messages* messages)
 {
 	printf("read_messages begin %s ...\n", file_name);

@@ -1,0 +1,1 @@
+output/rule_protocol_rules1.txt: 0:1, 6:4, 17:1,  count=3
