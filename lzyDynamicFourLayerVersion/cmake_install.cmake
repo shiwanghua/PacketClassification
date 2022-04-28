@@ -1,4 +1,4 @@
-# Install script for directory: /home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch
+# Install script for directory: /home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

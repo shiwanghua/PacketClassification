@@ -1,1 +1,1 @@
-/usr/bin/cc -O3   CMakeFiles/hello.dir/src/core.c.o CMakeFiles/hello.dir/src/main.c.o CMakeFiles/hello.dir/src/read.c.o CMakeFiles/hello.dir/src/tool.c.o  -o hello 
+/usr/bin/cc  -lm -O3   CMakeFiles/hello.dir/src/core.c.o CMakeFiles/hello.dir/src/main.c.o CMakeFiles/hello.dir/src/read.c.o CMakeFiles/hello.dir/src/tool.c.o  -o hello  -lm 

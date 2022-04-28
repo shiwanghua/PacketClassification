@@ -31,7 +31,13 @@
 *.out
 *.app
 
-output/match_cycle_*
-simple_match_cycle_*
-output/simple*
-classbench_256k_s
+MyModifyVersion/output/match_cycle_*
+MyModifyVersion/simple_match_cycle_*
+MyModifyVersion/output/simple*
+MyModifyVersion/classbench_256k_s
+
+lzyDynamicFourLayerVersion/*.vcxproj
+lzyDynamicFourLayerVersion/*.sln
+lzyDynamicFourLayerVersion/*.filters
+lzyDynamicFourLayerVersion/*.user
+lzyDynamicFourLayerVersion/acl_128k_test

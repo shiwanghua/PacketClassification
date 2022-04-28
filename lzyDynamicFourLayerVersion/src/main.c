@@ -54,7 +54,7 @@ void test() {
 
 
 int main() {
-	int core_id = 2;
+	int core_id = 8;
 
 	cpu_set_t mask;
 	CPU_ZERO(&mask);

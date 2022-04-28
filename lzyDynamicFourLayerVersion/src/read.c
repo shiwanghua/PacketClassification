@@ -51,7 +51,7 @@ void read_rules(const char* file_name, ACL_rules* rules)
 	printf("read_rules %d done %s\n", i, file_name);
 }
 
-void read_rules_bitset(const char* file_name, ACL_rules* rules)
+void read_rules_bitset(const char* file_name, ACL_rules* rules) // source_ip，destination_ip 没有把IP反过来存
 {
 //	printf("Bitset Version: read_rules begin %s ...\n", file_name);
 

@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/core.c" "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/CMakeFiles/hello.dir/src/core.c.o"
-  "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/main.c" "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/CMakeFiles/hello.dir/src/main.c.o"
-  "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/read.c" "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/CMakeFiles/hello.dir/src/read.c.o"
-  "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/src/tool.c" "/home/swh/桌面/MyProgram/lzy_ACL-onesetp_switch/CMakeFiles/hello.dir/src/tool.c.o"
+  "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/src/core.c" "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/CMakeFiles/hello.dir/src/core.c.o"
+  "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/src/main.c" "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/CMakeFiles/hello.dir/src/main.c.o"
+  "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/src/read.c" "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/CMakeFiles/hello.dir/src/read.c.o"
+  "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/src/tool.c" "/home/swh/桌面/MyProgram/ACL/lzyDynamicFourLayerVersion/CMakeFiles/hello.dir/src/tool.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

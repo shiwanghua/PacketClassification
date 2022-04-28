@@ -1470,7 +1470,8 @@ void insert_bitset_forward_IPv4(rule *r, unsigned long **bitsets) {
 	}
 }
 
-int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **bitsets, int *_cycle,unsigned long* checkNum) {
+int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **bitsets, int *_cycle,
+							  unsigned long *checkNum) {
 	unsigned int baseIndex = 0;
 	unsigned long *b[9];
 	b[0] = bitsets[baseIndex + (unsigned int) m->source_ip[3]];
@@ -1489,6 +1490,17 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 	baseIndex += 256;
 	b[7] = bitsets[baseIndex + (unsigned int) m->destination_ip[0]];
 	baseIndex += 256;
+
+//	b[0] = bitsets[baseIndex + (unsigned int) m->source_ip[3]];
+//	b[1] = bitsets[baseIndex + 256 + (unsigned int) m->source_ip[2]];
+//	b[2] = bitsets[baseIndex + 512 + (unsigned int) m->source_ip[1]];
+//	b[3] = bitsets[baseIndex + 768 + (unsigned int) m->source_ip[0]];
+//	b[4] = bitsets[baseIndex + 1024 + (unsigned int) m->destination_ip[3]];
+//	b[5] = bitsets[baseIndex + 1280 + (unsigned int) m->destination_ip[2]];
+//	b[6] = bitsets[baseIndex + 1536 + (unsigned int) m->destination_ip[1]];
+//	b[7] = bitsets[baseIndex + 1792 + (unsigned int) m->destination_ip[0]];
+//	baseIndex = baseIndex + 2048;
+
 	switch ((unsigned int) m->protocol) {
 		case ICMP:
 			b[8] = bitsets[baseIndex];
@@ -1549,17 +1561,20 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 	unsigned int id;
 	for (int i = 0; i < numUnit; i++) {
 		globalB = b[0][i] & b[1][i] & b[2][i] & b[3][i] & b[4][i] & b[5][i] & b[6][i] & b[7][i] & b[8][i];
-		if (globalB) {
-			while (globalB){
-				id=baseIndex+__builtin_ctzl(globalB); // 求 globalB 中从右数第一个 1 右边０的个数
-				if (ruleList[id].source_port[0] <= srcPort &&
-					srcPort <= ruleList[id].source_port[1] &&
-					ruleList[id].destination_port[0] <= dstPort &&
-					dstPort <= ruleList[id].destination_port[1]) {
-					return id;
-				}
-				globalB=globalB&(globalB-1);
+		while (globalB) {
+#ifdef DEBUG
+			(*checkNum)++;
+#endif
+			id = baseIndex + __builtin_ctzl(globalB); // 求 globalB 中从右数第一个 1 右边０的个数
+			if (ruleList[id].source_port[0] <= srcPort &&
+				srcPort <= ruleList[id].source_port[1] &&
+				ruleList[id].destination_port[0] <= dstPort &&
+				dstPort <= ruleList[id].destination_port[1]) {
+				return id;
 			}
+			globalB = globalB & (globalB - 1);
+		}
+//		if (globalB) {
 //			for (int id = baseIndex; id < baseIndex + 64; id++) {
 //				if (globalB & 1) {
 //#ifdef DEBUG
@@ -1577,7 +1592,7 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 //				}
 //				globalB = globalB >> 1;
 //			}
-		}
+//		}
 		baseIndex += 64;
 	}
 	return -1;

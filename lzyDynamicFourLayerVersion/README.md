@@ -3,7 +3,7 @@
 
 # ACL
 
-* ulimit -s unlimited;taskset -c 2 ./hello
+* ulimit -s unlimited;taskset -c 8 ./hello
 * gcc -o hello ./src/*.c ./src/*.h -lm
 
 * gcc -g src/* -o debug.out -lm
