@@ -1,0 +1,9 @@
+# ninja log v5
+0	33	1651157174677169261	CMakeFiles/hello.dir/src/tool.c.o	9dcf93a0da17cb49
+0	33	1651157174677169261	CMakeFiles/hello.dir/src/read.c.o	b252362af39254f4
+0	88	1651157174733168984	CMakeFiles/hello.dir/src/main.c.o	f3ab66229ec0673e
+1	90	1651157334324418569	CMakeFiles/hello.dir/src/main.c.o	f3ab66229ec0673e
+1	300	1651157334532417645	CMakeFiles/hello.dir/src/core.c.o	85483c188af02bab
+300	316	1651157334548417572	hello	8f32ec251d5dba14
+0	87	1651157423004034214	CMakeFiles/hello.dir/src/main.c.o	f3ab66229ec0673e
+0	295	1651157423212033337	CMakeFiles/hello.dir/src/core.c.o	85483c188af02bab

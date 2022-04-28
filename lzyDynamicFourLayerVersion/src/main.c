@@ -237,7 +237,7 @@ int main() {
 		printf("avgCycle= %f\n\n", setCycle / message_sets.size);
 		gettimeofday(&endtime, 0);
 		double timeuse = 1000000 * (endtime.tv_sec - starttime.tv_sec) + endtime.tv_usec - starttime.tv_usec;
-		printf("avgCheckNum= %ld\n",checkNum/message_sets.size);
+		printf("avgCheckNum= %.2f\n",(double)checkNum/message_sets.size);
 		printf("avgMatchTime= %fus\n\n", timeuse / message_sets.size);
 //		clock_t stop = clock();
 //		double elapsed = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC;
