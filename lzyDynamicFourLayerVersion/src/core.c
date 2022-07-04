@@ -1343,6 +1343,13 @@ void init_bitset_IPv4(int numRule, unsigned long ***bitsets) {
 //	printf("\n\n\nNUM_PORT_BITSET= %d, PORT_NUMBER=%d, NUM_BITSET=%d\n\n\n", NUM_PORT_BITSET, PORT_NUMBER, NUM_BITSET);
 	*bitsets = (unsigned long **) malloc(NUM_BITSET * sizeof(unsigned long *));
 	unsigned long *bitsSpace = (unsigned long *) calloc(numUnit * NUM_BITSET, sizeof(unsigned long));
+//	for (int i = 0; i < numUnit * NUM_BITSET; i++)
+//		if(bitsSpace[i]!=0){
+//			bitsSpace[i] = 0LL;
+//			printf("bitsSpace error.\n");
+//			return;
+//		}
+
 	for (int i = 0; i < NUM_BITSET; i++) {
 		(*bitsets)[i] = bitsSpace;
 		bitsSpace += numUnit;
@@ -1414,6 +1421,16 @@ void insert_bitset_forward_IPv4(rule *r, unsigned long **bitsets) {
 		}
 	}
 
+	for (int i = baseIndex + r->source_port[0] / PORT_WIDTH; i <= baseIndex + r->source_port[1] / PORT_WIDTH; i++) {
+		bitsets[i][unitNo] |= offsetNo;
+	}
+	baseIndex += NUM_PORT_BITSET;
+	for (int i = baseIndex + r->destination_port[0] / PORT_WIDTH;
+		 i <= baseIndex + r->destination_port[1] / PORT_WIDTH; i++) {
+		bitsets[i][unitNo] |= offsetNo;
+	}
+	baseIndex += NUM_PORT_BITSET;
+
 	if ((unsigned int) r->protocol[1] == 0) {
 		for (unsigned int id = baseIndex; id < baseIndex + NUM_PROTOCOL + 1; id++) {
 			bitsets[id][unitNo] |= offsetNo;
@@ -1473,113 +1490,109 @@ void insert_bitset_forward_IPv4(rule *r, unsigned long **bitsets) {
 				return;
 		}
 	}
-	baseIndex += NUM_PROTOCOL + 1;
-//	printf("baseIndex=%d; sportl=%d, sportr=%d\n", baseIndex, r->source_port[0], r->source_port[1]);
-	for (int i = baseIndex + r->source_port[0] / PORT_WIDTH; i <= baseIndex + r->source_port[1] / PORT_WIDTH; i++) {
-//		printf("id=%d, si= %d\n", r->PRI, i);
-//		fflush(stdout);
-		bitsets[i][unitNo] |= offsetNo;
-	}
-	baseIndex += NUM_PORT_BITSET;
-	for (int i = baseIndex + r->destination_port[0] / PORT_WIDTH;
-		 i <= baseIndex + r->destination_port[1] / PORT_WIDTH; i++) {
-		printf("id=%d, di= %d\n", r->PRI, i);
-		fflush(stdout);
-		bitsets[i][unitNo] |= offsetNo;
-	}
 }
 
 int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **bitsets, int *_cycle,
 							  unsigned long *checkNum) {
 	unsigned int baseIndex = 0;
-	unsigned long *b[9];
-//	b[0] = bitsets[baseIndex + (unsigned int) m->source_ip[3]];
-//	baseIndex += 256;
-//	b[1] = bitsets[baseIndex + (unsigned int) m->source_ip[2]];
-//	baseIndex += 256;
-//	b[2] = bitsets[baseIndex + (unsigned int) m->source_ip[1]];
-//	baseIndex += 256;
-//	b[3] = bitsets[baseIndex + (unsigned int) m->source_ip[0]];
-//	baseIndex += 256;
-//	b[4] = bitsets[baseIndex + (unsigned int) m->destination_ip[3]];
-//	baseIndex += 256;
-//	b[5] = bitsets[baseIndex + (unsigned int) m->destination_ip[2]];
-//	baseIndex += 256;
-//	b[6] = bitsets[baseIndex + (unsigned int) m->destination_ip[1]];
-//	baseIndex += 256;
-//	b[7] = bitsets[baseIndex + (unsigned int) m->destination_ip[0]];
-//	baseIndex += 256;
-
+	unsigned long *b[11];
 	b[0] = bitsets[baseIndex + (unsigned int) m->source_ip[3]];
-	b[1] = bitsets[baseIndex + 256 + (unsigned int) m->source_ip[2]];
-	b[2] = bitsets[baseIndex + 512 + (unsigned int) m->source_ip[1]];
-	b[3] = bitsets[baseIndex + 768 + (unsigned int) m->source_ip[0]];
-	b[4] = bitsets[baseIndex + 1024 + (unsigned int) m->destination_ip[3]];
-	b[5] = bitsets[baseIndex + 1280 + (unsigned int) m->destination_ip[2]];
-	b[6] = bitsets[baseIndex + 1536 + (unsigned int) m->destination_ip[1]];
-	b[7] = bitsets[baseIndex + 1792 + (unsigned int) m->destination_ip[0]];
-	baseIndex = baseIndex + 2048;
+	baseIndex += 256;
+	b[1] = bitsets[baseIndex + (unsigned int) m->source_ip[2]];
+	baseIndex += 256;
+	b[2] = bitsets[baseIndex + (unsigned int) m->source_ip[1]];
+	baseIndex += 256;
+	b[3] = bitsets[baseIndex + (unsigned int) m->source_ip[0]];
+	baseIndex += 256;
+	b[4] = bitsets[baseIndex + (unsigned int) m->destination_ip[3]];
+	baseIndex += 256;
+	b[5] = bitsets[baseIndex + (unsigned int) m->destination_ip[2]];
+	baseIndex += 256;
+	b[6] = bitsets[baseIndex + (unsigned int) m->destination_ip[1]];
+	baseIndex += 256;
+	b[7] = bitsets[baseIndex + (unsigned int) m->destination_ip[0]];
+	baseIndex += 256;
+	b[8] = bitsets[baseIndex + m->source_port / PORT_WIDTH];
+	baseIndex += NUM_PORT_BITSET;
+	b[9] = bitsets[baseIndex + m->destination_port / PORT_WIDTH];
+	baseIndex += NUM_PORT_BITSET;
+
+//	b[0] = bitsets[baseIndex + (unsigned int) m->source_ip[3]];
+//	b[1] = bitsets[baseIndex + 256 + (unsigned int) m->source_ip[2]];
+//	b[2] = bitsets[baseIndex + 512 + (unsigned int) m->source_ip[1]];
+//	b[3] = bitsets[baseIndex + 768 + (unsigned int) m->source_ip[0]];
+//	b[4] = bitsets[baseIndex + 1024 + (unsigned int) m->destination_ip[3]];
+//	b[5] = bitsets[baseIndex + 1280 + (unsigned int) m->destination_ip[2]];
+//	b[6] = bitsets[baseIndex + 1536 + (unsigned int) m->destination_ip[1]];
+//	b[7] = bitsets[baseIndex + 1792 + (unsigned int) m->destination_ip[0]];
+//	b[8] = bitsets[baseIndex + 2048 + m->source_port / PORT_WIDTH];
+//	b[9] = bitsets[baseIndex + 2304 + m->destination_port / PORT_WIDTH];
+//	baseIndex = baseIndex + 2560;
+
+
 
 	switch ((unsigned int) m->protocol) {
 		case ICMP:
-			b[8] = bitsets[baseIndex];
+			b[10] = bitsets[baseIndex];
 			break;
 		case IGMP:
-			b[8] = bitsets[baseIndex + 1];
+			b[10] = bitsets[baseIndex + 1];
 			break;
 		case GGP:
-			b[8] = bitsets[baseIndex + 2];
+			b[10] = bitsets[baseIndex + 2];
 			break;
 		case IP:
-			b[8] = bitsets[baseIndex + 3];
+			b[10] = bitsets[baseIndex + 3];
 			break;
 		case ST:
-			b[8] = bitsets[baseIndex + 4];
+			b[10] = bitsets[baseIndex + 4];
 			break;
 		case TCP:
-			b[8] = bitsets[baseIndex + 5];
+			b[10] = bitsets[baseIndex + 5];
 			break;
 		case CBT:
-			b[8] = bitsets[baseIndex + 6];
+			b[10] = bitsets[baseIndex + 6];
 			break;
 		case EGP:
-			b[8] = bitsets[baseIndex + 7];
+			b[10] = bitsets[baseIndex + 7];
 			break;
 		case UDP:
-			b[8] = bitsets[baseIndex + 8];
+			b[10] = bitsets[baseIndex + 8];
 			break;
 		case RSVP:
-			b[8] = bitsets[baseIndex + 9];
+			b[10] = bitsets[baseIndex + 9];
 			break;
 		case GRE:
-			b[8] = bitsets[baseIndex + 10];
+			b[10] = bitsets[baseIndex + 10];
 			break;
 		case ESP:
-			b[8] = bitsets[baseIndex + 11];
+			b[10] = bitsets[baseIndex + 11];
 			break;
 		case AH:
-			b[8] = bitsets[baseIndex + 12];
+			b[10] = bitsets[baseIndex + 12];
 			break;
 		case EIGRP:
-			b[8] = bitsets[baseIndex + 13];
+			b[10] = bitsets[baseIndex + 13];
 			break;
 		case OSPFIGP:
-			b[8] = bitsets[baseIndex + 14];
+			b[10] = bitsets[baseIndex + 14];
 			break;
 		case ISIS:
-			b[8] = bitsets[baseIndex + 15];
+			b[10] = bitsets[baseIndex + 15];
 			break;
 		default:
-			b[8] = bitsets[baseIndex + 16];
+			b[10] = bitsets[baseIndex + 16];
 //			fprintf(stderr, "Message - Rule %d Error - unknown message protocol %u !\n", m->rule_id, m->protocol);
 	}
+
 	unsigned long globalB;//calloc(numUnit,sizeof(unsigned long));
 //		unsigned long mask64 = 0xffffffffffffffff;
 	unsigned short srcPort = m->source_port, dstPort = m->destination_port;
 	baseIndex = 0; // id base
 	unsigned int id;
 	for (int i = 0; i < numUnit; i++) {
-		globalB = b[0][i] & b[1][i] & b[2][i] & b[3][i] & b[4][i] & b[5][i] & b[6][i] & b[7][i] & b[8][i];
+		globalB = b[0][i] & b[1][i] & b[2][i] & b[3][i] & b[4][i] & b[5][i] & b[6][i] & b[7][i] & b[8][i] & b[9][i] &
+				  b[10][i];
 		while (globalB) {
 #ifdef DEBUG
 			(*checkNum)++;
@@ -1615,4 +1628,46 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 		baseIndex += 64;
 	}
 	return -1;
+}
+
+void visualize_bitsets(unsigned long **bitsets) {
+	int zeroCount[11], baseIndex = 0;
+	memset(zeroCount, 0, sizeof(zeroCount));
+	for (int i = 0; i < 8; i++) { // IP
+		for (int j = baseIndex; j < baseIndex + 256; j++) {
+			for (int k = 0; k < numUnit; k++)
+				if (bitsets[j][k] == 0)
+					zeroCount[i]++;
+		}
+		baseIndex += 256;
+	}
+	for (int i = 8; i < 10; i++) { // Port
+		for (int j = baseIndex; j < baseIndex + NUM_PORT_BITSET; j++) {
+			for (int k = 0; k < numUnit; k++)
+				if (bitsets[j][k] == 0)
+					zeroCount[i]++;
+		}
+		baseIndex += NUM_PORT_BITSET;
+	}
+
+	for (int j = baseIndex; j < baseIndex + NUM_PROTOCOL + 1; j++)
+		for (int k = 0; k < numUnit; k++)
+			if (bitsets[j][k] == 0)
+				zeroCount[10]++; // Protocol
+
+	printf("\n");
+	for (int i = 0; i < 4; i++)
+		printf("srcIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i + 1, zeroCount[i],
+			   numUnit * 256 - zeroCount[i], (double) zeroCount[i] / (double) (numUnit * 256));
+	for (int i = 4; i < 8; i++)
+		printf("dstIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i - 3, zeroCount[i],
+			   numUnit * 256 - zeroCount[i], (double) zeroCount[i] / (double) (numUnit * 256));
+
+	printf("srcPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[8],
+		   numUnit * NUM_PORT_BITSET - zeroCount[8], (double) zeroCount[8] / (double) (numUnit * NUM_PORT_BITSET));
+	printf("dstPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[9],
+		   numUnit * NUM_PORT_BITSET - zeroCount[9], (double) zeroCount[9] / (double) (numUnit * NUM_PORT_BITSET));
+	printf("Protocol: 64-bits zeros = %d, other = %d, ratio = %.4f\n\n", zeroCount[10],
+		   numUnit * (NUM_PROTOCOL + 1) - zeroCount[10],
+		   (double) zeroCount[10] / (double) (numUnit * (NUM_PROTOCOL + 1)));
 }

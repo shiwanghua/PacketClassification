@@ -9,7 +9,7 @@
 
 #define ENABLE_LOG 0
 #define ENABLE_ANALYSE 0
-#define DEBUG
+//#define DEBUG
 
 #define LEVEL 4
 
@@ -83,13 +83,13 @@
 #define LAYER_2 257
 #define LAYER_3 257
 
-#define CELL_SIZE 34081284//4601025
+#define CELL_SIZE 34081284 // 4601025
 
 #define NUM_PROTOCOL 16
 #define PORT_NUMBER 65536
 #define PORT_WIDTH 256
-#define NUM_PORT_BITSET 256
-#define NUM_BITSET 256*8+NUM_PROTOCOL+1+NUM_PORT_BITSET*2 // 1: protocol=0
+#define NUM_PORT_BITSET 256 // PORT_WIDTH * NUM_PORT_BITSET == PORT_NUMBER
+#define NUM_BITSET 2577 // 256*8+NUM_PORT_BITSET*2+NUM_PROTOCOL+1 // 1: protocol=0
 
 #define ICMP 0x01    // 1 d2
 #define IGMP 0x02    // 2
@@ -109,7 +109,7 @@
 #define ISIS 0x7C    // 124 d2new
 
 #define useShuffleHeader 2 // 0:不随机 1:随机 2:华为英才数据
-#define useShuffleRule 2 // 0:不随机 1:随机 2:华为英才数据
+#define useShuffleRule 2   // 0:不随机 1:随机 2:华为英才数据
 
 void insert(Cell *c_list, rule *r);
 
@@ -140,5 +140,7 @@ void init_bitset_IPv4(int numRule, unsigned long ***bitsets);
 void insert_bitset_forward_IPv4(rule *r, unsigned long **);
 
 int match_bitset_forward_IPv4(const rule *datasets, message *m, unsigned long **bitsets, int *_cycle, unsigned long *);
+
+void visualize_bitsets(unsigned long ** bitsets);
 
 #endif // !__CORE_H_

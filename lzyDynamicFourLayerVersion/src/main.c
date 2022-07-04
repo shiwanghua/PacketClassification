@@ -183,10 +183,12 @@ int main() {
 //		printf("MemoryUse: %f MB\n", get_memory(index));
 //		get_cell_size(index);
 
+//		visualize_bitsets(bitset);
+
 #if ENABLE_ANALYSE
 		//analyse_log(&datasets);
 #endif
-        unsigned long checkNum=0;
+		unsigned long checkNum = 0;
 		int res = 0;
 		int intervalRule = 1;
 		double setCycle = 0;
@@ -206,7 +208,7 @@ int main() {
 		for (int i = 0; i < message_sets.size; i += intervalRule) {
 //			res = match_with_log(index, message_sets.list + i, &oneCycle, &match_log);
 //			res = match_with_log_cache(index, message_sets.list + i, bitset, &oneCycle, &match_log);
-			res = match_bitset_forward_IPv4(datasets.list - 1, message_sets.list + i, bitset, &oneCycle,&checkNum);
+			res = match_bitset_forward_IPv4(datasets.list - 1, message_sets.list + i, bitset, &oneCycle, &checkNum);
 			if (res != (message_sets.list + i)->rule_id) {
 				if (res == -1) {
 					if ((message_sets.list + i)->rule_id != 0)
@@ -237,7 +239,7 @@ int main() {
 		printf("avgCycle= %f\n\n", setCycle / message_sets.size);
 		gettimeofday(&endtime, 0);
 		double timeuse = 1000000 * (endtime.tv_sec - starttime.tv_sec) + endtime.tv_usec - starttime.tv_usec;
-		printf("avgCheckNum= %.2f\n",(double)checkNum/message_sets.size);
+		printf("avgCheckNum= %.2f\n", (double) checkNum / message_sets.size);
 		printf("avgMatchTime= %fus\n\n", timeuse / message_sets.size);
 //		clock_t stop = clock();
 //		double elapsed = (double)(stop - start) * 1000.0 / CLOCKS_PER_SEC;
