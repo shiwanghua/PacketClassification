@@ -1530,7 +1530,6 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 //	baseIndex = baseIndex + 2560;
 
 
-
 	switch ((unsigned int) m->protocol) {
 		case ICMP:
 			b[10] = bitsets[baseIndex];

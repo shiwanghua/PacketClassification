@@ -106,16 +106,16 @@ int main() {
 								 "acl4_256k_trace.txt", "acl5_256k_trace.txt", "fw1_256k_trace.txt",
 								 "fw2_256k_trace.txt", "fw3_256k_trace.txt", "fw4_256k_trace.txt", "fw5_256k_trace.txt",
 								 "ipc1_256k_trace.txt", "ipc2_256k_trace.txt"};
-	*/
+	*/	
 
-	char ruleFileName[6][50] = {"rules1.txt", "rules2.txt", "rules3.txt", "rules4.txt", "rules5.txt", "rules6.txt"};
-	char headFileName[6][50] = {"tuples1.txt", "tuples2.txt", "tuples3.txt", "tuples4.txt", "tuples5.txt",
-								"tuples6.txt"};
+	const int numDataSets = 17;
+	char ruleFileName[numDataSets][100] = {"", "rules2.txt", "rules3.txt", "rules4.txt", "rules5.txt", "rules6.txt"};
+	char headFileName[numDataSets][100] = {"", "tuples2.txt", "tuples3.txt", "tuples4.txt", "tuples5.txt", "tuples6.txt"};
 
 	double totalMatchCycle = 0;
 	double totalInsertCycle = 0;
-	const int numDataSets = 6;
-	for (int q = 0; q < numDataSets; q++) {
+
+	for (int q = 1; q < numDataSets; q++) {
 		ACL_rules datasets = {0, 0, 0};
 		ACL_messages message_sets = {0, 0, 0};
 //		Cell *index;
