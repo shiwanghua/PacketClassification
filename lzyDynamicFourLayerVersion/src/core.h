@@ -139,8 +139,9 @@ void init_bitset_IPv4(int numRule, unsigned long ***bitsets);
 
 void insert_bitset_forward_IPv4(rule *r, unsigned long **);
 
-int match_bitset_forward_IPv4(const rule *datasets, message *m, unsigned long **bitsets, int *_cycle, unsigned long *);
+int match_bitset_forward_IPv4(const rule *datasets, message *m, unsigned long long **bitsets, int *_cycle, unsigned long *);
 
 void visualize_bitsets(unsigned long ** bitsets);
+void backward_bitsets_visualize_one(const char *ruleSetName, int numUnit, unsigned long long ***bitsets);
 
 #endif // !__CORE_H_

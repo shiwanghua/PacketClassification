@@ -1629,7 +1629,7 @@ int match_bitset_forward_IPv4(const rule *ruleList, message *m, unsigned long **
 	return -1;
 }
 
-void visualize_bitsets(unsigned long **bitsets) {
+void visualize_bitsets(unsigned long long **bitsets) { // forward
 	int zeroCount[11], baseIndex = 0;
 	memset(zeroCount, 0, sizeof(zeroCount));
 	for (int i = 0; i < 8; i++) { // IP
@@ -1669,4 +1669,99 @@ void visualize_bitsets(unsigned long **bitsets) {
 	printf("Protocol: 64-bits zeros = %d, other = %d, ratio = %.4f\n\n", zeroCount[10],
 		   numUnit * (NUM_PROTOCOL + 1) - zeroCount[10],
 		   (double) zeroCount[10] / (double) (numUnit * (NUM_PROTOCOL + 1)));
+}
+
+
+void backward_bitsets_visualize_one(const char *ruleSetName, int numUnit, unsigned long long ***bitsets)
+{
+	const long long int ones = ~0;
+	int *oneCount[11]={nullptr};
+	int oneSum[8];
+	memset(oneSum,0,sizeof(int)*8);
+	for (int i = 0; i < 8; i++)
+	{ // IP
+		oneCount[i] = new int[256];
+		memset(oneCount[i], 0, sizeof(int) * 256); // sizeof(zeroCount[i])=8Bytes
+		for (int j = 0; j < 256; j++){
+			for (int k = 0; k < numUnit; k++)
+				if (bitsets[i][j][k] == ones)
+					oneCount[i][j]++;
+			oneSum[i]+=oneCount[i][j];
+		}
+	}
+
+	// for (int i = 8; i < 10; i++) // Port
+	// {
+	// 	oneCount[i] = new int[NUM_PORT_BITSET];
+	// 	for (int j = 0; j < NUM_PORT_BITSET; j++)
+	// 	{
+	// 		for (int k = 0; k < numUnit; k++)
+	// 			if (bitsets[i][j][k] == ones)
+	// 				oneCount[i][j]++;
+	// 	}
+	// }
+
+	// oneCount[10] = new int[NUM_PROTOCOL + 1];
+	// for (int j = 0; j < NUM_PROTOCOL + 1; j++)
+	// 	for (int k = 0; k < numUnit; k++)
+	// 		if (bitsets[10][j][k] == ones)
+	// 			oneCount[10][j]++; // Protocol
+
+	const char *filename = "backward_bitsets_visualization.txt";
+	FILE *fto = fopen(filename, "a+");
+	fprintf(fto, "%s:\n", ruleSetName);
+
+	fprintf(fto, "attr1-srcIP3: ones-%d, notallones-%d, percent-%.2f\n", oneSum[0], 256*numUnit-oneSum[0],(double)oneSum[0]/(256*numUnit));
+	fprintf(fto, "attr2-srcIP2: ones-%d, notallones-%d, percent-%.2f\n", oneSum[1], 256*numUnit-oneSum[1],(double)oneSum[1]/(256*numUnit));
+	fprintf(fto, "attr3-srcIP1: ones-%d, notallones-%d, percent-%.2f\n", oneSum[2], 256*numUnit-oneSum[2],(double)oneSum[2]/(256*numUnit));
+	fprintf(fto, "attr4-srcIP0: ones-%d, notallones-%d, percent-%.2f\n", oneSum[3], 256*numUnit-oneSum[3],(double)oneSum[3]/(256*numUnit));
+	fprintf(fto, "attr5-dstIP3: ones-%d, notallones-%d, percent-%.2f\n", oneSum[4], 256*numUnit-oneSum[4],(double)oneSum[4]/(256*numUnit));
+	fprintf(fto, "attr6-dstIP2: ones-%d, notallones-%d, percent-%.2f\n", oneSum[5], 256*numUnit-oneSum[5],(double)oneSum[5]/(256*numUnit));
+	fprintf(fto, "attr7-dstIP1: ones-%d, notallones-%d, percent-%.2f\n", oneSum[6], 256*numUnit-oneSum[6],(double)oneSum[6]/(256*numUnit));
+	fprintf(fto, "attr8-dstIP0: ones-%d, notallones-%d, percent-%.2f\n\n", oneSum[7], 256*numUnit-oneSum[7],(double)oneSum[7]/(256*numUnit));
+
+	for(int i=0;i<8;i++){
+		fprintf(fto,"attr%d=[ ",i+1);
+		for(int j=0;j<255;j++){
+			fprintf(fto,"%d, ",oneCount[i][j]);
+		}
+		fprintf(fto,"%d ]\n",oneCount[i][255]);
+	}
+	fprintf(fto,"\nEvery bitsets: 0/1 %dunits\n",numUnit);
+	for(int i=0;i<8;i++){
+		fprintf(fto,"attr%d_bitset=[\n",i+1);
+		for(int j=0;j<256;j++){
+			fprintf(fto, " [");
+			for(int k=0;k<numUnit-1;k++){
+				fprintf(fto,"%d,",bitsets[i][j][k]==ones?1:0);
+			}
+			fprintf(fto,"%d]",bitsets[i][j][numUnit-1]==ones?1:0);
+			if(j<255)
+				fprintf(fto, ",\n");
+			else fprintf(fto, "\n");
+		}
+		fprintf(fto,"]\n");
+	}
+	fprintf(fto,"\n\n\n");
+
+	// 	for (int i = 0; i < 4; i++)
+	// 		printf("srcIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i + 1, zeroCount[i],
+	// 			   numUnit * 256 - zeroCount[i], (double) zeroCount[i] / (double) (numUnit * 256));
+	// 	for (int i = 4; i < 8; i++)
+	// 		printf("dstIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i - 3, zeroCount[i],
+	// 			   numUnit * 256 - zeroCount[i], (double) zeroCount[i] / (double) (numUnit * 256));
+
+	// 	printf("srcPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[8],
+	// 		   numUnit * NUM_PORT_BITSET - zeroCount[8], (double) zeroCount[8] / (double) (numUnit * NUM_PORT_BITSET));
+	// 	printf("dstPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[9],
+	// 		   numUnit * NUM_PORT_BITSET - zeroCount[9], (double) zeroCount[9] / (double) (numUnit * NUM_PORT_BITSET));
+	// 	printf("Protocol: 64-bits zeros = %d, other = %d, ratio = %.4f\n\n", zeroCount[10],
+	// 		   numUnit * (NUM_PROTOCOL + 1) - zeroCount[10],
+	// 		   (double) zeroCount[10] / (double) (numUnit * (NUM_PROTOCOL + 1)));
+
+	fclose(fto);
+	for (int i = 0; i < 11; i++)
+	{
+		delete[] oneCount[i];
+	}
 }

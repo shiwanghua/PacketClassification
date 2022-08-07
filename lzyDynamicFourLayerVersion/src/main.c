@@ -142,7 +142,7 @@ int main()
 	double totalMatchCycle = 0;
 	double totalInsertCycle = 0;
 
-	for (int q = 1; q < numDataSets; q++)
+	for (int q = 0; q < numDataSets; q++)
 	{
 		ACL_rules datasets = { 0, 0, 0 };
 		ACL_messages message_sets = { 0, 0, 0 };
