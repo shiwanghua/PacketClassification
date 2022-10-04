@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/MultiLevelHash.dir/MLHash.cpp.o"
-  "CMakeFiles/MultiLevelHash.dir/MLHash.cpp.o.d"
+  "CMakeFiles/MultiLevelHash.dir/MultiLevelHash.cpp.o"
+  "CMakeFiles/MultiLevelHash.dir/MultiLevelHash.cpp.o.d"
   "libMultiLevelHash.a"
   "libMultiLevelHash.pdb"
 )

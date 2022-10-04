@@ -1,0 +1,2 @@
+/usr/bin/ar qc libHEMBitsetsMatch.a CMakeFiles/HEMBitsetsMatch.dir/HEMBS.cpp.o
+/usr/bin/ranlib libHEMBitsetsMatch.a

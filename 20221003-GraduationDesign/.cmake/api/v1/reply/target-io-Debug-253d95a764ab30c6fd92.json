@@ -1,0 +1,138 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "io/libio.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"io/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++14 -march=native -O3 -mavx2   -O0 -Wall -g -ggdb"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/./io"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"id" : "io::@9998546b0f8df173ae92",
+	"name" : "io",
+	"nameOnDisk" : "libio.a",
+	"paths" : 
+	{
+		"build" : "io",
+		"source" : "io"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "io/Utils.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "io/read.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "io/tool.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

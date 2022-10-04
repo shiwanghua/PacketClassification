@@ -1,0 +1,122 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "TamaSearch/libTamaSearch.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"TamaSearch/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 2,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 2
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++14 -march=native -O3 -mavx2   -O0 -Wall -g -ggdb"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/swh/\u684c\u9762/MyProgram/PacketClassification/20221003-GraduationDesign/./io"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "TamaSearch::@30dc1cdfd883c45ed1f8",
+	"name" : "TamaSearch",
+	"nameOnDisk" : "libTamaSearch.a",
+	"paths" : 
+	{
+		"build" : "TamaSearch",
+		"source" : "TamaSearch"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "TamaSearch/TamaSearch.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

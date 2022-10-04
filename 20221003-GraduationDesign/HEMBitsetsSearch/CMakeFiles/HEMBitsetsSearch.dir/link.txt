@@ -1,0 +1,2 @@
+/usr/bin/ar qc libHEMBitsetsSearch.a CMakeFiles/HEMBitsetsSearch.dir/HEMBS.cpp.o
+/usr/bin/ranlib libHEMBitsetsSearch.a

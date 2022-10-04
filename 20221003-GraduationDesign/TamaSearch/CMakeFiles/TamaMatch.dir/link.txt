@@ -1,0 +1,2 @@
+/usr/bin/ar qc libTamaMatch.a CMakeFiles/TamaMatch.dir/TamaSearch.cpp.o
+/usr/bin/ranlib libTamaMatch.a

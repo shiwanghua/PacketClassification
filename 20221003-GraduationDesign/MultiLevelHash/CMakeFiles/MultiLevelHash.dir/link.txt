@@ -1,2 +1,2 @@
-/usr/bin/ar qc libMultiLevelHash.a CMakeFiles/MultiLevelHash.dir/MLHash.cpp.o
+/usr/bin/ar qc libMultiLevelHash.a CMakeFiles/MultiLevelHash.dir/MultiLevelHash.cpp.o
 /usr/bin/ranlib libMultiLevelHash.a
