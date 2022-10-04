@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/swh/桌面/MyProgram/ACL/src/core.c
+core.h
+/home/swh/桌面/MyProgram/ACL/src/core.h
+
+/home/swh/桌面/MyProgram/ACL/src/core.h
+tool.h
+/home/swh/桌面/MyProgram/ACL/src/tool.h
+math.h
+/home/swh/桌面/MyProgram/ACL/src/math.h
+
+/home/swh/桌面/MyProgram/ACL/src/data_structure.h
+stdio.h
+-
+
+/home/swh/桌面/MyProgram/ACL/src/tool.h
+string.h
+-
+malloc.h
+-
+stdint.h
+-
+data_structure.h
+/home/swh/桌面/MyProgram/ACL/src/data_structure.h
+stdlib.h
+-
+time.h
+-
+
