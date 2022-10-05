@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+  "BruteForceSearch/CMakeLists.txt"
   "CMakeFiles/3.23.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.23.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.23.2/CMakeSystem.cmake"
@@ -43,6 +44,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "BruteForceSearch/CMakeFiles/CMakeDirectoryInformation.cmake"
   "HEMBitsetsSearch/CMakeFiles/CMakeDirectoryInformation.cmake"
   "MultiLevelHash/CMakeFiles/CMakeDirectoryInformation.cmake"
   "TamaSearch/CMakeFiles/CMakeDirectoryInformation.cmake"
@@ -52,6 +54,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/pcRun.dir/DependInfo.cmake"
+  "BruteForceSearch/CMakeFiles/BruteForceSearch.dir/DependInfo.cmake"
   "HEMBitsetsSearch/CMakeFiles/HEMBitsetsSearch.dir/DependInfo.cmake"
   "MultiLevelHash/CMakeFiles/MultiLevelHash.dir/DependInfo.cmake"
   "TamaSearch/CMakeFiles/TamaSearch.dir/DependInfo.cmake"

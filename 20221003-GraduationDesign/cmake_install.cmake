@@ -44,6 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/cmake_install.cmake")
   include("/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch/cmake_install.cmake")
   include("/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash/cmake_install.cmake")
   include("/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch/cmake_install.cmake")

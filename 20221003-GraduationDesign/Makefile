@@ -130,6 +130,19 @@ pcRun/fast:
 .PHONY : pcRun/fast
 
 #=============================================================================
+# Target rules for targets named BruteForceSearch
+
+# Build rule for target.
+BruteForceSearch: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BruteForceSearch
+.PHONY : BruteForceSearch
+
+# fast build rule for target.
+BruteForceSearch/fast:
+	$(MAKE) $(MAKESILENT) -f BruteForceSearch/CMakeFiles/BruteForceSearch.dir/build.make BruteForceSearch/CMakeFiles/BruteForceSearch.dir/build
+.PHONY : BruteForceSearch/fast
+
+#=============================================================================
 # Target rules for targets named HEMBitsetsSearch
 
 # Build rule for target.
@@ -181,6 +194,30 @@ io/fast:
 	$(MAKE) $(MAKESILENT) -f io/CMakeFiles/io.dir/build.make io/CMakeFiles/io.dir/build
 .PHONY : io/fast
 
+ModelsTest.o: ModelsTest.cpp.o
+.PHONY : ModelsTest.o
+
+# target to build an object file
+ModelsTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/ModelsTest.cpp.o
+.PHONY : ModelsTest.cpp.o
+
+ModelsTest.i: ModelsTest.cpp.i
+.PHONY : ModelsTest.i
+
+# target to preprocess a source file
+ModelsTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/ModelsTest.cpp.i
+.PHONY : ModelsTest.cpp.i
+
+ModelsTest.s: ModelsTest.cpp.s
+.PHONY : ModelsTest.s
+
+# target to generate assembly for a file
+ModelsTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/ModelsTest.cpp.s
+.PHONY : ModelsTest.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -205,30 +242,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-run_models.o: run_models.cpp.o
-.PHONY : run_models.o
-
-# target to build an object file
-run_models.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/run_models.cpp.o
-.PHONY : run_models.cpp.o
-
-run_models.i: run_models.cpp.i
-.PHONY : run_models.i
-
-# target to preprocess a source file
-run_models.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/run_models.cpp.i
-.PHONY : run_models.cpp.i
-
-run_models.s: run_models.cpp.s
-.PHONY : run_models.s
-
-# target to generate assembly for a file
-run_models.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcRun.dir/build.make CMakeFiles/pcRun.dir/run_models.cpp.s
-.PHONY : run_models.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -237,17 +250,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... BruteForceSearch"
 	@echo "... HEMBitsetsSearch"
 	@echo "... MultiLevelHash"
 	@echo "... TamaSearch"
 	@echo "... io"
 	@echo "... pcRun"
+	@echo "... ModelsTest.o"
+	@echo "... ModelsTest.i"
+	@echo "... ModelsTest.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... run_models.o"
-	@echo "... run_models.i"
-	@echo "... run_models.s"
 .PHONY : help
 
 

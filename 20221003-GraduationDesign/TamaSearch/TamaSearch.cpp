@@ -3,3 +3,16 @@
 //
 
 #include "TamaSearch.h"
+TamaSearch::TamaSearch()
+{
+	nodeCounter=0;
+
+}
+TamaSearch::~TamaSearch()
+{
+
+}
+void TamaSearch::insert(const rule*)
+{
+
+}

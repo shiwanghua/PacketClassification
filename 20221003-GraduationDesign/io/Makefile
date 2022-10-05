@@ -154,6 +154,30 @@ Utils.cpp.s:
 	cd /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign && $(MAKE) $(MAKESILENT) -f io/CMakeFiles/io.dir/build.make io/CMakeFiles/io.dir/Utils.cpp.s
 .PHONY : Utils.cpp.s
 
+random.o: random.cpp.o
+.PHONY : random.o
+
+# target to build an object file
+random.cpp.o:
+	cd /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign && $(MAKE) $(MAKESILENT) -f io/CMakeFiles/io.dir/build.make io/CMakeFiles/io.dir/random.cpp.o
+.PHONY : random.cpp.o
+
+random.i: random.cpp.i
+.PHONY : random.i
+
+# target to preprocess a source file
+random.cpp.i:
+	cd /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign && $(MAKE) $(MAKESILENT) -f io/CMakeFiles/io.dir/build.make io/CMakeFiles/io.dir/random.cpp.i
+.PHONY : random.cpp.i
+
+random.s: random.cpp.s
+.PHONY : random.s
+
+# target to generate assembly for a file
+random.cpp.s:
+	cd /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign && $(MAKE) $(MAKESILENT) -f io/CMakeFiles/io.dir/build.make io/CMakeFiles/io.dir/random.cpp.s
+.PHONY : random.cpp.s
+
 read.o: read.cpp.o
 .PHONY : read.o
 
@@ -214,6 +238,9 @@ help:
 	@echo "... Utils.o"
 	@echo "... Utils.i"
 	@echo "... Utils.s"
+	@echo "... random.o"
+	@echo "... random.i"
+	@echo "... random.s"
 	@echo "... read.o"
 	@echo "... read.i"
 	@echo "... read.s"

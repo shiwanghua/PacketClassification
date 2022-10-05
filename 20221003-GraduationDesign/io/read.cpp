@@ -4,6 +4,10 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 {
 	FILE* fp = NULL;
 	fp = fopen(file_name, "r");
+	if(fp== nullptr){
+		printf("Fail to open file %s", file_name);
+		exit(0);
+	}
 	unsigned int sIp[5];//4个Byte加上掩码位数
 	unsigned int dIp[5];//4个Byte加上掩码位数
 	unsigned int sPort[2];//下界和上界
@@ -15,7 +19,7 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 			&dIp[0], &dIp[1], &dIp[2], &dIp[3], &dIp[4], &sPort[0], &sPort[1], &dPort[0], &dPort[1], &protocol[1], &protocol[0])
 		!= EOF)
 	{
-		printf("@%u.%u.%u.%u/%u\t%u.%u.%u.%u/%u\t%u : %u\t%u : %u\t%x/%x\n", sIp[0], sIp[1], sIp[2], sIp[3], sIp[4], dIp[0], dIp[1], dIp[2], dIp[3], dIp[4], sPort[0], sPort[1], dPort[0], dPort[1], protocol[1], protocol[0]);
+//		printf("@%u.%u.%u.%u/%u\t%u.%u.%u.%u/%u\t%u : %u\t%u : %u\t%x/%x\n", sIp[0], sIp[1], sIp[2], sIp[3], sIp[4], dIp[0], dIp[1], dIp[2], dIp[3], dIp[4], sPort[0], sPort[1], dPort[0], dPort[1], protocol[1], protocol[0]);
 		rule r;//规则类
 		r.PRI = i;
 		r.protocol[0] = (unsigned char)protocol[0]; // mask

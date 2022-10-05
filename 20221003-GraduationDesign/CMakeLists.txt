@@ -11,12 +11,13 @@ set(CMAKE_CXX_STANDARD 14)
 
 aux_source_directory(. DIRSRCS)
 
-include_directories(./ HEMBitsetsSearch ./MultiLevelHash TamaSearch ./io)
+include_directories(./ BruteForceSearch HEMBitsetsSearch MultiLevelHash TamaSearch ./io)
 
+add_subdirectory(BruteForceSearch)
 add_subdirectory(HEMBitsetsSearch)
 add_subdirectory(MultiLevelHash)
 add_subdirectory(TamaSearch)
 add_subdirectory(io)
 
 add_executable(pcRun ${DIRSRCS})
-target_link_libraries(pcRun HEMBitsetsSearch MultiLevelHash TamaSearch io)
+target_link_libraries(pcRun BruteForceSearch HEMBitsetsSearch MultiLevelHash TamaSearch io)

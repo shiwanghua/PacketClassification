@@ -31,8 +31,8 @@ class HEMBS // bitsets search
 	unsigned int forward_bitsets_search_IPv4(const rule *, message *m, int *_cycle, unsigned long *);
 
 	void backward_init_bitsets_IPv4(int numRule);
-	void backward_bitsets_insert_IPv4(rule* list);
-	unsigned int backward_bitsets_search_IPv4(message* list, ACL_rules* rules);
+	void backward_bitsets_insert_IPv4(const rule*);
+	unsigned int backward_bitsets_search_IPv4(const message* list, const ACL_rules* rules);
 
 	void visualize_bitsets(unsigned long long ** bitsets);
 	void backward_bitsets_visualize_one(const char *ruleSetName);

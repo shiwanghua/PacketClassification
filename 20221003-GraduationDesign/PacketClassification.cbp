@@ -5,7 +5,7 @@
 		<Option title="PacketClassification"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\HEMBitsetsSearch\;CMake Files\MultiLevelHash\;CMake Files\TamaSearch\;CMake Files\io\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\BruteForceSearch\;CMake Files\HEMBitsetsSearch\;CMake Files\MultiLevelHash\;CMake Files\TamaSearch\;CMake Files\io\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign"/>
@@ -25,8 +25,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -45,8 +46,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -77,6 +79,48 @@
 					<DistClean command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="BruteForceSearch">
+				<Option output="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/libBruteForceSearch.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 BruteForceSearch"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BruteForceSearch/fast">
+				<Option output="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/libBruteForceSearch.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 BruteForceSearch/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="HEMBitsetsSearch">
 				<Option output="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch/libHEMBitsetsSearch.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
@@ -85,8 +129,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -105,8 +150,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -125,8 +171,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -145,8 +192,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -165,8 +213,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -185,8 +234,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -205,8 +255,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -225,8 +276,9 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/."/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch"/>
-					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./MultiLevelHash"/>
+					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/TamaSearch"/>
 					<Add directory="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/./io"/>
 				</Compiler>
@@ -238,6 +290,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/BruteForceSearch.cpp">
+			<Option target="BruteForceSearch"/>
+		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/BruteForceSearch.h">
+			<Option target="BruteForceSearch"/>
+		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch/HEMBS.cpp">
 			<Option target="HEMBitsetsSearch"/>
 		</Unit>
@@ -285,6 +343,9 @@
 		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/BruteForceSearch/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\BruteForceSearch\"/>
 		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\HEMBitsetsSearch\"/>

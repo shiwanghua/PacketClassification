@@ -119,6 +119,9 @@
 			"path" : "/home/swh/\u684c\u9762/cmake-3.23.2-linux-x86_64/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake"
 		},
 		{
+			"path" : "BruteForceSearch/CMakeLists.txt"
+		},
+		{
 			"path" : "HEMBitsetsSearch/CMakeLists.txt"
 		},
 		{

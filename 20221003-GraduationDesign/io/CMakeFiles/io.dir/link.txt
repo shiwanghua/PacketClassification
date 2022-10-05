@@ -1,2 +1,2 @@
-/usr/bin/ar qc libio.a CMakeFiles/io.dir/Utils.cpp.o CMakeFiles/io.dir/read.cpp.o CMakeFiles/io.dir/tool.cpp.o
+/usr/bin/ar qc libio.a CMakeFiles/io.dir/Utils.cpp.o CMakeFiles/io.dir/random.cpp.o CMakeFiles/io.dir/read.cpp.o CMakeFiles/io.dir/tool.cpp.o
 /usr/bin/ranlib libio.a

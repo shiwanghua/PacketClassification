@@ -8,6 +8,7 @@ HEMBS::HEMBS()
 {
 	begin_bits = nullptr;
 	bitsets = nullptr;
+	bitsets2 = nullptr;
 	numUnit = 0;
 	memorysize = 0;
 }
@@ -22,15 +23,13 @@ HEMBS::~HEMBS()
 	{
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 256; j++)
-				if (bitsets)
+				if (bitsets[i][j])
 					delete bitsets[i][j];
 	}
 	for (int i = 0; i < 8; i++)
 		delete[] bitsets[i];
-	if (bitsets)
-		delete bitsets;
-	if (bitsets2)
-		delete bitsets2;
+	delete bitsets;
+	delete bitsets2;
 	bitsets = nullptr;
 	bitsets2 = nullptr;
 }
@@ -363,6 +362,27 @@ unsigned int HEMBS::forward_bitsets_search_IPv4(const rule* ruleList, message* m
 
 void HEMBS::backward_init_bitsets_IPv4(int numRule)
 {
+	if (begin_bits != nullptr) // successive
+	{
+		delete begin_bits;
+	}
+	else // not successive
+	{
+		if (bitsets)
+			for (int i = 0; i < 8; i++)
+				if (bitsets[i])
+					for (int j = 0; j < 256; j++)
+						if (bitsets[i][j])
+							delete bitsets[i][j];
+	}
+	if (bitsets)
+		for (int i = 0; i < 8; i++)
+			delete[] bitsets[i];
+	delete bitsets;
+	delete bitsets2;
+	bitsets = nullptr;
+	bitsets2 = nullptr;
+
 	numUnit = (numRule + sizeof(unsigned long long) * 8 - 1) / (sizeof(unsigned long long) * 8);
 	bitsets = (unsigned long long***)malloc(8 * sizeof(unsigned long long**));
 
@@ -680,7 +700,7 @@ void HEMBS::backward_init_bitsets_IPv4(int numRule)
 // 	return -1;
 // }
 
-void HEMBS::backward_bitsets_insert_IPv4(rule* r)
+void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 {
 
 	int unitNo = r->PRI / 64;
@@ -763,7 +783,7 @@ void HEMBS::backward_bitsets_insert_IPv4(rule* r)
 	}
 }
 
-unsigned int HEMBS::backward_bitsets_search_IPv4(message* msg, ACL_rules* rules)
+unsigned int HEMBS::backward_bitsets_search_IPv4(const message* msg, const ACL_rules* rules)
 {
 
 	unsigned long long int* result[8]; //=
@@ -826,7 +846,9 @@ unsigned int HEMBS::backward_bitsets_search_IPv4(message* msg, ACL_rules* rules)
 					{
 						if ((_r.protocol[1] == msg->protocol) || (_r.protocol[0] == 0))
 						{
-							return ruleNo;
+							if (ruleNo < rules->size)
+								return ruleNo;
+							else return -1;
 							// return checkNum;
 						}
 					}

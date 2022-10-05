@@ -18,6 +18,7 @@ typedef struct ACL_rules
 	int size;
 	int capacity;
 	rule* list;
+	ACL_rules():size(0),capacity(0),list(nullptr){}
 }ACL_rules;
 
 typedef struct data
@@ -54,6 +55,7 @@ typedef struct ACL_messages
 	int size;
 	int capacity;
 	message* list;
+	ACL_messages():size(0),capacity(0),list(nullptr){}
 }ACL_messages;
 
 typedef struct LogInCell

@@ -92,7 +92,7 @@ void transform_tuple(const char* fromFile, const char* toFile)
 			dIp[0] * (1 << 24) + dIp[1] * (1 << 16) + dIp[2] * (1 << 8) + dIp[3];
 		int ruleId = _m.rule_id - 1;
 		fprintf(fto, "%u\t%u\t%u\t%u\t%u\t%u\t%d\n", sip, dip, _m.source_port,
-			_m.destination_port, _m.protocol, i, ruleId);
+			_m.destination_port, _m.protocol, i++, ruleId);
 		//		printf("%u\t%u\t%u\t%u\t%u\n", ip_src, ip_des, _m.source_port,
 		//_m.destination_port, _m.protocol);
 	}
@@ -102,7 +102,7 @@ void transform_tuple(const char* fromFile, const char* toFile)
 
 int main()
 {
-	int numDataSets = 6;
+	const int numDataSets = 6;
 	char ruleFileName[numDataSets][100] = { "rules1.txt", "rules2.txt",
 											"rules3.txt", "rules4.txt",
 											"rules5.txt", "rules6.txt" };

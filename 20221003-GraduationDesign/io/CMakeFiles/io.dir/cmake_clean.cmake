@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/io.dir/Utils.cpp.o"
   "CMakeFiles/io.dir/Utils.cpp.o.d"
+  "CMakeFiles/io.dir/random.cpp.o"
+  "CMakeFiles/io.dir/random.cpp.o.d"
   "CMakeFiles/io.dir/read.cpp.o"
   "CMakeFiles/io.dir/read.cpp.o.d"
   "CMakeFiles/io.dir/tool.cpp.o"
