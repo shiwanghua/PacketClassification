@@ -98,7 +98,7 @@ module Classbench
 
 			nw_src_trie = Trie.new
 			rules.map {|r| r.attributes["nw_src"]}.compact.each do |ip|
-				nw_src_trie.insert Classbench::ip_to_binary_string(ip)
+				nw_src_trie.insert_ip_layer Classbench::ip_to_binary_string(ip)
 			end
 
 			nw_src_stats = nw_src_trie.get_stats

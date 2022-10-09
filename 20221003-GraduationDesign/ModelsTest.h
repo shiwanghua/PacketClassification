@@ -12,6 +12,7 @@
 #include"io/read.h"
 #include "io/constant.h"
 #include "io/Utils.h"
+#include "io/random.h"
 #include <string>
 #include <iostream>
 
@@ -47,6 +48,7 @@ class ModelsTest
 	ACL_rules* rules;
 	ACL_messages* messages;
 
+	void shuffleRules();
 	void shuffleMessages();
 
  public:

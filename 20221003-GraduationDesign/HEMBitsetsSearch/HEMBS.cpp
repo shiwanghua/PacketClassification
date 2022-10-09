@@ -563,7 +563,7 @@ void HEMBS::backward_init_bitsets_IPv4(int numRule)
 
 // 	// unsigned long long int* result[9]=
 // 	// {
-// 	// 	NULL,
+// 	// 	NULL, // ？错位了
 // 	// 	bitsets[1][msg->source_ip[2]],
 // 	// 	bitsets[5][msg->destination_ip[2]],
 // 	// 	bitsets[6][msg->destination_ip[1]],
@@ -846,9 +846,9 @@ unsigned int HEMBS::backward_bitsets_search_IPv4(const message* msg, const ACL_r
 					{
 						if ((_r.protocol[1] == msg->protocol) || (_r.protocol[0] == 0))
 						{
-							if (ruleNo < rules->size)
+//							if (ruleNo < rules->size) // add a "all zero" rule to the last row, then there is always a matched rule.
 								return ruleNo;
-							else return -1;
+//							else return -1;
 							// return checkNum;
 						}
 					}

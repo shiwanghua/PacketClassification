@@ -302,6 +302,12 @@
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/HEMBitsetsSearch/HEMBS.h">
 			<Option target="HEMBitsetsSearch"/>
 		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/ModelsTest.cpp">
+			<Option target="pcRun"/>
+		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/ModelsTest.h">
+			<Option target="pcRun"/>
+		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/MultiLevelHash/MultiLevelHash.cpp">
 			<Option target="MultiLevelHash"/>
 		</Unit>
@@ -320,6 +326,12 @@
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/io/Utils.h">
 			<Option target="io"/>
 		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/io/random.cpp">
+			<Option target="io"/>
+		</Unit>
+		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/io/random.h">
+			<Option target="io"/>
+		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/io/read.cpp">
 			<Option target="io"/>
 		</Unit>
@@ -333,12 +345,6 @@
 			<Option target="io"/>
 		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/main.cpp">
-			<Option target="pcRun"/>
-		</Unit>
-		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/run_models.cpp">
-			<Option target="pcRun"/>
-		</Unit>
-		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/run_models.h">
 			<Option target="pcRun"/>
 		</Unit>
 		<Unit filename="/home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign/CMakeLists.txt">

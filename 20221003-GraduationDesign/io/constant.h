@@ -3,13 +3,18 @@
 
 #include <string>
 
-const std::string expID="1";
+const std::string expID="5";
 
-#define VERIFICATION true
-#define DEBUG true
+#define VERIFICATION false
+#define DEBUG false
+#define SHUFFLEMESSAGES false
+#define SHUFFLERULES true
 
 #define NUM_PROTOCOL 16
 #define PORT_NUMBER 65536
+
+const uint8_t TAMA_IP_LEVEL_NUM = 8; // the first level (level 0) is always empty, the last level is 8 (0-8)
+const uint8_t TAMA_PORT_LEVEL_NUM = 17;
 
 #define ICMP 0x01    // 1 d2
 #define IGMP 0x02    // 2

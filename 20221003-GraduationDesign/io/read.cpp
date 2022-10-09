@@ -13,7 +13,7 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 	unsigned int sPort[2];//下界和上界
 	unsigned int dPort[2];//下界和上界
 	unsigned int protocol[2];//协议掩码与协议号
-	int i = 0;
+	int pri = 0;
 	while (
 		fscanf(fp, "@%u.%u.%u.%u/%u\t%u.%u.%u.%u/%u\t%u : %u\t%u : %u\t%x/%x\t%*x/%*x\t\n", &sIp[0], &sIp[1], &sIp[2], &sIp[3], &sIp[4],
 			&dIp[0], &dIp[1], &dIp[2], &dIp[3], &dIp[4], &sPort[0], &sPort[1], &dPort[0], &dPort[1], &protocol[1], &protocol[0])
@@ -21,7 +21,7 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 	{
 //		printf("@%u.%u.%u.%u/%u\t%u.%u.%u.%u/%u\t%u : %u\t%u : %u\t%x/%x\n", sIp[0], sIp[1], sIp[2], sIp[3], sIp[4], dIp[0], dIp[1], dIp[2], dIp[3], dIp[4], sPort[0], sPort[1], dPort[0], dPort[1], protocol[1], protocol[0]);
 		rule r;//规则类
-		r.PRI = i;
+		r.PRI = pri;
 		r.protocol[0] = (unsigned char)protocol[0]; // mask
 		r.protocol[1] = (unsigned char)protocol[1]; // protocol
 		r.source_mask = (unsigned char)sIp[4];
@@ -37,7 +37,7 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 		r.destination_port[0] = (unsigned short)dPort[0];
 		r.destination_port[1] = (unsigned short)dPort[1];
 		add_rule(rules, &r);
-		i++;
+		pri++;
 	}
 	fclose(fp);
 }

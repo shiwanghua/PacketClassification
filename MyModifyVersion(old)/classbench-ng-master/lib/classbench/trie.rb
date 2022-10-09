@@ -175,7 +175,7 @@ module Classbench
 					if two_children != 0
 						stats.classbench.skew[level] /= two_children.to_f;
 					end
-					# increment the level counter
+					# increment the level ruleSize
 					level += 1;
 				end
 
