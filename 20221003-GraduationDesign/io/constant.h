@@ -3,18 +3,23 @@
 
 #include <string>
 
-const std::string expID="5";
+const std::string expID="47";
+#define DATASET_NO 1
 
 #define VERIFICATION false
-#define DEBUG false
-#define SHUFFLEMESSAGES false
-#define SHUFFLERULES true
+#define DEBUG  false
+#define SHUFFLEMESSAGES true
+#define SHUFFLERULES false // Do not change.
+
+#define HEM_BS_NUM_ATTR 11 // 8 (IP), 9 (IP+Protocol), 11 (IP+Protocol+Port)
+#define HEM_BS_PORT_CELLWIDTH 256
+#define HEM_BS_NUM_PORT_BITSET 256 // HEM_BS_PORT_CELLWIDTH * HEM_BS_NUM_PORT_BITSET == PORT_NUMBER
 
 #define NUM_PROTOCOL 16
-#define PORT_NUMBER 65536
 
-const uint8_t TAMA_IP_LEVEL_NUM = 8; // the first level (level 0) is always empty, the last level is 8 (0-8)
-const uint8_t TAMA_PORT_LEVEL_NUM = 17;
+#define TAMA_PRIORITY_CHECK false
+#define TAMA_IP_LEVEL_NUM 8 // must be 8; the first level (level 0) is always empty, the last level is 8 (0-8)
+#define TAMA_PORT_LEVEL_NUM 16
 
 #define ICMP 0x01    // 1 d2
 #define IGMP 0x02    // 2
@@ -35,3 +40,4 @@ const uint8_t TAMA_PORT_LEVEL_NUM = 17;
 
 
 #endif
+

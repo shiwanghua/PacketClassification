@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class TamaSearch // 13 attributes
+class TamaSearch // 11 attributes
 {
 	const uint8_t ipLevelNum; // the first level (level 0) is always empty, the last level is 8 (0-8)
 	const uint8_t portLevelNum;
@@ -30,6 +30,9 @@ class TamaSearch // 13 attributes
 	vector<vector<uint32_t>> protocol;
 
 	vector<uint8_t> ruleSize, counter;
+#if TAMA_PRIORITY_CHECK
+	uint32_t matchRuleNo; // for priority check
+#endif
 
 	void initiate_ip_layer(uint8_t lvlNo, uint8_t l, uint8_t r);
 	void initiate_port_layer(uint8_t lvlNo, uint16_t l, uint16_t r);
@@ -37,7 +40,7 @@ class TamaSearch // 13 attributes
 	void
 	insert_ip_layer(uint8_t attrNo, uint8_t lvlNo, uint16_t nodeNo, uint32_t ruleNo, const uint8_t l, const uint8_t r, const uint8_t low, const uint8_t high);
 	void
-	insert_port_layer(uint8_t attrNo, uint8_t lvlNo, uint32_t nodeNo, uint32_t ruleNo, const uint16_t l, const uint16_t r, const uint16_t low, const uint16_t high);
+	insert_port_layer(const uint8_t attrNo, const uint8_t lvlNo, const uint32_t nodeNo, const uint32_t ruleNo, const uint16_t l, const uint16_t r, const uint16_t low, const uint16_t high);
 
 	bool deleteRule(int p, int att, int subID, int l, int r, int low, int high, int lvl);
 
@@ -50,6 +53,12 @@ class TamaSearch // 13 attributes
 
  public:
 
+#if DEBUG
+		uint64_t totalMinusNum;
+		uint64_t totalCmpNum; // the added cmp operations for compare priority and reduce minus operations
+		// not include compare port number when portLevelNum<16
+#endif
+
 	TamaSearch();
 	~TamaSearch();
 
@@ -59,10 +68,11 @@ class TamaSearch // 13 attributes
 
 	bool deleteRule(const rule*);
 
-	uint32_t accurate_search(const message& pub, const ACL_rules* rules);
+	uint32_t search(const message& msg, const ACL_rules* rules);
 
-	double calMemory();
+	double calMemory() const;
 
+	double statistics() const;
 };
 
 #endif //_TAMASEARCH_H_

@@ -1,4 +1,0 @@
-/snap/clion/206/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign -B /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign
--- Configuring done
--- Generating done
--- Build files have been written to: /home/swh/桌面/MyProgram/PacketClassification/20221003-GraduationDesign

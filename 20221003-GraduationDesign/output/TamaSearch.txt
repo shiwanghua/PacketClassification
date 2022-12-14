@@ -1,0 +1,209 @@
+13-D1: search= 138.293500 us insert= 0.390325 us construct= 0.001836 s memory= 5.378968 MB
+13-D2: search= 79.285404 us insert= 0.868270 us construct= 0.000818 s memory= 8.093078 MB
+13-D3: search= 81.080065 us insert= 0.611351 us construct= 0.000644 s memory= 6.854669 MB
+13-D4: search= 122.142619 us insert= 0.670268 us construct= 0.000673 s memory= 9.915347 MB
+13-D5: search= 118.226254 us insert= 0.629159 us construct= 0.000725 s memory= 8.744121 MB
+13-D6: search= 225.361905 us insert= 0.413657 us construct= 0.000624 s memory= 10.645253 MB
+13-D7: search= 79.367954 us insert= 0.316656 us construct= 0.000672 s memory= 5.891555 MB
+13-D8: search= 162.329507 us insert= 0.435872 us construct= 0.000655 s memory= 10.279735 MB
+13-D9: search= 161.530363 us insert= 0.418242 us construct= 0.000596 s memory= 10.164485 MB
+13-D10: search= 131.398937 us insert= 0.455647 us construct= 0.000637 s memory= 10.737697 MB
+13-D11: search= 126.227189 us insert= 0.315322 us construct= 0.000638 s memory= 7.066646 MB
+13-D12: search= 126.493373 us insert= 0.258499 us construct= 0.000619 s memory= 7.507289 MB
+13-D13: search= 118.735548 us insert= 0.298727 us construct= 0.000601 s memory= 6.310103 MB
+13-D14: search= 165.724517 us insert= 0.365213 us construct= 0.000616 s memory= 9.979499 MB
+13-D15: search= 111.533250 us insert= 0.293621 us construct= 0.000572 s memory= 6.159986 MB
+13-D16: search= 127.035456 us insert= 0.394663 us construct= 0.000615 s memory= 9.251891 MB
+13-D17: search= 115.414248 us insert= 0.321800 us construct= 0.000640 s memory= 8.184716 MB
+13: avgS= 128.834123 us avgI= 0.438664 us avgC= 0.000717 s avgM= 47.486117 B/'
+
+12-D1: search= 262.594300 us insert= 0.383710 us construct= 0.001486 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+12-D2: search= 124.352069 us insert= 0.663990 us construct= 0.000724 s memory= 8.093078 MB, avgMinusNum= 84756.530074
+12-D3: search= 132.484471 us insert= 0.521979 us construct= 0.000629 s memory= 6.854669 MB, avgMinusNum= 91321.947920
+12-D4: search= 211.484285 us insert= 0.619847 us construct= 0.000655 s memory= 9.915347 MB, avgMinusNum= 172505.054412
+12-D5: search= 206.588939 us insert= 0.622888 us construct= 0.000698 s memory= 8.744121 MB, avgMinusNum= 165673.249325
+12-D6: search= 420.149785 us insert= 0.426203 us construct= 0.000622 s memory= 10.645253 MB, avgMinusNum= 341837.893957
+12-D7: search= 129.185738 us insert= 0.313440 us construct= 0.000647 s memory= 5.891555 MB, avgMinusNum= 89237.418551
+12-D8: search= 260.685387 us insert= 0.438168 us construct= 0.000709 s memory= 10.279735 MB, avgMinusNum= 196902.225409
+12-D9: search= 255.319336 us insert= 0.410982 us construct= 0.000552 s memory= 10.164485 MB, avgMinusNum= 194303.003471
+12-D10: search= 194.593479 us insert= 0.444967 us construct= 0.000605 s memory= 10.737697 MB, avgMinusNum= 136152.446553
+12-D11: search= 215.148513 us insert= 0.304787 us construct= 0.000618 s memory= 7.066646 MB, avgMinusNum= 160450.994637
+12-D12: search= 197.484555 us insert= 0.248906 us construct= 0.000565 s memory= 7.507289 MB, avgMinusNum= 137014.185478
+12-D13: search= 205.195217 us insert= 0.288162 us construct= 0.000528 s memory= 6.310103 MB, avgMinusNum= 154958.719858
+12-D14: search= 298.371731 us insert= 0.348928 us construct= 0.000552 s memory= 9.979499 MB, avgMinusNum= 238481.773629
+12-D15: search= 187.972304 us insert= 0.285155 us construct= 0.000521 s memory= 6.159986 MB, avgMinusNum= 139730.380581
+12-D16: search= 187.821040 us insert= 0.392954 us construct= 0.000564 s memory= 9.251891 MB, avgMinusNum= 127092.187481
+12-D17: search= 175.797670 us insert= 0.320108 us construct= 0.000600 s memory= 8.184716 MB, avgMinusNum= 107338.018561
+12: avgS= 215.601695 us avgI= 0.413834 us avgC= 0.000663 s avgM= 47.486117 B/', avgMinusNum= 162989.235294
+
+11-D1: search= 194.453900 us insert_ip_layer= 0.366125 us construct= 0.001325 s memory= 5.378968 MB
+11-D2: search= 69.186253 us insert_ip_layer= 0.646228 us construct= 0.000714 s memory= 8.093078 MB
+11-D3: search= 70.086373 us insert_ip_layer= 0.494635 us construct= 0.000539 s memory= 6.854669 MB
+11-D4: search= 199.354008 us insert_ip_layer= 0.615026 us construct= 0.000539 s memory= 9.915347 MB
+11-D5: search= 180.741359 us insert_ip_layer= 0.592536 us construct= 0.000688 s memory= 8.744121 MB
+11-D6: search= 269.343566 us insert_ip_layer= 0.402845 us construct= 0.000543 s memory= 10.645253 MB
+11-D7: search= 74.519541 us insert_ip_layer= 0.305091 us construct= 0.000636 s memory= 5.891555 MB
+11-D8: search= 153.372553 us insert_ip_layer= 0.438278 us construct= 0.000593 s memory= 10.279735 MB
+11-D9: search= 149.869611 us insert_ip_layer= 0.413845 us construct= 0.000612 s memory= 10.164485 MB
+11-D10: search= 110.074123 us insert_ip_layer= 0.454084 us construct= 0.000583 s memory= 10.737697 MB
+11-D11: search= 126.963712 us insert_ip_layer= 0.310730 us construct= 0.000590 s memory= 7.066646 MB
+11-D12: search= 120.269900 us insert_ip_layer= 0.249424 us construct= 0.000646 s memory= 7.507289 MB
+11-D13: search= 119.194971 us insert_ip_layer= 0.296612 us construct= 0.000603 s memory= 6.310103 MB
+11-D14: search= 199.929905 us insert_ip_layer= 0.352522 us construct= 0.000640 s memory= 9.979499 MB
+11-D15: search= 111.327789 us insert_ip_layer= 0.291214 us construct= 0.000554 s memory= 6.159986 MB
+11-D16: search= 112.086985 us insert_ip_layer= 0.400341 us construct= 0.000621 s memory= 9.251891 MB
+11-D17: search= 91.450922 us insert_ip_layer= 0.321530 us construct= 0.000546 s memory= 8.184716 MB
+11: avgS= 138.366204 us avgI= 0.408886 us avgC= 0.000645 s avgM= 47.486117 B/'
+
+10-D1: search= 916.651900 us insert_ip_layer= 0.382210 us construct= 0.001695 s memory= 5.378968 MB, avgMinusNum= 192604.627200, avgCmpNum= 425673.595000
+10-D2: search= 310.814529 us insert_ip_layer= 0.752128 us construct= 0.000885 s memory= 8.093078 MB, avgMinusNum= 63529.274785, avgCmpNum= 148285.804858
+10-D3: search= 317.285484 us insert_ip_layer= 0.533618 us construct= 0.000660 s memory= 6.854669 MB, avgMinusNum= 64368.154773, avgCmpNum= 155690.102692
+10-D4: search= 798.535692 us insert_ip_layer= 0.621542 us construct= 0.000649 s memory= 9.915347 MB, avgMinusNum= 162054.765616, avgCmpNum= 334559.820028
+10-D5: search= 709.529238 us insert_ip_layer= 0.647149 us construct= 0.000656 s memory= 8.744121 MB, avgMinusNum= 142641.723557, avgCmpNum= 308314.972882
+10-D6: search= 1188.142043 us insert_ip_layer= 0.417128 us construct= 0.000631 s memory= 10.645253 MB, avgMinusNum= 244312.995043, avgCmpNum= 586150.889000
+10-D7: search= 312.624867 us insert_ip_layer= 0.314646 us construct= 0.000679 s memory= 5.891555 MB, avgMinusNum= 64553.782694, avgCmpNum= 153791.201245
+10-D8: search= 656.574750 us insert_ip_layer= 0.434252 us construct= 0.000637 s memory= 10.279735 MB, avgMinusNum= 133583.923937, avgCmpNum= 330486.149346
+10-D9: search= 637.112342 us insert_ip_layer= 0.430166 us construct= 0.000655 s memory= 10.164485 MB, avgMinusNum= 130390.312622, avgCmpNum= 324693.316093
+10-D10: search= 461.753527 us insert_ip_layer= 0.460569 us construct= 0.000654 s memory= 10.737697 MB, avgMinusNum= 93134.726611, avgCmpNum= 229287.173164
+10-D11: search= 550.282239 us insert_ip_layer= 0.317464 us construct= 0.000637 s memory= 7.066646 MB, avgMinusNum= 113171.027538, avgCmpNum= 273622.022175
+10-D12: search= 523.193469 us insert_ip_layer= 0.253776 us construct= 0.000647 s memory= 7.507289 MB, avgMinusNum= 108599.373075, avgCmpNum= 245613.558554
+10-D13: search= 514.446848 us insert_ip_layer= 0.306023 us construct= 0.000665 s memory= 6.310103 MB, avgMinusNum= 106376.433328, avgCmpNum= 261335.153185
+10-D14: search= 897.583611 us insert_ip_layer= 0.364539 us construct= 0.000666 s memory= 9.979499 MB, avgMinusNum= 188612.936659, avgCmpNum= 427094.710288
+10-D15: search= 476.465309 us insert_ip_layer= 0.295968 us construct= 0.000584 s memory= 6.159986 MB, avgMinusNum= 98499.991420, avgCmpNum= 238230.372001
+10-D16: search= 476.840314 us insert_ip_layer= 0.401424 us construct= 0.000651 s memory= 9.251891 MB, avgMinusNum= 98789.834860, avgCmpNum= 225882.022341
+10-D17: search= 394.253051 us insert_ip_layer= 0.326678 us construct= 0.000660 s memory= 8.184716 MB, avgMinusNum= 80224.617375, avgCmpNum= 187562.635936
+10: avgS= 596.593483 us avgI= 0.427016 us avgC= 0.000724 s avgM= 47.486117 B/', avgMinusNum= 122672.823529, avgCmpNum= 285662.705882
+
+9-D1: search= 275.782600 us insert_ip_layer= 0.392924 us construct= 0.001682 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+9-D2: search= 119.048642 us insert_ip_layer= 0.719114 us construct= 0.000858 s memory= 8.093078 MB, avgMinusNum= 84756.530074
+9-D3: search= 126.147959 us insert_ip_layer= 0.537652 us construct= 0.000667 s memory= 6.854669 MB, avgMinusNum= 91321.947920
+9-D4: search= 235.616218 us insert_ip_layer= 0.610464 us construct= 0.000657 s memory= 9.915347 MB, avgMinusNum= 172505.054412
+9-D5: search= 230.242973 us insert_ip_layer= 0.629496 us construct= 0.000719 s memory= 8.744121 MB, avgMinusNum= 165673.249325
+9-D6: search= 419.709411 us insert_ip_layer= 0.426262 us construct= 0.000685 s memory= 10.645253 MB, avgMinusNum= 341837.893957
+9-D7: search= 123.293416 us insert_ip_layer= 0.319900 us construct= 0.000677 s memory= 5.891555 MB, avgMinusNum= 89237.418551
+9-D8: search= 265.055166 us insert_ip_layer= 0.445369 us construct= 0.000726 s memory= 10.279735 MB, avgMinusNum= 196902.225409
+9-D9: search= 258.617425 us insert_ip_layer= 0.434667 us construct= 0.000669 s memory= 10.164485 MB, avgMinusNum= 194303.003471
+9-D10: search= 194.536045 us insert_ip_layer= 0.453154 us construct= 0.000646 s memory= 10.737697 MB, avgMinusNum= 136152.446553
+9-D11: search= 216.355263 us insert_ip_layer= 0.317721 us construct= 0.000631 s memory= 7.066646 MB, avgMinusNum= 160450.994637
+9-D12: search= 198.032253 us insert_ip_layer= 0.255780 us construct= 0.000670 s memory= 7.507289 MB, avgMinusNum= 137014.185478
+9-D13: search= 211.778328 us insert_ip_layer= 0.313252 us construct= 0.000622 s memory= 6.310103 MB, avgMinusNum= 154958.719858
+9-D14: search= 309.472592 us insert_ip_layer= 0.377527 us construct= 0.000670 s memory= 9.979499 MB, avgMinusNum= 238481.773629
+9-D15: search= 186.734501 us insert_ip_layer= 0.293870 us construct= 0.000634 s memory= 6.159986 MB, avgMinusNum= 139730.380581
+9-D16: search= 186.769796 us insert_ip_layer= 0.410997 us construct= 0.000662 s memory= 9.251891 MB, avgMinusNum= 127092.187481
+9-D17: search= 172.284869 us insert_ip_layer= 0.335557 us construct= 0.000662 s memory= 8.184716 MB, avgMinusNum= 107338.018561
+9: avgS= 219.381027 us avgI= 0.427865 us avgC= 0.000737 s avgM= 47.486117 B/', avgMinusNum= 162989.235294
+
+8-D1: search= 135.493900 us insert_ip_layer= 0.385714 us construct= 0.001843 s memory= 5.378968 MB
+8-D2: search= 72.062523 us insert_ip_layer= 0.726220 us construct= 0.000866 s memory= 8.093078 MB
+8-D3: search= 74.642927 us insert_ip_layer= 0.528903 us construct= 0.000634 s memory= 6.854669 MB
+8-D4: search= 145.012546 us insert_ip_layer= 0.609276 us construct= 0.000689 s memory= 9.915347 MB
+8-D5: search= 141.225262 us insert_ip_layer= 0.640744 us construct= 0.000662 s memory= 8.744121 MB
+8-D6: search= 214.504799 us insert_ip_layer= 0.419688 us construct= 0.000725 s memory= 10.645253 MB
+8-D7: search= 72.331253 us insert_ip_layer= 0.311860 us construct= 0.000650 s memory= 5.891555 MB
+8-D8: search= 147.446822 us insert_ip_layer= 0.438246 us construct= 0.000629 s memory= 10.279735 MB
+8-D9: search= 145.044238 us insert_ip_layer= 0.434150 us construct= 0.000673 s memory= 10.164485 MB
+8-D10: search= 119.412990 us insert_ip_layer= 0.456342 us construct= 0.000695 s memory= 10.737697 MB
+8-D11: search= 117.096814 us insert_ip_layer= 0.316334 us construct= 0.000593 s memory= 7.066646 MB
+8-D12: search= 115.516183 us insert_ip_layer= 0.259609 us construct= 0.000657 s memory= 7.507289 MB
+8-D13: search= 112.442087 us insert_ip_layer= 0.314915 us construct= 0.000699 s memory= 6.310103 MB
+8-D14: search= 156.782871 us insert_ip_layer= 0.370576 us construct= 0.000671 s memory= 9.979499 MB
+8-D15: search= 102.577514 us insert_ip_layer= 0.301850 us construct= 0.000598 s memory= 6.159986 MB
+8-D16: search= 116.347246 us insert_ip_layer= 0.401770 us construct= 0.000648 s memory= 9.251891 MB
+8-D17: search= 105.200436 us insert_ip_layer= 0.339835 us construct= 0.000651 s memory= 8.184716 MB
+8: avgS= 123.125907 us avgI= 0.426825 us avgC= 0.000740 s avgM= 0.000045 B/'
+
+7-D1: search= 287.056400 us insert_ip_layer= 0.395046 us construct= 0.001558 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+7-D2: search= 127.763836 us insert_ip_layer= 0.746851 us construct= 0.000849 s memory= 8.093078 MB, avgMinusNum= 3765.800850
+7-D3: search= 134.583452 us insert_ip_layer= 0.508546 us construct= 0.000650 s memory= 6.854669 MB, avgMinusNum= 4526.292195
+7-D4: search= 250.490303 us insert_ip_layer= 0.627565 us construct= 0.000633 s memory= 9.915347 MB, avgMinusNum= 4494.819564
+7-D5: search= 242.789236 us insert_ip_layer= 0.654284 us construct= 0.000731 s memory= 8.744121 MB, avgMinusNum= 2997.299610
+7-D6: search= 440.269635 us insert_ip_layer= 0.430350 us construct= 0.000689 s memory= 10.645253 MB, avgMinusNum= 3496.974798
+7-D7: search= 134.148342 us insert_ip_layer= 0.326542 us construct= 0.000656 s memory= 5.891555 MB, avgMinusNum= 13518.883923
+7-D8: search= 284.034373 us insert_ip_layer= 0.448274 us construct= 0.000690 s memory= 10.279735 MB, avgMinusNum= 2742.399693
+7-D9: search= 283.015916 us insert_ip_layer= 0.424067 us construct= 0.000660 s memory= 10.164485 MB, avgMinusNum= 6455.285708
+7-D10: search= 217.137186 us insert_ip_layer= 0.508975 us construct= 0.000719 s memory= 10.737697 MB, avgMinusNum= 1934.718553
+7-D11: search= 228.788308 us insert_ip_layer= 0.322385 us construct= 0.000721 s memory= 7.066646 MB, avgMinusNum= 6016.875188
+7-D12: search= 216.151415 us insert_ip_layer= 0.254066 us construct= 0.000659 s memory= 7.507289 MB, avgMinusNum= 5520.566942
+7-D13: search= 221.135056 us insert_ip_layer= 0.303189 us construct= 0.000604 s memory= 6.310103 MB, avgMinusNum= 774.932687
+7-D14: search= 322.242653 us insert_ip_layer= 0.392817 us construct= 0.000700 s memory= 9.979499 MB, avgMinusNum= 5538.514715
+7-D15: search= 200.391004 us insert_ip_layer= 0.305286 us construct= 0.000621 s memory= 6.159986 MB, avgMinusNum= 9010.161179
+7-D16: search= 206.395791 us insert_ip_layer= 0.413985 us construct= 0.000634 s memory= 9.251891 MB, avgMinusNum= 247.817032
+7-D17: search= 185.468707 us insert_ip_layer= 0.335135 us construct= 0.000636 s memory= 8.184716 MB, avgMinusNum= 6674.722561
+7: avgS= 234.227154 us avgI= 0.435139 us avgC= 0.000730 s avgM= 44.837855 B/', avgMinusNum= 4643.079430
+
+7-D1: search= 271.551300 us insert_ip_layer= 0.385101 us construct= 0.001810 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+7-D2: search= 94.833900 us insert_ip_layer= 0.685091 us construct= 0.000856 s memory= 8.093078 MB, avgMinusNum= 80920.969600
+7-D3: search= 154.381000 us insert_ip_layer= 0.529263 us construct= 0.000628 s memory= 6.854669 MB, avgMinusNum= 133403.591900
+7-D4: search= 219.517500 us insert_ip_layer= 0.611659 us construct= 0.000615 s memory= 9.915347 MB, avgMinusNum= 172293.644800
+7-D5: search= 373.114500 us insert_ip_layer= 0.625745 us construct= 0.000715 s memory= 8.744121 MB, avgMinusNum= 315600.193100
+7-D6: search= 416.942900 us insert_ip_layer= 0.421350 us construct= 0.000667 s memory= 10.645253 MB, avgMinusNum= 380852.777500
+7-D7: search= 121.557300 us insert_ip_layer= 0.318517 us construct= 0.000662 s memory= 5.891555 MB, avgMinusNum= 106844.341500
+7-D8: search= 229.131800 us insert_ip_layer= 0.446552 us construct= 0.000651 s memory= 10.279735 MB, avgMinusNum= 202992.720000
+7-D9: search= 230.126600 us insert_ip_layer= 0.431451 us construct= 0.000679 s memory= 10.164485 MB, avgMinusNum= 204277.731800
+7-D10: search= 171.151500 us insert_ip_layer= 0.465815 us construct= 0.000639 s memory= 10.737697 MB, avgMinusNum= 152768.330900
+7-D11: search= 164.637400 us insert_ip_layer= 0.319488 us construct= 0.000643 s memory= 7.066646 MB, avgMinusNum= 142649.658400
+7-D12: search= 177.209200 us insert_ip_layer= 0.261181 us construct= 0.000635 s memory= 7.507289 MB, avgMinusNum= 155528.614600
+7-D13: search= 204.157500 us insert_ip_layer= 0.309419 us construct= 0.000663 s memory= 6.310103 MB, avgMinusNum= 175202.391300
+7-D14: search= 259.871100 us insert_ip_layer= 0.376216 us construct= 0.000641 s memory= 9.979499 MB, avgMinusNum= 226529.971400
+7-D15: search= 158.242600 us insert_ip_layer= 0.301833 us construct= 0.000610 s memory= 6.159986 MB, avgMinusNum= 140441.447600
+7-D16: search= 173.397400 us insert_ip_layer= 0.415088 us construct= 0.000659 s memory= 9.251891 MB, avgMinusNum= 153801.069100
+7-D17: search= 195.116200 us insert_ip_layer= 0.332921 us construct= 0.000669 s memory= 8.184716 MB, avgMinusNum= 168714.911500
+7: avgS= 212.643512 us avgI= 0.425688 us avgC= 0.000732 s avgM= 44.837855 B/', avgMinusNum= 185052.431341
+
+7-D1: search= 267.092000 us insert_ip_layer= 0.399365 us construct= 0.001834 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+7-D2: search= 92.494800 us insert_ip_layer= 0.727565 us construct= 0.000858 s memory= 8.093078 MB, avgMinusNum= 80920.969600
+7-D3: search= 153.275700 us insert_ip_layer= 0.535984 us construct= 0.000649 s memory= 6.854669 MB, avgMinusNum= 133403.591900
+7-D4: search= 220.502500 us insert_ip_layer= 0.617081 us construct= 0.000629 s memory= 9.915347 MB, avgMinusNum= 172293.644800
+7-D5: search= 372.111900 us insert_ip_layer= 0.642746 us construct= 0.000663 s memory= 8.744121 MB, avgMinusNum= 315600.193100
+7-D6: search= 414.106500 us insert_ip_layer= 0.427648 us construct= 0.000684 s memory= 10.645253 MB, avgMinusNum= 380852.777500
+7-D7: search= 115.909200 us insert_ip_layer= 0.324568 us construct= 0.000666 s memory= 5.891555 MB, avgMinusNum= 106844.341500
+7-D8: search= 215.907000 us insert_ip_layer= 0.450161 us construct= 0.000676 s memory= 10.279735 MB, avgMinusNum= 202992.720000
+7-D9: search= 215.079600 us insert_ip_layer= 0.424413 us construct= 0.000671 s memory= 10.164485 MB, avgMinusNum= 204277.731800
+7-D10: search= 160.226100 us insert_ip_layer= 0.465904 us construct= 0.000685 s memory= 10.737697 MB, avgMinusNum= 152768.330900
+7-D11: search= 158.996100 us insert_ip_layer= 0.319319 us construct= 0.000664 s memory= 7.066646 MB, avgMinusNum= 142649.658400
+7-D12: search= 166.394900 us insert_ip_layer= 0.290103 us construct= 0.000863 s memory= 7.507289 MB, avgMinusNum= 155528.614600
+7-D13: search= 196.419000 us insert_ip_layer= 0.306625 us construct= 0.000645 s memory= 6.310103 MB, avgMinusNum= 175202.391300
+7-D14: search= 243.987400 us insert_ip_layer= 0.369288 us construct= 0.000685 s memory= 9.979499 MB, avgMinusNum= 226529.971400
+7-D15: search= 155.038600 us insert_ip_layer= 0.301014 us construct= 0.000607 s memory= 6.159986 MB, avgMinusNum= 140441.447600
+7-D16: search= 163.349000 us insert_ip_layer= 0.408437 us construct= 0.000651 s memory= 9.251891 MB, avgMinusNum= 153801.069100
+7-D17: search= 185.655200 us insert_ip_layer= 0.335651 us construct= 0.000678 s memory= 8.184716 MB, avgMinusNum= 168714.911500
+7: avgS= 205.679147 us avgI= 0.432110 us avgC= 0.000753 s avgM= 44.837855 B/', avgMinusNum= 185052.431341
+
+6-D1: search= 276.317500 us insert_ip_layer= 0.404699 us construct= 0.001788 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+6-D2: search= 101.933900 us insert_ip_layer= 0.912706 us construct= 0.000865 s memory= 8.093078 MB, avgMinusNum= 80920.969600
+6-D3: search= 159.495600 us insert_ip_layer= 0.652630 us construct= 0.000649 s memory= 6.854669 MB, avgMinusNum= 133403.591900
+6-D4: search= 225.852700 us insert_ip_layer= 0.646206 us construct= 0.000669 s memory= 9.915347 MB, avgMinusNum= 172293.644800
+6-D5: search= 381.102000 us insert_ip_layer= 0.655084 us construct= 0.000720 s memory= 8.744121 MB, avgMinusNum= 315600.193100
+6-D6: search= 424.471400 us insert_ip_layer= 0.433005 us construct= 0.000727 s memory= 10.645253 MB, avgMinusNum= 380852.777500
+6-D7: search= 119.896100 us insert_ip_layer= 0.324815 us construct= 0.000669 s memory= 5.891555 MB, avgMinusNum= 106844.341500
+6-D8: search= 226.758900 us insert_ip_layer= 0.503493 us construct= 0.000655 s memory= 10.279735 MB, avgMinusNum= 202992.720000
+6-D9: search= 223.581800 us insert_ip_layer= 0.437470 us construct= 0.000639 s memory= 10.164485 MB, avgMinusNum= 204277.731800
+6-D10: search= 164.623700 us insert_ip_layer= 0.473037 us construct= 0.000615 s memory= 10.737697 MB, avgMinusNum= 152768.330900
+6-D11: search= 165.263700 us insert_ip_layer= 0.326279 us construct= 0.000614 s memory= 7.066646 MB, avgMinusNum= 142649.658400
+6-D12: search= 168.565100 us insert_ip_layer= 0.263540 us construct= 0.000707 s memory= 7.507289 MB, avgMinusNum= 155528.614600
+6-D13: search= 202.346100 us insert_ip_layer= 0.307735 us construct= 0.000596 s memory= 6.310103 MB, avgMinusNum= 175202.391300
+6-D14: search= 251.197100 us insert_ip_layer= 0.365987 us construct= 0.000705 s memory= 9.979499 MB, avgMinusNum= 226529.971400
+6-D15: search= 161.641600 us insert_ip_layer= 0.310289 us construct= 0.000599 s memory= 6.159986 MB, avgMinusNum= 140441.447600
+6-D16: search= 169.569300 us insert_ip_layer= 0.422928 us construct= 0.000673 s memory= 9.251891 MB, avgMinusNum= 153801.069100
+6-D17: search= 192.719200 us insert_ip_layer= 0.338276 us construct= 0.000697 s memory= 8.184716 MB, avgMinusNum= 168714.911500
+6: avgS= 212.666806 us avgI= 0.457540 us avgC= 0.000740 s avgM= 44.837855 B/', avgMinusNum= 185052.431341
+
+6-D1: search= 279.601900 us insert_ip_layer= 0.405907 us construct= 0.001537 s memory= 5.378968 MB, avgMinusNum= 233068.967800
+6-D2: search= 96.129700 us insert_ip_layer= 0.700609 us construct= 0.000842 s memory= 8.093078 MB, avgMinusNum= 80920.969600
+6-D3: search= 158.346300 us insert_ip_layer= 0.537825 us construct= 0.000667 s memory= 6.854669 MB, avgMinusNum= 133403.591900
+6-D4: search= 225.102200 us insert_ip_layer= 0.618753 us construct= 0.000659 s memory= 9.915347 MB, avgMinusNum= 172293.644800
+6-D5: search= 385.436100 us insert_ip_layer= 0.635846 us construct= 0.000713 s memory= 8.744121 MB, avgMinusNum= 315600.193100
+6-D6: search= 431.753100 us insert_ip_layer= 0.430866 us construct= 0.000717 s memory= 10.645253 MB, avgMinusNum= 380852.777500
+6-D7: search= 123.131800 us insert_ip_layer= 0.319110 us construct= 0.000634 s memory= 5.891555 MB, avgMinusNum= 106844.341500
+6-D8: search= 237.056100 us insert_ip_layer= 0.455389 us construct= 0.000686 s memory= 10.279735 MB, avgMinusNum= 202992.720000
+6-D9: search= 229.688900 us insert_ip_layer= 0.433053 us construct= 0.000642 s memory= 10.164485 MB, avgMinusNum= 204277.731800
+6-D10: search= 170.722400 us insert_ip_layer= 0.470287 us construct= 0.000616 s memory= 10.737697 MB, avgMinusNum= 152768.330900
+6-D11: search= 164.660000 us insert_ip_layer= 0.318908 us construct= 0.000643 s memory= 7.066646 MB, avgMinusNum= 142649.658400
+6-D12: search= 176.546600 us insert_ip_layer= 0.261389 us construct= 0.000735 s memory= 7.507289 MB, avgMinusNum= 155528.614600
+6-D13: search= 202.957100 us insert_ip_layer= 0.307370 us construct= 0.000610 s memory= 6.310103 MB, avgMinusNum= 175202.391300
+6-D14: search= 257.954600 us insert_ip_layer= 0.371047 us construct= 0.000627 s memory= 9.979499 MB, avgMinusNum= 226529.971400
+6-D15: search= 161.831800 us insert_ip_layer= 0.305718 us construct= 0.000685 s memory= 6.159986 MB, avgMinusNum= 140441.447600
+6-D16: search= 175.657300 us insert_ip_layer= 0.417770 us construct= 0.000690 s memory= 9.251891 MB, avgMinusNum= 153801.069100
+6-D17: search= 200.543400 us insert_ip_layer= 0.338202 us construct= 0.000664 s memory= 8.184716 MB, avgMinusNum= 168714.911500
+6: avgS= 216.301135 us avgI= 0.431062 us avgC= 0.000727 s avgM= 44.837855 B/', avgMinusNum= 185052.431341
+

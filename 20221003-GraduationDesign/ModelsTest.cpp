@@ -4,7 +4,7 @@
 
 #include "ModelsTest.h"
 
-// if shuffle rules, the result may be changed so cannot be verified (set DEBUG to false)
+// if shuffle rules, the result may be changed so cannot be verified (set VERIFICATION to false)
 void ModelsTest::shuffleRules()
 {
 	rule* rp = rules->list;
@@ -166,8 +166,11 @@ void ModelsTest::HEMBS_backward_test()
 	double totalConstructionTimeUs = 0.0;
 	double totalAvgInsertionTimeUs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
-	double totalMemorySizeMB = 0.0;
-	double totalRules = 0;
+	double totalAvgMemorySizeB = 0.0;
+	double totalAvgCheckNum = 0;
+	double totalAvgORNum = 0;
+	uint64_t totalRules = 0;
+	uint64_t totalMessages = 0;
 
 	const string file_path = "output/HEMBS_b.txt";
 	string content;
@@ -176,6 +179,7 @@ void ModelsTest::HEMBS_backward_test()
 	{
 		readDatasets(dno);
 		totalRules += rules->size;
+		totalMessages += messages->size;
 
 		clock_t clk = clock();
 		HEMBS hembs;
@@ -185,54 +189,174 @@ void ModelsTest::HEMBS_backward_test()
 
 		clk = clock();
 		for (int i = 0; i < rules->size; i++)
-		{
 			hembs.backward_bitsets_insert_IPv4(rules->list + i);
-		}
 		double avgInsertionTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / rules->size;
 		totalAvgInsertionTimeUs += avgInsertionTimeUs;
 
+		uint32_t ruleNo;
+		uint64_t checkNum = 0, or64Num = 0;
 		clk = clock();
 		for (int i = 0; i < messages->size; i++)
 		{
-			unsigned int ruleNo = hembs.backward_bitsets_search_IPv4(messages->list + i, rules);
+#if DEBUG
+			std::array<uint64_t, 2> debugInfo = hembs.backward_bitsets_search_IPv4(messages->list + i, rules, ruleNo);
+			checkNum += debugInfo[0];
+			or64Num += debugInfo.at(1);
+#else
+			hembs.backward_bitsets_search_IPv4(messages->list + i, rules, ruleNo);
+#endif
 #if VERIFICATION
 			//			if (messages->list[i].rule_id == (unsigned int)-1)
 			//				printf("msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
 			//			if (messages->list[i].rule_id == 0)
 			//				printf("msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
-						if (messages->list[i].rule_id != ruleNo)
-						{
-							printf("Error result: msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
-							exit(0);
-						}
+			if (messages->list[i].rule_id != ruleNo)
+			{
+				printf("Error result: msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
+				exit(0);
+			}
 #endif
 		}
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
-		totalMemorySizeMB += hembs.memory_size();
+		double avgCheckNum = (double)checkNum / messages->size;
+		totalAvgCheckNum += avgCheckNum;
+		double avgORNum = (double)or64Num / messages->size;
+		totalAvgORNum += avgORNum;
+		totalAvgMemorySizeB += hembs.calMemory() / rules->size;
+
+		printf("HEM-BBS dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\nmemorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgORNum= %.3f\n\n", \
+        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+			hembs.calMemory() / 1024.0 / 1024.0, hembs.calMemory() / rules->size, avgCheckNum, avgORNum);
+
+		content += expID + "-d" + to_string(dno + 1) \
+ + ": search= " + Utils::Double2String(avgSearchTimeUs)\
+ + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
+ + " us construct= " + Utils::Double2String(constructionTimeUs)\
+ + " us memory= " + Utils::Double2String(hembs.calMemory() / 1024.0 / 1024.0) \
+ + " MB check= " + Utils::Double2String(avgCheckNum) + "\n";
+	}
+
+	printf("\n\nExp%s HEM-BBS-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
+		   "memorySize= %.3f B/'\ncheckNum= %.3f, or64Num= %.3f, ruleNum= %lu, msgNum= %lu\n\n", \
+        expID.c_str(), HEM_BS_NUM_ATTR, totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
+        totalAvgSearchTimeUs / numDataSets, totalAvgMemorySizeB / numDataSets, \
+        totalAvgCheckNum / numDataSets, totalAvgORNum / numDataSets, totalRules, totalMessages);
+#if DEBUG
+	content+="DEBUG";
+#endif
+	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
+			   + to_string(SHUFFLEMESSAGES)\
+ + ": avgS= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
+ + " us avgI= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
+ + " us avgCST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
+ + " us avgM= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
+ + " B/' avgCEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
+ + " avgOR= " + Utils::Double2String(totalAvgORNum / numDataSets) + "\n";
+	Utils::WriteData2Begin(file_path, content);
+}
+
+void ModelsTest::TamaSearch_test()
+{
+	double totalConstructionTimeUs = 0.0;
+	double totalAvgInsertionTimeUs = 0.0;
+	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgMemorySizeB = 0.0;
+	double totalAvgRuleSizes = 0;
+	double totalAvgMinusNum = 0;
+	double totalAvgCmpNum = 0;
+	uint64_t totalRules = 0;
+	uint64_t totalMessages = 0;
+
+	const string file_path = "output/TamaSearch.txt";
+	string content;
+
+	for (int dno = 0; dno < numDataSets; dno++)
+	{
+		readDatasets(dno);
+		totalRules += rules->size;
+		totalMessages += messages->size;
+
+		clock_t clk = clock();
+		TamaSearch ts;
+		ts.initize(rules->size);
+		double constructionTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC;
+		totalConstructionTimeUs += constructionTimeUs;
+
+		clk = clock();
+		for (int i = 0; i < rules->size; i++)
+		{
+			ts.insert(rules->list + i);
+		}
+		double avgInsertionTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / rules->size;
+		totalAvgInsertionTimeUs += avgInsertionTimeUs;
+		printf("TamaSearch Construction and Insertion Finish.\n");
+
+		clk = clock();
+		for (int i = 0; i < messages->size; i++)
+		{
+			unsigned int ruleNo = ts.search(messages->list[i], rules);
+#if VERIFICATION
+			if (messages->list[i].rule_id != ruleNo)
+			{
+				printf("Tama Error result: msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
+				exit(0);
+			}
+#endif
+		}
+		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
+		totalAvgSearchTimeUs += avgSearchTimeUs;
+		totalAvgMemorySizeB += ts.calMemory() / rules->size;
 
 #if DEBUG
-		printf("HEMBS-f dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, memorySize= %.3f MB\n\n", \
-        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, hembs.memory_size());
+		totalAvgMinusNum += ts.totalMinusNum / messages->size;
+		totalAvgCmpNum += ts.totalCmpNum / messages->size;
+		totalAvgRuleSizes += ts.statistics();
+		printf("TamaSearch dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\nmemorySize= %.3f MB, avgMemorySize= %.3f B/', "
+			   "avgMinusNum= %.2f, avgCmpNum= %.2f\n\n", \
+		dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+			ts.calMemory() / 1024.0 / 1024.0, ts.calMemory() / rules->size,
+			(double)ts.totalMinusNum / messages->size, (double)ts.totalCmpNum / messages->size);
+#else
+		printf("TamaSearch dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+			   "memorySize= %.3f MB, avgMemorySize= %.3f B/'\n\n", \
+        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+			ts.calMemory() / 1024.0 / 1024.0, ts.calMemory() / rules->size);
 #endif
 
 		content += expID + "-D" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us insert_ip_layer= " + Utils::Double2String(avgInsertionTimeUs)\
+ + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs / 1000000.0)\
- + " s memory= " + Utils::Double2String(hembs.memory_size()) + " MB\n";
+ + " s memory= " + Utils::Double2String(ts.calMemory() / 1024.0 / 1024.0) + " MB";
+#if DEBUG
+		content += ", avgMinusNum= " + Utils::Double2String((double)ts.totalMinusNum / messages->size);
+		content + ", avgCmpNum= " + Utils::Double2String((double)ts.totalCmpNum / messages->size);
+#endif
+		content += "\n";
 	}
 
-	printf("\n\nTotal HEMBS-f: constructionTime= %.3f s, insertionTime= %.3f us, searchTime= %.3f us, memorySize= %.3f B/'\n\n", \
-		totalConstructionTimeUs / 1000000.0 / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
-		totalAvgSearchTimeUs / numDataSets, totalMemorySizeMB * 1024.0 * 1024.0 / totalRules);
+	printf("\n\nTotal TamaSearch: constructionTime= %.3f s, insertionTime= %.3f us, searchTime= %.3f us\n"
+		   "avgMemorySize= %.3f B/', avgRuleSize= %.2f, totalRules= %lu, totalMsg= %lu,  \n"
+		   "avgMinusNum= %.2f, avgCmpNum= %.2f\n\n", \
+        totalConstructionTimeUs / 1000000.0 / numDataSets,
+		totalAvgInsertionTimeUs / numDataSets, totalAvgSearchTimeUs / numDataSets, \
+        totalAvgMemorySizeB / numDataSets,
+		totalAvgRuleSizes / numDataSets, totalRules, totalMessages,
+		totalAvgMinusNum / numDataSets, totalAvgCmpNum / numDataSets);
 
 	content += expID + ": avgS= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us avgI= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us avgC= " + Utils::Double2String(totalConstructionTimeUs / 1000000.0 / numDataSets)\
- + " s avgM= " + Utils::Double2String(totalMemorySizeMB * 1024.0 * 1024.0 / totalRules) + " B/'\n";
+ + " s avgM= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets) + " B/'";
+#if DEBUG
+	content += ", avgMinusNum= " + Utils::Double2String(totalAvgMinusNum / numDataSets);
+#if TAMA_PRIORITY_CHECK
+	content+=", avgCmpNum= "+Utils::Double2String(totalAvgCmpNum / numDataSets);
+#endif
+#endif
+	content += "\n";
 	Utils::WriteData2Begin(file_path, content);
-
 }
 
 

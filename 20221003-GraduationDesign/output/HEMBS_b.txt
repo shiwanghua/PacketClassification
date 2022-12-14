@@ -1,3 +1,657 @@
+47-d1: search= 2.154600 us insert= 2.670720 us construct= 20.000000 us memory= 33.600655 MB check= 0.000000
+47-d2: search= 2.119405 us insert= 1.167622 us construct= 21.000000 us memory= 39.321991 MB check= 0.000000
+47-d3: search= 3.406048 us insert= 0.656053 us construct= 13.000000 us memory= 39.243347 MB check= 0.000000
+47-d4: search= 1.525587 us insert= 0.909391 us construct= 17.000000 us memory= 39.361313 MB check= 0.000000
+47-d5: search= 1.022347 us insert= 1.480436 us construct= 16.000000 us memory= 39.164703 MB check= 0.000000
+47-d6: search= 1.369037 us insert= 3.219250 us construct= 22.000000 us memory= 78.014740 MB check= 0.000000
+47-d7: search= 2.407899 us insert= 1.617254 us construct= 21.000000 us memory= 43.588417 MB check= 0.000000
+47-d8: search= 2.089656 us insert= 2.603701 us construct= 21.000000 us memory= 78.172028 MB check= 0.000000
+47-d9: search= 1.813326 us insert= 2.599221 us construct= 21.000000 us memory= 77.287285 MB check= 0.000000
+47-d10: search= 1.661826 us insert= 3.272749 us construct= 20.000000 us memory= 78.683212 MB check= 0.000000
+47-d11: search= 2.305994 us insert= 1.251478 us construct= 18.000000 us memory= 59.828362 MB check= 0.000000
+47-d12: search= 1.819126 us insert= 1.298389 us construct= 21.000000 us memory= 75.281868 MB check= 0.000000
+47-d13: search= 1.842910 us insert= 1.078811 us construct= 19.000000 us memory= 55.660240 MB check= 0.000000
+47-d14: search= 2.519655 us insert= 1.906195 us construct= 19.000000 us memory= 65.176140 MB check= 0.000000
+47-d15: search= 2.175423 us insert= 1.095518 us construct= 18.000000 us memory= 55.542274 MB check= 0.000000
+47-d16: search= 1.912784 us insert= 3.663648 us construct= 20.000000 us memory= 78.034401 MB check= 0.000000
+47-d17: search= 2.336449 us insert= 2.151777 us construct= 27.000000 us memory= 78.683212 MB check= 0.000000
+Exp47-a11-D1-S1: avgS= 2.028357 us avgI= 1.920130 us avgCST= 19.647059 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+46-d1: search= 1.951400 us insert= 2.772087 us construct= 9.000000 us memory= 33.600655 MB check= 0.000000
+46-d2: search= 1.368479 us insert= 1.137680 us construct= 10.000000 us memory= 39.321991 MB check= 0.000000
+46-d3: search= 3.078648 us insert= 0.652309 us construct= 11.000000 us memory= 39.243347 MB check= 0.000000
+46-d4: search= 1.514884 us insert= 1.003773 us construct= 22.000000 us memory= 39.361313 MB check= 0.000000
+46-d5: search= 0.778936 us insert= 1.499211 us construct= 11.000000 us memory= 39.164703 MB check= 0.000000
+46-d6: search= 1.284866 us insert= 3.197039 us construct= 20.000000 us memory= 78.014740 MB check= 0.000000
+46-d7: search= 1.396821 us insert= 1.600140 us construct= 20.000000 us memory= 43.588417 MB check= 0.000000
+46-d8: search= 1.453640 us insert= 2.498807 us construct= 20.000000 us memory= 78.172028 MB check= 0.000000
+46-d9: search= 1.401459 us insert= 2.549516 us construct= 20.000000 us memory= 77.287285 MB check= 0.000000
+46-d10: search= 1.760771 us insert= 3.289936 us construct= 19.000000 us memory= 78.683212 MB check= 0.000000
+46-d11: search= 1.810204 us insert= 1.286577 us construct= 25.000000 us memory= 59.828362 MB check= 0.000000
+46-d12: search= 1.313662 us insert= 1.320241 us construct= 22.000000 us memory= 75.281868 MB check= 0.000000
+46-d13: search= 1.478552 us insert= 1.070069 us construct= 22.000000 us memory= 55.660240 MB check= 0.000000
+46-d14: search= 1.596668 us insert= 1.920353 us construct= 18.000000 us memory= 65.176140 MB check= 0.000000
+46-d15: search= 1.734042 us insert= 1.105269 us construct= 19.000000 us memory= 55.542274 MB check= 0.000000
+46-d16: search= 1.496832 us insert= 3.643990 us construct= 22.000000 us memory= 78.034401 MB check= 0.000000
+46-d17: search= 1.640334 us insert= 2.108921 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+Exp46-a11-D1-S0: avgS= 1.591776 us avgI= 1.920936 us avgCST= 18.294118 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+45-d1: search= 0.990825 us insert= 2.680839 us construct= 9.000000 us memory= 33.600655 MB check= 0.000000
+45-d2: search= 1.611906 us insert= 1.147413 us construct= 22.000000 us memory= 39.321991 MB check= 0.000000
+45-d3: search= 3.539705 us insert= 0.653805 us construct= 19.000000 us memory= 39.243347 MB check= 0.000000
+45-d4: search= 1.682563 us insert= 0.899884 us construct= 11.000000 us memory= 39.361313 MB check= 0.000000
+45-d5: search= 0.929206 us insert= 1.481394 us construct= 16.000000 us memory= 39.164703 MB check= 0.000000
+45-d6: search= 0.594761 us insert= 3.077169 us construct= 19.000000 us memory= 78.014740 MB check= 0.000000
+45-d7: search= 1.694849 us insert= 1.596057 us construct= 16.000000 us memory= 43.588417 MB check= 0.000000
+45-d8: search= 0.701976 us insert= 2.506803 us construct= 17.000000 us memory= 78.172028 MB check= 0.000000
+45-d9: search= 0.610363 us insert= 2.554784 us construct= 22.000000 us memory= 77.287285 MB check= 0.000000
+45-d10: search= 0.642031 us insert= 3.204468 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+45-d11: search= 0.835323 us insert= 1.232025 us construct= 23.000000 us memory= 59.828362 MB check= 0.000000
+45-d12: search= 0.455560 us insert= 1.292058 us construct= 22.000000 us memory= 75.281868 MB check= 0.000000
+45-d13: search= 1.002884 us insert= 1.051451 us construct= 19.000000 us memory= 55.660240 MB check= 0.000000
+45-d14: search= 1.070270 us insert= 1.903525 us construct= 20.000000 us memory= 65.176140 MB check= 0.000000
+45-d15: search= 0.955408 us insert= 1.100637 us construct= 20.000000 us memory= 55.542274 MB check= 0.000000
+45-d16: search= 0.609924 us insert= 3.654607 us construct= 21.000000 us memory= 78.034401 MB check= 0.000000
+45-d17: search= 0.639173 us insert= 2.070722 us construct= 20.000000 us memory= 78.683212 MB check= 0.000000
+Exp45-a11-D2-S1: avgS= 1.092160 us avgI= 1.888685 us avgCST= 18.647059 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+44-d1: search= 0.908703 us insert= 2.651726 us construct= 17.000000 us memory= 33.600655 MB check= 4.398066
+44-d2: search= 1.120956 us insert= 1.168052 us construct= 17.000000 us memory= 39.321991 MB check= 1.638760
+44-d3: search= 3.883222 us insert= 0.675267 us construct= 16.000000 us memory= 39.243347 MB check= 46.812441
+44-d4: search= 1.740913 us insert= 0.949922 us construct= 21.000000 us memory= 39.361313 MB check= 1.000000
+44-d5: search= 0.955703 us insert= 1.498850 us construct= 18.000000 us memory= 39.164703 MB check= 1.022844
+44-d6: search= 0.780661 us insert= 3.067830 us construct= 20.000000 us memory= 78.014740 MB check= 1.000000
+44-d7: search= 1.022016 us insert= 1.609646 us construct= 16.000000 us memory= 43.588417 MB check= 1.417513
+44-d8: search= 0.835978 us insert= 2.515993 us construct= 16.000000 us memory= 78.172028 MB check= 1.000000
+44-d9: search= 0.770889 us insert= 2.581961 us construct= 22.000000 us memory= 77.287285 MB check= 1.003914
+44-d10: search= 0.719696 us insert= 3.237995 us construct= 25.000000 us memory= 78.683212 MB check= 1.000000
+44-d11: search= 0.884938 us insert= 1.239432 us construct= 18.000000 us memory= 59.828362 MB check= 1.049719
+44-d12: search= 0.563078 us insert= 1.296585 us construct= 18.000000 us memory= 75.281868 MB check= 1.004136
+44-d13: search= 1.331622 us insert= 1.066694 us construct= 18.000000 us memory= 55.660240 MB check= 1.015143
+44-d14: search= 0.962814 us insert= 1.911430 us construct= 16.000000 us memory= 65.176140 MB check= 1.000157
+44-d15: search= 1.127466 us insert= 1.109524 us construct= 24.000000 us memory= 55.542274 MB check= 1.111330
+44-d16: search= 0.764849 us insert= 3.626369 us construct= 29.000000 us memory= 78.034401 MB check= 1.000000
+44-d17: search= 0.825174 us insert= 2.132472 us construct= 24.000000 us memory= 78.683212 MB check= 1.000000
+DEBUGExp44-a11-D2-S0: avgS= 1.129334 us avgI= 1.902338 us avgCST= 19.705882 us avgM= 322.292775 B/' avgCEK= 3.969060 avgOR= 1944.057796
+
+43-d1: search= 1.030258 us insert= 2.718315 us construct= 11.000000 us memory= 26.924858 MB check= 19.534670
+43-d2: search= 1.320472 us insert= 0.754841 us construct= 20.000000 us memory= 31.509476 MB check= 10.441124
+43-d3: search= 28.669897 us insert= 0.432176 us construct= 853.000000 us memory= 31.446457 MB check= 18253.965703
+43-d4: search= 1.385256 us insert= 0.763596 us construct= 3159.000000 us memory= 31.540985 MB check= 1.000000
+43-d5: search= 1.183801 us insert= 1.072250 us construct= 1161.000000 us memory= 31.383438 MB check= 8.588972
+43-d6: search= 0.743039 us insert= 2.254876 us construct= 20.000000 us memory= 62.514725 MB check= 1.000000
+43-d7: search= 1.050000 us insert= 1.342649 us construct= 1627.000000 us memory= 34.928246 MB check= 2.083639
+43-d8: search= 0.832468 us insert= 1.679884 us construct= 22.000000 us memory= 62.640762 MB check= 1.000000
+43-d9: search= 0.802314 us insert= 1.743059 us construct= 22.000000 us memory= 61.931801 MB check= 1.025749
+43-d10: search= 0.721940 us insert= 2.634162 us construct= 22.000000 us memory= 63.050385 MB check= 1.000000
+43-d11: search= 0.912903 us insert= 1.038258 us construct= 20.000000 us memory= 47.941628 MB check= 1.368969
+43-d12: search= 0.571321 us insert= 1.150519 us construct= 23.000000 us memory= 60.324821 MB check= 1.004136
+43-d13: search= 1.363335 us insert= 0.865391 us construct= 19.000000 us memory= 44.601631 MB check= 1.035641
+43-d14: search= 0.925365 us insert= 1.291801 us construct= 20.000000 us memory= 52.226906 MB check= 1.004632
+43-d15: search= 1.129482 us insert= 0.881766 us construct= 19.000000 us memory= 44.507103 MB check= 1.429798
+43-d16: search= 0.741948 us insert= 3.367913 us construct= 21.000000 us memory= 62.530479 MB check= 1.000000
+43-d17: search= 0.803462 us insert= 1.499471 us construct= 18.000000 us memory= 63.050385 MB check= 1.000000
+DEBUGExp43-a9-D2-S0: avgS= 2.599251 us avgI= 1.499466 us avgCST= 415.117647 us avgM= 258.259459 B/' avgCEK= 1076.910767 avgOR= 1931.542757
+
+42-d1: search= 1.383461 us insert= 2.133866 us construct= 16.000000 us memory= 26.924858 MB check= 19.534670
+42-d2: search= 2.159257 us insert= 0.752379 us construct= 21.000000 us memory= 31.509476 MB check= 10.441124
+42-d3: search= 29.172731 us insert= 0.403468 us construct= 671.000000 us memory= 31.446457 MB check= 18253.965703
+42-d4: search= 1.384226 us insert= 0.770564 us construct= 3087.000000 us memory= 31.540985 MB check= 1.000000
+42-d5: search= 1.456601 us insert= 1.090036 us construct= 1157.000000 us memory= 31.383438 MB check= 8.588972
+42-d6: search= 0.805144 us insert= 2.314817 us construct= 23.000000 us memory= 62.514725 MB check= 1.000000
+42-d7: search= 1.993284 us insert= 1.333982 us construct= 1623.000000 us memory= 34.928246 MB check= 2.083639
+42-d8: search= 0.925313 us insert= 1.664655 us construct= 20.000000 us memory= 62.640762 MB check= 1.000000
+42-d9: search= 0.836474 us insert= 1.708972 us construct= 20.000000 us memory= 61.931801 MB check= 1.025749
+42-d10: search= 0.823388 us insert= 2.592173 us construct= 20.000000 us memory= 63.050385 MB check= 1.000000
+42-d11: search= 1.070022 us insert= 1.004346 us construct= 18.000000 us memory= 47.941628 MB check= 1.368969
+42-d12: search= 0.619210 us insert= 1.136093 us construct= 21.000000 us memory= 60.324821 MB check= 1.004136
+42-d13: search= 1.399281 us insert= 0.857327 us construct= 18.000000 us memory= 44.601631 MB check= 1.035641
+42-d14: search= 1.079132 us insert= 1.257424 us construct= 22.000000 us memory= 52.226906 MB check= 1.004632
+42-d15: search= 1.252739 us insert= 0.868352 us construct= 18.000000 us memory= 44.507103 MB check= 1.429798
+42-d16: search= 0.821727 us insert= 3.480880 us construct= 20.000000 us memory= 62.530479 MB check= 1.000000
+42-d17: search= 0.893764 us insert= 1.499479 us construct= 17.000000 us memory= 63.050385 MB check= 1.000000
+DEBUGExp42-a9-D2-S1: avgS= 2.827985 us avgI= 1.462871 us avgCST= 399.529412 us avgM= 258.259459 B/' avgCEK= 1076.910767 avgOR= 1931.542757
+
+41-d1: search= 1.088145 us insert= 2.085456 us construct= 12.000000 us memory= 26.924858 MB check= 0.000000
+41-d2: search= 1.746492 us insert= 0.717839 us construct= 12.000000 us memory= 31.509476 MB check= 0.000000
+41-d3: search= 28.412920 us insert= 0.403484 us construct= 681.000000 us memory= 31.446457 MB check= 0.000000
+41-d4: search= 1.049239 us insert= 0.741307 us construct= 2895.000000 us memory= 31.540985 MB check= 0.000000
+41-d5: search= 1.213221 us insert= 1.074448 us construct= 1158.000000 us memory= 31.383438 MB check= 0.000000
+41-d6: search= 0.952749 us insert= 2.362024 us construct= 26.000000 us memory= 62.514725 MB check= 0.000000
+41-d7: search= 1.677232 us insert= 1.336986 us construct= 1649.000000 us memory= 34.928246 MB check= 0.000000
+41-d8: search= 0.728865 us insert= 1.662092 us construct= 23.000000 us memory= 62.640762 MB check= 0.000000
+41-d9: search= 0.612643 us insert= 1.722701 us construct= 20.000000 us memory= 61.931801 MB check= 0.000000
+41-d10: search= 0.617728 us insert= 2.589482 us construct= 20.000000 us memory= 63.050385 MB check= 0.000000
+41-d11: search= 0.811836 us insert= 0.994730 us construct= 16.000000 us memory= 47.941628 MB check= 0.000000
+41-d12: search= 0.450824 us insert= 1.146343 us construct= 20.000000 us memory= 60.324821 MB check= 0.000000
+41-d13: search= 1.038330 us insert= 0.840162 us construct= 18.000000 us memory= 44.601631 MB check= 0.000000
+41-d14: search= 0.958994 us insert= 1.278110 us construct= 24.000000 us memory= 52.226906 MB check= 0.000000
+41-d15: search= 1.031897 us insert= 0.876127 us construct= 24.000000 us memory= 44.507103 MB check= 0.000000
+41-d16: search= 0.592398 us insert= 3.445228 us construct= 21.000000 us memory= 62.530479 MB check= 0.000000
+41-d17: search= 0.678529 us insert= 1.522682 us construct= 19.000000 us memory= 63.050385 MB check= 0.000000
+Exp41-a9-D2-S1: avgS= 2.568355 us avgI= 1.458776 us avgCST= 390.470588 us avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+40-d1: search= 2.380400 us insert= 2.107195 us construct= 7.000000 us memory= 26.703194 MB check= 32.716000
+40-d2: search= 1.868885 us insert= 0.743326 us construct= 9.000000 us memory= 31.250069 MB check= 34.950266
+40-d3: search= 81.897763 us insert= 0.384811 us construct= 2814.000000 us memory= 31.187569 MB check= 33668.639232
+40-d4: search= 1.571722 us insert= 0.744900 us construct= 3403.000000 us memory= 31.281319 MB check= 1.000000
+40-d5: search= 1.289215 us insert= 1.067619 us construct= 728.000000 us memory= 31.125069 MB check= 9.073078
+40-d6: search= 1.531573 us insert= 2.251883 us construct= 10.000000 us memory= 62.000069 MB check= 1.011488
+40-d7: search= 1.649369 us insert= 1.314498 us construct= 1276.000000 us memory= 34.640694 MB check= 11.508374
+40-d8: search= 1.810635 us insert= 1.659124 us construct= 10.000000 us memory= 62.125069 MB check= 3.768714
+40-d9: search= 1.725147 us insert= 1.708702 us construct= 11.000000 us memory= 61.421944 MB check= 3.208700
+40-d10: search= 1.681514 us insert= 2.559506 us construct= 13.000000 us memory= 62.531319 MB check= 1.000004
+40-d11: search= 1.955208 us insert= 0.951170 us construct= 2606.000000 us memory= 47.546944 MB check= 10.132674
+40-d12: search= 1.625218 us insert= 1.135289 us construct= 10.000000 us memory= 59.828194 MB check= 1.110729
+40-d13: search= 1.696515 us insert= 0.806318 us construct= 1626.000000 us memory= 44.234444 MB check= 12.560012
+40-d14: search= 2.089374 us insert= 1.258825 us construct= 9.000000 us memory= 51.796944 MB check= 154.760438
+40-d15: search= 1.973283 us insert= 0.809655 us construct= 1649.000000 us memory= 44.140694 MB check= 16.371794
+40-d16: search= 1.940079 us insert= 3.546885 us construct= 11.000000 us memory= 62.015694 MB check= 8.495119
+40-d17: search= 2.039574 us insert= 1.467354 us construct= 11.000000 us memory= 62.531319 MB check= 1.000000
+DEBUGExp40-a8-D1-S0: avgS= 6.513263 us avgI= 1.442180 us avgCST= 835.470588 us avgM= 256.133311 B/' avgCEK= 1998.312154 avgOR= 2951.676848
+
+39-d1: search= 2.126600 us insert= 2.088869 us construct= 6.000000 us memory= 26.703194 MB check= 0.000000
+39-d2: search= 1.563953 us insert= 0.718981 us construct= 10.000000 us memory= 31.250069 MB check= 0.000000
+39-d3: search= 80.657192 us insert= 0.400649 us construct= 3064.000000 us memory= 31.187569 MB check= 0.000000
+39-d4: search= 1.225329 us insert= 0.752260 us construct= 3353.000000 us memory= 31.281319 MB check= 0.000000
+39-d5: search= 1.005212 us insert= 1.068412 us construct= 727.000000 us memory= 31.125069 MB check= 0.000000
+39-d6: search= 1.081429 us insert= 2.189236 us construct= 10.000000 us memory= 62.000069 MB check= 0.000000
+39-d7: search= 1.348005 us insert= 1.316705 us construct= 1274.000000 us memory= 34.640694 MB check= 0.000000
+39-d8: search= 1.360690 us insert= 1.632968 us construct= 8.000000 us memory= 62.125069 MB check= 0.000000
+39-d9: search= 1.300668 us insert= 1.689553 us construct= 10.000000 us memory= 61.421944 MB check= 0.000000
+39-d10: search= 1.229811 us insert= 2.496807 us construct= 10.000000 us memory= 62.531319 MB check= 0.000000
+39-d11: search= 1.622958 us insert= 0.951664 us construct= 2505.000000 us memory= 47.546944 MB check= 0.000000
+39-d12: search= 1.204140 us insert= 1.128280 us construct= 12.000000 us memory= 59.828194 MB check= 0.000000
+39-d13: search= 1.404338 us insert= 0.810913 us construct= 1627.000000 us memory= 44.234444 MB check= 0.000000
+39-d14: search= 1.733909 us insert= 1.229707 us construct= 12.000000 us memory= 51.796944 MB check= 0.000000
+39-d15: search= 1.569695 us insert= 0.814215 us construct= 1630.000000 us memory= 44.140694 MB check= 0.000000
+39-d16: search= 1.416752 us insert= 3.542109 us construct= 11.000000 us memory= 62.015694 MB check= 0.000000
+39-d17: search= 1.588479 us insert= 1.452990 us construct= 10.000000 us memory= 62.531319 MB check= 0.000000
+Exp39-a8-D1-S0: avgS= 6.084656 us avgI= 1.428489 us avgCST= 839.941176 us avgM= 256.133311 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+38-d1: search= 1.149273 us insert= 2.093498 us construct= 14.000000 us memory= 26.703194 MB check= 0.000000
+38-d2: search= 1.846029 us insert= 0.748829 us construct= 12.000000 us memory= 31.250069 MB check= 0.000000
+38-d3: search= 43.683317 us insert= 0.404855 us construct= 1800.000000 us memory= 31.187569 MB check= 0.000000
+38-d4: search= 1.108484 us insert= 0.759658 us construct= 2718.000000 us memory= 31.281319 MB check= 0.000000
+38-d5: search= 1.214951 us insert= 1.054731 us construct= 1146.000000 us memory= 31.125069 MB check= 0.000000
+38-d6: search= 0.612643 us insert= 2.188212 us construct= 13.000000 us memory= 62.000069 MB check= 0.000000
+38-d7: search= 1.761730 us insert= 1.344666 us construct= 14.000000 us memory= 34.640694 MB check= 0.000000
+38-d8: search= 0.698844 us insert= 1.633939 us construct= 14.000000 us memory= 62.125069 MB check= 0.000000
+38-d9: search= 0.637324 us insert= 1.670682 us construct= 13.000000 us memory= 61.421944 MB check= 0.000000
+38-d10: search= 0.627001 us insert= 2.610466 us construct= 12.000000 us memory= 62.531319 MB check= 0.000000
+38-d11: search= 0.831517 us insert= 0.991211 us construct= 12.000000 us memory= 47.546944 MB check= 0.000000
+38-d12: search= 0.454874 us insert= 1.117377 us construct= 12.000000 us memory= 59.828194 MB check= 0.000000
+38-d13: search= 1.008217 us insert= 0.850799 us construct= 13.000000 us memory= 44.234444 MB check= 0.000000
+38-d14: search= 0.824959 us insert= 1.230104 us construct= 12.000000 us memory= 51.796944 MB check= 0.000000
+38-d15: search= 0.947624 us insert= 0.852431 us construct= 11.000000 us memory= 44.140694 MB check= 0.000000
+38-d16: search= 0.614258 us insert= 3.342381 us construct= 14.000000 us memory= 62.015694 MB check= 0.000000
+38-d17: search= 0.641128 us insert= 1.485170 us construct= 14.000000 us memory= 62.531319 MB check= 0.000000
+Exp38-a8-D2-S1: avgS= 3.450716 us avgI= 1.434059 us avgCST= 343.764706 us avgM= 256.133311 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+37-d1: search= 1.381622 us insert= 2.083379 us construct= 6.000000 us memory= 26.703194 MB check= 22.240367
+37-d2: search= 2.136661 us insert= 0.733889 us construct= 8.000000 us memory= 31.250069 MB check= 10.852815
+37-d3: search= 44.353694 us insert= 0.392878 us construct= 1747.000000 us memory= 31.187569 MB check= 26452.764531
+37-d4: search= 1.401470 us insert= 0.763955 us construct= 2938.000000 us memory= 31.281319 MB check= 1.000000
+37-d5: search= 1.463418 us insert= 1.081818 us construct= 1148.000000 us memory= 31.125069 MB check= 8.715142
+37-d6: search= 0.817288 us insert= 2.182260 us construct= 12.000000 us memory= 62.000069 MB check= 1.000000
+37-d7: search= 2.082636 us insert= 1.363113 us construct= 13.000000 us memory= 34.640694 MB check= 4.123509
+37-d8: search= 0.942929 us insert= 1.629571 us construct= 14.000000 us memory= 62.125069 MB check= 1.000000
+37-d9: search= 0.835826 us insert= 1.691088 us construct= 13.000000 us memory= 61.421944 MB check= 1.044258
+37-d10: search= 0.864240 us insert= 2.508256 us construct= 14.000000 us memory= 62.531319 MB check= 1.000000
+37-d11: search= 1.058388 us insert= 0.999589 us construct= 14.000000 us memory= 47.546944 MB check= 4.096712
+37-d12: search= 0.620706 us insert= 1.132440 us construct= 13.000000 us memory= 59.828194 MB check= 1.011234
+37-d13: search= 1.285616 us insert= 0.890260 us construct= 11.000000 us memory= 44.234444 MB check= 1.035641
+37-d14: search= 1.083409 us insert= 1.241111 us construct= 11.000000 us memory= 51.796944 MB check= 1.004636
+37-d15: search= 1.170910 us insert= 0.854163 us construct= 13.000000 us memory= 44.140694 MB check= 1.452943
+37-d16: search= 0.845470 us insert= 3.333238 us construct= 13.000000 us memory= 62.015694 MB check= 1.000000
+37-d17: search= 0.878327 us insert= 1.453717 us construct= 11.000000 us memory= 62.531319 MB check= 1.000000
+DEBUGExp37-a8-D2-S1: avgS= 3.718977 us avgI= 1.431454 us avgCST= 352.882353 us avgM= 256.133311 B/' avgCEK= 1559.667164 avgOR= 1912.882189
+
+36-d1: search= 0.752981 us insert= 2.072958 us construct= 4.000000 us memory= 26.703194 MB check= 0.000000
+36-d2: search= 1.015248 us insert= 0.723609 us construct= 6.000000 us memory= 31.250069 MB check= 0.000000
+36-d3: search= 43.891720 us insert= 0.401964 us construct= 1649.000000 us memory= 31.187569 MB check= 0.000000
+36-d4: search= 1.028363 us insert= 0.758010 us construct= 2722.000000 us memory= 31.281319 MB check= 0.000000
+36-d5: search= 0.963540 us insert= 1.082862 us construct= 1155.000000 us memory= 31.125069 MB check= 0.000000
+36-d6: search= 0.513049 us insert= 2.204968 us construct= 16.000000 us memory= 62.000069 MB check= 0.000000
+36-d7: search= 0.813416 us insert= 1.355124 us construct= 14.000000 us memory= 34.640694 MB check= 0.000000
+36-d8: search= 0.559128 us insert= 1.622366 us construct= 13.000000 us memory= 62.125069 MB check= 0.000000
+36-d9: search= 0.506116 us insert= 1.660174 us construct= 14.000000 us memory= 61.421944 MB check= 0.000000
+36-d10: search= 0.557953 us insert= 2.558791 us construct= 13.000000 us memory= 62.531319 MB check= 0.000000
+36-d11: search= 0.684234 us insert= 1.005455 us construct= 11.000000 us memory= 47.546944 MB check= 0.000000
+36-d12: search= 0.401076 us insert= 1.146041 us construct= 12.000000 us memory= 59.828194 MB check= 0.000000
+36-d13: search= 0.959711 us insert= 0.850402 us construct= 11.000000 us memory= 44.234444 MB check= 0.000000
+36-d14: search= 0.676269 us insert= 1.238385 us construct= 12.000000 us memory= 51.796944 MB check= 0.000000
+36-d15: search= 0.800408 us insert= 0.848690 us construct= 10.000000 us memory= 44.140694 MB check= 0.000000
+36-d16: search= 0.516604 us insert= 3.543455 us construct= 11.000000 us memory= 62.015694 MB check= 0.000000
+36-d17: search= 0.561331 us insert= 1.455444 us construct= 13.000000 us memory= 62.531319 MB check= 0.000000
+Exp36-a8-D2-S0: avgS= 3.247126 us avgI= 1.442865 us avgCST= 334.470588 us avgM= 256.133311 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+35-d1: search= 0.762471 us insert= 2.172531 us construct= 11.000000 us memory= 26.924858 MB check= 0.000000
+35-d2: search= 0.992482 us insert= 0.715095 us construct= 20.000000 us memory= 31.509476 MB check= 0.000000
+35-d3: search= 29.000060 us insert= 0.398784 us construct= 670.000000 us memory= 31.446457 MB check= 0.000000
+35-d4: search= 1.030205 us insert= 0.742236 us construct= 3170.000000 us memory= 31.540985 MB check= 0.000000
+35-d5: search= 0.943471 us insert= 1.075327 us construct= 1160.000000 us memory= 31.383438 MB check= 0.000000
+35-d6: search= 0.514354 us insert= 2.317952 us construct= 22.000000 us memory= 62.514725 MB check= 0.000000
+35-d7: search= 0.788508 us insert= 1.334694 us construct= 1655.000000 us memory= 34.928246 MB check= 0.000000
+35-d8: search= 0.563769 us insert= 1.704197 us construct= 22.000000 us memory= 62.640762 MB check= 0.000000
+35-d9: search= 0.512653 us insert= 1.733441 us construct= 17.000000 us memory= 61.931801 MB check= 0.000000
+35-d10: search= 0.509352 us insert= 2.624392 us construct= 20.000000 us memory= 63.050385 MB check= 0.000000
+35-d11: search= 0.649702 us insert= 0.998598 us construct= 17.000000 us memory= 47.941628 MB check= 0.000000
+35-d12: search= 0.399830 us insert= 1.153834 us construct= 22.000000 us memory= 60.324821 MB check= 0.000000
+35-d13: search= 0.942094 us insert= 0.850037 us construct= 15.000000 us memory= 44.601631 MB check= 0.000000
+35-d14: search= 0.689347 us insert= 1.270847 us construct= 20.000000 us memory= 52.226906 MB check= 0.000000
+35-d15: search= 0.805510 us insert= 0.860671 us construct= 15.000000 us memory= 44.507103 MB check= 0.000000
+35-d16: search= 0.517797 us insert= 3.448972 us construct= 19.000000 us memory= 62.530479 MB check= 0.000000
+35-d17: search= 0.563412 us insert= 1.487412 us construct= 17.000000 us memory= 63.050385 MB check= 0.000000
+Exp35-a9-D2-S0: avgS= 2.363824 us avgI= 1.464060 us avgCST= 405.411765 us avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+34-d1: search= 0.696956 us insert= 2.725013 us construct= 15.000000 us memory= 33.600655 MB check= 0.000000
+34-d2: search= 0.822734 us insert= 1.151533 us construct= 10.000000 us memory= 39.321991 MB check= 0.000000
+34-d3: search= 3.553191 us insert= 0.692570 us construct= 12.000000 us memory= 39.243347 MB check= 0.000000
+34-d4: search= 1.651438 us insert= 0.901946 us construct= 11.000000 us memory= 39.361313 MB check= 0.000000
+34-d5: search= 0.686487 us insert= 1.485036 us construct= 14.000000 us memory= 39.164703 MB check= 0.000000
+34-d6: search= 0.526398 us insert= 3.099443 us construct= 18.000000 us memory= 78.014740 MB check= 0.000000
+34-d7: search= 0.803045 us insert= 1.590098 us construct= 14.000000 us memory= 43.588417 MB check= 0.000000
+34-d8: search= 0.602278 us insert= 2.526143 us construct= 16.000000 us memory= 78.172028 MB check= 0.000000
+34-d9: search= 0.549410 us insert= 2.664353 us construct= 25.000000 us memory= 77.287285 MB check= 0.000000
+34-d10: search= 0.514781 us insert= 3.190843 us construct= 17.000000 us memory= 78.683212 MB check= 0.000000
+34-d11: search= 0.639174 us insert= 1.226360 us construct= 21.000000 us memory= 59.828362 MB check= 0.000000
+34-d12: search= 0.397227 us insert= 1.282293 us construct= 16.000000 us memory= 75.281868 MB check= 0.000000
+34-d13: search= 0.944501 us insert= 1.041830 us construct= 18.000000 us memory= 55.660240 MB check= 0.000000
+34-d14: search= 0.676566 us insert= 1.877072 us construct= 21.000000 us memory= 65.176140 MB check= 0.000000
+34-d15: search= 0.801651 us insert= 1.077401 us construct= 20.000000 us memory= 55.542274 MB check= 0.000000
+34-d16: search= 0.523728 us insert= 3.682045 us construct= 21.000000 us memory= 78.034401 MB check= 0.000000
+34-d17: search= 0.560162 us insert= 2.087535 us construct= 16.000000 us memory= 78.683212 MB check= 0.000000
+Exp34-a11-D2-S0: avgS= 0.879396 us avgI= 1.900089 us avgCST= 16.764706 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+33-d1: search= 0.685481 us insert= 4.643537 us construct= 9.000000 us memory= 26.924858 MB check= 0.000000
+33-d2: search= 1.589409 us insert= 1.421646 us construct= 11.000000 us memory= 31.509476 MB check= 0.000000
+33-d3: search= 0.524076 us insert= 0.689288 us construct= 746.000000 us memory= 31.446457 MB check= 0.000000
+33-d4: search= 1.762334 us insert= 1.318482 us construct= 3087.000000 us memory= 31.540985 MB check= 0.000000
+33-d5: search= 1.513386 us insert= 1.987701 us construct= 1166.000000 us memory= 31.383438 MB check= 0.000000
+33-d6: search= 1.569958 us insert= 8.970912 us construct= 21.000000 us memory= 62.514725 MB check= 0.000000
+33-d7: search= 0.894461 us insert= 4.580282 us construct= 1624.000000 us memory= 34.928246 MB check= 0.000000
+33-d8: search= 2.296106 us insert= 7.517947 us construct= 21.000000 us memory= 62.640762 MB check= 0.000000
+33-d9: search= 2.119198 us insert= 7.187241 us construct= 23.000000 us memory= 61.931801 MB check= 0.000000
+33-d10: search= 1.177772 us insert= 9.026551 us construct= 22.000000 us memory= 63.050385 MB check= 0.000000
+33-d11: search= 2.204739 us insert= 3.363068 us construct= 22.000000 us memory= 47.941628 MB check= 0.000000
+33-d12: search= 1.751845 us insert= 3.200137 us construct= 23.000000 us memory= 60.324821 MB check= 0.000000
+33-d13: search= 1.691318 us insert= 2.556342 us construct= 19.000000 us memory= 44.601631 MB check= 0.000000
+33-d14: search= 2.168987 us insert= 3.859330 us construct= 22.000000 us memory= 52.226906 MB check= 0.000000
+33-d15: search= 2.016454 us insert= 2.639802 us construct= 19.000000 us memory= 44.507103 MB check= 0.000000
+33-d16: search= 1.673323 us insert= 7.179669 us construct= 21.000000 us memory= 62.530479 MB check= 0.000000
+33-d17: search= 1.485619 us insert= 5.538834 us construct= 22.000000 us memory= 63.050385 MB check= 0.000000
+Exp33-a9-D2-S1: avgS= 1.595557 us avgI= 4.451810 us avgCST= 404.588235 us avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+32-d1: search= 0.818708 us insert= 2.123445 us construct= 8.000000 us memory= 26.924858 MB check= 0.000000
+32-d2: search= 1.021946 us insert= 0.743521 us construct= 13.000000 us memory= 31.509476 MB check= 0.000000
+32-d3: search= 26.650817 us insert= 0.407385 us construct= 640.000000 us memory= 31.446457 MB check= 0.000000
+32-d4: search= 1.148293 us insert= 0.752268 us construct= 3254.000000 us memory= 31.540985 MB check= 0.000000
+32-d5: search= 0.936727 us insert= 1.006083 us construct= 1190.000000 us memory= 31.383438 MB check= 0.000000
+32-d6: search= 0.510692 us insert= 2.276213 us construct= 21.000000 us memory= 62.514725 MB check= 0.000000
+32-d7: search= 0.808731 us insert= 1.205498 us construct= 1641.000000 us memory= 34.928246 MB check= 0.000000
+32-d8: search= 0.579409 us insert= 1.686637 us construct= 20.000000 us memory= 62.640762 MB check= 0.000000
+32-d9: search= 0.509536 us insert= 1.718065 us construct= 23.000000 us memory= 61.931801 MB check= 0.000000
+32-d10: search= 0.511895 us insert= 2.600033 us construct= 21.000000 us memory= 63.050385 MB check= 0.000000
+32-d11: search= 0.681534 us insert= 1.002075 us construct= 15.000000 us memory= 47.941628 MB check= 0.000000
+32-d12: search= 0.398795 us insert= 1.134211 us construct= 20.000000 us memory= 60.324821 MB check= 0.000000
+32-d13: search= 1.042091 us insert= 0.850424 us construct= 15.000000 us memory= 44.601631 MB check= 0.000000
+32-d14: search= 0.679328 us insert= 1.260631 us construct= 22.000000 us memory= 52.226906 MB check= 0.000000
+32-d15: search= 0.871878 us insert= 0.868280 us construct= 17.000000 us memory= 44.507103 MB check= 0.000000
+32-d16: search= 0.531027 us insert= 3.440998 us construct= 17.000000 us memory= 62.530479 MB check= 0.000000
+32-d17: search= 0.559129 us insert= 1.495061 us construct= 17.000000 us memory= 63.050385 MB check= 0.000000
+Exp32-a9-D2: avgS= 2.250620 us avgI= 1.445343 us avgCST= 409.058824 us avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+31-D1: search= 0.857187 us insert= 2.074472 us construct= 18.000000 us memory= 78.683212 MB check= 0.000000
+31-D2: search= 0.773343 us insert= 2.078949 us construct= 19.000000 us memory= 78.683212 MB check= 0.000000
+31-D3: search= 0.551963 us insert= 2.068539 us construct= 28.000000 us memory= 78.683212 MB check= 0.000000
+31-D4: search= 0.564876 us insert= 2.038933 us construct= 14.000000 us memory= 78.683212 MB check= 0.000000
+31-D5: search= 0.355056 us insert= 2.040644 us construct= 18.000000 us memory= 78.683212 MB check= 0.000000
+31-D6: search= 0.538037 us insert= 2.041347 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+31-D7: search= 0.624982 us insert= 2.052894 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000
+31-D8: search= 0.545188 us insert= 2.050762 us construct= 18.000000 us memory= 78.683212 MB check= 0.000000
+31-D9: search= 0.502017 us insert= 2.053972 us construct= 22.000000 us memory= 78.683212 MB check= 0.000000
+31-D10: search= 0.539378 us insert= 2.083039 us construct= 15.000000 us memory= 78.683212 MB check= 0.000000
+31-D11: search= 0.482496 us insert= 2.071621 us construct= 19.000000 us memory= 78.683212 MB check= 0.000000
+Exp31-a11-D3: avgS= 0.575866 us avgI= 2.059561 us avgCST= 18.454545 us avgM= 322.285179 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+30-D1: search= 0.834165 us insert= 1.495803 us construct= 8.000000 us memory= 62.531319 MB check= 0.000000
+30-D2: search= 0.711928 us insert= 1.455600 us construct= 6.000000 us memory= 62.531319 MB check= 0.000000
+30-D3: search= 0.587764 us insert= 1.450682 us construct= 15.000000 us memory= 62.531319 MB check= 0.000000
+30-D4: search= 0.611103 us insert= 1.475897 us construct= 18.000000 us memory= 62.531319 MB check= 0.000000
+30-D5: search= 0.353490 us insert= 1.471115 us construct= 14.000000 us memory= 62.531319 MB check= 0.000000
+30-D6: search= 0.572055 us insert= 1.478174 us construct= 15.000000 us memory= 62.531319 MB check= 0.000000
+30-D7: search= 0.623306 us insert= 1.472518 us construct= 7.000000 us memory= 62.531319 MB check= 0.000000
+30-D8: search= 0.547938 us insert= 1.464619 us construct= 9.000000 us memory= 62.531319 MB check= 0.000000
+30-D9: search= 0.518516 us insert= 1.470596 us construct= 16.000000 us memory= 62.531319 MB check= 0.000000
+30-D10: search= 0.533438 us insert= 1.441362 us construct= 6.000000 us memory= 62.531319 MB check= 0.000000
+30-D11: search= 0.473908 us insert= 1.453377 us construct= 10.000000 us memory= 62.531319 MB check= 0.000000
+Exp30-a8-D3: avgS= 0.578874 us avgI= 1.466340 us avgCST= 11.272727 us avgM= 256.127281 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+29-D1: search= 0.630015 us insert= 1.479502 us construct= 13.000000 us memory= 63.050385 MB check= 0.000000
+29-D2: search= 0.715240 us insert= 1.487654 us construct= 11.000000 us memory= 63.050385 MB check= 0.000000
+29-D3: search= 0.587786 us insert= 1.482822 us construct= 21.000000 us memory= 63.050385 MB check= 0.000000
+29-D4: search= 0.578902 us insert= 1.510100 us construct= 13.000000 us memory= 63.050385 MB check= 0.000000
+29-D5: search= 0.356459 us insert= 1.491932 us construct= 19.000000 us memory= 63.050385 MB check= 0.000000
+29-D6: search= 0.550908 us insert= 1.497686 us construct= 18.000000 us memory= 63.050385 MB check= 0.000000
+29-D7: search= 0.631579 us insert= 1.583271 us construct= 11.000000 us memory= 63.050385 MB check= 0.000000
+29-D8: search= 0.567239 us insert= 1.482881 us construct= 20.000000 us memory= 63.050385 MB check= 0.000000
+29-D9: search= 0.505032 us insert= 1.492268 us construct= 21.000000 us memory= 63.050385 MB check= 0.000000
+29-D10: search= 0.543694 us insert= 1.517775 us construct= 13.000000 us memory= 63.050385 MB check= 0.000000
+29-D11: search= 0.479617 us insert= 1.512064 us construct= 16.000000 us memory= 63.050385 MB check= 0.000000
+Exp29-a9-D3: avgS= 0.558770 us avgI= 1.503450 us avgCST= 16.000000 us avgM= 258.253366 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+28-D1: search= 1.876108 us insert= 6.280261 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000
+28-D2: search= 1.935507 us insert= 6.405690 us construct= 14.000000 us memory= 78.683212 MB check= 0.000000
+28-D3: search= 1.351579 us insert= 6.322667 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+28-D4: search= 1.469604 us insert= 6.553834 us construct= 14.000000 us memory= 78.683212 MB check= 0.000000
+28-D5: search= 1.788012 us insert= 6.972609 us construct= 18.000000 us memory= 78.683212 MB check= 0.000000
+28-D6: search= 1.260412 us insert= 6.427866 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+28-D7: search= 1.157072 us insert= 6.695880 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000
+28-D8: search= 0.992505 us insert= 6.411389 us construct= 20.000000 us memory= 78.683212 MB check= 0.000000
+28-D9: search= 1.196923 us insert= 6.505103 us construct= 20.000000 us memory= 78.683212 MB check= 0.000000
+28-D10: search= 1.378107 us insert= 6.471518 us construct= 15.000000 us memory= 78.683212 MB check= 0.000000
+28-D11: search= 1.394548 us insert= 6.364545 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+Exp28-a11-D11: avgS= 1.436398 us avgI= 6.491942 us avgCST= 17.090909 us avgM= 322.285179 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+27-D1: search= 0.916796 us insert= 2.680089 us construct= 13.000000 us memory= 33.600655 MB check= 4.398066
+27-D2: search= 1.106603 us insert= 1.169521 us construct= 16.000000 us memory= 39.321991 MB check= 1.638760
+27-D3: search= 3.846396 us insert= 0.659249 us construct= 11.000000 us memory= 39.243347 MB check= 46.812441
+27-D4: search= 1.738727 us insert= 0.959977 us construct= 15.000000 us memory= 39.361313 MB check= 1.000000
+27-D5: search= 0.930769 us insert= 1.470201 us construct= 14.000000 us memory= 39.164703 MB check= 1.022844
+27-D6: search= 0.737553 us insert= 3.010375 us construct= 17.000000 us memory= 78.014740 MB check= 1.000000
+27-D7: search= 1.079215 us insert= 1.587771 us construct= 14.000000 us memory= 43.588417 MB check= 1.417513
+27-D8: search= 0.854126 us insert= 2.553047 us construct= 17.000000 us memory= 78.172028 MB check= 1.000000
+27-D9: search= 0.785751 us insert= 2.569054 us construct= 27.000000 us memory= 77.287285 MB check= 1.003914
+27-D10: search= 0.772067 us insert= 3.296991 us construct= 33.000000 us memory= 78.683212 MB check= 1.000000
+27-D11: search= 0.944010 us insert= 1.285134 us construct= 27.000000 us memory= 59.828362 MB check= 1.049719
+27-D12: search= 0.596387 us insert= 1.293593 us construct= 26.000000 us memory= 75.281868 MB check= 1.004136
+27-D13: search= 1.361637 us insert= 1.091801 us construct= 24.000000 us memory= 55.660240 MB check= 1.015143
+27-D14: search= 0.970254 us insert= 1.911137 us construct= 27.000000 us memory= 65.176140 MB check= 1.000157
+27-D15: search= 1.122173 us insert= 1.110398 us construct= 25.000000 us memory= 55.542274 MB check= 1.111330
+27-D16: search= 0.761641 us insert= 3.625955 us construct= 25.000000 us memory= 78.034401 MB check= 1.000000
+27-D17: search= 0.800327 us insert= 2.110859 us construct= 21.000000 us memory= 78.683212 MB check= 1.000000
+DEBUGExp27-a11-D17: avgS= 1.136731 us avgI= 1.905009 us avgCST= 20.705882 us avgM= 322.292775 B/' avgCEK= 3.969060 avgOR= 1944.057796
+
+26-D1: search= 0.781180 us insert= 3.335941 us construct= 18.000000 us memory= 33.600655 MB check= 0.000000
+26-D2: search= 0.889127 us insert= 1.170671 us construct= 22.000000 us memory= 39.321991 MB check= 0.000000
+26-D3: search= 3.556682 us insert= 0.655967 us construct= 16.000000 us memory= 39.243347 MB check= 0.000000
+26-D4: search= 1.660865 us insert= 0.919157 us construct= 15.000000 us memory= 39.361313 MB check= 0.000000
+26-D5: search= 0.684129 us insert= 1.501880 us construct= 18.000000 us memory= 39.164703 MB check= 0.000000
+26-D6: search= 0.519363 us insert= 3.052288 us construct= 16.000000 us memory= 78.014740 MB check= 0.000000
+26-D7: search= 0.840880 us insert= 1.576692 us construct= 16.000000 us memory= 43.588417 MB check= 0.000000
+26-D8: search= 0.591429 us insert= 2.503328 us construct= 18.000000 us memory= 78.172028 MB check= 0.000000
+26-D9: search= 0.536648 us insert= 2.600930 us construct= 22.000000 us memory= 77.287285 MB check= 0.000000
+26-D10: search= 0.532751 us insert= 3.289307 us construct= 22.000000 us memory= 78.683212 MB check= 0.000000
+26-D11: search= 0.661602 us insert= 1.247615 us construct= 23.000000 us memory= 59.828362 MB check= 0.000000
+26-D12: search= 0.404671 us insert= 1.284649 us construct= 19.000000 us memory= 75.281868 MB check= 0.000000
+26-D13: search= 0.956325 us insert= 1.042057 us construct= 20.000000 us memory= 55.660240 MB check= 0.000000
+26-D14: search= 0.719696 us insert= 1.904412 us construct= 18.000000 us memory= 65.176140 MB check= 0.000000
+26-D15: search= 0.850154 us insert= 1.085292 us construct= 21.000000 us memory= 55.542274 MB check= 0.000000
+26-D16: search= 0.535690 us insert= 3.811168 us construct= 22.000000 us memory= 78.034401 MB check= 0.000000
+26-D17: search= 0.573787 us insert= 2.113515 us construct= 21.000000 us memory= 78.683212 MB check= 0.000000
+Exp26-a11-D17: avgS= 0.899705 us avgI= 1.946757 us avgCST= 19.235294 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+25-D1: search= 1.062997 us insert= 2.733000 us construct= 18.000000 us memory= 33.600655 MB check= 0.000000
+25-D2: search= 1.581401 us insert= 1.125507 us construct= 13.000000 us memory= 39.321991 MB check= 0.000000
+25-D3: search= 3.536272 us insert= 0.640858 us construct= 20.000000 us memory= 39.243347 MB check= 0.000000
+25-D4: search= 1.670136 us insert= 0.889610 us construct= 11.000000 us memory= 39.361313 MB check= 0.000000
+25-D5: search= 0.892513 us insert= 1.471850 us construct= 14.000000 us memory= 39.164703 MB check= 0.000000
+25-D6: search= 0.590134 us insert= 3.069126 us construct= 19.000000 us memory= 78.014740 MB check= 0.000000
+25-D7: search= 1.667770 us insert= 1.572355 us construct= 13.000000 us memory= 43.588417 MB check= 0.000000
+25-D8: search= 0.700537 us insert= 2.851059 us construct= 15.000000 us memory= 78.172028 MB check= 0.000000
+25-D9: search= 0.604108 us insert= 2.514876 us construct= 23.000000 us memory= 77.287285 MB check= 0.000000
+25-D10: search= 0.600756 us insert= 3.195249 us construct= 19.000000 us memory= 78.683212 MB check= 0.000000
+25-D11: search= 0.809250 us insert= 1.226411 us construct= 18.000000 us memory= 59.828362 MB check= 0.000000
+25-D12: search= 0.449571 us insert= 1.267329 us construct= 17.000000 us memory= 75.281868 MB check= 0.000000
+25-D13: search= 1.014196 us insert= 1.046641 us construct= 18.000000 us memory= 55.660240 MB check= 0.000000
+25-D14: search= 0.820649 us insert= 1.868503 us construct= 20.000000 us memory= 65.176140 MB check= 0.000000
+25-D15: search= 0.924852 us insert= 1.072902 us construct= 20.000000 us memory= 55.542274 MB check= 0.000000
+25-D16: search= 0.585909 us insert= 3.648015 us construct= 21.000000 us memory= 78.034401 MB check= 0.000000
+25-D17: search= 0.623436 us insert= 2.083769 us construct= 19.000000 us memory= 78.683212 MB check= 0.000000
+Exp25-a11-D17: avgS= 1.066734 us avgI= 1.898651 us avgCST= 17.529412 us avgM= 322.292775 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+24-D1: search= 1.231173 us insert= 2.778729 us construct= 17.000000 us memory= 33.600655 MB check= 4.398066
+24-D2: search= 2.066740 us insert= 1.161923 us construct= 21.000000 us memory= 39.321991 MB check= 1.638760
+24-D3: search= 3.867988 us insert= 0.659891 us construct= 30.000000 us memory= 39.243347 MB check= 46.812441
+24-D4: search= 1.772141 us insert= 0.942336 us construct= 20.000000 us memory= 39.361313 MB check= 1.000000
+24-D5: search= 1.195055 us insert= 1.512963 us construct= 20.000000 us memory= 39.164703 MB check= 1.022844
+24-D6: search= 0.865683 us insert= 3.067235 us construct= 21.000000 us memory= 78.014740 MB check= 1.000000
+24-D7: search= 2.198041 us insert= 1.603792 us construct= 19.000000 us memory= 43.588417 MB check= 1.417513
+24-D8: search= 0.995618 us insert= 2.659124 us construct= 18.000000 us memory= 78.172028 MB check= 1.000000
+24-D9: search= 0.897679 us insert= 2.558971 us construct= 26.000000 us memory= 77.287285 MB check= 1.003914
+24-D10: search= 0.855016 us insert= 3.232730 us construct= 19.000000 us memory= 78.683212 MB check= 1.000000
+24-D11: search= 1.054944 us insert= 1.246480 us construct= 20.000000 us memory= 59.828362 MB check= 1.049719
+24-D12: search= 0.649771 us insert= 1.315240 us construct= 20.000000 us memory= 75.281868 MB check= 1.004136
+24-D13: search= 1.402477 us insert= 1.071676 us construct= 20.000000 us memory= 55.660240 MB check= 1.015143
+24-D14: search= 1.064534 us insert= 1.877454 us construct= 17.000000 us memory= 65.176140 MB check= 1.000157
+24-D15: search= 1.225028 us insert= 1.097676 us construct= 20.000000 us memory= 55.542274 MB check= 1.111330
+24-D16: search= 0.822716 us insert= 3.569204 us construct= 22.000000 us memory= 78.034401 MB check= 1.000000
+24-D17: search= 0.880962 us insert= 2.080445 us construct= 21.000000 us memory= 78.683212 MB check= 1.000000
+DEBUGExp24-a11-D17: avgS= 1.355622 us avgI= 1.907992 us avgCST= 20.647059 us avgM= 322.292775 B/' avgCEK= 3.969060 avgOR= 1944.057796
+
+23-D1: search= 1.271783 us insert= 2.692011 us construct= 11.000000 us memory= 33.600655 MB check= 4.398066
+23-D2: search= 1.898661 us insert= 1.161008 us construct= 16.000000 us memory= 39.321991 MB check= 1.638760
+23-D3: search= 3.772605 us insert= 0.655051 us construct= 17.000000 us memory= 39.243347 MB check= 46.812441
+23-D4: search= 1.764976 us insert= 0.907055 us construct= 13.000000 us memory= 39.361313 MB check= 1.000000
+23-D5: search= 1.153042 us insert= 1.466363 us construct= 15.000000 us memory= 39.164703 MB check= 1.022844
+23-D6: search= 0.826353 us insert= 3.078004 us construct= 19.000000 us memory= 78.014740 MB check= 1.000000
+23-D7: search= 1.984311 us insert= 1.601670 us construct= 16.000000 us memory= 43.588417 MB check= 1.417513
+23-D8: search= 0.930538 us insert= 2.562033 us construct= 17.000000 us memory= 78.172028 MB check= 1.000000
+23-D9: search= 0.840638 us insert= 2.593543 us construct= 22.000000 us memory= 77.287285 MB check= 1.003914
+23-D10: search= 0.834646 us insert= 3.229831 us construct= 18.000000 us memory= 78.683212 MB check= 1.000000
+23-D11: search= 1.018090 us insert= 1.211936 us construct= 21.000000 us memory= 59.828362 MB check= 1.049719
+23-D12: search= 0.948416 us insert= 1.391588 us construct= 21.000000 us memory= 75.281868 MB check= 1.004136
+23-D13: search= 1.295041 us insert= 1.048204 us construct= 19.000000 us memory= 55.660240 MB check= 1.015143
+23-D14: search= 1.081100 us insert= 1.896116 us construct= 21.000000 us memory= 65.176140 MB check= 1.000157
+23-D15: search= 1.164944 us insert= 1.079863 us construct= 19.000000 us memory= 55.542274 MB check= 1.111330
+23-D16: search= 0.878249 us insert= 3.781296 us construct= 22.000000 us memory= 78.034401 MB check= 1.000000
+23-D17: search= 0.896954 us insert= 2.101457 us construct= 18.000000 us memory= 78.683212 MB check= 1.000000
+Exp23-a11-D17: avgS= 1.327079 us avgI= 1.909237 us avgCST= 17.941176 us avgM= 322.292775 B/' avgCEK= 3.969060 avgOR= 1944.057796
+
+22-D1: search= 1.140426 us insert= 4.578576 us construct= 11.000000 us memory= 26.924858 MB check= 0.000000
+22-D2: search= 3.411796 us insert= 1.383440 us construct= 15.000000 us memory= 31.509476 MB check= 0.000000
+22-D3: search= 0.637292 us insert= 0.708423 us construct= 669.000000 us memory= 31.446457 MB check= 0.000000
+22-D4: search= 1.851910 us insert= 1.428848 us construct= 2852.000000 us memory= 31.540985 MB check= 0.000000
+22-D5: search= 2.207951 us insert= 2.004027 us construct= 1155.000000 us memory= 31.383438 MB check= 0.000000
+22-D6: search= 2.657743 us insert= 9.144621 us construct= 24.000000 us memory= 62.514725 MB check= 0.000000
+22-D7: search= 2.296575 us insert= 4.345089 us construct= 1612.000000 us memory= 34.928246 MB check= 0.000000
+22-D8: search= 4.024864 us insert= 7.652827 us construct= 25.000000 us memory= 62.640762 MB check= 0.000000
+22-D9: search= 3.985288 us insert= 7.581185 us construct= 20.000000 us memory= 61.931801 MB check= 0.000000
+22-D10: search= 2.299043 us insert= 10.243772 us construct= 20.000000 us memory= 63.050385 MB check= 0.000000
+22-D11: search= 3.160948 us insert= 3.868223 us construct= 20.000000 us memory= 47.941628 MB check= 0.000000
+22-D12: search= 2.710899 us insert= 3.515569 us construct= 20.000000 us memory= 60.324821 MB check= 0.000000
+22-D13: search= 2.075216 us insert= 2.893773 us construct= 21.000000 us memory= 44.601631 MB check= 0.000000
+22-D14: search= 3.262442 us insert= 4.078657 us construct= 20.000000 us memory= 52.226906 MB check= 0.000000
+22-D15: search= 2.699486 us insert= 2.752608 us construct= 18.000000 us memory= 44.507103 MB check= 0.000000
+22-D16: search= 2.862536 us insert= 7.825415 us construct= 19.000000 us memory= 62.530479 MB check= 0.000000
+22-D17: search= 2.223381 us insert= 6.158015 us construct= 23.000000 us memory= 63.050385 MB check= 0.000000
+Exp22-a9-D17: avgS= 2.559282 us avgI= 4.715475 us avgCST= 384.941176 us avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+21-D1: search= 2.117183 us insert= 5.965863 us construct= 0.000015 s memory= 33.600655 MB check= 4.527881
+21-D2: search= 4.556040 us insert= 2.446741 us construct= 0.000016 s memory= 39.321991 MB check= 1.802198
+21-D3: search= 4.029158 us insert= 1.266331 us construct= 0.000016 s memory= 39.243347 MB check= 47.663924
+21-D4: search= 3.117607 us insert= 2.176233 us construct= 0.000012 s memory= 39.361313 MB check= 0.814368
+21-D5: search= 3.144917 us insert= 4.198116 us construct= 0.000016 s memory= 39.164703 MB check= 1.274988
+21-D6: search= 4.200132 us insert= 10.489416 us construct= 0.000019 s memory= 78.014740 MB check= 2.534049
+21-D7: search= 3.311508 us insert= 5.312615 us construct= 0.000015 s memory= 43.588417 MB check= 1.677862
+21-D8: search= 6.154171 us insert= 9.550621 us construct= 0.000030 s memory= 78.172028 MB check= 5.318391
+21-D9: search= 5.837050 us insert= 8.994203 us construct= 0.000018 s memory= 77.287285 MB check= 3.512373
+21-D10: search= 3.003625 us insert= 10.665673 us construct= 0.000019 s memory= 78.683212 MB check= 0.259093
+21-D11: search= 4.419489 us insert= 4.739918 us construct= 0.000021 s memory= 59.828362 MB check= 7.012160
+21-D12: search= 3.829494 us insert= 4.460057 us construct= 0.000019 s memory= 75.281868 MB check= 1.820187
+21-D13: search= 2.979427 us insert= 3.897424 us construct= 0.000020 s memory= 55.660240 MB check= 5.937732
+21-D14: search= 4.908762 us insert= 6.214210 us construct= 0.000019 s memory= 65.176140 MB check= 8.293702
+21-D15: search= 3.885289 us insert= 3.949189 us construct= 0.000020 s memory= 55.542274 MB check= 5.481716
+21-D16: search= 4.093996 us insert= 8.633244 us construct= 0.000019 s memory= 78.034401 MB check= 2.835328
+21-D17: search= 2.976590 us insert= 7.033418 us construct= 0.000022 s memory= 78.683212 MB check= 1.403013
+Exp21-a11: avgS= 3.915555 us avgI= 5.881957 us avgCST= 0.000019 s avgM= 322.292775 B/' avgCEK= 6.009939 avgOR= 3992.134022
+
+20-D1: search= 1.180013 us insert= 2.767796 us construct= 0.000012 s memory= 33.600655 MB check= 4.398066
+20-D2: search= 1.602182 us insert= 1.136679 us construct= 0.000012 s memory= 39.321991 MB check= 1.638760
+20-D3: search= 4.051463 us insert= 0.644876 us construct= 0.000014 s memory= 39.243347 MB check= 46.812441
+20-D4: search= 1.811945 us insert= 0.900376 us construct= 0.000012 s memory= 39.361313 MB check= 1.000000
+20-D5: search= 1.236223 us insert= 1.470139 us construct= 0.000013 s memory= 39.164703 MB check= 1.022844
+20-D6: search= 1.170506 us insert= 3.100187 us construct= 0.000016 s memory= 78.014740 MB check= 1.000000
+20-D7: search= 1.447209 us insert= 1.598285 us construct= 0.000016 s memory= 43.588417 MB check= 1.417513
+20-D8: search= 1.232297 us insert= 2.552422 us construct= 0.000018 s memory= 78.172028 MB check= 1.000000
+20-D9: search= 1.147497 us insert= 2.566263 us construct= 0.000019 s memory= 77.287285 MB check= 1.003914
+20-D10: search= 1.149109 us insert= 3.233648 us construct= 0.000020 s memory= 78.683212 MB check= 1.000000
+20-D11: search= 1.130947 us insert= 1.236361 us construct= 0.000020 s memory= 59.828362 MB check= 1.049719
+20-D12: search= 0.939243 us insert= 1.309003 us construct= 0.000021 s memory= 75.281868 MB check= 1.004136
+20-D13: search= 1.574170 us insert= 1.088869 us construct= 0.000020 s memory= 55.660240 MB check= 1.015143
+20-D14: search= 1.306023 us insert= 1.887363 us construct= 0.000019 s memory= 65.176140 MB check= 1.000157
+20-D15: search= 1.309461 us insert= 1.096193 us construct= 0.000019 s memory= 55.542274 MB check= 1.111330
+20-D16: search= 1.180795 us insert= 3.648602 us construct= 0.000019 s memory= 78.034401 MB check= 1.000000
+20-D17: search= 1.238005 us insert= 2.072508 us construct= 0.000016 s memory= 78.683212 MB check= 1.000000
+Exp20-a11: avgS= 1.453358 us avgI= 1.900563 us avgCST= 0.000017 s avgM= 322.292775 B/' avgCEK= 3.969060 avgOR= 1944.057796
+
+19-D1: search= 1.080401 us insert= 2.077898 us construct= 0.000012 s memory= 78.683212 MB check= 1.000000
+19-D2: search= 1.014958 us insert= 2.117582 us construct= 0.000018 s memory= 78.683212 MB check= 1.000000
+19-D3: search= 0.852841 us insert= 2.095859 us construct= 0.000020 s memory= 78.683212 MB check= 1.000000
+19-D4: search= 0.811837 us insert= 2.111410 us construct= 0.000018 s memory= 78.683212 MB check= 1.000000
+19-D5: search= 0.512736 us insert= 2.081117 us construct= 0.000018 s memory= 78.683212 MB check= 1.000000
+19-D6: search= 0.802253 us insert= 2.122402 us construct= 0.000019 s memory= 78.683212 MB check= 1.000000
+19-D7: search= 0.893005 us insert= 2.086160 us construct= 0.000016 s memory= 78.683212 MB check= 1.000000
+19-D8: search= 0.804905 us insert= 2.110480 us construct= 0.000023 s memory= 78.683212 MB check= 1.000000
+19-D9: search= 0.724303 us insert= 2.096226 us construct= 0.000026 s memory= 78.683212 MB check= 1.000000
+19-D10: search= 0.776768 us insert= 2.083836 us construct= 0.000013 s memory= 78.683212 MB check= 1.000000
+19-D11: search= 0.683737 us insert= 2.086746 us construct= 0.000017 s memory= 78.683212 MB check= 1.000000
+Exp19-a11: avgS= 0.814340 us avgI= 2.097247 us avgCST= 0.000018 s avgM= 322.285179 B/' avgCEK= 1.000000 avgOR= 1173.341882
+
+18-D1: search= 0.827116 us insert= 2.123097 us construct= 0.000010 s memory= 26.703194 MB check= 0.000000
+18-D2: search= 1.049116 us insert= 0.738744 us construct= 0.000010 s memory= 31.250069 MB check= 0.000000
+18-D3: search= 38.508068 us insert= 0.394069 us construct= 0.003569 s memory= 31.187569 MB check= 0.000000
+18-D4: search= 1.037317 us insert= 0.738549 us construct= 0.002112 s memory= 31.281319 MB check= 0.000000
+18-D5: search= 0.940591 us insert= 1.103222 us construct= 0.001145 s memory= 31.125069 MB check= 0.000000
+18-D6: search= 0.511405 us insert= 2.222657 us construct= 0.000013 s memory= 62.000069 MB check= 0.000000
+18-D7: search= 0.830052 us insert= 1.307453 us construct= 0.001646 s memory= 34.640694 MB check= 0.000000
+18-D8: search= 0.561005 us insert= 1.615695 us construct= 0.000012 s memory= 62.125069 MB check= 0.000000
+18-D9: search= 0.507870 us insert= 1.656878 us construct= 0.000010 s memory= 61.421944 MB check= 0.000000
+18-D10: search= 0.506772 us insert= 2.548256 us construct= 0.000010 s memory= 62.531319 MB check= 0.000000
+18-D11: search= 0.674668 us insert= 0.998711 us construct= 0.000010 s memory= 47.546944 MB check= 0.000000
+18-D12: search= 0.394088 us insert= 1.113935 us construct= 0.000010 s memory= 59.828194 MB check= 0.000000
+18-D13: search= 0.942291 us insert= 0.845448 us construct= 0.000012 s memory= 44.234444 MB check= 0.000000
+18-D14: search= 0.675593 us insert= 1.242403 us construct= 0.000010 s memory= 51.796944 MB check= 0.000000
+18-D15: search= 0.797608 us insert= 0.842332 us construct= 0.000010 s memory= 44.140694 MB check= 0.000000
+18-D16: search= 0.519172 us insert= 3.406244 us construct= 0.000010 s memory= 62.015694 MB check= 0.000000
+18-D17: search= 0.557036 us insert= 1.457358 us construct= 0.000010 s memory= 62.531319 MB check= 0.000000
+Exp18-a8: avgS= 2.931751 us avgI= 1.432650 us avgCST= 0.000506 s avgM= 256.133311 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+18-D1: search= 2.111700 us insert= 2.110333 us construct= 0.000006 s memory= 26.703194 MB check= 0.000000
+18-D2: search= 1.619400 us insert= 0.726908 us construct= 0.000009 s memory= 31.250069 MB check= 0.000000
+18-D3: search= 78.484569 us insert= 0.393325 us construct= 0.003096 s memory= 31.187569 MB check= 0.000000
+18-D4: search= 1.222041 us insert= 0.743275 us construct= 0.003418 s memory= 31.281319 MB check= 0.000000
+18-D5: search= 1.005796 us insert= 1.076049 us construct= 0.000727 s memory= 31.125069 MB check= 0.000000
+18-D6: search= 1.124338 us insert= 2.319575 us construct= 0.000011 s memory= 62.000069 MB check= 0.000000
+18-D7: search= 1.358480 us insert= 1.316113 us construct= 0.001280 s memory= 34.640694 MB check= 0.000000
+18-D8: search= 1.360963 us insert= 1.645287 us construct= 0.000013 s memory= 62.125069 MB check= 0.000000
+18-D9: search= 1.325353 us insert= 1.722057 us construct= 0.000012 s memory= 61.421944 MB check= 0.000000
+18-D10: search= 1.290861 us insert= 2.543115 us construct= 0.000011 s memory= 62.531319 MB check= 0.000000
+18-D11: search= 1.650215 us insert= 0.946902 us construct= 0.002619 s memory= 47.546944 MB check= 0.000000
+18-D12: search= 1.221191 us insert= 1.137554 us construct= 0.000010 s memory= 59.828194 MB check= 0.000000
+18-D13: search= 1.547301 us insert= 0.803960 us construct= 0.001638 s memory= 44.234444 MB check= 0.000000
+18-D14: search= 1.752416 us insert= 1.244766 us construct= 0.000013 s memory= 51.796944 MB check= 0.000000
+18-D15: search= 1.601434 us insert= 0.808792 us construct= 0.001631 s memory= 44.140694 MB check= 0.000000
+18-D16: search= 1.435488 us insert= 3.646109 us construct= 0.000014 s memory= 62.015694 MB check= 0.000000
+18-D17: search= 1.546320 us insert= 1.453022 us construct= 0.000012 s memory= 62.531319 MB check= 0.000000
+Exp18-a8: avgS= 5.979875 us avgI= 1.449244 us avgCST= 0.000854 s avgM= 256.133311 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+17-D1: search= 2.083100 us insert= 2.134945 us construct= 0.000009 s memory= 26.924858 MB check= 0.000000
+17-D2: search= 1.569633 us insert= 0.741363 us construct= 0.000012 s memory= 31.509476 MB check= 0.000000
+17-D3: search= 23.468087 us insert= 0.392354 us construct= 0.003025 s memory= 31.446457 MB check= 0.000000
+17-D4: search= 1.266853 us insert= 0.739799 us construct= 0.003451 s memory= 31.540985 MB check= 0.000000
+17-D5: search= 1.002947 us insert= 1.111746 us construct= 0.000742 s memory= 31.383438 MB check= 0.000000
+17-D6: search= 1.133587 us insert= 2.268564 us construct= 0.000020 s memory= 62.514725 MB check= 0.000000
+17-D7: search= 1.352849 us insert= 1.330696 us construct= 0.001296 s memory= 34.928246 MB check= 0.000000
+17-D8: search= 1.386640 us insert= 1.700258 us construct= 0.000019 s memory= 62.640762 MB check= 0.000000
+17-D9: search= 1.326413 us insert= 1.722169 us construct= 0.000017 s memory= 61.931801 MB check= 0.000000
+17-D10: search= 1.250170 us insert= 2.586076 us construct= 0.000017 s memory= 63.050385 MB check= 0.000000
+17-D11: search= 1.651677 us insert= 0.970870 us construct= 0.002673 s memory= 47.941628 MB check= 0.000000
+17-D12: search= 1.254668 us insert= 1.141061 us construct= 0.000026 s memory= 60.324821 MB check= 0.000000
+17-D13: search= 1.430180 us insert= 0.824610 us construct= 0.001643 s memory= 44.601631 MB check= 0.000000
+17-D14: search= 1.739769 us insert= 1.263438 us construct= 0.000018 s memory= 52.226906 MB check= 0.000000
+17-D15: search= 1.592679 us insert= 0.832377 us construct= 0.001643 s memory= 44.507103 MB check= 0.000000
+17-D16: search= 1.405921 us insert= 3.495836 us construct= 0.000020 s memory= 62.530479 MB check= 0.000000
+17-D17: search= 1.519021 us insert= 1.478846 us construct= 0.000018 s memory= 63.050385 MB check= 0.000000
+Exp17-a9: avgS= 2.731423 us avgI= 1.455000 us avgCST= 0.000862 s avgM= 258.259459 B/' avgCEK= 0.000000 avgOR= 0.000000
+
+16-D1: search= 2.239800 us insert= 2.141881 us construct= 0.000009 s memory= 26.924858 MB check= 25.815200
+16-D2: search= 1.795183 us insert= 0.737431 us construct= 0.000012 s memory= 31.509476 MB check= 12.292036
+16-D3: search= 23.366233 us insert= 0.402442 us construct= 0.002798 s memory= 31.446457 MB check= 9826.713192
+16-D4: search= 1.567778 us insert= 0.737979 us construct= 0.003302 s memory= 31.540985 MB check= 1.000000
+16-D5: search= 1.291415 us insert= 1.086292 us construct= 0.000744 s memory= 31.383438 MB check= 8.659596
+16-D6: search= 1.552719 us insert= 2.289022 us construct= 0.000017 s memory= 62.514725 MB check= 1.000077
+16-D7: search= 1.660948 us insert= 1.336789 us construct= 0.001295 s memory= 34.928246 MB check= 4.194426
+16-D8: search= 1.798401 us insert= 1.712495 us construct= 0.000018 s memory= 62.640762 MB check= 1.249771
+16-D9: search= 1.720403 us insert= 1.735973 us construct= 0.000021 s memory= 61.931801 MB check= 1.294159
+16-D10: search= 1.708459 us insert= 2.630509 us construct= 0.000016 s memory= 63.050385 MB check= 1.000000
+16-D11: search= 1.933998 us insert= 0.967536 us construct= 0.002660 s memory= 47.941628 MB check= 3.097639
+16-D12: search= 1.668721 us insert= 1.153683 us construct= 0.000025 s memory= 60.324821 MB check= 1.021882
+16-D13: search= 1.671419 us insert= 0.814371 us construct= 0.001646 s memory= 44.601631 MB check= 2.992119
+16-D14: search= 1.965987 us insert= 1.266673 us construct= 0.000017 s memory= 52.226906 MB check= 34.125991
+16-D15: search= 1.849263 us insert= 0.822986 us construct= 0.001643 s memory= 44.507103 MB check= 4.827272
+16-D16: search= 1.822523 us insert= 3.459931 us construct= 0.000022 s memory= 62.530479 MB check= 1.336205
+16-D17: search= 2.009990 us insert= 1.509178 us construct= 0.000019 s memory= 63.050385 MB check= 1.000000
+Exp16-a9: avgS= 3.036661 us avgI= 1.459128 us avgCST= 0.000839 s avgM= 258.259459 B/' avgCEK= 584.212916 avgOR= 2962.908129
+
+16-D1: search= 2.165200 us insert= 2.695012 us construct= 0.000015 s memory= 33.600655 MB check= 2.873800
+16-D2: search= 1.643480 us insert= 1.138438 us construct= 0.000011 s memory= 39.321991 MB check= 1.824295
+16-D3: search= 3.267193 us insert= 0.654275 us construct= 0.000009 s memory= 39.243347 MB check= 27.193842
+16-D4: search= 1.788886 us insert= 0.901696 us construct= 0.000018 s memory= 39.361313 MB check= 1.000000
+16-D5: search= 1.073264 us insert= 1.592826 us construct= 0.000016 s memory= 39.164703 MB check= 1.030131
+16-D6: search= 1.662998 us insert= 3.148135 us construct= 0.000018 s memory= 78.014740 MB check= 1.000000
+16-D7: search= 1.733007 us insert= 1.590077 us construct= 0.000015 s memory= 43.588417 MB check= 1.294714
+16-D8: search= 1.820460 us insert= 2.488531 us construct= 0.000022 s memory= 78.172028 MB check= 1.011883
+16-D9: search= 1.748904 us insert= 2.593141 us construct= 0.000020 s memory= 77.287285 MB check= 1.019515
+16-D10: search= 1.703336 us insert= 3.223265 us construct= 0.000016 s memory= 78.683212 MB check= 1.000000
+16-D11: search= 1.934468 us insert= 1.231363 us construct= 0.000018 s memory= 59.828362 MB check= 1.150431
+16-D12: search= 1.648768 us insert= 1.264687 us construct= 0.000018 s memory= 75.281868 MB check= 1.006517
+16-D13: search= 1.700160 us insert= 1.062574 us construct= 0.000016 s memory= 55.660240 MB check= 1.077232
+16-D14: search= 1.959535 us insert= 1.897394 us construct= 0.000016 s memory= 65.176140 MB check= 1.091497
+16-D15: search= 1.854819 us insert= 1.087422 us construct= 0.000018 s memory= 55.542274 MB check= 1.133037
+16-D16: search= 1.860284 us insert= 3.796965 us construct= 0.000017 s memory= 78.034401 MB check= 1.006033
+16-D17: search= 1.961641 us insert= 2.082511 us construct= 0.000019 s memory= 78.683212 MB check= 1.000000
+Exp16-a11: avgS= 1.854494 us avgI= 1.908724 us avgCST= 0.000017 s avgM= 322.292775 B/' avgCEK= 2.747819 avgOR= 2970.330431
+
+15-D1: search= 2.006000 us insert= 2.767576 us construct= 0.000011 s memory= 33.600655 MB check= 0.000000
+15-D2: search= 1.340531 us insert= 1.132199 us construct= 0.000010 s memory= 39.321991 MB check= 0.000000
+15-D3: search= 3.020488 us insert= 0.661027 us construct= 0.000010 s memory= 39.243347 MB check= 0.000000
+15-D4: search= 1.451057 us insert= 0.917227 us construct= 0.000014 s memory= 39.361313 MB check= 0.000000
+15-D5: search= 0.749802 us insert= 1.466960 us construct= 0.000011 s memory= 39.164703 MB check= 0.000000
+15-D6: search= 1.094772 us insert= 3.021998 us construct= 0.000018 s memory= 78.014740 MB check= 0.000000
+15-D7: search= 1.319949 us insert= 1.596734 us construct= 0.000017 s memory= 43.588417 MB check= 0.000000
+15-D8: search= 1.364811 us insert= 2.478146 us construct= 0.000019 s memory= 78.172028 MB check= 0.000000
+15-D9: search= 1.295155 us insert= 2.537345 us construct= 0.000019 s memory= 77.287285 MB check= 0.000000
+15-D10: search= 1.248375 us insert= 3.186718 us construct= 0.000019 s memory= 78.683212 MB check= 0.000000
+15-D11: search= 1.622547 us insert= 1.232375 us construct= 0.000017 s memory= 59.828362 MB check= 0.000000
+15-D12: search= 1.220933 us insert= 1.285449 us construct= 0.000019 s memory= 75.281868 MB check= 0.000000
+15-D13: search= 1.405990 us insert= 1.047519 us construct= 0.000017 s memory= 55.660240 MB check= 0.000000
+15-D14: search= 1.542276 us insert= 1.885712 us construct= 0.000020 s memory= 65.176140 MB check= 0.000000
+15-D15: search= 1.577356 us insert= 1.076587 us construct= 0.000019 s memory= 55.542274 MB check= 0.000000
+15-D16: search= 1.426557 us insert= 3.750357 us construct= 0.000016 s memory= 78.034401 MB check= 0.000000
+15-D17: search= 1.538260 us insert= 2.082597 us construct= 0.000016 s memory= 78.683212 MB check= 0.000000
+Exp15-a11: avgS= 1.483815 us avgI= 1.889796 us avgCST= 0.000016 s avgM= 322.292775 B/' avgCEK= 0.000000
+
+14-D1: search= 1.910500 us insert= 2.663711 us construct= 0.000012 s memory= 33.600655 MB check= 2.873800
+14-D2: search= 1.360774 us insert= 1.143441 us construct= 0.000010 s memory= 39.321991 MB check= 1.824295
+14-D3: search= 3.016383 us insert= 0.659946 us construct= 0.000016 s memory= 39.243347 MB check= 27.193842
+14-D4: search= 1.458057 us insert= 0.944618 us construct= 0.000014 s memory= 39.361313 MB check= 1.000000
+14-D5: search= 0.764796 us insert= 1.480790 us construct= 0.000013 s memory= 39.164703 MB check= 1.030131
+14-D6: search= 1.114261 us insert= 3.053824 us construct= 0.000019 s memory= 78.014740 MB check= 1.000000
+14-D7: search= 1.351622 us insert= 1.607579 us construct= 0.000014 s memory= 43.588417 MB check= 1.294714
+14-D8: search= 1.414645 us insert= 2.515459 us construct= 0.000020 s memory= 78.172028 MB check= 1.011883
+14-D9: search= 1.344073 us insert= 2.580835 us construct= 0.000017 s memory= 77.287285 MB check= 1.019515
+14-D10: search= 1.278998 us insert= 3.231507 us construct= 0.000020 s memory= 78.683212 MB check= 1.000000
+14-D11: search= 1.634112 us insert= 1.246691 us construct= 0.000018 s memory= 59.828362 MB check= 1.150431
+14-D12: search= 1.254605 us insert= 1.312101 us construct= 0.000022 s memory= 75.281868 MB check= 1.006517
+14-D13: search= 1.423365 us insert= 1.085848 us construct= 0.000014 s memory= 55.660240 MB check= 1.077232
+14-D14: search= 1.555781 us insert= 1.886500 us construct= 0.000017 s memory= 65.176140 MB check= 1.091497
+14-D15: search= 1.596893 us insert= 1.108406 us construct= 0.000016 s memory= 55.542274 MB check= 1.133037
+14-D16: search= 1.463369 us insert= 3.598694 us construct= 0.000017 s memory= 78.034401 MB check= 1.006033
+14-D17: search= 1.563344 us insert= 2.086230 us construct= 0.000018 s memory= 78.683212 MB check= 1.000000
+Exp14-a11: avgS= 1.500328 us avgI= 1.894481 us avgCST= 0.000016 s avgM= 322.292775 B/' avgCEK= 2.747819
+
 5-D1: search= 1.901000 us insert= 6.606518 us construct= 0.000013 s memory= 26.687569 MB
 5-D2: search= 2.650265 us insert= 1.591261 us construct= 0.000018 s memory= 31.234444 MB
 5-D3: search= 56.712507 us insert= 0.747627 us construct= 0.000420 s memory= 31.171944 MB
