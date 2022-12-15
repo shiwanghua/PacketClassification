@@ -4,6 +4,7 @@
 #include"tool.h"
 #include "math.h"
 #include "constant.h"
+#include <immintrin.h>
 //#include "../io/tool.h"
 
 #define MIN(a, b) (((a)<(b))?(a):(b))

@@ -971,6 +971,7 @@ void MultiLevelHash::analyse_log2(ACL_rules* data, char outputFileName[])
 
 	const int portCellNum = 257;
 	int portShift = 16 - __builtin_ctz(portCellNum - 1); // 区间长度是2的多少次方
+	//int portShift = 16 - _tzcnt_u64(portCellNum - 1); // 区间长度是2的多少次方  // Windows
 	int srcPort[portCellNum];
 	int dstPort[portCellNum];
 	memset(srcPort, 0, sizeof(srcPort));

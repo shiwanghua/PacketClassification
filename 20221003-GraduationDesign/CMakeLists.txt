@@ -5,7 +5,7 @@ project(PacketClassification)
 #SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 #SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
-SET(CMAKE_CXX_COMPILER "/usr/bin/g++")
+#SET(CMAKE_CXX_COMPILER "/usr/bin/g++")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -march=native -O3 -mavx2 ")
 set(CMAKE_CXX_STANDARD 14)
 

@@ -1,1 +1,0 @@
-/usr/bin/g++  -std=c++14 -march=native -O3 -mavx2  -g -rdynamic CMakeFiles/pcRun.dir/ModelsTest.cpp.o CMakeFiles/pcRun.dir/main.cpp.o -o pcRun  BruteForceSearch/libBruteForceSearch.a HEMBitsetsSearch/libHEMBitsetsSearch.a MultiLevelHash/libMultiLevelHash.a TamaSearch/libTamaSearch.a io/libio.a 

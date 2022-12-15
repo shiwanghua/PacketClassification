@@ -23,7 +23,8 @@ class ModelsTest
 #if DATASET_NO==1
 	// Datasets1: 第一、二批原始数据 history data
 	static constexpr int numDataSets = 17;
-	char ruleFileName[numDataSets][60] { "acl128_same_fmt_with_cb256k/acl_rules2_cb.txt",
+	char ruleFileName[numDataSets][200]{ "acl128_same_fmt_with_cb256k/acl_rules2_cb.txt",
+		// "D:\\codes\\cpp\\ACL\\20221003-GraduationDesign\\acl128_same_fmt_with_cb256k\\acl_rules2_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules3_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules4_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules5_cb.txt",
@@ -34,7 +35,8 @@ class ModelsTest
 										 "classbench_256k/fw2_256k.txt", "classbench_256k/fw3_256k.txt",
 										 "classbench_256k/fw4_256k.txt", "classbench_256k/fw5_256k.txt",
 										 "classbench_256k/ipc1_256k.txt", "classbench_256k/ipc2_256k.txt" };
-	char headFileName[numDataSets][80] = { "acl128_same_fmt_with_cb256k/acl_tuples2_cb.txt",
+	char headFileName[numDataSets][200] = { //"D:\\codes\\cpp\\ACL\\20221003-GraduationDesign\\acl128_same_fmt_with_cb256k\\acl_tuples2_cb.txt"
+										   "acl128_same_fmt_with_cb256k/acl_tuples2_cb.txt",
 										   "acl128_same_fmt_with_cb256k/acl_tuples3_cb.txt",
 										   "acl128_same_fmt_with_cb256k/acl_tuples4_cb.txt",
 										   "acl128_same_fmt_with_cb256k/acl_tuples5_cb.txt",
@@ -50,7 +52,7 @@ class ModelsTest
 #elif DATASET_NO==2
 	// Datasets2: trace_generator a=1, b=0.8, scale=5
 	static constexpr int numDataSets = 17;
-	char ruleFileName[numDataSets][60] { "acl128_same_fmt_with_cb256k/acl_rules2_cb.txt",
+	char ruleFileName[numDataSets][60]{ "acl128_same_fmt_with_cb256k/acl_rules2_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules3_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules4_cb.txt",
 										 "acl128_same_fmt_with_cb256k/acl_rules5_cb.txt",
@@ -96,7 +98,7 @@ class ModelsTest
 	void shuffleRules();
 	void shuffleMessages();
 
- public:
+public:
 	ModelsTest();
 	~ModelsTest();
 
