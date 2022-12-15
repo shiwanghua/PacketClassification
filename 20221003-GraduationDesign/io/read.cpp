@@ -137,7 +137,9 @@ void read_rules_ycFormat(const char* file_name, ACL_rules* rules)
 	printf("read_rules %d done %s\n", i, file_name);
 }
 
-void read_rules_bitset_ycFormat(const char* file_name, ACL_rules* rules) // source_ip，destination_ip 没有把IP反过来存
+// source_ip，destination_ip 没有把IP反过来存, 可以减少取字节时的减法次数
+// 在原始正向位集版本中实现，后弃用，为和反向位集版本统一，多做了些减法
+void read_rules_bitset_ycFormat(const char* file_name, ACL_rules* rules)
 {
 //	printf("Bitset Version: read_rules begin %s ...\n", file_name);
 
@@ -147,7 +149,7 @@ void read_rules_bitset_ycFormat(const char* file_name, ACL_rules* rules) // sour
 
 	FILE* fp = NULL;
 	fp = fopen(file_name, "r");
-	unsigned int sIp[5];
+	unsigned int sIp[5]; // 大端存储
 	unsigned int dIp[5];
 	unsigned int sPort[2];
 	unsigned int dPort[2];

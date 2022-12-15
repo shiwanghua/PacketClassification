@@ -8,7 +8,6 @@ void read_messages_gt_cbFormat(const char* file_name, ACL_messages* messages,std
 
 void read_rules_ycFormat(const char* file_name, ACL_rules* rules);
 void read_rules_bitset_ycFormat(const char* file_name, ACL_rules* rules); // source_ip，destination_ip 没有把IP反过来存
-
 void read_messages_ycFormat(const char* file_name, ACL_messages* messages);
 
 #endif // !__READ_H_

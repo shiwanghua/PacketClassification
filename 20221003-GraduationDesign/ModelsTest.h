@@ -90,7 +90,7 @@ class ModelsTest
 											"cb_ipc2/ipc2_256k_trace_b1.0.txt" };
 #endif
 
-	ACL_rules* rules;
+	ACL_rules* acl_rules;
 	ACL_messages* messages;
 
 	void shuffleRules();

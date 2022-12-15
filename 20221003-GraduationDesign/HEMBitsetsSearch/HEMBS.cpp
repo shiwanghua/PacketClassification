@@ -28,328 +28,363 @@ HEMBS::~HEMBS()
 	}
 	for (int i = 0; i < 8; i++)
 		delete[] bitsets[i];
-	delete bitsets;
-	delete bitsets2;
+	if (bitsets)
+		delete bitsets;
+	if (bitsets2)
+		delete bitsets2;
 	bitsets = nullptr;
 	bitsets2 = nullptr;
 }
 
 void HEMBS::forward_init_bitsets_IPv4(int numRule)
 {
-	//printf("sizeof long= %d\n", sizeof(unsigned long));
-
-	numUnit = (numRule + 1 + 63) / 64; // PRI of rule begins from 1 but stored from index 0
-//	int numPortBitset = PORT_NUMBER / HEM_BS_PORT_CELLWIDTH;
-//	int numBitset = 256 * 8 + NUM_PROTOCOL + 1 + numPortBitset*2; // 1: protocol=0
-//	printf("\n\n\nHEM_BS_NUM_PORT_BITSET= %d, PORT_NUMBER=%d, NUM_BITSET=%d\n\n\n", HEM_BS_NUM_PORT_BITSET, PORT_NUMBER, NUM_BITSET);
-	bitsets2 = (unsigned long long**)malloc(NUM_BITSET * sizeof(unsigned long long*));
-	unsigned long long* bitsSpace = (unsigned long long*)calloc(numUnit * NUM_BITSET, sizeof(unsigned long long));
-//	for (int i = 0; i < numUnit * NUM_BITSET; i++)
-//		if(bitsSpace[i]!=0){
-//			bitsSpace[i] = 0LL;
-//			printf("bitsSpace error.\n");
-//			return;
-//		}
-
-	for (int i = 0; i < NUM_BITSET; i++)
+	if (begin_bits != nullptr) // successive
+		delete begin_bits;
+	else // begin_bits is null, so bitsets is not successive
 	{
-		bitsets2[i] = bitsSpace;
-		bitsSpace += numUnit;
+		if (bitsets)
+			for (uint32_t i = 0; i < 8; i++)
+				if (bitsets[i])
+					for (uint32_t j = 0; j < 256; j++)
+						if (bitsets[i][j])
+							delete bitsets[i][j];
+	}
+	if (bitsets)
+		for (uint32_t i = 0; i < HEM_BS_NUM_ATTR; i++)
+			delete[] bitsets[i];
+	delete bitsets;
+
+	// not successive
+	// for (int i = 0; i < 8; i++) {
+	// 	bitset[i] = (unsigned long long**) malloc(256 * sizeof(unsigned long long*));
+	// 	for (int j = 0; j < 256; j++) {
+	// 		bitset[i][j] = (unsigned long long*) calloc(numUnit, sizeof(unsigned long long));
+	// 	}
+	// }
+
+	// successive
+#if HEM_BS_NUM_ATTR == 8
+	uint32_t numBitsets = 8*256;
+#elif HEM_BS_NUM_ATTR == 9
+	uint32_t numBitsets = 256 * 8 + NUM_PROTOCOL + 1;
+#else // HEM_BS_ATTR_NUM==11
+	uint32_t numBitsets = 8 * 256 + NUM_PROTOCOL + 1 + 2 * HEM_BS_NUM_PORT_BITSET;
+#endif
+
+	numUnit = (numRule + sizeof(unsigned long long) * 8 - 1) / (sizeof(unsigned long long) * 8);
+	memorysize = (sizeof(unsigned long long***) + sizeof(unsigned long long**) * HEM_BS_NUM_ATTR
+				  + sizeof(unsigned long long*) * numBitsets
+				  + sizeof(unsigned long long) * numUnit * numBitsets); // B
+
+	unsigned long long* temp_bits = (unsigned long long*)calloc(numUnit * numBitsets, sizeof(unsigned long long));
+	begin_bits = temp_bits;
+	bitsets = (unsigned long long***)malloc(HEM_BS_NUM_ATTR * sizeof(unsigned long long**));
+	for (uint32_t i = 0; i < 8; i++)
+	{
+		bitsets[i] = (unsigned long long**)malloc(256 * sizeof(unsigned long long*));
+		for (uint32_t j = 0; j < 256; j++)
+		{
+			bitsets[i][j] = temp_bits;
+			temp_bits += numUnit;
+		}
 	}
 
-	double mf = NUM_BITSET * sizeof(unsigned long long*) + NUM_BITSET * numUnit * sizeof(unsigned long long);
-	printf("Memory footprint: %u MB\n", (unsigned int)(mf / 1024.0 / 1024.0));
-	fflush(stdout);
+#if HEM_BS_NUM_ATTR > 8
+	bitsets[8] = (unsigned long long**)malloc(sizeof(unsigned long long*) * (NUM_PROTOCOL + 1));
+	for (uint32_t j = 0; j < (NUM_PROTOCOL + 1); j++)
+	{
+		bitsets[8][j] = temp_bits;
+		temp_bits += numUnit;
+	}
+#endif
+
+#if HEM_BS_NUM_ATTR == 11
+	for (uint32_t ai = 9; ai < 11; ai++)
+	{
+		bitsets[ai] = (unsigned long long**)malloc(sizeof(unsigned long long*) * (HEM_BS_NUM_PORT_BITSET));
+		for (uint32_t j = 0; j < HEM_BS_NUM_PORT_BITSET; j++)
+		{
+			bitsets[ai][j] = temp_bits;
+			temp_bits += numUnit;
+		}
+	}
+#endif
 }
 
-void HEMBS::forward_bitsets_insert_IPv4(rule* r, unsigned long** bitsets)
+void HEMBS::forward_bitsets_insert_IPv4(const rule* r)
 {
-	int unitNo = r->PRI / 64;
-	unsigned long offsetNo = 1LL << r->PRI % 64; // from low bits (right) // Bug: not int type!!!
-	unsigned int baseIndex = 0;
+	uint32_t unitNo = r->PRI / 64;
+	unsigned long long offsetMask = 1LL << r->PRI % 64; // ruleID from low bits (right) to high bits (left)
 
-	unsigned int mask_by8 = (unsigned int)(r->source_mask >> 3); // 0,1,2,3,4
-	for (unsigned int i = 0; i < mask_by8; i++)
-	{// 0,1,2,3  i means (i+1)-th byte from left end
-		bitsets[baseIndex + (unsigned int)r->source_ip[i]][unitNo] |= offsetNo;
-		baseIndex += 256;
+	uint32_t mask_by8 = (uint32_t)(r->source_mask >> 3); // 0,1,2,3,4
+	for (uint32_t ai = 0; ai < mask_by8; ai++)
+	{// 0,1,2,3 attribute  i means the (i+1)-th byte from high/right end
+		bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo] |= offsetMask; // 多做了次减法，在读数据时用大端存储可避免；或者让低位字节为0号属性
 	}
-
-//	if(bitsets[135][835]&(1<<29)){
-//		printf("uno= %d, offset= %d\n", unitNo, offsetNo);
-//	}
 
 	if (mask_by8 < 4)
 	{
-		int rightShiftBits = 8 - ((unsigned int)r->source_mask & 7);
-		unsigned int extraBitNum = (unsigned int)r->source_ip[mask_by8] >> rightShiftBits;
-		for (unsigned int i = 0; i < 256; i++)
-		{
-			if (i >> rightShiftBits == extraBitNum)
-			{
-				bitsets[baseIndex + i][unitNo] |= offsetNo;
-			}
-		}
-		baseIndex += 256;
-		for (unsigned int i = mask_by8 + 1; i < 4; i++)
-		{ // 1,2,3
-			for (unsigned int i = 0; i < 256; i++)
-			{
-				bitsets[baseIndex + i][unitNo] |= offsetNo;
-			}
-			baseIndex += 256;
+		uint32_t rightShiftBits = 8 - ((uint32_t)r->source_mask & 7); // 临界字节（从高位起第mask_by8+1个字节）上的自由位数
+		uint32_t lowValue =
+			((uint32_t)r->source_ip[3 - mask_by8] >> rightShiftBits) << rightShiftBits; // Bug1: 少了 “3-”！
+		for (uint32_t bi = lowValue; bi < lowValue + (1 << rightShiftBits); bi++)
+			bitsets[mask_by8][bi][unitNo] |= offsetMask;
+		for (uint32_t ai = mask_by8 + 1; ai < 4; ai++)
+		{ // 1,2,3 attribute
+			for (uint32_t bi = 0; bi < 256; bi++)
+				bitsets[ai][bi][unitNo] |= offsetMask;
 		}
 	}
 
-//	if(bitsets[135][835]&(1<<29)){
-//		printf("uno= %d, offset= %d\n", unitNo, offsetNo);
-//	}
-
-	mask_by8 = (unsigned int)(r->destination_mask >> 3); // 0,1,2,3,4
-	for (unsigned int i = 0; i < mask_by8; i++)
-	{// 0,1,2,3
-		bitsets[baseIndex +
-				(unsigned int)r->destination_ip[i]][unitNo] |= offsetNo; // i means (i+1)-th byte from left end
-		baseIndex += 256;
+	mask_by8 = (uint32_t)(r->destination_mask >> 3); // 0,1,2,3,4
+	for (uint32_t ai = 0; ai < mask_by8; ai++)
+	{// 0,1,2,3 attribute i means the (i+1)-th byte from high/right end
+		bitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][unitNo] |= offsetMask;
 	}
 	if (mask_by8 < 4)
 	{
-		int rightShiftBits = 8 - ((unsigned int)r->destination_mask & 7);
-		//printf("mask= %u\nright= %d\n\n", (unsigned int) r->destination_mask, rightShiftBits);
-
-		unsigned int extraBitNum = (unsigned int)r->destination_ip[mask_by8] >> rightShiftBits;
-		for (unsigned int i = 0; i < 256; i++)
-		{
-			if (i >> rightShiftBits == extraBitNum)
-			{
-				bitsets[baseIndex + i][unitNo] |= offsetNo;
-			}
-		}
-		baseIndex += 256;
-		for (unsigned int i = mask_by8 + 1; i < 4; i++)
-		{ // 1,2,3
-			for (unsigned int id = baseIndex; id < baseIndex + 256; id++)
-			{
-				bitsets[id][unitNo] |= offsetNo;
-			}
-			baseIndex += 256;
+		uint32_t freeBitsNum = 8 - ((uint32_t)r->destination_mask & 7);
+		uint32_t lowValue = ((uint32_t)r->destination_ip[3 - mask_by8] >> freeBitsNum) << freeBitsNum;
+		for (uint32_t bi = lowValue; bi < lowValue + (1 << freeBitsNum); bi++)
+			bitsets[4 + mask_by8][bi][unitNo] |= offsetMask; // Bug2: 少加了4！
+		for (uint32_t ai = mask_by8 + 5; ai < 8; ai++)
+		{ // 5,6,7
+			for (uint32_t bi = 0; bi < 256; bi++)
+				bitsets[ai][bi][unitNo] |= offsetMask;
 		}
 	}
 
-	for (int i = baseIndex + r->source_port[0] / HEM_BS_PORT_CELLWIDTH;
-		 i <= baseIndex + r->source_port[1] / HEM_BS_PORT_CELLWIDTH; i++)
-		bitsets[i][unitNo] |= offsetNo;
-	baseIndex += HEM_BS_NUM_PORT_BITSET;
-
-	for (int i = baseIndex + r->destination_port[0] / HEM_BS_PORT_CELLWIDTH;
-		 i <= baseIndex + r->destination_port[1] / HEM_BS_PORT_CELLWIDTH; i++)
-		bitsets[i][unitNo] |= offsetNo;
-	baseIndex += HEM_BS_NUM_PORT_BITSET;
-
-	if ((unsigned int)r->protocol[1] == 0)
+#if HEM_BS_NUM_ATTR > 8 // insert into protocol layer
+	if ((uint32_t)r->protocol[1] == 0)
 	{
-		for (unsigned int id = baseIndex; id < baseIndex + NUM_PROTOCOL + 1; id++)
-			bitsets[id][unitNo] |= offsetNo;
+		for (uint32_t bi = 0; bi < NUM_PROTOCOL + 1; bi++)
+			bitsets[8][bi][unitNo] |= offsetMask;
 	}
 	else
 	{
-		switch ((unsigned int)r->protocol[1])
+		switch ((uint32_t)r->protocol[1])
 		{
 		case ICMP:
-			bitsets[baseIndex][unitNo] |= offsetNo;
+			bitsets[8][0][unitNo] |= offsetMask;
 			break;
 		case IGMP:
-			bitsets[baseIndex + 1][unitNo] |= offsetNo;
+			bitsets[8][1][unitNo] |= offsetMask;
 			break;
 		case GGP:
-			bitsets[baseIndex + 2][unitNo] |= offsetNo;
+			bitsets[8][2][unitNo] |= offsetMask;
 			break;
 		case IP:
-			bitsets[baseIndex + 3][unitNo] |= offsetNo;
+			bitsets[8][3][unitNo] |= offsetMask;
 			break;
 		case ST:
-			bitsets[baseIndex + 4][unitNo] |= offsetNo;
+			bitsets[8][4][unitNo] |= offsetMask;
 			break;
 		case TCP:
-			bitsets[baseIndex + 5][unitNo] |= offsetNo;
+			bitsets[8][5][unitNo] |= offsetMask;
 			break;
 		case CBT:
-			bitsets[baseIndex + 6][unitNo] |= offsetNo;
+			bitsets[8][6][unitNo] |= offsetMask;
 			break;
 		case EGP:
-			bitsets[baseIndex + 7][unitNo] |= offsetNo;
+			bitsets[8][7][unitNo] |= offsetMask;
 			break;
 		case UDP:
-			bitsets[baseIndex + 8][unitNo] |= offsetNo;
+			bitsets[8][8][unitNo] |= offsetMask;
 			break;
 		case RSVP:
-			bitsets[baseIndex + 9][unitNo] |= offsetNo;
+			bitsets[8][9][unitNo] |= offsetMask;
 			break;
 		case GRE:
-			bitsets[baseIndex + 10][unitNo] |= offsetNo;
+			bitsets[8][10][unitNo] |= offsetMask;
 			break;
 		case ESP:
-			bitsets[baseIndex + 11][unitNo] |= offsetNo;
+			bitsets[8][11][unitNo] |= offsetMask;
 			break;
 		case AH:
-			bitsets[baseIndex + 12][unitNo] |= offsetNo;
+			bitsets[8][12][unitNo] |= offsetMask;
 			break;
 		case EIGRP:
-			bitsets[baseIndex + 13][unitNo] |= offsetNo;
+			bitsets[8][13][unitNo] |= offsetMask;
 			break;
 		case OSPFIGP:
-			bitsets[baseIndex + 14][unitNo] |= offsetNo;
+			bitsets[8][14][unitNo] |= offsetMask;
 			break;
 		case ISIS:
-			bitsets[baseIndex + 15][unitNo] |= offsetNo;
+			bitsets[8][15][unitNo] |= offsetMask;
 			break;
 		default:
-			fprintf(stderr, "Rule %d Error - unknown message protocol %u !\n", r->PRI, r->protocol[1]);
-			return;
+			fprintf(stderr, "Rule %d Error - unknown rule protocol %u !\n", r->PRI, r->protocol[1]);
+			exit(0);
 		}
 	}
+#endif
+
+#if HEM_BS_NUM_ATTR == 11 // insert into port layer
+	for (int bi = r->source_port[0] / HEM_BS_PORT_CELLWIDTH;
+		 bi <= r->source_port[1] / HEM_BS_PORT_CELLWIDTH; bi++)
+		bitsets[9][bi][unitNo] |= offsetMask;
+
+	for (int bi = r->destination_port[0] / HEM_BS_PORT_CELLWIDTH;
+		 bi <= r->destination_port[1] / HEM_BS_PORT_CELLWIDTH; bi++)
+		bitsets[10][bi][unitNo] |= offsetMask;
+#endif
 }
 
-unsigned int HEMBS::forward_bitsets_search_IPv4(const rule* ruleList, message* m, int* _cycle,
-	unsigned long* checkNum)
+std::array<uint64_t, 2>
+HEMBS::forward_bitsets_search_IPv4(const message* msg, const rule* rules, uint32_t& matchRuleNo)
 {
-	unsigned int baseIndex = 0;
-	unsigned long long* b[11];
-	b[0] = bitsets2[baseIndex + (unsigned int)m->source_ip[3]];
-	baseIndex += 256;
-	b[1] = bitsets2[baseIndex + (unsigned int)m->source_ip[2]];
-	baseIndex += 256;
-	b[2] = bitsets2[baseIndex + (unsigned int)m->source_ip[1]];
-	baseIndex += 256;
-	b[3] = bitsets2[baseIndex + (unsigned int)m->source_ip[0]];
-	baseIndex += 256;
-	b[4] = bitsets2[baseIndex + (unsigned int)m->destination_ip[3]];
-	baseIndex += 256;
-	b[5] = bitsets2[baseIndex + (unsigned int)m->destination_ip[2]];
-	baseIndex += 256;
-	b[6] = bitsets2[baseIndex + (unsigned int)m->destination_ip[1]];
-	baseIndex += 256;
-	b[7] = bitsets2[baseIndex + (unsigned int)m->destination_ip[0]];
-	baseIndex += 256;
-	b[8] = bitsets2[baseIndex + m->source_port / HEM_BS_PORT_CELLWIDTH];
-	baseIndex += HEM_BS_NUM_PORT_BITSET;
-	b[9] = bitsets2[baseIndex + m->destination_port / HEM_BS_PORT_CELLWIDTH];
-	baseIndex += HEM_BS_NUM_PORT_BITSET;
+	unsigned long long int* b[HEM_BS_NUM_ATTR] =
+		{
+			bitsets[0][msg->source_ip[3]],
+			bitsets[1][msg->source_ip[2]],
+			bitsets[2][msg->source_ip[1]],
+			bitsets[3][msg->source_ip[0]],
+			bitsets[4][msg->destination_ip[3]],
+			bitsets[5][msg->destination_ip[2]],
+			bitsets[6][msg->destination_ip[1]],
+			bitsets[7][msg->destination_ip[0]]
+		};
 
-//	b[0] = bitsets2[baseIndex + (unsigned int) m->source_ip[3]];
-//	b[1] = bitsets2[baseIndex + 256 + (unsigned int) m->source_ip[2]];
-//	b[2] = bitsets2[baseIndex + 512 + (unsigned int) m->source_ip[1]];
-//	b[3] = bitsets2[baseIndex + 768 + (unsigned int) m->source_ip[0]];
-//	b[4] = bitsets2[baseIndex + 1024 + (unsigned int) m->destination_ip[3]];
-//	b[5] = bitsets2[baseIndex + 1280 + (unsigned int) m->destination_ip[2]];
-//	b[6] = bitsets2[baseIndex + 1536 + (unsigned int) m->destination_ip[1]];
-//	b[7] = bitsets2[baseIndex + 1792 + (unsigned int) m->destination_ip[0]];
-//	b[8] = bitsets2[baseIndex + 2048 + m->source_port / HEM_BS_PORT_CELLWIDTH];
-//	b[9] = bitsets2[baseIndex + 2304 + m->destination_port / HEM_BS_PORT_CELLWIDTH];
-//	baseIndex = baseIndex + 2560;
-
-
-	switch ((unsigned int)m->protocol)
+#if HEM_BS_NUM_ATTR > 8
+	switch ((unsigned int)msg->protocol)
 	{
 	case ICMP:
-		b[10] = bitsets2[baseIndex];
+		b[8] = bitsets[8][0];
 		break;
 	case IGMP:
-		b[10] = bitsets2[baseIndex + 1];
+		b[8] = bitsets[8][1];
 		break;
 	case GGP:
-		b[10] = bitsets2[baseIndex + 2];
+		b[8] = bitsets[8][2];
 		break;
 	case IP:
-		b[10] = bitsets2[baseIndex + 3];
+		b[8] = bitsets[8][3];
 		break;
 	case ST:
-		b[10] = bitsets2[baseIndex + 4];
+		b[8] = bitsets[8][4];
 		break;
 	case TCP:
-		b[10] = bitsets2[baseIndex + 5];
+		b[8] = bitsets[8][5];
 		break;
 	case CBT:
-		b[10] = bitsets2[baseIndex + 6];
+		b[8] = bitsets[8][6];
 		break;
 	case EGP:
-		b[10] = bitsets2[baseIndex + 7];
+		b[8] = bitsets[8][7];
 		break;
 	case UDP:
-		b[10] = bitsets2[baseIndex + 8];
+		b[8] = bitsets[8][8];
 		break;
 	case RSVP:
-		b[10] = bitsets2[baseIndex + 9];
+		b[8] = bitsets[8][9];
 		break;
 	case GRE:
-		b[10] = bitsets2[baseIndex + 10];
+		b[8] = bitsets[8][10];
 		break;
 	case ESP:
-		b[10] = bitsets2[baseIndex + 11];
+		b[8] = bitsets[8][11];
 		break;
 	case AH:
-		b[10] = bitsets2[baseIndex + 12];
+		b[8] = bitsets[8][12];
 		break;
 	case EIGRP:
-		b[10] = bitsets2[baseIndex + 13];
+		b[8] = bitsets[8][13];
 		break;
 	case OSPFIGP:
-		b[10] = bitsets2[baseIndex + 14];
+		b[8] = bitsets[8][14];
 		break;
 	case ISIS:
-		b[10] = bitsets2[baseIndex + 15];
+		b[8] = bitsets[8][15];
 		break;
 	default:
-		b[10] = bitsets2[baseIndex + 16];
-//			fprintf(stderr, "Message - Rule %d Error - unknown message protocol %u !\n", m->rule_id, m->protocol);
+		b[8] = bitsets[8][NUM_PROTOCOL];
+//		 fprintf(stderr, "Matching rule %d - unknown message protocol %u !\n", msg->PRI, msg->protocol[1]);
 	}
-
-	unsigned long globalB;//calloc(numUnit,sizeof(unsigned long));
-//		unsigned long mask64 = 0xffffffffffffffff;
-	unsigned short srcPort = m->source_port, dstPort = m->destination_port;
-	baseIndex = 0; // id base
-	unsigned int id;
-	for (int i = 0; i < numUnit; i++)
-	{
-		globalB = b[0][i] & b[1][i] & b[2][i] & b[3][i] & b[4][i] & b[5][i] & b[6][i] & b[7][i] & b[8][i] & b[9][i] &
-				  b[10][i];
-		while (globalB)
-		{
-#ifdef DEBUG
-			(*checkNum)++;
 #endif
-			id = baseIndex + __builtin_ctzl(globalB); // 求 globalB 中从右数第一个 1 右边０的个数
-			if (ruleList[id].source_port[0] <= srcPort &&
-				srcPort <= ruleList[id].source_port[1] &&
-				ruleList[id].destination_port[0] <= dstPort &&
-				dstPort <= ruleList[id].destination_port[1])
-			{
-				return id;
-			}
-			globalB = globalB & (globalB - 1);
-		}
-//		if (globalB) {
-//			for (int id = baseIndex; id < baseIndex + 64; id++) {
-//				if (globalB & 1) {
-//#ifdef DEBUG
-//					(*checkNum)++;
-//#endif
-//					if (ruleList[id].source_port[0] <= srcPort &&
-//						srcPort <= ruleList[id].source_port[1] &&
-//						ruleList[id].destination_port[0] <= dstPort &&
-//						dstPort <= ruleList[id].destination_port[1]) {
-////						if (id == 53469) {
-////							printf("\n%d\n", id);
-////						}
-//						return id;
-//					}
-//				}
-//				globalB = globalB >> 1;
+
+#if HEM_BS_NUM_ATTR == 11
+	b[9] = bitsets[9][msg->source_port / HEM_BS_PORT_CELLWIDTH];
+	b[10] = bitsets[10][msg->destination_port / HEM_BS_PORT_CELLWIDTH];
+#endif
+
+#if DEBUG
+	uint64_t checkNum = 0, and64Num = 0;
+#endif
+
+	for (int bi = 0; bi < numUnit; bi++)
+	{
+//		unsigned long long int andResult = b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi] & b[4][bi]\
+// & b[5][bi] & b[6][bi] & b[7][bi] & b[8][bi] & b[9][bi] & b[10][bi];
+		unsigned long long int andResult = b[0][bi];
+		uint8_t ai = 1;
+//		while (ai < HEM_BS_NUM_ATTR)
+//		{
+//			if (andResult == 0)
+//				break;
+//			else
+//			{
+//				andResult &= b[ai][bi];
+//				ai++;
 //			}
 //		}
-		baseIndex += 64;
+		while (ai < HEM_BS_NUM_ATTR)
+		{
+			andResult &= b[ai][bi];
+			if (andResult == 0)
+				break;
+			ai++;
+		}
+#if DEBUG
+//		and64Num += ai - 1;
+		and64Num += std::min(10, (int)ai);
+#endif
+//		while (andResult)
+//		{
+//#if DEBUG
+//			checkNum++;
+//#endif
+//			matchRuleNo = (bi << 6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
+//			if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+//				msg->source_port <= rules[matchRuleNo].source_port[1] &&
+//				rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+//				msg->destination_port <= rules[matchRuleNo].destination_port[1])
+//			{
+//#if DEBUG
+//				return std::array<uint64_t, 2>{ checkNum, and64Num };
+//#else
+//				return std::array<uint64_t, 2>{ -1ULL, -1ULL };
+//#endif
+//			}
+//			andResult = andResult & (andResult - 1);
+//		}
+
+		if (andResult)
+		{
+			for (matchRuleNo = bi << 6; matchRuleNo < (bi << 6) + 64; matchRuleNo++)
+			{
+				if (andResult & 1)
+				{
+#if  DEBUG
+					checkNum++;
+#endif
+					if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+						msg->source_port <= rules[matchRuleNo].source_port[1] &&
+						rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+						msg->destination_port <= rules[matchRuleNo].destination_port[1])
+					{
+#if DEBUG
+						return std::array<uint64_t, 2>{ checkNum, and64Num };
+#else
+						return std::array<uint64_t, 2>{ -1ULL, -1ULL };
+#endif
+					}
+				}
+				andResult = andResult >> 1;
+			}
+		}
+
 	}
-	return -1;
+	return { -1ULL, -1ULL };
 }
 
 
@@ -416,13 +451,14 @@ void HEMBS::backward_init_bitsets_IPv4(int numRule)
 		bitsets[8][j] = temp_bits;
 		temp_bits += numUnit;
 	}
-	memset(bitsets[8][NUM_PROTOCOL], -1, sizeof(unsigned long long) * numUnit);
+	memset(bitsets[8][NUM_PROTOCOL], -1,
+		sizeof(unsigned long long) * numUnit); // Init to all ones, means all mismatching.
 #endif
 
 #if HEM_BS_NUM_ATTR == 11
 	for (uint32_t ai = 9; ai < 11; ai++)
 	{
-		bitsets[ai] = (unsigned long long**)malloc(sizeof(unsigned long long*) * (HEM_BS_NUM_PORT_BITSET ));
+		bitsets[ai] = (unsigned long long**)malloc(sizeof(unsigned long long*) * (HEM_BS_NUM_PORT_BITSET));
 		for (uint32_t j = 0; j < HEM_BS_NUM_PORT_BITSET; j++)
 		{
 			bitsets[ai][j] = temp_bits;
@@ -434,7 +470,6 @@ void HEMBS::backward_init_bitsets_IPv4(int numRule)
 
 void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 {
-
 	uint32_t unitNo = r->PRI / 64;
 	unsigned long long offsetMask = 1ULL << (r->PRI % 64);
 
@@ -446,7 +481,7 @@ void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 			{
 				for (uint32_t j = 0; j < r->source_ip[3 - i]; j++)
 					bitsets[i][j][unitNo] = bitsets[i][j][unitNo] | offsetMask;
-				for (uint32_t j = r->source_ip[3 - i] + 1; j <256; j++)
+				for (uint32_t j = r->source_ip[3 - i] + 1; j < 256; j++)
 					bitsets[i][j][unitNo] = bitsets[i][j][unitNo] | offsetMask;
 			}
 			else if (r->source_mask / 8 == i)
@@ -459,13 +494,9 @@ void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 				uint32_t d = r->source_ip[3 - i];
 				uint32_t lowValue = (d >> k) << k;
 				for (uint32_t j = 0; j < lowValue; j++)
-				{
 					bitsets[i][j][unitNo] = bitsets[i][j][unitNo] | offsetMask;
-				}
-				for (uint32_t j = lowValue + (1 << k); j <= 255; j++)
-				{
+				for (uint32_t j = lowValue + (1 << k); j < 256; j++)
 					bitsets[i][j][unitNo] = bitsets[i][j][unitNo] | offsetMask;
-				}
 			}
 		}
 		else
@@ -586,34 +617,35 @@ void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 #endif
 }
 
-std::array<uint64_t ,2>  HEMBS::backward_bitsets_search_IPv4(const message* msg, const ACL_rules* rules, uint32_t& matchRuleNo)
+std::array<uint64_t, 2>
+HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint32_t& matchRuleNo)
 {
-
-	unsigned long long int* result[HEM_BS_NUM_ATTR]; //=
-	// {
-	// 	bitsets[0][msg->source_ip[3]],
-	// 	bitsets[1][msg->source_ip[2]],
-	// 	bitsets[2][msg->source_ip[1]],
-	// 	bitsets[3][msg->source_ip[0]],
-	// 	bitsets[4][msg->destination_ip[3]],
-	// 	bitsets[5][msg->destination_ip[2]],
-	// 	bitsets[6][msg->destination_ip[1]],
-	// 	bitsets[7][msg->destination_ip[0]]
-	// };
-
-	for (uint8_t i = 0; i < 8; i++)
-	{
-		if (i < 4)
+	unsigned long long int* result[HEM_BS_NUM_ATTR] =
 		{
-			uint8_t bitset_2d = msg->source_ip[3 - i];
-			result[i] = bitsets[i][bitset_2d];
-		}
-		else
-		{
-			uint8_t bitset_2d = msg->destination_ip[7 - i];
-			result[i] = bitsets[i][bitset_2d];
-		}
-	}
+			bitsets[0][msg->source_ip[3]],
+			bitsets[1][msg->source_ip[2]],
+			bitsets[2][msg->source_ip[1]],
+			bitsets[3][msg->source_ip[0]],
+			bitsets[4][msg->destination_ip[3]],
+			bitsets[5][msg->destination_ip[2]],
+			bitsets[6][msg->destination_ip[1]],
+			bitsets[7][msg->destination_ip[0]]
+		};
+
+//	for (uint8_t i = 0; i < 8; i++)
+//	{
+//		if (i < 4)
+//		{
+//			uint8_t bitset_2d = msg->source_ip[3 - i];
+//			result[i] = bitsets[i][bitset_2d];
+//		}
+//		else
+//		{
+//			uint8_t bitset_2d = msg->destination_ip[7 - i];
+//			result[i] = bitsets[i][bitset_2d];
+//		}
+//	}
+
 #if HEM_BS_NUM_ATTR > 8
 	switch ((unsigned int)msg->protocol)
 	{
@@ -676,16 +708,29 @@ std::array<uint64_t ,2>  HEMBS::backward_bitsets_search_IPv4(const message* msg,
 #endif
 
 #if DEBUG
-	 uint64_t checkNum=0, or64Num=0;
+	uint64_t checkNum = 0, or64Num = 0;
 #endif
 	for (uint32_t j = 0; j < numUnit; j++)
 	{
 		unsigned long long int orResult = result[0][j];
 		uint8_t ai = 1;
 		bool flag = true;
+//		while (ai < HEM_BS_NUM_ATTR)
+//		{
+//			if (orResult == ~0ULL) // All the 64 bits are mismatching
+//			{
+//				flag = false;
+//				break;
+//			}
+//			else
+//			{
+//				orResult |= result[ai][j];
+//				ai++;
+//			}
+//		}
 		while (ai < HEM_BS_NUM_ATTR)
 		{
-			orResult = orResult | result[ai][j];
+			orResult |= result[ai][j];
 			if (orResult == ~0ULL) // All the 64 bits are mismatching
 			{
 				flag = false;
@@ -694,11 +739,12 @@ std::array<uint64_t ,2>  HEMBS::backward_bitsets_search_IPv4(const message* msg,
 			ai++;
 		}
 #if DEBUG
-		or64Num+=std::min(ai,(uint8_t)10);
+//		or64Num += ai - 1;
+		or64Num += std::min(10, (int)ai);
 #endif
 		if (flag)
 		{
-			matchRuleNo = j<<6;
+			matchRuleNo = j << 6;
 			for (uint32_t i = 0; i < 64; i++, matchRuleNo++)
 			{
 				if ((1LL << i & orResult) == 0) // may be a match
@@ -706,16 +752,16 @@ std::array<uint64_t ,2>  HEMBS::backward_bitsets_search_IPv4(const message* msg,
 #if DEBUG
 					checkNum++;
 #endif
-					const rule& _r = rules->list[matchRuleNo];
-					if ((_r.source_port[0] <= msg->source_port) && (msg->source_port <= _r.source_port[1])
-						&& (_r.destination_port[0] <= msg->destination_port)
-						&& (msg->destination_port <= _r.destination_port[1]))
+					if ((rules[matchRuleNo].source_port[0] <= msg->source_port)
+						&& (msg->source_port <= rules[matchRuleNo].source_port[1])
+						&& (rules[matchRuleNo].destination_port[0] <= msg->destination_port)
+						&& (msg->destination_port <= rules[matchRuleNo].destination_port[1]))
 					{
-#if HEM_BS_NUM_ATTR>8
+#if HEM_BS_NUM_ATTR > 8
 #if DEBUG
-						return 	std::array<uint64_t ,2> {checkNum,or64Num};
+						return std::array<uint64_t, 2>{ checkNum, or64Num };
 #else
-						return 	std::array<uint64_t ,2> {-1ULL,-1ULL};
+						return std::array<uint64_t, 2>{ -1ULL, -1ULL };
 #endif
 #else // HEM_BS_NUM_ATTR == 8
 						if ((_r.protocol[1] == msg->protocol) || (_r.protocol[0] == 0))
@@ -764,7 +810,7 @@ std::array<uint64_t ,2>  HEMBS::backward_bitsets_search_IPv4(const message* msg,
 		// }
 	}
 	// printf("Error: unfound match.\n");
-	return {-1ULL,-1ULL};
+	return { -1ULL, -1ULL };
 }
 
 void HEMBS::visualize_bitsets(unsigned long long** bitsets)

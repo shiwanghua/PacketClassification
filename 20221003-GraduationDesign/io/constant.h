@@ -3,12 +3,12 @@
 
 #include <string>
 
-const std::string expID="47";
+const std::string expID="58";
 #define DATASET_NO 1
 
 #define VERIFICATION false
 #define DEBUG  false
-#define SHUFFLEMESSAGES true
+#define SHUFFLEMESSAGES false
 #define SHUFFLERULES false // Do not change.
 
 #define HEM_BS_NUM_ATTR 11 // 8 (IP), 9 (IP+Protocol), 11 (IP+Protocol+Port)
@@ -38,6 +38,4 @@ const std::string expID="47";
 #define OSPFIGP 0x59 // 89
 #define ISIS 0x7C    // 124 d2new
 
-
 #endif
-

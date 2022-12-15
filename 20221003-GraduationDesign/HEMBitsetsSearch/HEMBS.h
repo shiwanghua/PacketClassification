@@ -11,14 +11,11 @@
 #include "constant.h"
 #include"data_structure.h"
 
-
-#define NUM_BITSET 2577 // 256*8+HEM_BS_NUM_PORT_BITSET*2+NUM_PROTOCOL+1 // 1: protocol=0
-
 class HEMBS // bitsets search
 {
-	unsigned long long ***bitsets;
-	unsigned long long **bitsets2;
-	unsigned long long *begin_bits;
+	unsigned long long* begin_bits; // for successive storage
+	unsigned long long*** bitsets; // [attrID][bitsetID][offset]
+	unsigned long long** bitsets2; // [bitsetID][offset], Deprecated
 	int numUnit; // The times of OR operation between two bitsets
 	double memorysize;
  public:
@@ -27,15 +24,16 @@ class HEMBS // bitsets search
 	~HEMBS();
 
 	void forward_init_bitsets_IPv4(int numRule);
-	void forward_bitsets_insert_IPv4(rule *r, unsigned long **);
-	unsigned int forward_bitsets_search_IPv4(const rule *, message *m, int *_cycle, unsigned long *);
+	void forward_bitsets_insert_IPv4(const rule* r);
+	std::array<uint64_t, 2> forward_bitsets_search_IPv4(const message* m, const rule* rules, uint32_t& matchRuleNo);
 
 	void backward_init_bitsets_IPv4(int numRule);
 	void backward_bitsets_insert_IPv4(const rule*);
-	std::array<uint64_t ,2> backward_bitsets_search_IPv4(const message* list, const ACL_rules* rules, uint32_t& matchRuleNo);
+	std::array<uint64_t, 2>
+	backward_bitsets_search_IPv4(const message* list, const rule* rules, uint32_t& matchRuleNo);
 
-	void visualize_bitsets(unsigned long long ** bitsets);
-	void backward_bitsets_visualize_one(const char *ruleSetName);
+	void visualize_bitsets(unsigned long long** bitsets);
+	void backward_bitsets_visualize_one(const char* ruleSetName);
 
 	double calMemory();
 };
