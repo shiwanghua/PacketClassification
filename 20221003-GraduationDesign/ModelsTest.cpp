@@ -227,7 +227,7 @@ void ModelsTest::HEMBS_forward_test()
  + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs)\
  + " us memory= " + Utils::Double2String(hem_fbs.calMemory() / 1024.0 / 1024.0) \
- + " MB check= " + Utils::Double2String(avgCheckNum) + "\n";
+ + " MB check= " + Utils::Double2String(avgCheckNum) + " AND= "+Utils::Double2String(avgANDNum)+ "\n";
 	}
 
 	printf("\n\nExp%s HEM-FBS-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
@@ -322,7 +322,7 @@ void ModelsTest::HEMBS_backward_test()
  + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs)\
  + " us memory= " + Utils::Double2String(hem_bbs.calMemory() / 1024.0 / 1024.0) \
- + " MB check= " + Utils::Double2String(avgCheckNum) + "\n";
+ + " MB check= " + Utils::Double2String(avgCheckNum) + " OR= "+Utils::Double2String(avgORNum)+"\n";
 	}
 
 	printf("\n\nExp%s HEM-BBS-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "

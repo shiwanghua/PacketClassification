@@ -9,7 +9,7 @@ int main()
 //	mt.generateGroundthTruthInTupleFile();
 //	mt.BruteForceSearch_test();
 	mt.HEMBS_forward_test();
-	mt.HEMBS_backward_test();
+//	mt.HEMBS_backward_test();
 //	mt.TamaSearch_test();
 	cout << "DONE.\n";
 	return 0;

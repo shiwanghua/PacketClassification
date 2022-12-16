@@ -65,4 +65,11 @@ lzyDynamicFourLayerVersion/.idea/codeStyles
 20221003-GraduationDesign/TamaSearch/CMakeFiles/TamaSearch.dir/compiler_depend.internal
 20221003-GraduationDesign/.vs
 20221003-GraduationDesign/out
-20221003-GraduationDesign/CMakeSettings.json
+20221003-GraduationDesign/CMakeCache.txt
+20221003-GraduationDesign/CMakeFiles
+20221003-GraduationDesign/Makefile
+20221003-GraduationDesign/cmake-build-debug
+20221003-GraduationDesign/cmake_install.cmake
+*.cmake
+20221003-GraduationDesign/TamaSearch/CMakeFiles/TamaSearch.dir/flags.make
+*.make
