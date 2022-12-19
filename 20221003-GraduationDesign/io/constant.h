@@ -3,23 +3,24 @@
 
 #include <string>
 
-const std::string expID="85";
-#define DATASET_NO 3
+const std::string expID="137";
+#define DATASET_NO 2
 
 #define VERIFICATION false
 #define DEBUG false
-#define SHUFFLEMESSAGES false
+#define SHUFFLEMESSAGES true
 #define SHUFFLERULES false // Do not change.
 
 #define HEM_BS_NUM_ATTR 11 // 8 (IP), 9 (IP+Protocol), 11 (IP+Protocol+Port)
 #define HEM_BS_PORT_CELLWIDTH 256
-#define HEM_BS_NUM_PORT_BITSET 256 // HEM_BS_PORT_CELLWIDTH * HEM_BS_NUM_PORT_BITSET == PORT_NUMBER
-
-#define NUM_PROTOCOL 16
+#define HEM_BS_NUM_PORT_BITSET 256 // HEM_BS_PORT_CELLWIDTH * HEM_BS_NUM_PORT_BITSET == PORT_NUMBER, both are power of 2
+#define AGGREGATE_RATIO 32 // aggregating ratio, 1 bit represents $aggRatio bits, Compression ratio
 
 #define TAMA_PRIORITY_CHECK false
 #define TAMA_IP_LEVEL_NUM 8 // must be 8; the first level (level 0) is always empty, the last level is 8 (0-8)
 #define TAMA_PORT_LEVEL_NUM 16
+
+#define NUM_PROTOCOL 16
 
 #define ICMP 0x01    // 1 d2
 #define IGMP 0x02    // 2

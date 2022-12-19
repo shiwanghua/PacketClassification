@@ -73,3 +73,9 @@ lzyDynamicFourLayerVersion/.idea/codeStyles
 *.cmake
 20221003-GraduationDesign/TamaSearch/CMakeFiles/TamaSearch.dir/flags.make
 *.make
+20221003-GraduationDesign/BruteForceSearch/CMakeFiles
+20221003-GraduationDesign/HEMBitsetsSearch/CMakeFiles
+20221003-GraduationDesign/HEMBitsetsSearch/cmake_install.cmake
+20221003-GraduationDesign/MultiLevelHash/CMakeFiles
+20221003-GraduationDesign/TamaSearch/CMakeFiles
+20221003-GraduationDesign/.vscode

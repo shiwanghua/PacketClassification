@@ -21,7 +21,7 @@ using namespace std;
 class ModelsTest
 {
 #if DATASET_NO==1
-	// Datasets1: 第一、二批原始数据 history data
+	// Datasets1: �?一、二批原始数�? history data
 	static constexpr int numDataSets = 17;
 	char ruleFileName[numDataSets][200]{ "acl128_same_fmt_with_cb256k/acl_rules2_cb.txt",
 		// "D:\\codes\\cpp\\ACL\\20221003-GraduationDesign\\acl128_same_fmt_with_cb256k\\acl_rules2_cb.txt",
@@ -108,6 +108,8 @@ public:
 	void BruteForceSearch_test();
 
 	void HEMBS_forward_test();
+	void HEMBS_aggregate_forward_test();
+	void HEMBS_RLE_forward_test();
 	void HEMBS_backward_test();
 
 	void TamaSearch_test();
