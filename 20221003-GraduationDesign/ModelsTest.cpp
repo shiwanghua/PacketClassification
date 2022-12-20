@@ -558,9 +558,9 @@ void ModelsTest::HEMBS_RLE_forward_test()
 		totalAvgCMPNum += avgCMPNum;
 		totalAvgMemorySizeB += hem_rfbs.calMemory() / acl_rules->size;
 
-		printf("HEM-AFBS-k%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		printf("HEM-RFBS-Incre%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgPlus1Num= %.3f, avgCMPNum= %.3f\n\n\n", \
-        AGGREGATE_RATIO, dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        INCREMENT, dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
 			hem_rfbs.calMemory() / 1024.0 / 1024.0, hem_rfbs.calMemory() / acl_rules->size,
 			avgCheckNum, avgPlusOneNum, avgCMPNum);
 
@@ -574,9 +574,9 @@ void ModelsTest::HEMBS_RLE_forward_test()
  + " cmp= " + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-AFBS-k%d-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+	printf("\nExp%s HEM-RFBS-Incre%d-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
 		   "checkNum= %.3f, plus1Num= %.3f, cmpNum= %.3f, memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
-        expID.c_str(), AGGREGATE_RATIO, HEM_BS_NUM_ATTR,
+        expID.c_str(), INCREMENT, HEM_BS_NUM_ATTR,
 		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets,
 		totalAvgSearchTimeUs / numDataSets, totalAvgCheckNum / numDataSets,
 		totalAvgPlusOneNum / numDataSets, totalAvgCMPNum / numDataSets, \
@@ -585,7 +585,7 @@ void ModelsTest::HEMBS_RLE_forward_test()
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES) + "-k" + to_string(AGGREGATE_RATIO)\
+			   + to_string(SHUFFLEMESSAGES) + "-Incre" + to_string(INCREMENT)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\

@@ -1,3 +1,364 @@
+171-d1: search= 0.577356 us insert= 0.386528 us construct= 11.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d2: search= 0.622834 us insert= 0.987851 us construct= 6.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d3: search= 2.776164 us insert= 2.231342 us construct= 8.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d4: search= 0.870729 us insert= 0.919618 us construct= 8.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d5: search= 0.483064 us insert= 0.905412 us construct= 12.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d6: search= 0.304834 us insert= 0.326023 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d7: search= 0.537406 us insert= 0.757565 us construct= 12.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d8: search= 0.339726 us insert= 0.594625 us construct= 9.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d9: search= 0.315724 us insert= 0.548450 us construct= 14.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d10: search= 0.305413 us insert= 0.356292 us construct= 15.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d11: search= 0.459281 us insert= 0.895134 us construct= 14.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d12: search= 0.239181 us insert= 1.865087 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d13: search= 0.701344 us insert= 0.952100 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d14: search= 0.433150 us insert= 0.854708 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d15: search= 0.592529 us insert= 0.960024 us construct= 13.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d16: search= 0.313125 us insert= 1.971550 us construct= 14.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+171-d17: search= 0.341300 us insert= 0.805790 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp171-a11-D2-S0 AVG: S= 0.600774 us I= 0.959888 us CST= 11.294118 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+170-d1: search= 0.823706 us insert= 0.372411 us construct= 8.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d2: search= 1.229350 us insert= 0.970933 us construct= 7.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d3: search= 2.746866 us insert= 2.210679 us construct= 11.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d4: search= 0.913375 us insert= 0.918110 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d5: search= 0.682494 us insert= 0.909690 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d6: search= 0.417494 us insert= 0.329391 us construct= 9.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d7: search= 1.390377 us insert= 0.760527 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d8: search= 0.506593 us insert= 0.582800 us construct= 9.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d9: search= 0.439955 us insert= 0.553082 us construct= 12.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d10: search= 0.431336 us insert= 0.357600 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d11: search= 0.627882 us insert= 0.896547 us construct= 13.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d12: search= 0.316132 us insert= 1.863797 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d13: search= 0.764451 us insert= 0.950830 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d14: search= 0.598016 us insert= 0.858033 us construct= 16.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d15: search= 0.825822 us insert= 0.984140 us construct= 10.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d16: search= 0.504790 us insert= 2.012136 us construct= 17.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+170-d17: search= 0.435587 us insert= 0.805087 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp170-a11-D2-S1 AVG: S= 0.803190 us I= 0.960929 us CST= 10.823529 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+169-d1: search= 0.836260 us insert= 0.377489 us construct= 7.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d2: search= 1.229763 us insert= 0.961372 us construct= 10.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d3: search= 2.750697 us insert= 2.196416 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d4: search= 0.910408 us insert= 0.911118 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d5: search= 0.681452 us insert= 0.916793 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d6: search= 0.405840 us insert= 0.331017 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d7: search= 1.401676 us insert= 0.750852 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d8: search= 0.505260 us insert= 0.617236 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d9: search= 0.443923 us insert= 0.554776 us construct= 13.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d10: search= 0.441250 us insert= 0.362815 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d11: search= 0.627385 us insert= 0.899572 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d12: search= 0.317561 us insert= 1.861592 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d13: search= 0.770994 us insert= 0.966283 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d14: search= 0.601974 us insert= 0.854034 us construct= 11.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d15: search= 0.733821 us insert= 0.968098 us construct= 11.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d16: search= 0.415470 us insert= 1.989659 us construct= 11.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+169-d17: search= 0.427203 us insert= 0.790649 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp169-a11-D2-S1 AVG: S= 0.794173 us I= 0.959398 us CST= 10.470588 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+168-d1: search= 1.341390 us insert= 0.391981 us construct= 6.000000 us memory= 33.600655 MB check= 4.398066 AND= 1574.170341 CMP= 3150.506989
+168-d2: search= 1.708371 us insert= 0.983200 us construct= 8.000000 us memory= 39.321991 MB check= 1.638760 AND= 1682.918447 CMP= 3367.168324
+168-d3: search= 3.311289 us insert= 2.206544 us construct= 12.000000 us memory= 39.243347 MB check= 46.812441 AND= 5347.050123 CMP= 10738.900361
+168-d4: search= 1.407096 us insert= 0.974711 us construct= 8.000000 us memory= 39.361313 MB check= 1.000000 AND= 5054.912947 CMP= 10110.825894
+168-d5: search= 1.165338 us insert= 0.930466 us construct= 10.000000 us memory= 39.164703 MB check= 1.022844 AND= 1737.991262 CMP= 3477.005344
+168-d6: search= 0.809059 us insert= 0.337375 us construct= 10.000000 us memory= 78.014740 MB check= 1.000000 AND= 1025.209995 CMP= 2051.419989
+168-d7: search= 1.924865 us insert= 0.766105 us construct= 10.000000 us memory= 43.588417 MB check= 1.417513 AND= 1303.035208 CMP= 2607.198334
+168-d8: search= 0.929971 us insert= 0.590191 us construct= 11.000000 us memory= 78.172028 MB check= 1.000000 AND= 1062.393765 CMP= 2125.787530
+168-d9: search= 0.830251 us insert= 0.567480 us construct= 12.000000 us memory= 77.287285 MB check= 1.003914 AND= 977.636357 CMP= 1956.272990
+168-d10: search= 0.825263 us insert= 0.369327 us construct= 12.000000 us memory= 78.683212 MB check= 1.000000 AND= 982.593451 CMP= 1966.186903
+168-d11: search= 1.065536 us insert= 0.921824 us construct= 10.000000 us memory= 59.828362 MB check= 1.049719 AND= 1873.527041 CMP= 3748.066553
+168-d12: search= 0.631998 us insert= 1.876288 us construct= 11.000000 us memory= 75.281868 MB check= 1.004136 AND= 780.938429 CMP= 1562.878467
+168-d13: search= 1.436325 us insert= 0.974274 us construct= 11.000000 us memory= 55.660240 MB check= 1.015143 AND= 3245.397894 CMP= 6491.801349
+168-d14: search= 1.250122 us insert= 0.889306 us construct= 15.000000 us memory= 65.176140 MB check= 1.000157 AND= 1555.924124 CMP= 3112.848247
+168-d15: search= 1.290314 us insert= 1.005833 us construct= 18.000000 us memory= 55.542274 MB check= 1.111330 AND= 2558.325650 CMP= 5117.680683
+168-d16: search= 0.826795 us insert= 1.938378 us construct= 12.000000 us memory= 78.034401 MB check= 1.000000 AND= 1057.714164 CMP= 2116.428329
+168-d17: search= 0.888852 us insert= 0.825575 us construct= 11.000000 us memory= 78.683212 MB check= 1.000000 AND= 1229.243342 CMP= 2459.486685
+DEBUGExp168-a11-D2-S1 AVG: S= 1.273108 us I= 0.973462 us CST= 11.000000 us M= 322.292775 B/' CEK= 3.969060 AND= 1944.057796 CMP= 3891.791940
+
+167-d1: search= 0.978775 us insert= 0.380334 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d2: search= 1.369932 us insert= 0.967079 us construct= 9.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d3: search= 1.444076 us insert= 2.200175 us construct= 12.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d4: search= 0.881312 us insert= 0.917829 us construct= 9.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d5: search= 0.834016 us insert= 0.916911 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d6: search= 0.570997 us insert= 0.329879 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d7: search= 1.620147 us insert= 0.756923 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d8: search= 0.859758 us insert= 0.628325 us construct= 15.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d9: search= 0.776811 us insert= 0.590676 us construct= 18.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d10: search= 0.724014 us insert= 0.387182 us construct= 15.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d11: search= 0.901236 us insert= 0.918537 us construct= 15.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d12: search= 0.549503 us insert= 1.895866 us construct= 16.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d13: search= 1.061184 us insert= 0.985491 us construct= 17.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d14: search= 0.991981 us insert= 0.868484 us construct= 16.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d15: search= 1.042507 us insert= 0.982574 us construct= 15.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d16: search= 0.678891 us insert= 2.020787 us construct= 15.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d17: search= 0.695269 us insert= 0.843524 us construct= 15.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp167-a11-D2-S1 AVG: S= 0.940024 us I= 0.975916 us CST= 13.411765 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+167-d1: search= 0.977439 us insert= 0.373390 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d2: search= 1.371449 us insert= 0.985310 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d3: search= 1.440489 us insert= 2.177069 us construct= 11.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d4: search= 0.877074 us insert= 0.916563 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d5: search= 0.833546 us insert= 0.924799 us construct= 9.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d6: search= 0.575163 us insert= 0.330533 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d7: search= 1.595519 us insert= 0.749145 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d8: search= 0.676528 us insert= 0.589625 us construct= 10.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d9: search= 0.592666 us insert= 0.555122 us construct= 13.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d10: search= 0.593527 us insert= 0.356366 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d11: search= 0.797753 us insert= 0.892247 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d12: search= 0.443425 us insert= 1.865544 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d13: search= 0.979565 us insert= 0.956579 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d14: search= 0.786099 us insert= 0.855892 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d15: search= 0.912838 us insert= 0.966410 us construct= 13.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d16: search= 0.600319 us insert= 1.988545 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+167-d17: search= 0.615690 us insert= 0.806630 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp167-a11-D2-S1 AVG: S= 0.862887 us I= 0.958222 us CST= 10.529412 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+166-d1: search= 0.924429 us insert= 0.390216 us construct= 13.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d2: search= 1.410239 us insert= 1.017887 us construct= 14.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d3: search= 1.370525 us insert= 2.243264 us construct= 18.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d4: search= 0.904679 us insert= 0.957227 us construct= 12.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d5: search= 0.813645 us insert= 0.932397 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d6: search= 0.570792 us insert= 0.329221 us construct= 11.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d7: search= 1.574072 us insert= 0.745838 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d8: search= 0.676778 us insert= 0.577100 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d9: search= 0.595666 us insert= 0.547464 us construct= 11.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d10: search= 0.591473 us insert= 0.350299 us construct= 8.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d11: search= 0.741956 us insert= 0.888333 us construct= 12.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d12: search= 0.434109 us insert= 1.838218 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d13: search= 0.855351 us insert= 0.946782 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d14: search= 0.772536 us insert= 0.842238 us construct= 11.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d15: search= 0.819810 us insert= 0.956001 us construct= 12.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d16: search= 0.580008 us insert= 1.957299 us construct= 13.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d17: search= 0.614130 us insert= 0.806485 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp166-a11-D2-S1 AVG: S= 0.838247 us I= 0.960369 us CST= 11.764706 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+166-d1: search= 0.899510 us insert= 0.376427 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d2: search= 1.361318 us insert= 0.987288 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d3: search= 1.361930 us insert= 2.215316 us construct= 9.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d4: search= 0.887520 us insert= 0.932477 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d5: search= 0.810586 us insert= 0.920521 us construct= 9.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d6: search= 0.568818 us insert= 0.331372 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d7: search= 1.578654 us insert= 0.766817 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d8: search= 0.673174 us insert= 0.588496 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d9: search= 0.592880 us insert= 0.553162 us construct= 12.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d10: search= 0.593671 us insert= 0.357237 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d11: search= 0.747562 us insert= 0.908638 us construct= 9.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d12: search= 0.437429 us insert= 1.872120 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d13: search= 0.861540 us insert= 0.968232 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d14: search= 0.786023 us insert= 0.860551 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d15: search= 0.834700 us insert= 0.975070 us construct= 10.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d16: search= 0.576049 us insert= 1.971876 us construct= 9.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d17: search= 0.616395 us insert= 0.811848 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp166-a11-D2-S1 AVG: S= 0.834574 us I= 0.964556 us CST= 10.235294 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+166-d1: search= 0.928826 us insert= 0.387526 us construct= 11.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d2: search= 1.439205 us insert= 1.006872 us construct= 15.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d3: search= 1.447980 us insert= 2.229909 us construct= 18.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d4: search= 0.977947 us insert= 0.957953 us construct= 16.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d5: search= 0.905324 us insert= 0.958542 us construct= 16.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d6: search= 0.691533 us insert= 0.352054 us construct= 16.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d7: search= 1.796824 us insert= 0.777423 us construct= 16.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d8: search= 0.744855 us insert= 0.628302 us construct= 18.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d9: search= 0.594940 us insert= 0.552080 us construct= 15.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d10: search= 0.581828 us insert= 0.352249 us construct= 14.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d11: search= 0.745108 us insert= 0.896136 us construct= 13.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d12: search= 0.439431 us insert= 1.867405 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d13: search= 0.870231 us insert= 0.957225 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d14: search= 0.770542 us insert= 0.855024 us construct= 11.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d15: search= 0.862217 us insert= 0.963544 us construct= 14.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d16: search= 0.580165 us insert= 1.960693 us construct= 13.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d17: search= 0.608806 us insert= 0.797614 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp166-a11-D2-S1 AVG: S= 0.881515 us I= 0.970621 us CST= 14.176471 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+166-d1: search= 1.066742 us insert= 0.377562 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d2: search= 1.440498 us insert= 0.978751 us construct= 10.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d3: search= 1.583349 us insert= 2.206215 us construct= 12.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d4: search= 1.112857 us insert= 0.933555 us construct= 9.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d5: search= 0.870973 us insert= 0.936070 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d6: search= 0.583654 us insert= 0.335760 us construct= 11.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d7: search= 1.746558 us insert= 0.762120 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d8: search= 0.691466 us insert= 0.591319 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d9: search= 0.625244 us insert= 0.561090 us construct= 11.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d10: search= 0.610628 us insert= 0.361042 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d11: search= 0.853940 us insert= 0.905875 us construct= 12.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d12: search= 0.454775 us insert= 1.881044 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d13: search= 1.051898 us insert= 0.962483 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d14: search= 0.807737 us insert= 0.857009 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d15: search= 0.999742 us insert= 0.963654 us construct= 13.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d16: search= 0.592996 us insert= 1.974381 us construct= 13.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d17: search= 0.629867 us insert= 0.816286 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp166-a11-D2-S1 AVG: S= 0.924878 us I= 0.964954 us CST= 11.117647 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+166-d1: search= 1.072020 us insert= 0.382631 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d2: search= 1.449595 us insert= 0.968439 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d3: search= 1.586471 us insert= 2.199886 us construct= 11.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d4: search= 1.109348 us insert= 0.940118 us construct= 8.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d5: search= 0.874305 us insert= 0.927946 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d6: search= 0.585801 us insert= 0.400998 us construct= 13.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d7: search= 1.759303 us insert= 0.759116 us construct= 12.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d8: search= 0.705430 us insert= 0.593249 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d9: search= 0.629866 us insert= 0.553671 us construct= 12.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d10: search= 0.627217 us insert= 0.354303 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d11: search= 0.864119 us insert= 0.916575 us construct= 13.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d12: search= 0.460135 us insert= 1.871357 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d13: search= 1.056621 us insert= 0.959860 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d14: search= 0.827677 us insert= 0.862240 us construct= 11.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d15: search= 0.998060 us insert= 0.974998 us construct= 14.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d16: search= 0.599669 us insert= 1.969912 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+166-d17: search= 0.636100 us insert= 0.814911 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp166-a11-D2-S1 AVG: S= 0.931867 us I= 0.967659 us CST= 11.352941 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+165-d1: search= 0.814638 us insert= 0.374268 us construct= 7.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d2: search= 1.199131 us insert= 0.963319 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d3: search= 2.745331 us insert= 2.180225 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d4: search= 0.907841 us insert= 0.909571 us construct= 6.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d5: search= 0.685966 us insert= 0.900506 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d6: search= 0.423845 us insert= 0.331301 us construct= 11.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d7: search= 1.397980 us insert= 0.745605 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d8: search= 0.508346 us insert= 0.581342 us construct= 8.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d9: search= 0.442817 us insert= 0.541114 us construct= 12.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d10: search= 0.435261 us insert= 0.351874 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d11: search= 0.633234 us insert= 0.885523 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d12: search= 0.311263 us insert= 1.850375 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d13: search= 0.773656 us insert= 0.949769 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d14: search= 0.610045 us insert= 0.848893 us construct= 10.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d15: search= 0.727531 us insert= 0.965016 us construct= 11.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d16: search= 0.415810 us insert= 1.979516 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+165-d17: search= 0.433111 us insert= 0.791579 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp165-a11-D2-S1 AVG: S= 0.792106 us I= 0.949988 us CST= 9.941176 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+164-d1: search= 1.343311 us insert= 0.387974 us construct= 10.000000 us memory= 33.600655 MB check= 4.398066 AND= 1574.170341 CMP= 3150.506989
+164-d2: search= 1.701870 us insert= 0.990666 us construct= 9.000000 us memory= 39.321991 MB check= 1.638760 AND= 1682.918447 CMP= 3367.168324
+164-d3: search= 3.304017 us insert= 2.183390 us construct= 10.000000 us memory= 39.243347 MB check= 46.812441 AND= 5347.050123 CMP= 10738.900361
+164-d4: search= 1.405827 us insert= 0.966735 us construct= 8.000000 us memory= 39.361313 MB check= 1.000000 AND= 5054.912947 CMP= 10110.825894
+164-d5: search= 1.169197 us insert= 0.922177 us construct= 10.000000 us memory= 39.164703 MB check= 1.022844 AND= 1737.991262 CMP= 3477.005344
+164-d6: search= 0.826544 us insert= 0.338714 us construct= 10.000000 us memory= 78.014740 MB check= 1.000000 AND= 1025.209995 CMP= 2051.419989
+164-d7: search= 1.926347 us insert= 0.765576 us construct= 10.000000 us memory= 43.588417 MB check= 1.417513 AND= 1303.035208 CMP= 2607.198334
+164-d8: search= 0.933510 us insert= 0.589845 us construct= 10.000000 us memory= 78.172028 MB check= 1.000000 AND= 1062.393765 CMP= 2125.787530
+164-d9: search= 0.829954 us insert= 0.562315 us construct= 12.000000 us memory= 77.287285 MB check= 1.003914 AND= 977.636357 CMP= 1956.272990
+164-d10: search= 0.824960 us insert= 0.365139 us construct= 13.000000 us memory= 78.683212 MB check= 1.000000 AND= 982.593451 CMP= 1966.186903
+164-d11: search= 1.080362 us insert= 0.915018 us construct= 11.000000 us memory= 59.828362 MB check= 1.049719 AND= 1873.527041 CMP= 3748.066553
+164-d12: search= 0.620229 us insert= 1.849779 us construct= 11.000000 us memory= 75.281868 MB check= 1.004136 AND= 780.938429 CMP= 1562.878467
+164-d13: search= 1.407759 us insert= 0.970022 us construct= 11.000000 us memory= 55.660240 MB check= 1.015143 AND= 3245.397894 CMP= 6491.801349
+164-d14: search= 1.068724 us insert= 0.862329 us construct= 12.000000 us memory= 65.176140 MB check= 1.000157 AND= 1555.924124 CMP= 3112.848247
+164-d15: search= 1.390503 us insert= 1.010486 us construct= 11.000000 us memory= 55.542274 MB check= 1.111330 AND= 2558.325650 CMP= 5117.680683
+164-d16: search= 0.923670 us insert= 1.957874 us construct= 18.000000 us memory= 78.034401 MB check= 1.000000 AND= 1057.714164 CMP= 2116.428329
+164-d17: search= 0.884428 us insert= 0.829149 us construct= 17.000000 us memory= 78.683212 MB check= 1.000000 AND= 1229.243342 CMP= 2459.486685
+DEBUGExp164-a11-D2-S1 AVG: S= 1.273012 us I= 0.968658 us CST= 11.352941 us M= 322.292775 B/' CEK= 3.969060 AND= 1944.057796 CMP= 3891.791940
+
+162-d1: search= 0.825814 us insert= 0.386354 us construct= 17.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d2: search= 1.264573 us insert= 1.062855 us construct= 14.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d3: search= 2.738246 us insert= 2.197951 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d4: search= 0.899264 us insert= 0.931258 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d5: search= 0.699567 us insert= 0.937153 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d6: search= 0.409280 us insert= 0.328749 us construct= 11.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d7: search= 1.402740 us insert= 0.752530 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d8: search= 0.541575 us insert= 0.592015 us construct= 10.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d9: search= 0.448283 us insert= 0.542172 us construct= 12.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d10: search= 0.439924 us insert= 0.352604 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d11: search= 0.627673 us insert= 0.892412 us construct= 12.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d12: search= 0.327919 us insert= 1.873508 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d13: search= 0.766426 us insert= 0.967520 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d14: search= 0.606249 us insert= 0.849166 us construct= 13.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d15: search= 0.751489 us insert= 0.965857 us construct= 13.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d16: search= 0.424638 us insert= 1.960579 us construct= 13.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+162-d17: search= 0.439693 us insert= 0.800114 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp162-a11-D2-S1 AVG: S= 0.800786 us I= 0.964282 us CST= 11.647059 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+161-d1: search= 0.896819 us insert= 0.382374 us construct= 6.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d2: search= 1.329739 us insert= 0.976343 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d3: search= 1.356429 us insert= 2.179857 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d4: search= 0.880156 us insert= 0.930813 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d5: search= 0.810242 us insert= 0.929744 us construct= 9.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d6: search= 0.573735 us insert= 0.325479 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d7: search= 1.576292 us insert= 0.750365 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d8: search= 0.679996 us insert= 0.589640 us construct= 9.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d9: search= 0.595006 us insert= 0.544057 us construct= 10.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d10: search= 0.595978 us insert= 0.351631 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d11: search= 0.743065 us insert= 0.889227 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d12: search= 0.439163 us insert= 1.863262 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d13: search= 0.857558 us insert= 0.945119 us construct= 10.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d14: search= 0.774123 us insert= 0.846535 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d15: search= 0.810099 us insert= 0.965353 us construct= 10.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d16: search= 0.578931 us insert= 1.960674 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d17: search= 0.618398 us insert= 0.809063 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp161-a11-D2-S1 AVG: S= 0.830337 us I= 0.955267 us CST= 9.941176 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+161-d1: search= 0.970575 us insert= 0.375750 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d2: search= 1.457156 us insert= 0.979947 us construct= 10.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d3: search= 1.464390 us insert= 2.197669 us construct= 9.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d4: search= 0.918873 us insert= 0.935149 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d5: search= 0.827908 us insert= 0.922012 us construct= 9.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d6: search= 0.571151 us insert= 0.330497 us construct= 9.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d7: search= 1.603032 us insert= 0.756528 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d8: search= 0.672727 us insert= 0.592514 us construct= 10.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d9: search= 0.598845 us insert= 0.555233 us construct= 11.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d10: search= 0.595765 us insert= 0.354905 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d11: search= 0.789016 us insert= 0.904149 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d12: search= 0.436666 us insert= 1.852726 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d13: search= 0.977227 us insert= 0.954795 us construct= 11.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d14: search= 0.783670 us insert= 0.852237 us construct= 12.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d15: search= 0.904038 us insert= 0.959570 us construct= 11.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d16: search= 0.588089 us insert= 1.971498 us construct= 11.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d17: search= 0.613257 us insert= 0.800036 us construct= 11.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp161-a11-D2-S1 AVG: S= 0.868964 us I= 0.958542 us CST= 10.352941 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+161-d1: search= 0.909352 us insert= 0.374963 us construct= 8.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d2: search= 1.362192 us insert= 0.966188 us construct= 9.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d3: search= 1.465530 us insert= 2.204405 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d4: search= 0.917814 us insert= 0.925665 us construct= 8.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d5: search= 0.816733 us insert= 0.924995 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d6: search= 0.574694 us insert= 0.326559 us construct= 9.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d7: search= 1.606992 us insert= 0.751077 us construct= 10.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d8: search= 0.670208 us insert= 0.590572 us construct= 10.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d9: search= 0.594460 us insert= 0.545941 us construct= 11.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d10: search= 0.599667 us insert= 0.356659 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d11: search= 0.822568 us insert= 0.892432 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d12: search= 0.443478 us insert= 1.852179 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d13: search= 1.036464 us insert= 0.966990 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d14: search= 0.921550 us insert= 0.878412 us construct= 16.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d15: search= 0.907004 us insert= 0.974694 us construct= 17.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d16: search= 0.582316 us insert= 1.971778 us construct= 10.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d17: search= 0.613084 us insert= 0.812614 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp161-a11-D2-S1 AVG: S= 0.873183 us I= 0.959772 us CST= 11.000000 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+161-d1: search= 0.901301 us insert= 0.374122 us construct= 10.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d2: search= 1.328703 us insert= 0.977446 us construct= 8.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d3: search= 1.353098 us insert= 2.203426 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d4: search= 0.884621 us insert= 0.930266 us construct= 8.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d5: search= 0.806925 us insert= 0.914195 us construct= 11.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d6: search= 0.569129 us insert= 0.329879 us construct= 11.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d7: search= 1.584156 us insert= 0.749850 us construct= 12.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d8: search= 0.669611 us insert= 0.583241 us construct= 10.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d9: search= 0.609149 us insert= 0.545504 us construct= 11.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d10: search= 0.594876 us insert= 0.353991 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d11: search= 0.748260 us insert= 0.891898 us construct= 12.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d12: search= 0.448892 us insert= 1.848962 us construct= 10.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d13: search= 0.856534 us insert= 0.953155 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d14: search= 0.774822 us insert= 0.839857 us construct= 13.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d15: search= 0.833460 us insert= 0.967677 us construct= 13.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d16: search= 0.581469 us insert= 1.955023 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d17: search= 0.614756 us insert= 0.808618 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp161-a11-D2-S1 AVG: S= 0.832927 us I= 0.954536 us CST= 11.058824 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+161-d1: search= 0.900272 us insert= 0.378953 us construct= 7.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d2: search= 1.320064 us insert= 0.970410 us construct= 11.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d3: search= 1.367203 us insert= 2.184189 us construct= 10.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d4: search= 0.881617 us insert= 0.939469 us construct= 7.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d5: search= 0.807464 us insert= 0.910977 us construct= 8.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d6: search= 0.572695 us insert= 0.326196 us construct= 10.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d7: search= 1.577573 us insert= 0.753256 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d8: search= 0.677668 us insert= 0.580465 us construct= 11.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d9: search= 0.597971 us insert= 0.548912 us construct= 10.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d10: search= 0.589342 us insert= 0.357940 us construct= 13.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d11: search= 0.742059 us insert= 0.896988 us construct= 11.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d12: search= 0.437705 us insert= 1.868944 us construct= 9.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d13: search= 0.866096 us insert= 0.967465 us construct= 12.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d14: search= 0.768711 us insert= 0.849902 us construct= 11.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d15: search= 0.851643 us insert= 0.971413 us construct= 12.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d16: search= 0.581371 us insert= 1.968514 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+161-d17: search= 0.615941 us insert= 0.799411 us construct= 12.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp161-a11-D2-S1 AVG: S= 0.832670 us I= 0.957259 us CST= 10.411765 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
 134-d1: search= 1.604500 us insert= 0.375650 us construct= 8.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
 134-d2: search= 1.101671 us insert= 0.965985 us construct= 7.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
 134-d3: search= 2.491976 us insert= 2.210930 us construct= 7.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000

@@ -1,3 +1,193 @@
+171-d1: search= 0.100291 us insert= 0.689531 us construct= 56.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d2: search= 0.108739 us insert= 1.868035 us construct= 57.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d3: search= 0.454977 us insert= 3.335143 us construct= 67.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d4: search= 0.071273 us insert= 1.705674 us construct= 59.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d5: search= 0.134709 us insert= 1.680656 us construct= 62.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d6: search= 0.058051 us insert= 0.626849 us construct= 104.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d7: search= 0.154013 us insert= 1.338227 us construct= 67.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d8: search= 0.072517 us insert= 1.147310 us construct= 105.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d9: search= 0.075473 us insert= 1.035852 us construct= 104.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d10: search= 0.060845 us insert= 0.617091 us construct= 102.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d11: search= 0.091861 us insert= 1.792960 us construct= 83.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d12: search= 0.054750 us insert= 2.877104 us construct= 609.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d13: search= 0.083830 us insert= 1.831613 us construct= 81.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d14: search= 0.110579 us insert= 1.655368 us construct= 517.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d15: search= 0.112577 us insert= 1.760250 us construct= 458.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d16: search= 0.076649 us insert= 1.596284 us construct= 636.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+171-d17: search= 0.064198 us insert= 1.718927 us construct= 101.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp171-a11-D2-S0-k32 AVG: S= 0.110902 us I= 1.604522 us CST= 192.235294 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+170-d1: search= 0.142388 us insert= 0.686457 us construct= 50.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d2: search= 0.205284 us insert= 1.864189 us construct= 57.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d3: search= 0.474302 us insert= 3.327036 us construct= 60.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d4: search= 0.109639 us insert= 1.681752 us construct= 59.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d5: search= 0.231191 us insert= 1.679769 us construct= 61.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d6: search= 0.124115 us insert= 0.624045 us construct= 103.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d7: search= 0.320286 us insert= 1.355328 us construct= 63.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d8: search= 0.173376 us insert= 1.125343 us construct= 101.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d9: search= 0.162519 us insert= 1.041979 us construct= 103.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d10: search= 0.137023 us insert= 0.621310 us construct= 104.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d11: search= 0.166425 us insert= 1.793514 us construct= 84.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d12: search= 0.117064 us insert= 2.913080 us construct= 588.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d13: search= 0.123647 us insert= 1.793792 us construct= 79.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d14: search= 0.196548 us insert= 1.638399 us construct= 508.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d15: search= 0.199024 us insert= 1.821807 us construct= 433.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d16: search= 0.164097 us insert= 1.583652 us construct= 635.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+170-d17: search= 0.126642 us insert= 1.693333 us construct= 103.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp170-a11-D2-S1-k32 AVG: S= 0.186680 us I= 1.602635 us CST= 187.705882 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+169-d1: search= 0.155333 us insert= 0.682212 us construct= 52.000000 us memory= 34.682098 MB check= 4.398066 and= 191.160483 cmp= 215.863072 bingo= 26.150312 fail= 3.247986
+169-d2: search= 0.223546 us insert= 1.862148 us construct= 57.000000 us memory= 40.580383 MB check= 1.638760 and= 209.087925 cmp= 357.098885 bingo= 30.847252 fail= 2.081663
+169-d3: search= 0.486271 us insert= 3.249930 us construct= 59.000000 us memory= 40.501740 MB check= 46.812441 and= 870.474107 cmp= 440.103701 bingo= 23.976490 fail= 12.945696
+169-d4: search= 0.117160 us insert= 1.711994 us construct= 60.000000 us memory= 40.619705 MB check= 1.000000 and= 175.953968 cmp= 331.492963 bingo= 30.113827 fail= 1.005273
+169-d5: search= 0.248019 us insert= 1.654503 us construct= 62.000000 us memory= 40.423096 MB check= 1.022844 and= 174.934145 cmp= 206.363003 bingo= 26.656154 fail= 4.804540
+169-d6: search= 0.141192 us insert= 0.620933 us construct= 101.000000 us memory= 80.472450 MB check= 1.000000 and= 55.569937 cmp= 91.925988 bingo= 31.109243 fail= 1.010914
+169-d7: search= 0.333974 us insert= 1.341619 us construct= 62.000000 us memory= 44.984436 MB check= 1.417513 and= 219.150796 cmp= 329.177526 bingo= 28.871545 fail= 4.017961
+169-d8: search= 0.200383 us insert= 1.132451 us construct= 106.000000 us memory= 80.649399 MB check= 1.000000 and= 67.624300 cmp= 116.190224 bingo= 32.059195 fail= 1.003055
+169-d9: search= 0.201958 us insert= 1.050842 us construct= 101.000000 us memory= 79.725334 MB check= 1.003914 and= 64.414358 cmp= 106.707708 bingo= 29.370536 fail= 1.159428
+169-d10: search= 0.159315 us insert= 0.625095 us construct= 102.000000 us memory= 81.180244 MB check= 1.000000 and= 57.546802 cmp= 95.995072 bingo= 29.619048 fail= 1.004945
+169-d11: search= 0.185106 us insert= 1.822655 us construct= 83.000000 us memory= 61.735565 MB check= 1.049719 and= 139.869713 cmp= 236.409462 bingo= 24.583445 fail= 2.011567
+169-d12: search= 0.129124 us insert= 2.863050 us construct= 100.000000 us memory= 77.660934 MB check= 1.004136 and= 53.072610 cmp= 84.396921 bingo= 23.490409 fail= 1.128278
+169-d13: search= 0.141179 us insert= 1.815922 us construct= 77.000000 us memory= 57.429817 MB check= 1.015143 and= 158.550885 cmp= 279.338686 bingo= 35.968141 fail= 1.961509
+169-d14: search= 0.214311 us insert= 1.632547 us construct= 91.000000 us memory= 67.240631 MB check= 1.000157 and= 122.357520 cmp= 185.771815 bingo= 29.870625 fail= 2.858828
+169-d15: search= 0.219993 us insert= 1.775451 us construct= 78.000000 us memory= 57.311852 MB check= 1.111330 and= 168.532419 cmp= 272.977668 bingo= 27.164203 fail= 3.045707
+169-d16: search= 0.195791 us insert= 1.586889 us construct= 100.000000 us memory= 80.492111 MB check= 1.000000 and= 69.624698 cmp= 113.753341 bingo= 31.488612 fail= 1.261731
+169-d17: search= 0.153551 us insert= 1.687107 us construct= 103.000000 us memory= 81.180244 MB check= 1.000000 and= 61.611862 cmp= 103.903699 bingo= 33.165297 fail= 1.013093
+DEBUGExp169-a11-D2-S1-k32 AVG: S= 0.206247 us I= 1.595020 us CST= 82.000000 us M= 332.547302 B/' CEK= 3.969060 AND= 168.208031 CMP= 209.851161 Bingo= 29.088490 Fail= 2.680128
+
+167-d1: search= 0.143858 us insert= 0.693282 us construct= 54.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d2: search= 0.209114 us insert= 1.908446 us construct= 58.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d3: search= 0.468521 us insert= 3.291099 us construct= 61.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d4: search= 0.107129 us insert= 1.776947 us construct= 60.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d5: search= 0.233811 us insert= 1.672603 us construct= 58.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d6: search= 0.119372 us insert= 0.631304 us construct= 103.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d7: search= 0.322766 us insert= 1.355991 us construct= 65.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d8: search= 0.187254 us insert= 1.171949 us construct= 105.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d9: search= 0.170156 us insert= 1.049836 us construct= 103.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d10: search= 0.131480 us insert= 0.622693 us construct= 106.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d11: search= 0.165852 us insert= 1.850707 us construct= 81.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d12: search= 0.115570 us insert= 2.863609 us construct= 598.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d13: search= 0.123238 us insert= 1.794599 us construct= 78.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d14: search= 0.197407 us insert= 1.693272 us construct= 529.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d15: search= 0.193435 us insert= 1.833511 us construct= 455.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d16: search= 0.163549 us insert= 1.579368 us construct= 633.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d17: search= 0.128873 us insert= 1.733657 us construct= 103.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp167-a11-D2-S1-k32 AVG: S= 0.187140 us I= 1.618993 us CST= 191.176471 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+167-d1: search= 0.151885 us insert= 0.707537 us construct= 59.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d2: search= 0.252983 us insert= 1.946370 us construct= 66.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d3: search= 0.475492 us insert= 3.317025 us construct= 66.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d4: search= 0.110977 us insert= 1.799400 us construct= 64.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d5: search= 0.228476 us insert= 1.659472 us construct= 60.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d6: search= 0.127426 us insert= 0.629563 us construct= 102.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d7: search= 0.317145 us insert= 1.342162 us construct= 63.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d8: search= 0.180424 us insert= 1.152872 us construct= 103.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d9: search= 0.165508 us insert= 1.059108 us construct= 104.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d10: search= 0.139234 us insert= 0.634408 us construct= 105.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d11: search= 0.164595 us insert= 1.848226 us construct= 83.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d12: search= 0.119655 us insert= 2.876745 us construct= 603.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d13: search= 0.123912 us insert= 1.855151 us construct= 76.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d14: search= 0.202344 us insert= 1.679213 us construct= 517.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d15: search= 0.192693 us insert= 1.811515 us construct= 460.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d16: search= 0.165315 us insert= 1.584975 us construct= 626.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+167-d17: search= 0.122059 us insert= 1.699630 us construct= 103.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp167-a11-D2-S1-k32 AVG: S= 0.190595 us I= 1.623728 us CST= 191.764706 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+165-d1: search= 0.439734 us insert= 0.706348 us construct= 53.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d2: search= 0.323568 us insert= 1.915583 us construct= 60.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d3: search= 2.902791 us insert= 3.360921 us construct= 59.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d4: search= 0.123875 us insert= 1.748338 us construct= 61.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d5: search= 0.533283 us insert= 1.657517 us construct= 57.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d6: search= 0.138552 us insert= 0.626719 us construct= 104.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d7: search= 0.557723 us insert= 1.351506 us construct= 65.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d8: search= 0.199632 us insert= 1.139420 us construct= 101.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d9: search= 0.193082 us insert= 1.065609 us construct= 102.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d10: search= 0.148097 us insert= 0.626779 us construct= 106.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d11: search= 0.243656 us insert= 1.823888 us construct= 83.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d12: search= 0.134107 us insert= 2.905132 us construct= 595.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d13: search= 0.200357 us insert= 1.771270 us construct= 78.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d14: search= 0.323113 us insert= 1.638215 us construct= 517.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d15: search= 0.344433 us insert= 1.785849 us construct= 456.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d16: search= 0.206264 us insert= 1.584333 us construct= 633.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+165-d17: search= 0.141360 us insert= 1.714650 us construct= 104.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp165-a11-D2-S1-k32 AVG: S= 0.420801 us I= 1.613063 us CST= 190.235294 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+164-d1: search= 0.455849 us insert= 0.680629 us construct= 56.000000 us memory= 34.682098 MB check= 4.398066 and= 191.160483 cmp= 215.863072 bingo= 26.150312 fail= 3.247986
+164-d2: search= 0.342331 us insert= 1.807150 us construct= 58.000000 us memory= 40.580383 MB check= 1.638760 and= 209.087925 cmp= 357.098885 bingo= 30.847252 fail= 2.081663
+164-d3: search= 2.924713 us insert= 3.264804 us construct= 61.000000 us memory= 40.501740 MB check= 46.812441 and= 870.474107 cmp= 440.103701 bingo= 23.976490 fail= 12.945696
+164-d4: search= 0.142211 us insert= 1.722447 us construct= 59.000000 us memory= 40.619705 MB check= 1.000000 and= 175.953968 cmp= 331.492963 bingo= 30.113827 fail= 1.005273
+164-d5: search= 0.555934 us insert= 1.657557 us construct= 59.000000 us memory= 40.423096 MB check= 1.022844 and= 174.934145 cmp= 206.363003 bingo= 26.656154 fail= 4.804540
+164-d6: search= 0.159767 us insert= 0.627074 us construct= 103.000000 us memory= 80.472450 MB check= 1.000000 and= 55.569937 cmp= 91.925988 bingo= 31.109243 fail= 1.010914
+164-d7: search= 0.577103 us insert= 1.349574 us construct= 63.000000 us memory= 44.984436 MB check= 1.417513 and= 219.150796 cmp= 329.177526 bingo= 28.871545 fail= 4.017961
+164-d8: search= 0.213613 us insert= 1.146154 us construct= 104.000000 us memory= 80.649399 MB check= 1.000000 and= 67.624300 cmp= 116.190224 bingo= 32.059195 fail= 1.003055
+164-d9: search= 0.210594 us insert= 1.055005 us construct= 103.000000 us memory= 79.725334 MB check= 1.003914 and= 64.414358 cmp= 106.707708 bingo= 29.370536 fail= 1.159428
+164-d10: search= 0.167403 us insert= 0.616763 us construct= 105.000000 us memory= 81.180244 MB check= 1.000000 and= 57.546802 cmp= 95.995072 bingo= 29.619048 fail= 1.004945
+164-d11: search= 0.268386 us insert= 1.785414 us construct= 84.000000 us memory= 61.735565 MB check= 1.049719 and= 139.869713 cmp= 236.409462 bingo= 24.583445 fail= 2.011567
+164-d12: search= 0.147838 us insert= 2.896625 us construct= 588.000000 us memory= 77.660934 MB check= 1.004136 and= 53.072610 cmp= 84.396921 bingo= 23.490409 fail= 1.128278
+164-d13: search= 0.222623 us insert= 1.784348 us construct= 89.000000 us memory= 57.429817 MB check= 1.015143 and= 158.550885 cmp= 279.338686 bingo= 35.968141 fail= 1.961509
+164-d14: search= 0.348701 us insert= 1.659009 us construct= 497.000000 us memory= 67.240631 MB check= 1.000157 and= 122.357520 cmp= 185.771815 bingo= 29.870625 fail= 2.858828
+164-d15: search= 0.374328 us insert= 1.781428 us construct= 444.000000 us memory= 57.311852 MB check= 1.111330 and= 168.532419 cmp= 272.977668 bingo= 27.164203 fail= 3.045707
+164-d16: search= 0.228925 us insert= 1.580313 us construct= 618.000000 us memory= 80.492111 MB check= 1.000000 and= 69.624698 cmp= 113.753341 bingo= 31.488612 fail= 1.261731
+164-d17: search= 0.163421 us insert= 1.689747 us construct= 104.000000 us memory= 81.180244 MB check= 1.000000 and= 61.611862 cmp= 103.903699 bingo= 33.165297 fail= 1.013093
+DEBUGExp164-a11-D2-S1-k32 AVG: S= 0.441396 us I= 1.594355 us CST= 187.941176 us M= 332.547302 B/' CEK= 3.969060 AND= 168.208031 CMP= 209.851161 Bingo= 29.088490 Fail= 2.680128
+
+163-d1: search= 0.154132 us insert= 0.680775 us construct= 9.000000 us memory= 34.682098 MB check= 4.398066 and= 191.160483 cmp= 215.863072 bingo= 26.150312 fail= 3.247986
+163-d2: search= 0.222736 us insert= 1.907648 us construct= 302.000000 us memory= 40.580383 MB check= 1.638760 and= 209.087925 cmp= 357.098885 bingo= 30.847252 fail= 2.081663
+163-d3: search= 0.494903 us insert= 3.255326 us construct= 58.000000 us memory= 40.501740 MB check= 46.812441 and= 870.474107 cmp= 440.103701 bingo= 23.976490 fail= 12.945696
+163-d4: search= 0.120431 us insert= 1.776299 us construct= 55.000000 us memory= 40.619705 MB check= 1.000000 and= 175.953968 cmp= 331.492963 bingo= 30.113827 fail= 1.005273
+163-d5: search= 0.242707 us insert= 1.649111 us construct= 57.000000 us memory= 40.423096 MB check= 1.022844 and= 174.934145 cmp= 206.363003 bingo= 26.656154 fail= 4.804540
+163-d6: search= 0.137492 us insert= 0.620390 us construct= 102.000000 us memory= 80.472450 MB check= 1.000000 and= 55.569937 cmp= 91.925988 bingo= 31.109243 fail= 1.010914
+163-d7: search= 0.334880 us insert= 1.346464 us construct= 62.000000 us memory= 44.984436 MB check= 1.417513 and= 219.150796 cmp= 329.177526 bingo= 28.871545 fail= 4.017961
+163-d8: search= 0.193190 us insert= 1.140745 us construct= 101.000000 us memory= 80.649399 MB check= 1.000000 and= 67.624300 cmp= 116.190224 bingo= 32.059195 fail= 1.003055
+163-d9: search= 0.194637 us insert= 1.048564 us construct= 105.000000 us memory= 79.725334 MB check= 1.003914 and= 64.414358 cmp= 106.707708 bingo= 29.370536 fail= 1.159428
+163-d10: search= 0.149521 us insert= 0.631751 us construct= 592.000000 us memory= 81.180244 MB check= 1.000000 and= 57.546802 cmp= 95.995072 bingo= 29.619048 fail= 1.004945
+163-d11: search= 0.177824 us insert= 1.823718 us construct= 465.000000 us memory= 61.735565 MB check= 1.049719 and= 139.869713 cmp= 236.409462 bingo= 24.583445 fail= 2.011567
+163-d12: search= 0.129461 us insert= 2.864099 us construct= 97.000000 us memory= 77.660934 MB check= 1.004136 and= 53.072610 cmp= 84.396921 bingo= 23.490409 fail= 1.128278
+163-d13: search= 0.142597 us insert= 1.826648 us construct= 79.000000 us memory= 57.429817 MB check= 1.015143 and= 158.550885 cmp= 279.338686 bingo= 35.968141 fail= 1.961509
+163-d14: search= 0.220148 us insert= 1.667008 us construct= 89.000000 us memory= 67.240631 MB check= 1.000157 and= 122.357520 cmp= 185.771815 bingo= 29.870625 fail= 2.858828
+163-d15: search= 0.214730 us insert= 1.795295 us construct= 80.000000 us memory= 57.311852 MB check= 1.111330 and= 168.532419 cmp= 272.977668 bingo= 27.164203 fail= 3.045707
+163-d16: search= 0.192669 us insert= 1.586889 us construct= 103.000000 us memory= 80.492111 MB check= 1.000000 and= 69.624698 cmp= 113.753341 bingo= 31.488612 fail= 1.261731
+163-d17: search= 0.139447 us insert= 1.664650 us construct= 107.000000 us memory= 81.180244 MB check= 1.000000 and= 61.611862 cmp= 103.903699 bingo= 33.165297 fail= 1.013093
+DEBUGExp163-a11-D2-S1-k32 AVG: S= 0.203618 us I= 1.605022 us CST= 144.882353 us M= 332.547302 B/' CEK= 3.969060 AND= 168.208031 CMP= 209.851161 Bingo= 29.088490 Fail= 2.680128
+
+163-d1: search= 0.142566 us insert= 0.687143 us construct= 11.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d2: search= 0.202421 us insert= 1.909110 us construct= 297.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d3: search= 0.470924 us insert= 3.272363 us construct= 58.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d4: search= 0.110824 us insert= 1.745557 us construct= 56.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d5: search= 0.227714 us insert= 1.623037 us construct= 57.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d6: search= 0.122740 us insert= 0.627227 us construct= 102.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d7: search= 0.319379 us insert= 1.340611 us construct= 62.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d8: search= 0.174156 us insert= 1.146645 us construct= 100.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d9: search= 0.174766 us insert= 1.051876 us construct= 103.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d10: search= 0.131254 us insert= 0.626900 us construct= 598.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d11: search= 0.163791 us insert= 1.825167 us construct= 459.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d12: search= 0.108964 us insert= 2.836549 us construct= 98.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d13: search= 0.127942 us insert= 1.813294 us construct= 78.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d14: search= 0.192245 us insert= 1.616549 us construct= 90.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d15: search= 0.191598 us insert= 1.797072 us construct= 76.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d16: search= 0.166206 us insert= 1.572020 us construct= 102.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+163-d17: search= 0.128709 us insert= 1.687575 us construct= 105.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp163-a11-D2-S1-k32 AVG: S= 0.185659 us I= 1.598747 us CST= 144.235294 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+162-d1: search= 0.399648 us insert= 0.675267 us construct= 8.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d2: search= 0.304047 us insert= 1.854487 us construct= 291.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d3: search= 2.670005 us insert= 3.252694 us construct= 58.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d4: search= 0.119744 us insert= 1.735330 us construct= 55.000000 us memory= 40.619705 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d5: search= 0.476076 us insert= 1.623908 us construct= 56.000000 us memory= 40.423096 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d6: search= 0.130798 us insert= 0.614962 us construct= 100.000000 us memory= 80.472450 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d7: search= 0.504531 us insert= 1.335653 us construct= 63.000000 us memory= 44.984436 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d8: search= 0.182875 us insert= 1.117391 us construct= 102.000000 us memory= 80.649399 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d9: search= 0.179094 us insert= 1.037335 us construct= 104.000000 us memory= 79.725334 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d10: search= 0.140957 us insert= 0.622705 us construct= 579.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d11: search= 0.212424 us insert= 1.788835 us construct= 488.000000 us memory= 61.735565 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d12: search= 0.130833 us insert= 2.846256 us construct= 97.000000 us memory= 77.660934 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d13: search= 0.174789 us insert= 1.796316 us construct= 78.000000 us memory= 57.429817 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d14: search= 0.293717 us insert= 1.675162 us construct= 90.000000 us memory= 67.240631 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d15: search= 0.302998 us insert= 1.818482 us construct= 80.000000 us memory= 57.311852 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d16: search= 0.190882 us insert= 1.583483 us construct= 101.000000 us memory= 80.492111 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+162-d17: search= 0.138788 us insert= 1.680036 us construct= 101.000000 us memory= 81.180244 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp162-a11-D2-S1-k32 AVG: S= 0.385424 us I= 1.591665 us CST= 144.176471 us M= 332.547302 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
 134-d1: search= 1.052700 us insert= 0.695982 us construct= 49.000000 us memory= 34.682098 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
 134-d2: search= 0.308525 us insert= 1.873234 us construct= 62.000000 us memory= 40.580383 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
 134-d3: search= 1.734354 us insert= 3.339443 us construct= 62.000000 us memory= 40.501740 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
