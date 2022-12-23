@@ -699,8 +699,255 @@ void ModelsTest::TamaSearch_test()
 	Utils::WriteData2Begin(file_path, content);
 }
 
+void ModelsTest::IP_visualization(){
+	string srcPercentStr = "srcMaskPercent=[\n";
+	string dstPercentStr = "dstMaskPercent=[\n";
+	string srcVarianceStr = "srcMaskVariance=[";
+	string dstVarianceStr = "dstMaskVariance=[";
+	for (uint32_t dno = 0; dno < numDataSets; dno++)
+	{
+		readDatasets(dno);
+		double srcMaskNum[33],dstMaskNum[33];
+		memset(srcMaskNum,0,33*sizeof(double));
+		memset(dstMaskNum,0,33*sizeof(double));
+		
+		for (uint32_t i = 0; i < acl_rules->size; i++)
+		{
+			const rule& r = acl_rules->list[i];
+			srcMaskNum[(uint32_t)r.source_mask]++;
+			dstMaskNum[(uint32_t)r.destination_mask]++;
+		}
+		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcMaskNum,33));
+		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstMaskNum,33));
+		
+		srcPercentStr.append("  [");
+		dstPercentStr.append("  [");
+		for(uint32_t m=0;m<32;m++){
+			srcMaskNum[m]/=(double)acl_rules->size;
+			dstMaskNum[m]/=(double)acl_rules->size;
+			srcPercentStr+=Utils::Double2String(srcMaskNum[m])+", ";
+			dstPercentStr+=Utils::Double2String(dstMaskNum[m])+", ";
+		}
+		srcMaskNum[32]/=(double)acl_rules->size;
+		dstMaskNum[32]/=(double)acl_rules->size;
+		srcPercentStr+=Utils::Double2String(srcMaskNum[32])+"]";
+		dstPercentStr+=Utils::Double2String(dstMaskNum[32])+"]";
 
+		if(dno+1!=numDataSets){
+			srcPercentStr.append(",");
+			dstPercentStr.append(",");
+			srcVarianceStr.append(",");
+			dstVarianceStr.append(",");
+		}
+		srcPercentStr.append("\n");
+		dstPercentStr.append("\n");
+	}
+	srcPercentStr.append("]\n");
+	dstPercentStr.append("]\n");
+	srcVarianceStr.append("]\n");
+	dstVarianceStr.append("]\n");
+	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+}
 
+void ModelsTest::Protocol_visualization(){
+	string protocolStr = "protocolPercent=[\n";
+	string protocolVarianceStr = "protocolVariance=[";
+	for (uint32_t dno = 0; dno < numDataSets; dno++)
+	{
+		readDatasets(dno);
+		double protocolNum[NUM_PROTOCOL+1];
+		memset(protocolNum,0,(NUM_PROTOCOL+1)*sizeof(double));
+		
+		for (uint32_t i = 0; i < acl_rules->size; i++)
+		{
+			const rule& r = acl_rules->list[i];
+			if ((unsigned int)r.protocol[1] == 0)
+				protocolNum[0]++;
+			else
+			{
+				switch ((unsigned int)r.protocol[1])
+				{
+				case ICMP:
+					protocolNum[1]++;
+					break;
+				case IGMP:
+					protocolNum[2]++;
+					break;
+				case GGP:
+					protocolNum[3]++;
+					break;
+				case IP:
+					protocolNum[4]++;
+					break;
+				case ST:
+					protocolNum[5]++;
+					break;
+				case TCP:
+					protocolNum[6]++;
+					break;
+				case CBT:
+					protocolNum[7]++;
+					break;
+				case EGP:
+					protocolNum[8]++;
+					break;
+				case UDP:
+					protocolNum[9]++;
+					break;
+				case RSVP:
+					protocolNum[10]++;
+					break;
+				case GRE:
+					protocolNum[11]++;
+					break;
+				case ESP:
+					protocolNum[12]++;
+					break;
+				case AH:
+					protocolNum[13]++;
+					break;
+				case EIGRP:
+					protocolNum[14]++;
+					break;
+				case OSPFIGP:
+					protocolNum[15]++;
+					break;
+				case ISIS:
+					protocolNum[16]++;
+					break;
+				default:
+					fprintf(stderr, "Rule %d Error - unknown rule protocol %u !\n", r.PRI, r.protocol[1]);
+					exit(0);
+				}
+			}
+		}
+
+		protocolVarianceStr+=Utils::Double2String(Utils::CalVariance(protocolNum,NUM_PROTOCOL+1));
+
+		protocolStr.append("  [");
+		for(uint32_t m=0;m<NUM_PROTOCOL;m++){
+			protocolNum[m]/=(double)acl_rules->size;
+			protocolStr+=Utils::Double2String(protocolNum[m])+", ";
+		}
+		protocolNum[NUM_PROTOCOL]/=(double)acl_rules->size;
+		protocolStr+=Utils::Double2String(protocolNum[NUM_PROTOCOL])+"]";
+
+		
+
+		if(dno+1!=numDataSets){
+			protocolStr.append(",");
+			protocolVarianceStr.append(",");
+		}
+		protocolStr.append("\n");
+	}
+	protocolStr.append("]\n");
+	protocolVarianceStr.append("]\n");
+	std::cout<<protocolStr<<"\n"<<protocolVarianceStr<<"\n\n";
+}
+
+void ModelsTest::Port_subspace_visualization(){
+	string srcPercentStr = "srcPortSubspacePercent=[\n";
+	string dstPercentStr = "dstPortSubspacePercent=[\n";
+	string srcVarianceStr = "srcPortSubspaceVariance=[";
+	string dstVarianceStr = "dstPortSubspaceVariance=[";
+	for (uint32_t dno = 0; dno < numDataSets; dno++)
+	{
+		readDatasets(dno);
+		double srcPortCellNum[HEM_BS_NUM_PORT_BITSET],dstPortCellNum[HEM_BS_NUM_PORT_BITSET];
+		memset(srcPortCellNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
+		memset(dstPortCellNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
+		
+		for (uint32_t i = 0; i < acl_rules->size; i++)
+		{
+			const rule& r = acl_rules->list[i];
+			for(uint32_t ci=(uint32_t)r.source_port[0]/HEM_BS_PORT_CELLWIDTH;
+			ci<=(uint32_t)r.source_port[1]/HEM_BS_PORT_CELLWIDTH;ci++)
+				srcPortCellNum[ci]++;
+			for(uint32_t ci=(uint32_t)r.destination_port[0]/HEM_BS_PORT_CELLWIDTH;
+			ci<=(uint32_t)r.destination_port[1]/HEM_BS_PORT_CELLWIDTH;ci++)
+				dstPortCellNum[ci]++;
+		}
+		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcPortCellNum,HEM_BS_NUM_PORT_BITSET));
+		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstPortCellNum,HEM_BS_NUM_PORT_BITSET));
+
+		srcPercentStr.append("  [");
+		dstPercentStr.append("  [");
+		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET;m++){
+			srcPortCellNum[m]/=(double)acl_rules->size;
+			dstPortCellNum[m]/=(double)acl_rules->size;
+			srcPercentStr+=Utils::Double2String(srcPortCellNum[m])+", ";
+			dstPercentStr+=Utils::Double2String(dstPortCellNum[m])+", ";
+		}
+		srcPortCellNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
+		dstPortCellNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
+		srcPercentStr+=Utils::Double2String(srcPortCellNum[HEM_BS_NUM_PORT_BITSET])+"]";
+		dstPercentStr+=Utils::Double2String(dstPortCellNum[HEM_BS_NUM_PORT_BITSET])+"]";
+
+		if(dno+1!=numDataSets){
+			srcPercentStr.append(",");
+			dstPercentStr.append(",");
+			srcVarianceStr.append(",");
+			dstVarianceStr.append(",");
+		}
+		srcPercentStr.append("\n");
+		dstPercentStr.append("\n");
+	}
+	srcPercentStr.append("]\n");
+	dstPercentStr.append("]\n");
+	srcVarianceStr.append("]\n");
+	dstVarianceStr.append("]\n");
+	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+}
+
+void ModelsTest::Port_width_visualization(){
+	string srcPercentStr = "srcPortWidthPercent=[\n";
+	string dstPercentStr = "dstPortWidthPercent=[\n";
+	string srcVarianceStr = "srcPortWidthVariance=[";
+	string dstVarianceStr = "dstPortWidthVariance=[";
+	for (uint32_t dno = 0; dno < numDataSets; dno++)
+	{
+		readDatasets(dno);
+		double srcPortWidthNum[HEM_BS_NUM_PORT_BITSET],dstPortWidthNum[HEM_BS_NUM_PORT_BITSET];
+		memset(srcPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
+		memset(dstPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
+		
+		for (uint32_t i = 0; i < acl_rules->size; i++)
+		{
+			const rule& r = acl_rules->list[i];
+			srcPortWidthNum[((uint32_t)r.source_port[1]-(uint32_t)r.source_port[0])/HEM_BS_PORT_CELLWIDTH]++;
+			dstPortWidthNum[((uint32_t)r.destination_port[1]-(uint32_t)r.destination_port[0])/HEM_BS_PORT_CELLWIDTH]++;
+		}
+		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcPortWidthNum,HEM_BS_NUM_PORT_BITSET));
+		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstPortWidthNum,HEM_BS_NUM_PORT_BITSET));
+
+		srcPercentStr.append("  [");
+		dstPercentStr.append("  [");
+		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET;m++){
+			srcPortWidthNum[m]/=(double)acl_rules->size;
+			dstPortWidthNum[m]/=(double)acl_rules->size;
+			srcPercentStr+=Utils::Double2String(srcPortWidthNum[m])+", ";
+			dstPercentStr+=Utils::Double2String(dstPortWidthNum[m])+", ";
+		}
+		srcPortWidthNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
+		dstPortWidthNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
+		srcPercentStr+=Utils::Double2String(srcPortWidthNum[HEM_BS_NUM_PORT_BITSET])+"]";
+		dstPercentStr+=Utils::Double2String(dstPortWidthNum[HEM_BS_NUM_PORT_BITSET])+"]";
+
+		if(dno+1!=numDataSets){
+			srcPercentStr.append(",");
+			dstPercentStr.append(",");
+			srcVarianceStr.append(",");
+			dstVarianceStr.append(",");
+		}
+		srcPercentStr.append("\n");
+		dstPercentStr.append("\n");
+	}
+	srcPercentStr.append("]\n");
+	dstPercentStr.append("]\n");
+	srcVarianceStr.append("]\n");
+	dstVarianceStr.append("]\n");
+	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+}
 
 
 

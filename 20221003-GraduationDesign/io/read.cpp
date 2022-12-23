@@ -23,7 +23,7 @@ void read_rules_cbFormat(const char* file_name, ACL_rules* rules)
 		rule r;//规则类
 		r.PRI = pri;
 		r.protocol[0] = (unsigned char)protocol[0]; // mask
-		r.protocol[1] = (unsigned char)protocol[1]; // protocol
+		r.protocol[1] = (unsigned char)protocol[1]; // protocol, 0表示通配
 		r.source_mask = (unsigned char)sIp[4];
 		r.destination_mask = (unsigned char)dIp[4];
 		int k = 4;

@@ -17,9 +17,10 @@ class Utils {
 	static void WriteData2End(string fileName, string text);
 
 	static string RemoveBlank(std::string str);
+	static string Int2String(int value);
 	static string Double2String(double value);
 
-	static string Int2String(int value);
+	static double CalVariance(double a[], uint32_t);
 
 //	static inline void bitsetOr(bitset<subs>& b1, const bitset<subs>& b2); // b1=b1|b2;
 

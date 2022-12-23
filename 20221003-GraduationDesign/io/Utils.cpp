@@ -51,3 +51,13 @@ string Utils::Double2String(double value) {
 	result.assign(buffer);
 	return RemoveBlank(result);
 }
+
+double Utils::CalVariance(double a[], uint32_t n){
+	double avg = 0.0, var = 0.0;
+	for(uint32_t i=0;i<n;i++)
+		avg+=a[i];
+	avg/=n;
+	for(uint32_t i=0;i<n;i++)
+		var+=(avg-a[i])*(avg-a[i]);
+	return var/n;
+}

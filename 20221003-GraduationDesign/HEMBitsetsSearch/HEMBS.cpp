@@ -19,7 +19,9 @@ HEMBS::HEMBS()
 	aggBeginBits = nullptr;
 	aggBitsets = nullptr;
 
-	increment=INCREMENT;
+	log2AggRatio2 = log2AggRatio + 6;
+
+	increment = INCREMENT;
 }
 
 HEMBS::~HEMBS()
@@ -594,7 +596,7 @@ void HEMBS::backward_bitsets_insert_IPv4(const rule* r)
 				// printf("dMask=%d, i=%d\n", list->destination_mask, i);
 				// k=4: d=10101100 (10100000~10101111)(160~175)(0~159,176~255) // 160+255-176+1=240
 				// d k
-				// lowValue=(d>>k)<<k
+				// lowValue=(d>>k  )<<k
 				// highValue=lowValue+((1<<k)-1)
 				// k=19
 				// 0~7
@@ -825,7 +827,7 @@ HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint3
 #endif
 		if (flag)
 		{
-			for (matchRuleNo = j << 6; matchRuleNo < (j<<6)+ 64; matchRuleNo++)
+			for (matchRuleNo = j << 6; matchRuleNo < (j << 6) + 64; matchRuleNo++)
 			{
 				if ((orResult & 1) == 0) // may be a match
 				{
@@ -859,37 +861,37 @@ HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint3
 				orResult >>= 1;
 			}
 
-		// 	matchRuleNo = j << 6;
-		// 	orResult=~orResult; // several 1s
-		// 	while(orResult){
-		// #if DEBUG
-		// 			checkNum++;
-		// #endif
-		// 			matchRuleNo+= __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
-		// 			if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
-		// 				msg->source_port <= rules[matchRuleNo].source_port[1] &&
-		// 				rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
-		// 				msg->destination_port <= rules[matchRuleNo].destination_port[1])
-		// 			{
-		// #if HEM_BS_NUM_ATTR > 8
-		// #if DEBUG
-		// 						return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-		// #else
-		// 						return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-		// #endif
-		// #else // HEM_BS_NUM_ATTR == 8
-		// 				if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
-		// 				{
-		// #if DEBUG
-		// 					return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-		// #else
-		// 					return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-		// #endif
-		// 				}
-		// #endif
-		// 			}
-		// 		orResult&=orResult-1;
-		// 	}
+			// 	matchRuleNo = j << 6;
+			// 	orResult=~orResult; // several 1s
+			// 	while(orResult){
+			// #if DEBUG
+			// 			checkNum++;
+			// #endif
+			// 			matchRuleNo+= __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
+			// 			if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+			// 				msg->source_port <= rules[matchRuleNo].source_port[1] &&
+			// 				rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+			// 				msg->destination_port <= rules[matchRuleNo].destination_port[1])
+			// 			{
+			// #if HEM_BS_NUM_ATTR > 8
+			// #if DEBUG
+			// 						return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
+			// #else
+			// 						return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
+			// #endif
+			// #else // HEM_BS_NUM_ATTR == 8
+			// 				if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+			// 				{
+			// #if DEBUG
+			// 					return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
+			// #else
+			// 					return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
+			// #endif
+			// 				}
+			// #endif
+			// 			}
+			// 		orResult&=orResult-1;
+			// 	}
 		}
 
 		// unsigned long long int orResult=result[0][j]|result[1][j]|result[2][j]|result[3][j]|result[4][j]|result[5][j]|result[6][j]|result[7][j];
@@ -954,8 +956,8 @@ void HEMBS::aggregate_forward_init_bitsets_IPv4(uint32_t numRule)
 #endif
 
 	numUnit = (numRule + sizeof(unsigned long long) * 8 - 1) / (sizeof(unsigned long long) * 8);
-	memorysize = (sizeof(unsigned long long***) + sizeof(unsigned long long**) * HEM_BS_NUM_ATTR
-				  + sizeof(unsigned long long*) * numBitsets + sizeof(unsigned long long) * numUnit * numBitsets); // B
+//	memorysize = (sizeof(unsigned long long***) + sizeof(unsigned long long**) * HEM_BS_NUM_ATTR
+//				  + sizeof(unsigned long long*) * numBitsets + sizeof(unsigned long long) * numUnit * numBitsets); // B
 
 	unsigned long long* temp_bits = (unsigned long long*)calloc(numUnit * numBitsets, sizeof(unsigned long long));
 	beginBits = temp_bits;
@@ -1223,6 +1225,7 @@ void HEMBS::aggregate_forward_bitsets_insert_IPv4(const rule* r)
 		aggBitsets[10][bi][aggUnitNo] |= aggOffsetMask;
 	}
 #endif
+
 }
 
 std::array<uint64_t, 5>
@@ -1354,7 +1357,61 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 			aggBingo++;
 #endif
 
-		//    for循环迭代 aggRatio 次找 聚合位 检查 版本
+		// Directly use aggBitsets to find and check the candidate rules! still needs to check all attributes !
+		// 只用二级索引,需检查所有属性
+//#if DEBUG
+//		cmpNum++;
+//#endif
+//		while (aggAndResult)
+//		{
+//			uint baseRuleNo = (abi << log2AggRatio2) + (__builtin_ctzl(aggAndResult) << log2AggRatio);
+//#if DEBUG
+//			cmpNum++;
+//#endif
+//			for (matchRuleNo = baseRuleNo; matchRuleNo < baseRuleNo + aggRatio; matchRuleNo++)
+//			{
+//#if DEBUG
+//				checkNum++;
+//#endif
+//				unsigned int free_bit = 32 - (unsigned int)rules[matchRuleNo].destination_mask;
+//				if (*(unsigned int*)(msg->destination_ip) >> free_bit
+//					!= *(unsigned int*)rules[matchRuleNo].destination_ip >> free_bit
+//					&& free_bit != 32)
+//					continue;  // if destination ip not match, check next
+//
+//				free_bit = 32 - (unsigned int)rules[matchRuleNo].source_mask;
+//				if (*(unsigned int*)(msg->source_ip) >> free_bit
+//					!= *(unsigned int*)rules[matchRuleNo].source_ip >> free_bit && free_bit != 32)
+//					continue;
+//
+//				if (((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0)) &&
+//					rules[matchRuleNo].source_port[0] <= msg->source_port &&
+//					msg->source_port <= rules[matchRuleNo].source_port[1] &&
+//					rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+//					msg->destination_port <= rules[matchRuleNo].destination_port[1])
+//				{
+//#if HEM_BS_NUM_ATTR > 8
+//#if DEBUG
+//					return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+//#else
+//					return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+//#endif
+//#else // HEM_BS_NUM_ATTR == 8
+//					if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+//						{
+//#if DEBUG
+//							return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+//#else
+//							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+//#endif
+//						}
+//#endif
+//				}
+//			}
+//			aggAndResult &= aggAndResult - 1;
+//		}
+
+		//    用 两级位集 联合检查版本
 		if (aggAndResult)
 		{
 			for (uint32_t bi = abi << log2AggRatio; bi < (abi << log2AggRatio) + aggRatio; bi++)
@@ -1409,22 +1466,22 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 //  2.  __builtin_ctzl to find candidate rule
 				while (andResult)
 				{
-		#if DEBUG
+#if DEBUG
 					checkNum++;
-		#endif
-					matchRuleNo = (bi<<6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
+#endif
+					matchRuleNo = (bi << 6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
 					if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
 						msg->source_port <= rules[matchRuleNo].source_port[1] &&
 						rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
 						msg->destination_port <= rules[matchRuleNo].destination_port[1])
 					{
-		#if HEM_BS_NUM_ATTR > 8
+#if HEM_BS_NUM_ATTR > 8
 #if DEBUG
-							return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+						return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
 #else
-							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+						return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
 #endif
-		#else // HEM_BS_NUM_ATTR == 8
+#else // HEM_BS_NUM_ATTR == 8
 						if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
 						{
 #if DEBUG
@@ -1433,7 +1490,7 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
 #endif
 						}
-		#endif
+#endif
 					}
 					andResult &= (andResult - 1);
 				}
@@ -1474,6 +1531,7 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 // 				}	  // End processing one not-zero andResult ‘if (flag)’
 			}      // End processing one 64-bits unit in bitsets
 		}          // End processing one not-zero aggAndResult
+
 	}              // End traversing aggBitsets
 
 	return { -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
@@ -1733,7 +1791,7 @@ void HEMBS::RLE_forward_construction_IPv4()
 			}
 			memorysize +=
 				sizeof(rleCode[ai][v]) + rleCode[ai][v].size() * sizeof(std::pair<uint32_t, uint32_t>);
-			for(uint32_t i=1;i<increment;i++)
+			for (uint32_t i = 1; i < increment; i++)
 				rleCode[ai][v].emplace_back(std::make_pair(numUnit << 6, numUnit << 6)); // Tombstone
 #if DEBUG
 			//			printf("ai= %d, v= %d, len= %zu, \n", ai, v, rleCode[ai][v].size());
@@ -1853,7 +1911,7 @@ HEMBS::RLE_forward_bitsets_search_IPv4(const message* msg, const rule* rules, ui
 				}
 				if (x[ai] > 0)
 				{ // Add 过了，回撤一些
-					while( (*b[ai])[--x[ai]].second >= (*b[maxLeftAi])[x[maxLeftAi]].first)
+					while ((*b[ai])[--x[ai]].second >= (*b[maxLeftAi])[x[maxLeftAi]].first)
 					{
 #if DEBUG
 						plusOneNum++;
@@ -1866,12 +1924,12 @@ HEMBS::RLE_forward_bitsets_search_IPv4(const message* msg, const rule* rules, ui
 #endif
 				}
 #if DEBUG
-				cmpNum+=2;
+				cmpNum += 2;
 #endif
 			}
 		}
 #if DEBUG
-		cmpNum += HEM_BS_NUM_ATTR * 3+1; // 上面的for, 下面for里的两个if, 以及最后的if判断
+		cmpNum += HEM_BS_NUM_ATTR * 3 + 1; // 上面的for, 下面for里的两个if, 以及最后的if判断
 		plusOneNum++; // for the last 'x[minRightAi]++'
 #endif
 		for (uint32_t ai = 0; ai < HEM_BS_NUM_ATTR; ai++)
@@ -1881,13 +1939,16 @@ HEMBS::RLE_forward_bitsets_search_IPv4(const message* msg, const rule* rules, ui
 			if ((*b[ai])[x[ai]].second < (*b[minRightAi])[x[minRightAi]].second)
 				minRightAi = ai;
 		}
-		for (matchRuleNo = (*b[maxLeftAi])[x[maxLeftAi]].first; matchRuleNo <= (*b[minRightAi])[x[minRightAi]].second; matchRuleNo++)
+		for (matchRuleNo = (*b[maxLeftAi])[x[maxLeftAi]].first; matchRuleNo <= (*b[minRightAi])[x[minRightAi]].second;
+			 matchRuleNo++)
 		{
 #if DEBUG
 			checkNum++;
 #endif
-			if (rules[matchRuleNo].source_port[0] <= msg->source_port && msg->source_port <= rules[matchRuleNo].source_port[1] &&
-				rules[matchRuleNo].destination_port[0] <= msg->destination_port && msg->destination_port <= rules[matchRuleNo].destination_port[1])
+			if (rules[matchRuleNo].source_port[0] <= msg->source_port
+				&& msg->source_port <= rules[matchRuleNo].source_port[1] &&
+				rules[matchRuleNo].destination_port[0] <= msg->destination_port
+				&& msg->destination_port <= rules[matchRuleNo].destination_port[1])
 			{
 #if HEM_BS_NUM_ATTR > 8
 #if DEBUG

@@ -28,6 +28,8 @@ class HEMBS // bitsets search
 	unsigned long long* aggBeginBits; // for successive aggregating storage
 	unsigned long long*** aggBitsets; // [attrID][bitsetID][offset]
 
+	uint32_t log2AggRatio2; //  = log2AggRatio+6
+
 	uint32_t increment; // RLE, the add increment when searching
 	std::vector<std::vector<std::pair<uint32_t,uint32_t>>> rleCode[HEM_BS_NUM_ATTR]; // Run Length Encoding
 

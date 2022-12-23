@@ -4,7 +4,7 @@
 
 typedef struct rule {
 	int PRI;  //priority
-	unsigned char protocol[2];  // [0] : mask [1] : protocol
+	unsigned char protocol[2];  // [0] : mask [1] : protocol(为0表示通配)
 	unsigned char source_mask;
 	unsigned char destination_mask;
 	unsigned char source_ip[4];
