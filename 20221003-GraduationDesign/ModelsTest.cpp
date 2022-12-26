@@ -238,9 +238,10 @@ void ModelsTest::HEMBS_forward_test()
  + " CMP= " + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-FBS-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
+	printf("\nExp%s HEM-FBS-a%d-CW%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
 		   "memorySize= %.3f B/'\ncheckNum= %.3f, and64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
-        expID.c_str(), HEM_BS_NUM_ATTR, totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
+        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, \
+		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
         totalAvgSearchTimeUs / numDataSets, totalAvgMemorySizeB / numDataSets, \
         totalAvgCheckNum / numDataSets,
 		totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, totalRules, totalMessages);
@@ -248,7 +249,7 @@ void ModelsTest::HEMBS_forward_test()
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES)\
+			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
@@ -343,9 +344,10 @@ void ModelsTest::HEMBS_backward_test()
 				   + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-BBS-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
+	printf("\nExp%s HEM-BBS-a%d-CW%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
 		   "memorySize= %.3f B/'\ncheckNum= %.3f, or64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
-        expID.c_str(), HEM_BS_NUM_ATTR, totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
+        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH,\
+		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
         totalAvgSearchTimeUs / numDataSets, totalAvgMemorySizeB / numDataSets, \
         totalAvgCheckNum / numDataSets,
 		totalAvgORNum / numDataSets, totalAvgCMPNum / numDataSets, totalRules, totalMessages);
@@ -353,7 +355,7 @@ void ModelsTest::HEMBS_backward_test()
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES)\
+			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)\
  + ": S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
@@ -441,10 +443,11 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		totalAvgAggFailNum += avgAggFailNum;
 		totalAvgMemorySizeB += hem_afbs.calMemory() / acl_rules->size;
 
-		printf("HEM-AFBS-k%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgANDNum= %.3f, avgCMPNum= %.3f\n"
 			   "avgAggBingo= %.3f, avgAggFail= %.3f\n\n", \
-        AGGREGATE_RATIO, dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, AGGREGATE_RATIO, dno + 1, \
+		constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, \
 			hem_afbs.calMemory() / 1024.0 / 1024.0, hem_afbs.calMemory() / acl_rules->size,
 			avgCheckNum, avgANDNum, avgCMPNum, avgAggBingoNum, avgAggFailNum);
 
@@ -472,7 +475,7 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES) + "-k" + to_string(AGGREGATE_RATIO)\
+			   + to_string(SHUFFLEMESSAGES) +"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)+ "-k" + to_string(AGGREGATE_RATIO)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
@@ -574,9 +577,9 @@ void ModelsTest::HEMBS_RLE_forward_test()
  + " cmp= " + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-RFBS-Incre%d-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+	printf("\nExp%s HEM-RFBS-a%d-CW%d-Incre%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
 		   "checkNum= %.3f, plus1Num= %.3f, cmpNum= %.3f, memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
-        expID.c_str(), INCREMENT, HEM_BS_NUM_ATTR,
+        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, INCREMENT,
 		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets,
 		totalAvgSearchTimeUs / numDataSets, totalAvgCheckNum / numDataSets,
 		totalAvgPlusOneNum / numDataSets, totalAvgCMPNum / numDataSets, \
@@ -585,7 +588,7 @@ void ModelsTest::HEMBS_RLE_forward_test()
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES) + "-Incre" + to_string(INCREMENT)\
+			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH) + "-Incre" + to_string(INCREMENT)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
  + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
@@ -872,16 +875,16 @@ void ModelsTest::Port_subspace_visualization(){
 
 		srcPercentStr.append("  [");
 		dstPercentStr.append("  [");
-		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET;m++){
+		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET-1;m++){
 			srcPortCellNum[m]/=(double)acl_rules->size;
 			dstPortCellNum[m]/=(double)acl_rules->size;
 			srcPercentStr+=Utils::Double2String(srcPortCellNum[m])+", ";
 			dstPercentStr+=Utils::Double2String(dstPortCellNum[m])+", ";
 		}
-		srcPortCellNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
-		dstPortCellNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
-		srcPercentStr+=Utils::Double2String(srcPortCellNum[HEM_BS_NUM_PORT_BITSET])+"]";
-		dstPercentStr+=Utils::Double2String(dstPortCellNum[HEM_BS_NUM_PORT_BITSET])+"]";
+		srcPortCellNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
+		dstPortCellNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
+		srcPercentStr+=Utils::Double2String(srcPortCellNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
+		dstPercentStr+=Utils::Double2String(dstPortCellNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
 
 		if(dno+1!=numDataSets){
 			srcPercentStr.append(",");
@@ -904,40 +907,58 @@ void ModelsTest::Port_width_visualization(){
 	string dstPercentStr = "dstPortWidthPercent=[\n";
 	string srcVarianceStr = "srcPortWidthVariance=[";
 	string dstVarianceStr = "dstPortWidthVariance=[";
+	string srcW0Str="srcPortW0Per=[";
+	string dstW0Str="dstPortW0Per=[";
+	string srcW1Str="srcPortW1Per=[";
+	string dstW1Str="dstPortW1Per=[";
+
 	for (uint32_t dno = 0; dno < numDataSets; dno++)
 	{
 		readDatasets(dno);
 		double srcPortWidthNum[HEM_BS_NUM_PORT_BITSET],dstPortWidthNum[HEM_BS_NUM_PORT_BITSET];
 		memset(srcPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
 		memset(dstPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
+		double srcw0=0,srcw1=0,dstw0=0,dstw1=0;
 		
 		for (uint32_t i = 0; i < acl_rules->size; i++)
 		{
 			const rule& r = acl_rules->list[i];
 			srcPortWidthNum[((uint32_t)r.source_port[1]-(uint32_t)r.source_port[0])/HEM_BS_PORT_CELLWIDTH]++;
 			dstPortWidthNum[((uint32_t)r.destination_port[1]-(uint32_t)r.destination_port[0])/HEM_BS_PORT_CELLWIDTH]++;
+			if(r.source_port[0]==r.source_port[1]) srcw0++;
+			else if(r.source_port[0]==0&&r.source_port[1]==65535) srcw1++;
+			if(r.destination_port[0]==r.destination_port[1]) dstw0++;
+			else if(r.destination_port[0]==0&&r.destination_port[1]==65535) dstw1++;
 		}
 		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcPortWidthNum,HEM_BS_NUM_PORT_BITSET));
 		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstPortWidthNum,HEM_BS_NUM_PORT_BITSET));
+		srcW0Str+=Utils::Double2String(srcw0/acl_rules->size);
+		srcW1Str+=Utils::Double2String(srcw1/acl_rules->size);
+		dstW0Str+=Utils::Double2String(dstw0/acl_rules->size);
+		dstW1Str+=Utils::Double2String(dstw1/acl_rules->size);
 
 		srcPercentStr.append("  [");
 		dstPercentStr.append("  [");
-		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET;m++){
+		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET-1;m++){
 			srcPortWidthNum[m]/=(double)acl_rules->size;
 			dstPortWidthNum[m]/=(double)acl_rules->size;
 			srcPercentStr+=Utils::Double2String(srcPortWidthNum[m])+", ";
 			dstPercentStr+=Utils::Double2String(dstPortWidthNum[m])+", ";
 		}
-		srcPortWidthNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
-		dstPortWidthNum[HEM_BS_NUM_PORT_BITSET]/=(double)acl_rules->size;
-		srcPercentStr+=Utils::Double2String(srcPortWidthNum[HEM_BS_NUM_PORT_BITSET])+"]";
-		dstPercentStr+=Utils::Double2String(dstPortWidthNum[HEM_BS_NUM_PORT_BITSET])+"]";
+		srcPortWidthNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
+		dstPortWidthNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
+		srcPercentStr+=Utils::Double2String(srcPortWidthNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
+		dstPercentStr+=Utils::Double2String(dstPortWidthNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
 
 		if(dno+1!=numDataSets){
 			srcPercentStr.append(",");
 			dstPercentStr.append(",");
 			srcVarianceStr.append(",");
 			dstVarianceStr.append(",");
+			srcW0Str.append(",");
+			srcW1Str.append(",");
+			dstW0Str.append(",");
+			dstW1Str.append(",");
 		}
 		srcPercentStr.append("\n");
 		dstPercentStr.append("\n");
@@ -946,8 +967,32 @@ void ModelsTest::Port_width_visualization(){
 	dstPercentStr.append("]\n");
 	srcVarianceStr.append("]\n");
 	dstVarianceStr.append("]\n");
-	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+	srcW0Str.append("]\n");
+	srcW1Str.append("]\n");
+	dstW0Str.append("]\n");
+	dstW1Str.append("]\n");
+	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n\n";
+	std::cout<<srcW0Str<<"\n"<<srcW1Str<<"\n"<<dstW0Str<<"\n"<<dstW1Str<<"\n";
 }
 
 
+void ModelsTest::FBS_bitsets_visualization()
+{
+	string outStr = "aggregatePercent=[\n";
+for (int dno = 0; dno < numDataSets; dno++)
+	{
+		outStr.append("\t");
+		readDatasets(dno);
 
+		HEMBS hem_fbs;
+		hem_fbs.forward_init_bitsets_IPv4(acl_rules->size);
+
+		for (int i = 0; i < acl_rules->size; i++)
+			hem_fbs.forward_bitsets_insert_IPv4(acl_rules->list + i);
+
+		hem_fbs.forward_bitsets_visualization(outStr);
+		if(dno+1!=numDataSets)
+			outStr.append(",\n");
+	}
+	std::cout<<outStr<<"\n]\n";
+}

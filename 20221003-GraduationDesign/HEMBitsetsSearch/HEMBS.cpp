@@ -94,7 +94,7 @@ void HEMBS::forward_init_bitsets_IPv4(uint32_t numRule)
 	uint32_t numBitsets = 8 * 256;
 #elif HEM_BS_NUM_ATTR == 9
 	uint32_t numBitsets = 256 * 8 + NUM_PROTOCOL + 1;
-#else // HEM_BS_ATTR_NUM==11
+#else // HEM_BS_NUM_ATTR==11
 	uint32_t numBitsets = 8 * 256 + NUM_PROTOCOL + 1 + 2 * HEM_BS_NUM_PORT_BITSET;
 #endif
 
@@ -421,9 +421,11 @@ HEMBS::forward_bitsets_search_IPv4(const message* msg, const rule* rules, uint32
 		//    for循环迭代64次找位判断版本
 		if (andResult)
 		{
-			for (matchRuleNo = bi << 6; matchRuleNo < (bi << 6) + 64; matchRuleNo++)
+			// uint32_t i = 0;
+			for (matchRuleNo = bi << 6; matchRuleNo < (bi << 6) + 64; matchRuleNo++) // 787us
+			// for (i=0,matchRuleNo = bi << 6; i < 64; i++, matchRuleNo++) // 804us
 			{
-				if (andResult & 1)
+				if(andResult&1) // if (andResult & (1ULL<<i)) // 
 				{
 #if DEBUG
 					checkNum++;
@@ -505,7 +507,7 @@ void HEMBS::backward_init_bitsets_IPv4(uint32_t numRule)
 	uint32_t numBitsets = 8 * 256;
 #elif HEM_BS_NUM_ATTR == 9
 	uint32_t numBitsets = 256 * 8 + NUM_PROTOCOL + 1;
-#else // HEM_BS_ATTR_NUM==11
+#else // HEM_BS_NUM_ATTR==11
 	uint32_t numBitsets = 8 * 256 + NUM_PROTOCOL + 1 + 2 * HEM_BS_NUM_PORT_BITSET;
 #endif
 
@@ -794,7 +796,7 @@ HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint3
 	for (uint32_t j = 0; j < numUnit; j++)
 	{
 		unsigned long long int orResult = result[0][j];
-		uint8_t ai = 1;
+		uint32_t ai = 1;
 		bool flag = true;
 		// V1
 		//		while (ai < HEM_BS_NUM_ATTR)
@@ -827,71 +829,72 @@ HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint3
 #endif
 		if (flag)
 		{
-			for (matchRuleNo = j << 6; matchRuleNo < (j << 6) + 64; matchRuleNo++)
-			{
-				if ((orResult & 1) == 0) // may be a match
-				{
-#if DEBUG
-					checkNum++;
-#endif
-					if ((rules[matchRuleNo].source_port[0] <= msg->source_port)
-						&& (msg->source_port <= rules[matchRuleNo].source_port[1])
-						&& (rules[matchRuleNo].destination_port[0] <= msg->destination_port)
-						&& (msg->destination_port <= rules[matchRuleNo].destination_port[1]))
-					{
-#if HEM_BS_NUM_ATTR > 8
-#if DEBUG
-						return std::array<uint64_t, 3>{ checkNum, or64Num, cmpNum };
-#else
-						return std::array<uint64_t, 3>{ -1ULL, -1ULL, -1ULL };
-#endif
-#else // HEM_BS_NUM_ATTR == 8
-						if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
-						{
-							// add an "all zero" rule to the last row, so there is always a matched rule.
-#if DEBUG
-							return std::array<uint64_t, 3>{checkNum, or64Num, cmpNum};
-#else
-							return std::array<uint64_t, 3>{-1ULL, -1ULL, -1ULL};
-#endif
-						}
-#endif
-					}
-				}
-				orResult >>= 1;
-			}
+// 			uint32_t i=0;
+// 			// for (matchRuleNo = j << 6; matchRuleNo < (j << 6) + 64; matchRuleNo++) // 1.42us
+// 			for(i=0,matchRuleNo=j<<6;i<64;i++,matchRuleNo++) // 1.07us
+// 			{
+// 				if ((orResult & (1ULL<<i)) == 0) // may be a match if ((orResult&1) == 0)
+// 				{
+// #if DEBUG
+// 					checkNum++;
+// #endif
+// 					if ((rules[matchRuleNo].source_port[0] <= msg->source_port)
+// 						&& (msg->source_port <= rules[matchRuleNo].source_port[1])
+// 						&& (rules[matchRuleNo].destination_port[0] <= msg->destination_port)
+// 						&& (msg->destination_port <= rules[matchRuleNo].destination_port[1]))
+// 					{
+// #if HEM_BS_NUM_ATTR > 8
+// #if DEBUG
+// 						return std::array<uint64_t, 3>{ checkNum, or64Num, cmpNum };
+// #else
+// 						return std::array<uint64_t, 3>{ -1ULL, -1ULL, -1ULL };
+// #endif
+// #else // HEM_BS_NUM_ATTR == 8
+// 						if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+// 						{
+// 							// add an "all zero" rule to the last row, so there is always a matched rule.
+// #if DEBUG
+// 							return std::array<uint64_t, 3>{checkNum, or64Num, cmpNum};
+// #else
+// 							return std::array<uint64_t, 3>{-1ULL, -1ULL, -1ULL};
+// #endif
+// 						}
+// #endif
+// 					}
+// 				}
+// 				// orResult >>= 1;
+// 			}
 
-			// 	matchRuleNo = j << 6;
-			// 	orResult=~orResult; // several 1s
-			// 	while(orResult){
-			// #if DEBUG
-			// 			checkNum++;
-			// #endif
-			// 			matchRuleNo+= __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
-			// 			if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
-			// 				msg->source_port <= rules[matchRuleNo].source_port[1] &&
-			// 				rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
-			// 				msg->destination_port <= rules[matchRuleNo].destination_port[1])
-			// 			{
-			// #if HEM_BS_NUM_ATTR > 8
-			// #if DEBUG
-			// 						return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-			// #else
-			// 						return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-			// #endif
-			// #else // HEM_BS_NUM_ATTR == 8
-			// 				if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
-			// 				{
-			// #if DEBUG
-			// 					return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-			// #else
-			// 					return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-			// #endif
-			// 				}
-			// #endif
-			// 			}
-			// 		orResult&=orResult-1;
-			// 	}
+			orResult=~orResult; // several 1s
+			while(orResult){ // 949us
+			#if DEBUG
+						checkNum++;
+			#endif
+						matchRuleNo=(j << 6)+ __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
+						if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+							msg->source_port <= rules[matchRuleNo].source_port[1] &&
+							rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+							msg->destination_port <= rules[matchRuleNo].destination_port[1])
+						{
+			#if HEM_BS_NUM_ATTR > 8
+			#if DEBUG
+									return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
+			#else
+									return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
+			#endif
+			#else // HEM_BS_NUM_ATTR == 8
+							if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+							{
+			#if DEBUG
+								return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
+			#else
+								return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
+			#endif
+							}
+			#endif
+						}
+					orResult&=orResult-1;
+				}
 		}
 
 		// unsigned long long int orResult=result[0][j]|result[1][j]|result[2][j]|result[3][j]|result[4][j]|result[5][j]|result[6][j]|result[7][j];
@@ -951,13 +954,13 @@ void HEMBS::aggregate_forward_init_bitsets_IPv4(uint32_t numRule)
 	uint32_t numBitsets = 8 * 256;
 #elif HEM_BS_NUM_ATTR == 9
 	uint32_t numBitsets = 256 * 8 + NUM_PROTOCOL + 1;
-#else // HEM_BS_ATTR_NUM==11
+#else // HEM_BS_NUM_ATTR==11
 	uint32_t numBitsets = 8 * 256 + NUM_PROTOCOL + 1 + 2 * HEM_BS_NUM_PORT_BITSET;
 #endif
 
 	numUnit = (numRule + sizeof(unsigned long long) * 8 - 1) / (sizeof(unsigned long long) * 8);
-//	memorysize = (sizeof(unsigned long long***) + sizeof(unsigned long long**) * HEM_BS_NUM_ATTR
-//				  + sizeof(unsigned long long*) * numBitsets + sizeof(unsigned long long) * numUnit * numBitsets); // B
+	memorysize = (sizeof(unsigned long long***) + sizeof(unsigned long long**) * HEM_BS_NUM_ATTR
+				  + sizeof(unsigned long long*) * numBitsets + sizeof(unsigned long long) * numUnit * numBitsets); // B
 
 	unsigned long long* temp_bits = (unsigned long long*)calloc(numUnit * numBitsets, sizeof(unsigned long long));
 	beginBits = temp_bits;
@@ -1576,7 +1579,7 @@ void HEMBS::RLE_forward_init_bitsets_IPv4(uint32_t numRule)
 	uint32_t numBitsets = 8 * 256;
 #elif HEM_BS_NUM_ATTR == 9
 	uint32_t numBitsets = 256 * 8 + NUM_PROTOCOL + 1;
-#else // HEM_BS_ATTR_NUM==11
+#else // HEM_BS_NUM_ATTR==11
 	uint32_t numBitsets = 8 * 256 + NUM_PROTOCOL + 1 + 2 * HEM_BS_NUM_PORT_BITSET;
 #endif
 
@@ -1975,53 +1978,45 @@ HEMBS::RLE_forward_bitsets_search_IPv4(const message* msg, const rule* rules, ui
 	return { -1ULL, -1ULL, -1ULL };
 }
 
-void HEMBS::visualize_bitsets(unsigned long long** bitsets)
-{ // forward
-	int zeroCount[11], baseIndex = 0;
+void HEMBS::forward_bitsets_visualization(std::string& outStr) 
+{
+	uint32_t n64 = aggRatio; // 连续 n64 个 64位为0
+	uint32_t numUnit2 = (numUnit+n64-1)/n64;
+	uint32_t zeroCount[11];
 	memset(zeroCount, 0, sizeof(zeroCount));
-	for (int i = 0; i < 8; i++)
-	{ // IP
-		for (int j = baseIndex; j < baseIndex + 256; j++)
+
+	outStr.append("[");
+	std::string outTmpStr = "[ ";
+
+	for (int ai = 0; ai < HEM_BS_NUM_ATTR; ai++)
+	{
+		uint32_t numv = 256;
+		if (ai == 8) numv = NUM_PROTOCOL + 1;
+		else if (ai > 8) numv = HEM_BS_NUM_PORT_BITSET;
+		for (uint32_t bi = 0; bi < numv; bi++)
 		{
-			for (int k = 0; k < numUnit; k++)
-				if (bitsets[j][k] == 0)
-					zeroCount[i]++;
+			for (uint32_t k = 0; k < numUnit; k+=n64)
+			{
+				uint32_t t = k;
+				while (t<min(numUnit,k+n64)&&bitsets[ai][bi][t] == 0)
+					t++;
+				if(t==min(numUnit,k+n64))
+					zeroCount[ai]++;
+			}
 		}
-		baseIndex += 256;
-	}
-	for (int i = 8; i < 10; i++)
-	{ // Port
-		for (int j = baseIndex; j < baseIndex + HEM_BS_NUM_PORT_BITSET; j++)
-		{
-			for (int k = 0; k < numUnit; k++)
-				if (bitsets[j][k] == 0)
-					zeroCount[i]++;
+
+		outStr.append(Utils::Double2String(zeroCount[ai] / (double)(numUnit2 * numv)));
+		outTmpStr+="a"+to_string(ai)+"= "+Utils::Int2String((int)zeroCount[ai])+"/"\
+		         +Utils::Int2String((double)(numUnit2 * numv))+" = "+Utils::Double2String(zeroCount[ai] / (double)(numUnit2 * numv));
+		if(ai+1!=HEM_BS_NUM_ATTR){
+			outStr.append(", ");
+			outTmpStr.append(", ");
+		}else{
+			outStr.append("]");
+			outTmpStr.append("]\n");
 		}
-		baseIndex += HEM_BS_NUM_PORT_BITSET;
 	}
-
-	for (int j = baseIndex; j < baseIndex + NUM_PROTOCOL + 1; j++)
-		for (int k = 0; k < numUnit; k++)
-			if (bitsets[j][k] == 0)
-				zeroCount[10]++; // Protocol
-
-	printf("\n");
-	for (int i = 0; i < 4; i++)
-		printf("srcIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i + 1, zeroCount[i],
-			numUnit * 256 - zeroCount[i], (double)zeroCount[i] / (double)(numUnit * 256));
-	for (int i = 4; i < 8; i++)
-		printf("dstIP=%d: 64-bits zeros = %d, other = %d, ratio = %.4f\n", i - 3, zeroCount[i],
-			numUnit * 256 - zeroCount[i], (double)zeroCount[i] / (double)(numUnit * 256));
-
-	printf("srcPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[8],
-		numUnit * HEM_BS_NUM_PORT_BITSET - zeroCount[8],
-		(double)zeroCount[8] / (double)(numUnit * HEM_BS_NUM_PORT_BITSET));
-	printf("dstPort: 64-bits zeros = %d, other = %d, ratio = %.4f\n", zeroCount[9],
-		numUnit * HEM_BS_NUM_PORT_BITSET - zeroCount[9],
-		(double)zeroCount[9] / (double)(numUnit * HEM_BS_NUM_PORT_BITSET));
-	printf("Protocol: 64-bits zeros = %d, other = %d, ratio = %.4f\n\n", zeroCount[10],
-		numUnit * (NUM_PROTOCOL + 1) - zeroCount[10],
-		(double)zeroCount[10] / (double)(numUnit * (NUM_PROTOCOL + 1)));
+	std::cout<<outTmpStr;
 }
 
 void HEMBS::backward_bitsets_visualize_one(const char* ruleSetName)

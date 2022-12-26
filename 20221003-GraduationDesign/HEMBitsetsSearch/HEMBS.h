@@ -11,6 +11,7 @@
 #include <cmath>
 #include <vector>
 #include "constant.h"
+#include "Utils.h"
 #include"data_structure.h"
 
 class HEMBS // bitsets search
@@ -55,7 +56,7 @@ class HEMBS // bitsets search
 	void RLE_forward_construction_IPv4();
 	std::array<uint64_t, 3> RLE_forward_bitsets_search_IPv4(const message* m, const rule* rules, uint32_t& matchRuleNo);
 
-	void visualize_bitsets(unsigned long long** bitsets);
+	void forward_bitsets_visualization(std::string& outStr);
 	void backward_bitsets_visualize_one(const char* ruleSetName);
 
 	double calMemory();
