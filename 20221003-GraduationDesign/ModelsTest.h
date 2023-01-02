@@ -118,6 +118,8 @@ public:
 	void Protocol_visualization();
 	void Port_subspace_visualization();
 	void Port_width_visualization();
+
+	void FBS_bitsets_visualization();
 };
 
 #endif //_MODELSTEST_H_
