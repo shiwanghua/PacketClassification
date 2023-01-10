@@ -159,6 +159,7 @@ void ModelsTest::HEMBS_forward_test()
 	double totalConstructionTimeUs = 0.0;
 	double totalAvgInsertionTimeUs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgCycleNum = 0.0;
 	double totalAvgMemorySizeB = 0.0;
 	double totalAvgCheckNum = 0;
 	double totalAvgANDNum = 0;
@@ -190,6 +191,7 @@ void ModelsTest::HEMBS_forward_test()
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, and64Num = 0, cmpNum = 0;
 		clk = clock();
+		uint64_t cycleNo = GetCPUCycle();
 		for (int i = 0; i < messages->size; i++)
 		{
 #if DEBUG
@@ -213,6 +215,8 @@ void ModelsTest::HEMBS_forward_test()
 			}
 #endif
 		}
+		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+		totalAvgCycleNum += avgSearchCycleNum;
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
 		double avgCheckNum = (double)checkNum / messages->size;
@@ -223,35 +227,37 @@ void ModelsTest::HEMBS_forward_test()
 		totalAvgCMPNum += avgCMPNum;
 		totalAvgMemorySizeB += hem_fbs.calMemory() / acl_rules->size;
 
-		printf("HEM-FBS dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		printf("HEM-FBS dataset %d: constructT= %.3f us, insertT= %.3f us, searchT= %.3f us, cycleNum= %.3f\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgANDNum= %.3f, avgCMPNum= %.3f\n\n", \
-        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, avgSearchCycleNum,
 			hem_fbs.calMemory() / 1024.0 / 1024.0,
 			hem_fbs.calMemory() / acl_rules->size, avgCheckNum, avgANDNum, avgCMPNum);
 
 		content += expID + "-d" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
+ + " us cycle= " + Utils::Double2String(avgSearchCycleNum)\
+ + " insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs)\
  + " us memory= " + Utils::Double2String(hem_fbs.calMemory() / 1024.0 / 1024.0) \
  + " MB check= " + Utils::Double2String(avgCheckNum) + " AND= " + Utils::Double2String(avgANDNum) \
  + " CMP= " + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-FBS-a%d-CW%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
-		   "memorySize= %.3f B/'\ncheckNum= %.3f, and64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
+	printf("\nExp%s HEM-FBS-a%d-CW%d: constructTime= %.3f us, insertionTime= %.3f us, searchT= %.3f us, cycle= %.3f\n"
+		   "memSize= %.3f B/', checkNum= %.3f, and64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
         expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, \
-		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
-        totalAvgSearchTimeUs / numDataSets, totalAvgMemorySizeB / numDataSets, \
+        totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
+        totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, totalAvgMemorySizeB / numDataSets, \
         totalAvgCheckNum / numDataSets,
 		totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, totalRules, totalMessages);
 #if DEBUG
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)\
+			   + to_string(SHUFFLEMESSAGES) + "-CW" + to_string(HEM_BS_PORT_CELLWIDTH)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
- + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
+ + " us Cyc= " + Utils::Double2String(totalAvgCycleNum / numDataSets)\
+ + " I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
  + " us M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
  + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
@@ -265,6 +271,7 @@ void ModelsTest::HEMBS_backward_test()
 	double totalConstructionTimeUs = 0.0;
 	double totalAvgInsertionTimeUs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgCycleNum = 0.0;
 	double totalAvgMemorySizeB = 0.0;
 	double totalAvgCheckNum = 0;
 	double totalAvgORNum = 0;
@@ -296,6 +303,7 @@ void ModelsTest::HEMBS_backward_test()
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, or64Num = 0, cmpNum = 0;
 		clk = clock();
+		uint64_t cycleNo = GetCPUCycle();
 		for (int i = 0; i < messages->size; i++)
 		{
 #if DEBUG
@@ -319,6 +327,8 @@ void ModelsTest::HEMBS_backward_test()
 			}
 #endif
 		}
+		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+		totalAvgCycleNum += avgSearchCycleNum;
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
 		double avgCheckNum = (double)checkNum / messages->size;
@@ -329,35 +339,37 @@ void ModelsTest::HEMBS_backward_test()
 		totalAvgCMPNum += avgCMPNum;
 		totalAvgMemorySizeB += hem_bbs.calMemory() / acl_rules->size;
 
-		printf("HEM-BBS dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		printf("HEM-BBS dataset %d: constructT= %.3f us, insertT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgORNum= %.3f, avgCMPNum= %.3f\n\n", \
-        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, avgSearchCycleNum,
 			hem_bbs.calMemory() / 1024.0 / 1024.0,
 			hem_bbs.calMemory() / acl_rules->size, avgCheckNum, avgORNum, avgCMPNum);
 
 		content += expID + "-d" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
+ + " us cycle= " + Utils::Double2String(avgSearchCycleNum)\
+ + " insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs)\
  + " us memory= " + Utils::Double2String(hem_bbs.calMemory() / 1024.0 / 1024.0) \
  + " MB check= " + Utils::Double2String(avgCheckNum) + " OR= " + Utils::Double2String(avgORNum) + " CMP= "
 				   + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-BBS-a%d-CW%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us, "
-		   "memorySize= %.3f B/'\ncheckNum= %.3f, or64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
-        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH,\
-		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
-        totalAvgSearchTimeUs / numDataSets, totalAvgMemorySizeB / numDataSets, \
+	printf("\nExp%s HEM-BBS-a%d-CW%d: constructT= %.3f us, insertT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
+		   "memorySize= %.3f B/' checkNum= %.3f, or64Num= %.3f, cmpNum= %.3f, ruleNum= %lu, msgNum= %lu\n\n\n", \
+        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, \
+        totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets, \
+        totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, totalAvgMemorySizeB / numDataSets, \
         totalAvgCheckNum / numDataSets,
 		totalAvgORNum / numDataSets, totalAvgCMPNum / numDataSets, totalRules, totalMessages);
 #if DEBUG
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)\
+			   + to_string(SHUFFLEMESSAGES) + "-CW" + to_string(HEM_BS_PORT_CELLWIDTH)\
  + ": S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
- + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
+ + " us Cyc= " + Utils::Double2String(totalAvgCycleNum / numDataSets)\
+ + " I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
  + " us M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
  + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
@@ -370,6 +382,7 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 {
 	double totalConstructionTimeMs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgCycleNum = 0.0;
 	double totalAvgUpdateTimeUs = 0.0;
 	double totalAvgMemorySizeB = 0.0;
 	double totalAvgCheckNum = 0;
@@ -402,6 +415,7 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, and64Num = 0, cmpNum = 0, aggBingo = 0, aggFail = 0;
 		clk = clock();
+		uint64_t cycleNo = GetCPUCycle();
 		for (int i = 0; i < messages->size; i++)
 		{
 #if DEBUG
@@ -427,6 +441,8 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 			}
 #endif
 		}
+		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+		totalAvgCycleNum += avgSearchCycleNum;
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
 		double avgCheckNum = (double)checkNum / messages->size;
@@ -440,33 +456,39 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		double avgAggFailNum = (double)aggFail / messages->size;
 		totalAvgAggFailNum += avgAggFailNum;
 
-		int rand_update[acl_rules->size];
-		RandomGenerator rg;
-		for (int ra = 0; ra < acl_rules->size; ra++) { //1000000
-            rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
-        }
-		clk = clock();
-		for (int ra = 0; ra < acl_rules->size; ra++) {
-			if (rand_update[ra] == 0) { //0:insert
-				hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
-			} else {//1:delete
-				hem_afbs.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
-			}
-        }
+//		int rand_update[acl_rules->size];
+//		RandomGenerator rg;
+//		for (int ra = 0; ra < acl_rules->size; ra++)
+//		{ //1000000
+//			rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
+//		}
+//		clk = clock();
+//		for (int ra = 0; ra < acl_rules->size; ra++)
+//		{
+//			if (rand_update[ra] == 0)
+//			{ //0:insert
+//				hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
+//			}
+//			else
+//			{//1:delete
+//				hem_afbs.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
+//			}
+//		}
 		double avgUpdateTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / acl_rules->size;
 		totalAvgUpdateTimeUs += avgUpdateTimeUs;
 
-		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructionTime= %.3f ms, searchTime= %.3f us, updateTime= %.3f us\n"
+		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructT= %.3f ms, searchT= %.3f us, cycleNum= %.3f, updateT= %.3f us\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgANDNum= %.3f, avgCMPNum= %.3f\n"
 			   "avgAggBingo= %.3f, avgAggFail= %.3f\n\n", \
         HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, AGGREGATE_RATIO, dno + 1, \
-		constructionTimeMs, avgSearchTimeUs, avgUpdateTimeUs, \
-			hem_afbs.calMemory() / 1024.0 / 1024.0, hem_afbs.calMemory() / acl_rules->size,
+        constructionTimeMs, avgSearchTimeUs, avgSearchCycleNum, avgUpdateTimeUs, \
+            hem_afbs.calMemory() / 1024.0 / 1024.0, hem_afbs.calMemory() / acl_rules->size,
 			avgCheckNum, avgANDNum, avgCMPNum, avgAggBingoNum, avgAggFailNum);
 
 		content += expID + "-d" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us update= " + Utils::Double2String(avgUpdateTimeUs)\
+ + " us cycle= " + Utils::Double2String(avgSearchCycleNum)\
+ + " update= " + Utils::Double2String(avgUpdateTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeMs)\
  + " ms memory= " + Utils::Double2String(hem_afbs.calMemory() / 1024.0 / 1024.0) \
  + " MB check= " + Utils::Double2String(avgCheckNum) + " and= " + Utils::Double2String(avgANDNum) \
@@ -475,22 +497,24 @@ void ModelsTest::HEMBS_aggregate_forward_test()
  + " fail= " + Utils::Double2String(avgAggFailNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-AFBS-k%d-a%d: constructTime= %.3f ms, updateTime= %.3f us, searchTime= %.3f us\n"
+	printf("\nExp%s HEM-AFBS-k%d-a%d: constructT= %.3f ms, updateT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
 		   "checkNum= %.3f, and64Num= %.3f, cmpNum= %.3f, bingo= %.3f, fail= %.3f\n"
 		   "memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
         expID.c_str(), AGGREGATE_RATIO, HEM_BS_NUM_ATTR,
 		totalConstructionTimeMs / numDataSets, totalAvgUpdateTimeUs / numDataSets,
-		totalAvgSearchTimeUs / numDataSets, totalAvgCheckNum / numDataSets,
-		totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, \
+		totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, \
+        totalAvgCheckNum / numDataSets, totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, \
         totalAvgAggBingoNum / numDataSets, totalAvgAggFailNum / numDataSets, \
         totalAvgMemorySizeB / numDataSets, totalRules, totalMessages);
 #if DEBUG
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES) +"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)+ "-k" + to_string(AGGREGATE_RATIO)\
+			   + to_string(SHUFFLEMESSAGES) + "-CW" + to_string(HEM_BS_PORT_CELLWIDTH) + "-k"
+			   + to_string(AGGREGATE_RATIO)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
- + " us Udt= " + Utils::Double2String(totalAvgUpdateTimeUs / numDataSets)\
+ + " us Cyc= " + Utils::Double2String(totalAvgCycleNum / numDataSets)\
+ + " Udt= " + Utils::Double2String(totalAvgUpdateTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeMs / numDataSets)\
  + " ms M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
  + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
@@ -506,6 +530,7 @@ void ModelsTest::HEMBS_RLE_forward_test()
 	double totalConstructionTimeUs = 0.0;
 	double totalAvgInsertionTimeUs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgCycleNum = 0;
 	double totalAvgMemorySizeB = 0.0;
 	double totalAvgCheckNum = 0;
 	double totalAvgPlusOneNum = 0;
@@ -541,6 +566,7 @@ void ModelsTest::HEMBS_RLE_forward_test()
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, plusOneNum = 0, cmpNum = 0;
 		clk = clock();
+		uint64_t cycleNo = GetCPUCycle();
 		for (int i = 0; i < messages->size; i++)
 		{
 #if DEBUG
@@ -564,6 +590,8 @@ void ModelsTest::HEMBS_RLE_forward_test()
 			}
 #endif
 		}
+		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+		totalAvgCycleNum += avgSearchCycleNum;
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
 		double avgCheckNum = (double)checkNum / messages->size;
@@ -574,15 +602,16 @@ void ModelsTest::HEMBS_RLE_forward_test()
 		totalAvgCMPNum += avgCMPNum;
 		totalAvgMemorySizeB += hem_rfbs.calMemory() / acl_rules->size;
 
-		printf("HEM-RFBS-Incre%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		printf("HEM-RFBS-Incre%d dataset %d: constructT= %.3f us, insertT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgPlus1Num= %.3f, avgCMPNum= %.3f\n\n\n", \
-        INCREMENT, dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        INCREMENT, dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, avgSearchCycleNum,
 			hem_rfbs.calMemory() / 1024.0 / 1024.0, hem_rfbs.calMemory() / acl_rules->size,
 			avgCheckNum, avgPlusOneNum, avgCMPNum);
 
 		content += expID + "-d" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
+ + " us cycle=  " + Utils::Double2String(avgSearchCycleNum) \
+ + " insert= " + Utils::Double2String(avgInsertionTimeUs)\
  + " us construct= " + Utils::Double2String(constructionTimeUs)\
  + " us memory= " + Utils::Double2String(hem_rfbs.calMemory() / 1024.0 / 1024.0) \
  + " MB check= " + Utils::Double2String(avgCheckNum) \
@@ -590,25 +619,26 @@ void ModelsTest::HEMBS_RLE_forward_test()
  + " cmp= " + Utils::Double2String(avgCMPNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-RFBS-a%d-CW%d-Incre%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+	printf("\nExp%s HEM-RFBS-a%d-CW%d-Incre%d: constructT= %.3f us, insertT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
 		   "checkNum= %.3f, plus1Num= %.3f, cmpNum= %.3f, memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
         expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, INCREMENT,
 		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets,
-		totalAvgSearchTimeUs / numDataSets, totalAvgCheckNum / numDataSets,
+		totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, totalAvgCheckNum / numDataSets,
 		totalAvgPlusOneNum / numDataSets, totalAvgCMPNum / numDataSets, \
         totalAvgMemorySizeB / numDataSets, totalRules, totalMessages);
 #if DEBUG
 	content += "DEBUG";
 #endif
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
-			   + to_string(SHUFFLEMESSAGES)+"-CW"+to_string(HEM_BS_PORT_CELLWIDTH) + "-Incre" + to_string(INCREMENT)\
+			   + to_string(SHUFFLEMESSAGES) + "-CW" + to_string(HEM_BS_PORT_CELLWIDTH) + "-Incre" + to_string(INCREMENT)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
- + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
+ + " us Cyc= " + Utils::Double2String(totalAvgCycleNum / numDataSets)\
+ + " I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
  + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
  + " us M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
  + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
  + " AND= " + Utils::Double2String(totalAvgPlusOneNum / numDataSets) \
- + " CMP= " + Utils::Double2String(totalAvgCMPNum / numDataSets)+"\n";
+ + " CMP= " + Utils::Double2String(totalAvgCMPNum / numDataSets) + "\n";
 	Utils::WriteData2Begin(file_path, content);
 }
 
@@ -670,13 +700,13 @@ void ModelsTest::TamaSearch_test()
 		totalAvgRuleSizes += ts.statistics();
 		printf("TamaSearch dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\nmemorySize= %.3f MB, avgMemorySize= %.3f B/', "
 			   "avgMinusNum= %.2f, avgCmpNum= %.2f\n\n", \
-        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+		dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
 			ts.calMemory() / 1024.0 / 1024.0, ts.calMemory() / acl_rules->size,
 			(double)ts.totalMinusNum / messages->size, (double)ts.totalCmpNum / messages->size);
 #else
 		printf("TamaSearch dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/'\n\n", \
-		dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
+        dno + 1, constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs,
 			ts.calMemory() / 1024.0 / 1024.0, ts.calMemory() / acl_rules->size);
 #endif
 
@@ -715,7 +745,8 @@ void ModelsTest::TamaSearch_test()
 	Utils::WriteData2Begin(file_path, content);
 }
 
-void ModelsTest::IP_visualization(){
+void ModelsTest::IP_visualization()
+{
 	string srcPercentStr = "srcMaskPercent=[\n";
 	string dstPercentStr = "dstMaskPercent=[\n";
 	string srcVarianceStr = "srcMaskVariance=[";
@@ -723,33 +754,35 @@ void ModelsTest::IP_visualization(){
 	for (uint32_t dno = 0; dno < numDataSets; dno++)
 	{
 		readDatasets(dno);
-		double srcMaskNum[33],dstMaskNum[33];
-		memset(srcMaskNum,0,33*sizeof(double));
-		memset(dstMaskNum,0,33*sizeof(double));
-		
+		double srcMaskNum[33], dstMaskNum[33];
+		memset(srcMaskNum, 0, 33 * sizeof(double));
+		memset(dstMaskNum, 0, 33 * sizeof(double));
+
 		for (uint32_t i = 0; i < acl_rules->size; i++)
 		{
 			const rule& r = acl_rules->list[i];
 			srcMaskNum[(uint32_t)r.source_mask]++;
 			dstMaskNum[(uint32_t)r.destination_mask]++;
 		}
-		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcMaskNum,33));
-		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstMaskNum,33));
-		
+		srcVarianceStr += Utils::Double2String(Utils::CalVariance(srcMaskNum, 33));
+		dstVarianceStr += Utils::Double2String(Utils::CalVariance(dstMaskNum, 33));
+
 		srcPercentStr.append("  [");
 		dstPercentStr.append("  [");
-		for(uint32_t m=0;m<32;m++){
-			srcMaskNum[m]/=(double)acl_rules->size;
-			dstMaskNum[m]/=(double)acl_rules->size;
-			srcPercentStr+=Utils::Double2String(srcMaskNum[m])+", ";
-			dstPercentStr+=Utils::Double2String(dstMaskNum[m])+", ";
+		for (uint32_t m = 0; m < 32; m++)
+		{
+			srcMaskNum[m] /= (double)acl_rules->size;
+			dstMaskNum[m] /= (double)acl_rules->size;
+			srcPercentStr += Utils::Double2String(srcMaskNum[m]) + ", ";
+			dstPercentStr += Utils::Double2String(dstMaskNum[m]) + ", ";
 		}
-		srcMaskNum[32]/=(double)acl_rules->size;
-		dstMaskNum[32]/=(double)acl_rules->size;
-		srcPercentStr+=Utils::Double2String(srcMaskNum[32])+"]";
-		dstPercentStr+=Utils::Double2String(dstMaskNum[32])+"]";
+		srcMaskNum[32] /= (double)acl_rules->size;
+		dstMaskNum[32] /= (double)acl_rules->size;
+		srcPercentStr += Utils::Double2String(srcMaskNum[32]) + "]";
+		dstPercentStr += Utils::Double2String(dstMaskNum[32]) + "]";
 
-		if(dno+1!=numDataSets){
+		if (dno + 1 != numDataSets)
+		{
 			srcPercentStr.append(",");
 			dstPercentStr.append(",");
 			srcVarianceStr.append(",");
@@ -762,18 +795,19 @@ void ModelsTest::IP_visualization(){
 	dstPercentStr.append("]\n");
 	srcVarianceStr.append("]\n");
 	dstVarianceStr.append("]\n");
-	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+	std::cout << srcPercentStr << "\n" << srcVarianceStr << "\n\n" << dstPercentStr << "\n" << dstVarianceStr << "\n";
 }
 
-void ModelsTest::Protocol_visualization(){
+void ModelsTest::Protocol_visualization()
+{
 	string protocolStr = "protocolPercent=[\n";
 	string protocolVarianceStr = "protocolVariance=[";
 	for (uint32_t dno = 0; dno < numDataSets; dno++)
 	{
 		readDatasets(dno);
-		double protocolNum[NUM_PROTOCOL+1];
-		memset(protocolNum,0,(NUM_PROTOCOL+1)*sizeof(double));
-		
+		double protocolNum[NUM_PROTOCOL + 1];
+		memset(protocolNum, 0, (NUM_PROTOCOL + 1) * sizeof(double));
+
 		for (uint32_t i = 0; i < acl_rules->size; i++)
 		{
 			const rule& r = acl_rules->list[i];
@@ -838,19 +872,19 @@ void ModelsTest::Protocol_visualization(){
 			}
 		}
 
-		protocolVarianceStr+=Utils::Double2String(Utils::CalVariance(protocolNum,NUM_PROTOCOL+1));
+		protocolVarianceStr += Utils::Double2String(Utils::CalVariance(protocolNum, NUM_PROTOCOL + 1));
 
 		protocolStr.append("  [");
-		for(uint32_t m=0;m<NUM_PROTOCOL;m++){
-			protocolNum[m]/=(double)acl_rules->size;
-			protocolStr+=Utils::Double2String(protocolNum[m])+", ";
+		for (uint32_t m = 0; m < NUM_PROTOCOL; m++)
+		{
+			protocolNum[m] /= (double)acl_rules->size;
+			protocolStr += Utils::Double2String(protocolNum[m]) + ", ";
 		}
-		protocolNum[NUM_PROTOCOL]/=(double)acl_rules->size;
-		protocolStr+=Utils::Double2String(protocolNum[NUM_PROTOCOL])+"]";
+		protocolNum[NUM_PROTOCOL] /= (double)acl_rules->size;
+		protocolStr += Utils::Double2String(protocolNum[NUM_PROTOCOL]) + "]";
 
-		
-
-		if(dno+1!=numDataSets){
+		if (dno + 1 != numDataSets)
+		{
 			protocolStr.append(",");
 			protocolVarianceStr.append(",");
 		}
@@ -858,10 +892,11 @@ void ModelsTest::Protocol_visualization(){
 	}
 	protocolStr.append("]\n");
 	protocolVarianceStr.append("]\n");
-	std::cout<<protocolStr<<"\n"<<protocolVarianceStr<<"\n\n";
+	std::cout << protocolStr << "\n" << protocolVarianceStr << "\n\n";
 }
 
-void ModelsTest::Port_subspace_visualization(){
+void ModelsTest::Port_subspace_visualization()
+{
 	string srcPercentStr = "srcPortSubspacePercent=[\n";
 	string dstPercentStr = "dstPortSubspacePercent=[\n";
 	string srcVarianceStr = "srcPortSubspaceVariance=[";
@@ -869,37 +904,39 @@ void ModelsTest::Port_subspace_visualization(){
 	for (uint32_t dno = 0; dno < numDataSets; dno++)
 	{
 		readDatasets(dno);
-		double srcPortCellNum[HEM_BS_NUM_PORT_BITSET],dstPortCellNum[HEM_BS_NUM_PORT_BITSET];
-		memset(srcPortCellNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
-		memset(dstPortCellNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
-		
+		double srcPortCellNum[HEM_BS_NUM_PORT_BITSET], dstPortCellNum[HEM_BS_NUM_PORT_BITSET];
+		memset(srcPortCellNum, 0, HEM_BS_NUM_PORT_BITSET * sizeof(double));
+		memset(dstPortCellNum, 0, HEM_BS_NUM_PORT_BITSET * sizeof(double));
+
 		for (uint32_t i = 0; i < acl_rules->size; i++)
 		{
 			const rule& r = acl_rules->list[i];
-			for(uint32_t ci=(uint32_t)r.source_port[0]/HEM_BS_PORT_CELLWIDTH;
-			ci<=(uint32_t)r.source_port[1]/HEM_BS_PORT_CELLWIDTH;ci++)
+			for (uint32_t ci = (uint32_t)r.source_port[0] / HEM_BS_PORT_CELLWIDTH;
+				 ci <= (uint32_t)r.source_port[1] / HEM_BS_PORT_CELLWIDTH; ci++)
 				srcPortCellNum[ci]++;
-			for(uint32_t ci=(uint32_t)r.destination_port[0]/HEM_BS_PORT_CELLWIDTH;
-			ci<=(uint32_t)r.destination_port[1]/HEM_BS_PORT_CELLWIDTH;ci++)
+			for (uint32_t ci = (uint32_t)r.destination_port[0] / HEM_BS_PORT_CELLWIDTH;
+				 ci <= (uint32_t)r.destination_port[1] / HEM_BS_PORT_CELLWIDTH; ci++)
 				dstPortCellNum[ci]++;
 		}
-		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcPortCellNum,HEM_BS_NUM_PORT_BITSET));
-		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstPortCellNum,HEM_BS_NUM_PORT_BITSET));
+		srcVarianceStr += Utils::Double2String(Utils::CalVariance(srcPortCellNum, HEM_BS_NUM_PORT_BITSET));
+		dstVarianceStr += Utils::Double2String(Utils::CalVariance(dstPortCellNum, HEM_BS_NUM_PORT_BITSET));
 
 		srcPercentStr.append("  [");
 		dstPercentStr.append("  [");
-		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET-1;m++){
-			srcPortCellNum[m]/=(double)acl_rules->size;
-			dstPortCellNum[m]/=(double)acl_rules->size;
-			srcPercentStr+=Utils::Double2String(srcPortCellNum[m])+", ";
-			dstPercentStr+=Utils::Double2String(dstPortCellNum[m])+", ";
+		for (uint32_t m = 0; m < HEM_BS_NUM_PORT_BITSET - 1; m++)
+		{
+			srcPortCellNum[m] /= (double)acl_rules->size;
+			dstPortCellNum[m] /= (double)acl_rules->size;
+			srcPercentStr += Utils::Double2String(srcPortCellNum[m]) + ", ";
+			dstPercentStr += Utils::Double2String(dstPortCellNum[m]) + ", ";
 		}
-		srcPortCellNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
-		dstPortCellNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
-		srcPercentStr+=Utils::Double2String(srcPortCellNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
-		dstPercentStr+=Utils::Double2String(dstPortCellNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
+		srcPortCellNum[HEM_BS_NUM_PORT_BITSET - 1] /= (double)acl_rules->size;
+		dstPortCellNum[HEM_BS_NUM_PORT_BITSET - 1] /= (double)acl_rules->size;
+		srcPercentStr += Utils::Double2String(srcPortCellNum[HEM_BS_NUM_PORT_BITSET - 1]) + "]";
+		dstPercentStr += Utils::Double2String(dstPortCellNum[HEM_BS_NUM_PORT_BITSET - 1]) + "]";
 
-		if(dno+1!=numDataSets){
+		if (dno + 1 != numDataSets)
+		{
 			srcPercentStr.append(",");
 			dstPercentStr.append(",");
 			srcVarianceStr.append(",");
@@ -912,58 +949,62 @@ void ModelsTest::Port_subspace_visualization(){
 	dstPercentStr.append("]\n");
 	srcVarianceStr.append("]\n");
 	dstVarianceStr.append("]\n");
-	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n";
+	std::cout << srcPercentStr << "\n" << srcVarianceStr << "\n\n" << dstPercentStr << "\n" << dstVarianceStr << "\n";
 }
 
-void ModelsTest::Port_width_visualization(){
+void ModelsTest::Port_width_visualization()
+{
 	string srcPercentStr = "srcPortWidthPercent=[\n";
 	string dstPercentStr = "dstPortWidthPercent=[\n";
 	string srcVarianceStr = "srcPortWidthVariance=[";
 	string dstVarianceStr = "dstPortWidthVariance=[";
-	string srcW0Str="srcPortW0Per=[";
-	string dstW0Str="dstPortW0Per=[";
-	string srcW1Str="srcPortW1Per=[";
-	string dstW1Str="dstPortW1Per=[";
+	string srcW0Str = "srcPortW0Per=[";
+	string dstW0Str = "dstPortW0Per=[";
+	string srcW1Str = "srcPortW1Per=[";
+	string dstW1Str = "dstPortW1Per=[";
 
 	for (uint32_t dno = 0; dno < numDataSets; dno++)
 	{
 		readDatasets(dno);
-		double srcPortWidthNum[HEM_BS_NUM_PORT_BITSET],dstPortWidthNum[HEM_BS_NUM_PORT_BITSET];
-		memset(srcPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
-		memset(dstPortWidthNum,0,HEM_BS_NUM_PORT_BITSET*sizeof(double));
-		double srcw0=0,srcw1=0,dstw0=0,dstw1=0;
-		
+		double srcPortWidthNum[HEM_BS_NUM_PORT_BITSET], dstPortWidthNum[HEM_BS_NUM_PORT_BITSET];
+		memset(srcPortWidthNum, 0, HEM_BS_NUM_PORT_BITSET * sizeof(double));
+		memset(dstPortWidthNum, 0, HEM_BS_NUM_PORT_BITSET * sizeof(double));
+		double srcw0 = 0, srcw1 = 0, dstw0 = 0, dstw1 = 0;
+
 		for (uint32_t i = 0; i < acl_rules->size; i++)
 		{
 			const rule& r = acl_rules->list[i];
-			srcPortWidthNum[((uint32_t)r.source_port[1]-(uint32_t)r.source_port[0])/HEM_BS_PORT_CELLWIDTH]++;
-			dstPortWidthNum[((uint32_t)r.destination_port[1]-(uint32_t)r.destination_port[0])/HEM_BS_PORT_CELLWIDTH]++;
-			if(r.source_port[0]==r.source_port[1]) srcw0++;
-			else if(r.source_port[0]==0&&r.source_port[1]==65535) srcw1++;
-			if(r.destination_port[0]==r.destination_port[1]) dstw0++;
-			else if(r.destination_port[0]==0&&r.destination_port[1]==65535) dstw1++;
+			srcPortWidthNum[((uint32_t)r.source_port[1] - (uint32_t)r.source_port[0]) / HEM_BS_PORT_CELLWIDTH]++;
+			dstPortWidthNum[((uint32_t)r.destination_port[1] - (uint32_t)r.destination_port[0])
+							/ HEM_BS_PORT_CELLWIDTH]++;
+			if (r.source_port[0] == r.source_port[1]) srcw0++;
+			else if (r.source_port[0] == 0 && r.source_port[1] == 65535) srcw1++;
+			if (r.destination_port[0] == r.destination_port[1]) dstw0++;
+			else if (r.destination_port[0] == 0 && r.destination_port[1] == 65535) dstw1++;
 		}
-		srcVarianceStr+=Utils::Double2String(Utils::CalVariance(srcPortWidthNum,HEM_BS_NUM_PORT_BITSET));
-		dstVarianceStr+=Utils::Double2String(Utils::CalVariance(dstPortWidthNum,HEM_BS_NUM_PORT_BITSET));
-		srcW0Str+=Utils::Double2String(srcw0/acl_rules->size);
-		srcW1Str+=Utils::Double2String(srcw1/acl_rules->size);
-		dstW0Str+=Utils::Double2String(dstw0/acl_rules->size);
-		dstW1Str+=Utils::Double2String(dstw1/acl_rules->size);
+		srcVarianceStr += Utils::Double2String(Utils::CalVariance(srcPortWidthNum, HEM_BS_NUM_PORT_BITSET));
+		dstVarianceStr += Utils::Double2String(Utils::CalVariance(dstPortWidthNum, HEM_BS_NUM_PORT_BITSET));
+		srcW0Str += Utils::Double2String(srcw0 / acl_rules->size);
+		srcW1Str += Utils::Double2String(srcw1 / acl_rules->size);
+		dstW0Str += Utils::Double2String(dstw0 / acl_rules->size);
+		dstW1Str += Utils::Double2String(dstw1 / acl_rules->size);
 
 		srcPercentStr.append("  [");
 		dstPercentStr.append("  [");
-		for(uint32_t m=0;m<HEM_BS_NUM_PORT_BITSET-1;m++){
-			srcPortWidthNum[m]/=(double)acl_rules->size;
-			dstPortWidthNum[m]/=(double)acl_rules->size;
-			srcPercentStr+=Utils::Double2String(srcPortWidthNum[m])+", ";
-			dstPercentStr+=Utils::Double2String(dstPortWidthNum[m])+", ";
+		for (uint32_t m = 0; m < HEM_BS_NUM_PORT_BITSET - 1; m++)
+		{
+			srcPortWidthNum[m] /= (double)acl_rules->size;
+			dstPortWidthNum[m] /= (double)acl_rules->size;
+			srcPercentStr += Utils::Double2String(srcPortWidthNum[m]) + ", ";
+			dstPercentStr += Utils::Double2String(dstPortWidthNum[m]) + ", ";
 		}
-		srcPortWidthNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
-		dstPortWidthNum[HEM_BS_NUM_PORT_BITSET-1]/=(double)acl_rules->size;
-		srcPercentStr+=Utils::Double2String(srcPortWidthNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
-		dstPercentStr+=Utils::Double2String(dstPortWidthNum[HEM_BS_NUM_PORT_BITSET-1])+"]";
+		srcPortWidthNum[HEM_BS_NUM_PORT_BITSET - 1] /= (double)acl_rules->size;
+		dstPortWidthNum[HEM_BS_NUM_PORT_BITSET - 1] /= (double)acl_rules->size;
+		srcPercentStr += Utils::Double2String(srcPortWidthNum[HEM_BS_NUM_PORT_BITSET - 1]) + "]";
+		dstPercentStr += Utils::Double2String(dstPortWidthNum[HEM_BS_NUM_PORT_BITSET - 1]) + "]";
 
-		if(dno+1!=numDataSets){
+		if (dno + 1 != numDataSets)
+		{
 			srcPercentStr.append(",");
 			dstPercentStr.append(",");
 			srcVarianceStr.append(",");
@@ -984,15 +1025,14 @@ void ModelsTest::Port_width_visualization(){
 	srcW1Str.append("]\n");
 	dstW0Str.append("]\n");
 	dstW1Str.append("]\n");
-	std::cout<<srcPercentStr<<"\n"<<srcVarianceStr<<"\n\n"<<dstPercentStr<<"\n"<<dstVarianceStr<<"\n\n";
-	std::cout<<srcW0Str<<"\n"<<srcW1Str<<"\n"<<dstW0Str<<"\n"<<dstW1Str<<"\n";
+	std::cout << srcPercentStr << "\n" << srcVarianceStr << "\n\n" << dstPercentStr << "\n" << dstVarianceStr << "\n\n";
+	std::cout << srcW0Str << "\n" << srcW1Str << "\n" << dstW0Str << "\n" << dstW1Str << "\n";
 }
-
 
 void ModelsTest::FBS_bitsets_visualization()
 {
 	string outStr = "aggregatePercent=[\n";
-for (int dno = 0; dno < numDataSets; dno++)
+	for (int dno = 0; dno < numDataSets; dno++)
 	{
 		outStr.append("\t");
 		readDatasets(dno);
@@ -1004,8 +1044,8 @@ for (int dno = 0; dno < numDataSets; dno++)
 			hem_fbs.forward_bitsets_insert_IPv4(acl_rules->list + i);
 
 		hem_fbs.forward_bitsets_visualization(outStr);
-		if(dno+1!=numDataSets)
+		if (dno + 1 != numDataSets)
 			outStr.append(",\n");
 	}
-	std::cout<<outStr<<"\n]\n";
+	std::cout << outStr << "\n]\n";
 }

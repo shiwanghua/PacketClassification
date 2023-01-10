@@ -1,3 +1,41 @@
+233-d1: search= 0.802582 us cycle= 2969.994453 insert= 1.394488 us construct= 9.000000 us memory= 53.627998 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d2: search= 1.237673 us cycle= 4580.295748 insert= 1.896414 us construct= 13.000000 us memory= 62.759491 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d3: search= 1.700045 us cycle= 6290.976763 insert= 3.501480 us construct= 12.000000 us memory= 62.633972 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d4: search= 0.904360 us cycle= 3346.578255 insert= 3.111546 us construct= 9.000000 us memory= 62.822250 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d5: search= 0.708006 us cycle= 2620.130421 insert= 2.980009 us construct= 11.000000 us memory= 62.508453 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d6: search= 0.410253 us cycle= 1518.138629 insert= 1.720191 us construct= 10.000000 us memory= 124.514740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d7: search= 1.411129 us cycle= 5222.130829 insert= 3.397054 us construct= 10.000000 us memory= 69.568886 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d8: search= 0.545265 us cycle= 2017.872517 insert= 2.251835 us construct= 11.000000 us memory= 124.765778 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d9: search= 0.496533 us cycle= 1837.592003 insert= 2.070352 us construct= 14.000000 us memory= 123.353691 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d10: search= 0.487250 us cycle= 1803.285181 insert= 1.632380 us construct= 14.000000 us memory= 125.581650 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d11: search= 0.750892 us cycle= 2779.334442 insert= 2.696466 us construct= 21.000000 us memory= 95.488518 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d12: search= 0.358532 us cycle= 1326.838345 insert= 5.297422 us construct= 16.000000 us memory= 120.152962 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d13: search= 0.803335 us cycle= 2972.906521 insert= 2.930119 us construct= 15.000000 us memory= 88.836021 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d14: search= 0.603978 us cycle= 2235.065449 insert= 2.582277 us construct= 15.000000 us memory= 104.023796 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d15: search= 0.750150 us cycle= 2776.048626 insert= 2.740279 us construct= 13.000000 us memory= 88.647743 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d16: search= 0.547338 us cycle= 2025.956428 insert= 4.756792 us construct= 12.000000 us memory= 124.546120 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+233-d17: search= 0.450685 us cycle= 1667.776693 insert= 4.648556 us construct= 14.000000 us memory= 125.581650 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp233-a11-D2-S1-CW64 AVG: S= 0.762824 us Cyc= 2822.995371 I= 2.918098 us CST= 12.882353 us M= 514.392453 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
+232-d1: search= 0.748996 us cycle= 2772.240253 insert= 0.427271 us construct= 20.000000 us memory= 33.600655 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d2: search= 1.331425 us cycle= 4927.934828 insert= 1.031162 us construct= 15.000000 us memory= 39.321991 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d3: search= 2.818311 us cycle= 10431.417291 insert= 2.212442 us construct= 15.000000 us memory= 39.243347 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d4: search= 0.909296 us cycle= 3365.113922 insert= 0.982867 us construct= 10.000000 us memory= 39.361313 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d5: search= 0.685433 us cycle= 2536.518014 insert= 0.922672 us construct= 10.000000 us memory= 39.164703 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d6: search= 0.503263 us cycle= 1862.780216 insert= 0.345355 us construct= 12.000000 us memory= 78.014740 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d7: search= 1.442243 us cycle= 5337.816628 insert= 0.785173 us construct= 11.000000 us memory= 43.588417 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d8: search= 0.710522 us cycle= 2630.103593 insert= 0.632716 us construct= 13.000000 us memory= 78.172028 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d9: search= 0.485107 us cycle= 1795.297344 insert= 0.612020 us construct= 18.000000 us memory= 77.287285 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d10: search= 0.448453 us cycle= 1659.566644 insert= 0.392998 us construct= 17.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d11: search= 0.638750 us cycle= 2363.683660 insert= 0.931137 us construct= 17.000000 us memory= 59.828362 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d12: search= 0.332482 us cycle= 1230.408209 insert= 1.908067 us construct= 11.000000 us memory= 75.281868 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d13: search= 0.782739 us cycle= 2896.791442 insert= 1.001922 us construct= 15.000000 us memory= 55.660240 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d14: search= 0.632703 us cycle= 2341.541321 insert= 0.873865 us construct= 14.000000 us memory= 65.176140 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d15: search= 0.777573 us cycle= 2877.587543 insert= 1.006015 us construct= 15.000000 us memory= 55.542274 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d16: search= 0.448753 us cycle= 1660.652849 insert= 1.961823 us construct= 12.000000 us memory= 78.034401 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+232-d17: search= 0.458768 us cycle= 1697.704103 insert= 0.845747 us construct= 14.000000 us memory= 78.683212 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
+Exp232-a11-D2-S1-CW256 AVG: S= 0.832636 us Cyc= 3081.597521 I= 0.992544 us CST= 14.058824 us M= 322.292775 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000
+
 228-d1: search= 0.838760 us insert= 1.395028 us construct= 20.000000 us memory= 53.627998 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
 228-d2: search= 1.318602 us insert= 1.903403 us construct= 20.000000 us memory= 62.759491 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
 228-d3: search= 1.679593 us insert= 3.523592 us construct= 18.000000 us memory= 62.633972 MB check= 0.000000 AND= 0.000000 CMP= 0.000000
