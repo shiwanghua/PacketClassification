@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	// bind to cpu core
-	 int core_id = 8;
+	 int core_id = 4;
 	 cpu_set_t mask;
 	 CPU_ZERO(&mask);
 	 CPU_SET(core_id, &mask);

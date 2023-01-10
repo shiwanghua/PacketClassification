@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/HEMBitsetsSearch.dir/HEMBS.cpp.o"
-  "CMakeFiles/HEMBitsetsSearch.dir/HEMBS.cpp.o.d"
-  "libHEMBitsetsSearch.a"
   "libHEMBitsetsSearch.pdb"
+  "libHEMBitsetsSearch.a"
 )
 
 # Per-language clean rules from dependency scanning.
