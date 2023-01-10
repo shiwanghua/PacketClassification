@@ -1231,6 +1231,208 @@ void HEMBS::aggregate_forward_bitsets_insert_IPv4(const rule* r)
 
 }
 
+void HEMBS::aggregate_forward_aggbitsets_delete_IPv4(uint64_t unit, unsigned long long& aggUnit, const uint32_t ofi, uint64_t aggOffsetMask)
+{
+	bool all64zero=true;
+	for(uint32_t pi = ofi; pi< ofi + aggRatio;pi++)
+	{
+		if(unit>>pi==1)
+		{
+			all64zero=false;
+			break;
+		}
+	}
+	if(all64zero)
+		aggUnit &= aggOffsetMask;
+}
+
+void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
+{
+	uint32_t unitNo = r->PRI >> 6;
+	uint64_t offsetMask = ~(1ULL << (r->PRI & 0x0000003f)); // ruleID from low bits (right) to high bits (left)
+	uint32_t aggRuleNo = r->PRI >> log2AggRatio;
+	uint32_t aggUnitNo = aggRuleNo >> 6;
+	uint64_t aggOffsetMask = ~(1ULL << (aggRuleNo & 0x0000003f));
+	uint32_t ofi = (r->PRI & 0x0000003f)/aggRatio*aggRatio;
+
+	uint32_t mask_by8 = (uint32_t)(r->source_mask >> 3); // 0,1,2,3,4
+	for (uint32_t ai = 0; ai < mask_by8; ai++)
+	{   // 0,1,2,3 attribute  i means the (i+1)-th byte from high/right end
+		bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo] &= offsetMask;
+		aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo],
+		aggBitsets[ai][(uint32_t)r->source_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
+	}
+
+	if (mask_by8 < 4)
+	{
+		uint32_t rightShiftBits = 8 - ((uint32_t)r->source_mask & 7); // 临界字节（从高位起第mask_by8+1个字节）上的自由位数
+		uint32_t lowValue = ((uint32_t)r->source_ip[3 - mask_by8] >> rightShiftBits) << rightShiftBits;
+		for (uint32_t bi = lowValue; bi < lowValue + (1 << rightShiftBits); bi++)
+		{
+			bitsets[mask_by8][bi][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[mask_by8][bi][unitNo],
+		aggBitsets[mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
+		}
+		for (uint32_t ai = mask_by8 + 1; ai < 4; ai++)
+		{ // 1,2,3 attribute
+			for (uint32_t bi = 0; bi < 256; bi++)
+			{
+				bitsets[ai][bi][unitNo] &= offsetMask;
+				aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][bi][unitNo],
+		aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
+			}
+		}
+	}
+
+	mask_by8 = (uint32_t)(r->destination_mask >> 3); // 0,1,2,3,4
+	for (uint32_t ai = 0; ai < mask_by8; ai++)
+	{ // 0,1,2,3 attribute i means the (i+1)-th byte from high/right end
+		bitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][unitNo] &= offsetMask;
+		aggregate_forward_aggbitsets_delete_IPv4(bitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][unitNo],
+		aggBitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
+	}
+	if (mask_by8 < 4)
+	{
+		uint32_t freeBitsNum = 8 - ((uint32_t)r->destination_mask & 7);
+		uint32_t lowValue = ((uint32_t)r->destination_ip[3 - mask_by8] >> freeBitsNum) << freeBitsNum;
+		for (uint32_t bi = lowValue; bi < lowValue + (1 << freeBitsNum); bi++)
+		{
+			bitsets[4 + mask_by8][bi][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[4 + mask_by8][bi][unitNo],
+		aggBitsets[4 + mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
+		}
+		for (uint32_t ai = mask_by8 + 5; ai < 8; ai++)
+		{ // 5,6,7
+			for (uint32_t bi = 0; bi < 256; bi++)
+			{
+				bitsets[ai][bi][unitNo] &= offsetMask;
+				aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][bi][unitNo],
+		aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
+			}
+		}
+	}
+
+#if HEM_BS_NUM_ATTR > 8 // insert into protocol layer
+	if ((uint32_t)r->protocol[1] == 0)
+	{
+		for (uint32_t bi = 0; bi < NUM_PROTOCOL + 1; bi++)
+		{
+			bitsets[8][bi][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][bi][unitNo],
+		aggBitsets[8][bi][aggUnitNo], ofi, aggOffsetMask);
+		}
+	}
+	else
+	{
+		switch ((uint32_t)r->protocol[1])
+		{
+		case ICMP:
+			bitsets[8][0][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][0][unitNo],
+		aggBitsets[8][0][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case IGMP:
+			bitsets[8][1][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][1][unitNo],
+		aggBitsets[8][1][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case GGP:
+			bitsets[8][2][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][2][unitNo],
+		aggBitsets[8][2][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case IP:
+			bitsets[8][3][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][3][unitNo],
+		aggBitsets[8][3][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case ST:
+			bitsets[8][4][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][4][unitNo],
+		aggBitsets[8][4][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case TCP:
+			bitsets[8][5][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][5][unitNo],
+		aggBitsets[8][5][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case CBT:
+			bitsets[8][6][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][6][unitNo],
+		aggBitsets[8][6][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case EGP:
+			bitsets[8][7][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][7][unitNo],
+		aggBitsets[8][7][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case UDP:
+			bitsets[8][8][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][8][unitNo],
+		aggBitsets[8][8][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case RSVP:
+			bitsets[8][9][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][9][unitNo],
+		aggBitsets[8][9][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case GRE:
+			bitsets[8][10][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][10][unitNo],
+		aggBitsets[8][10][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case ESP:
+			bitsets[8][11][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][11][unitNo],
+		aggBitsets[8][11][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case AH:
+			bitsets[8][12][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][12][unitNo],
+		aggBitsets[8][12][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case EIGRP:
+			bitsets[8][13][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][13][unitNo],
+		aggBitsets[8][13][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case OSPFIGP:
+			bitsets[8][14][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][14][unitNo],
+		aggBitsets[8][14][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		case ISIS:
+			bitsets[8][15][unitNo] &= offsetMask;
+			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][15][unitNo],
+		aggBitsets[8][15][aggUnitNo], ofi, aggOffsetMask);
+			break;
+		default:
+			fprintf(stderr, "Rule %d Error - unknown rule protocol %u !\n", r->PRI, r->protocol[1]);
+			exit(0);
+		}
+	}
+#endif
+
+#if HEM_BS_NUM_ATTR == 11 // insert into port layer
+	for (int bi = r->source_port[0] / HEM_BS_PORT_CELLWIDTH;
+		 bi <= r->source_port[1] / HEM_BS_PORT_CELLWIDTH; bi++)
+	{
+		bitsets[9][bi][unitNo] &= offsetMask;
+		aggregate_forward_aggbitsets_delete_IPv4(bitsets[9][bi][unitNo],
+		aggBitsets[9][bi][aggUnitNo], ofi, aggOffsetMask);
+	}
+
+	for (int bi = r->destination_port[0] / HEM_BS_PORT_CELLWIDTH;
+		 bi <= r->destination_port[1] / HEM_BS_PORT_CELLWIDTH; bi++)
+	{
+		bitsets[10][bi][unitNo] &= offsetMask;
+				aggregate_forward_aggbitsets_delete_IPv4(bitsets[10][bi][unitNo],
+		aggBitsets[10][bi][aggUnitNo], ofi, aggOffsetMask);
+	}
+#endif
+
+}
+
 std::array<uint64_t, 5>
 HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rules, uint32_t& matchRuleNo)
 {
@@ -1998,7 +2200,7 @@ void HEMBS::forward_bitsets_visualization(std::string& outStr)
 			for (uint32_t k = 0; k < numUnit; k+=n64)
 			{
 				uint32_t t = k;
-				while (t<min(numUnit,k+n64)&&bitsets[ai][bi][t] == 0)
+				while (t<min(numUnit,k+n64)&&bitsets[ai][bi][t] == 0) // 其实可以插入AFBS，直接判断 aggBitsets
 					t++;
 				if(t==min(numUnit,k+n64))
 					zeroCount[ai]++;

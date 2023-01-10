@@ -368,9 +368,9 @@ void ModelsTest::HEMBS_backward_test()
 
 void ModelsTest::HEMBS_aggregate_forward_test()
 {
-	double totalConstructionTimeUs = 0.0;
-	double totalAvgInsertionTimeUs = 0.0;
+	double totalConstructionTimeMs = 0.0;
 	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgUpdateTimeUs = 0.0;
 	double totalAvgMemorySizeB = 0.0;
 	double totalAvgCheckNum = 0;
 	double totalAvgANDNum = 0;
@@ -392,14 +392,12 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		clock_t clk = clock();
 		HEMBS hem_afbs;
 		hem_afbs.aggregate_forward_init_bitsets_IPv4(acl_rules->size);
-		double constructionTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC;
-		totalConstructionTimeUs += constructionTimeUs;
 
-		clk = clock();
 		for (int i = 0; i < acl_rules->size; i++)
 			hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + i);
-		double avgInsertionTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / acl_rules->size;
-		totalAvgInsertionTimeUs += avgInsertionTimeUs;
+		double constructionTimeMs = (double)(clock() - clk) * 1000.0 / CLOCKS_PER_SEC;
+		totalConstructionTimeMs += constructionTimeMs;
+		totalAvgMemorySizeB += hem_afbs.calMemory() / acl_rules->size;
 
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, and64Num = 0, cmpNum = 0, aggBingo = 0, aggFail = 0;
@@ -441,32 +439,47 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		totalAvgAggBingoNum += avgAggBingoNum;
 		double avgAggFailNum = (double)aggFail / messages->size;
 		totalAvgAggFailNum += avgAggFailNum;
-		totalAvgMemorySizeB += hem_afbs.calMemory() / acl_rules->size;
 
-		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructionTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+		int rand_update[acl_rules->size];
+		RandomGenerator rg;
+		for (int ra = 0; ra < acl_rules->size; ra++) { //1000000
+            rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
+        }
+		clk = clock();
+		for (int ra = 0; ra < acl_rules->size; ra++) {
+			if (rand_update[ra] == 0) { //0:insert
+				hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
+			} else {//1:delete
+				hem_afbs.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
+			}
+        }
+		double avgUpdateTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / acl_rules->size;
+		totalAvgUpdateTimeUs += avgUpdateTimeUs;
+
+		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructionTime= %.3f ms, searchTime= %.3f us, updateTime= %.3f us\n"
 			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgANDNum= %.3f, avgCMPNum= %.3f\n"
 			   "avgAggBingo= %.3f, avgAggFail= %.3f\n\n", \
         HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, AGGREGATE_RATIO, dno + 1, \
-		constructionTimeUs, avgInsertionTimeUs, avgSearchTimeUs, \
+		constructionTimeMs, avgSearchTimeUs, avgUpdateTimeUs, \
 			hem_afbs.calMemory() / 1024.0 / 1024.0, hem_afbs.calMemory() / acl_rules->size,
 			avgCheckNum, avgANDNum, avgCMPNum, avgAggBingoNum, avgAggFailNum);
 
 		content += expID + "-d" + to_string(dno + 1) \
  + ": search= " + Utils::Double2String(avgSearchTimeUs)\
- + " us insert= " + Utils::Double2String(avgInsertionTimeUs)\
- + " us construct= " + Utils::Double2String(constructionTimeUs)\
- + " us memory= " + Utils::Double2String(hem_afbs.calMemory() / 1024.0 / 1024.0) \
+ + " us update= " + Utils::Double2String(avgUpdateTimeUs)\
+ + " us construct= " + Utils::Double2String(constructionTimeMs)\
+ + " ms memory= " + Utils::Double2String(hem_afbs.calMemory() / 1024.0 / 1024.0) \
  + " MB check= " + Utils::Double2String(avgCheckNum) + " and= " + Utils::Double2String(avgANDNum) \
  + " cmp= " + Utils::Double2String(avgCMPNum) \
  + " bingo= " + Utils::Double2String(avgAggBingoNum)\
  + " fail= " + Utils::Double2String(avgAggFailNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-AFBS-k%d-a%d: constructTime= %.3f us, insertionTime= %.3f us, searchTime= %.3f us\n"
+	printf("\nExp%s HEM-AFBS-k%d-a%d: constructTime= %.3f ms, updateTime= %.3f us, searchTime= %.3f us\n"
 		   "checkNum= %.3f, and64Num= %.3f, cmpNum= %.3f, bingo= %.3f, fail= %.3f\n"
 		   "memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
         expID.c_str(), AGGREGATE_RATIO, HEM_BS_NUM_ATTR,
-		totalConstructionTimeUs / numDataSets, totalAvgInsertionTimeUs / numDataSets,
+		totalConstructionTimeMs / numDataSets, totalAvgUpdateTimeUs / numDataSets,
 		totalAvgSearchTimeUs / numDataSets, totalAvgCheckNum / numDataSets,
 		totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, \
         totalAvgAggBingoNum / numDataSets, totalAvgAggFailNum / numDataSets, \
@@ -477,9 +490,9 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
 			   + to_string(SHUFFLEMESSAGES) +"-CW"+to_string(HEM_BS_PORT_CELLWIDTH)+ "-k" + to_string(AGGREGATE_RATIO)\
  + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
- + " us I= " + Utils::Double2String(totalAvgInsertionTimeUs / numDataSets)\
- + " us CST= " + Utils::Double2String(totalConstructionTimeUs / numDataSets)\
- + " us M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
+ + " us Udt= " + Utils::Double2String(totalAvgUpdateTimeUs / numDataSets)\
+ + " us CST= " + Utils::Double2String(totalConstructionTimeMs / numDataSets)\
+ + " ms M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
  + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
  + " AND= " + Utils::Double2String(totalAvgANDNum / numDataSets) \
  + " CMP= " + Utils::Double2String(totalAvgCMPNum / numDataSets) \

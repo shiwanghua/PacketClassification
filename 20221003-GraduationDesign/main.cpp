@@ -9,8 +9,8 @@ int main()
 //	mt.generateGroundthTruthInTupleFile();
 //	mt.BruteForceSearch_test();
 	// mt.HEMBS_forward_test();
-	// mt.HEMBS_backward_test();
-	mt.HEMBS_aggregate_forward_test();
+	mt.HEMBS_backward_test();
+	// mt.HEMBS_aggregate_forward_test();
 //	mt.HEMBS_RLE_forward_test();
 //	mt.TamaSearch_test();
 

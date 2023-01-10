@@ -1,3 +1,136 @@
+228-d1: search= 0.131717 us update= 10.765673 us construct= 231.562000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d2: search= 0.188862 us update= 11.936199 us construct= 396.189000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d3: search= 0.296732 us update= 15.125670 us construct= 598.012000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d4: search= 0.113715 us update= 16.368528 us construct= 607.751000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d5: search= 0.218768 us update= 14.541533 us construct= 514.190000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d6: search= 0.121220 us update= 11.703179 us construct= 686.578000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d7: search= 0.312415 us update= 17.231258 us construct= 631.834000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d8: search= 0.182890 us update= 13.049676 us construct= 894.126000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d9: search= 0.161553 us update= 12.510654 us construct= 822.993000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d10: search= 0.138017 us update= 12.115683 us construct= 732.189000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d11: search= 0.161712 us update= 15.237732 us construct= 884.445000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d12: search= 0.109233 us update= 19.525517 us construct= 1599.337000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d13: search= 0.128556 us update= 15.169503 us construct= 797.660000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d14: search= 0.205225 us update= 11.637555 us construct= 779.874000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d15: search= 0.201989 us update= 15.113237 us construct= 803.215000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d16: search= 0.168992 us update= 15.667294 us construct= 1186.138000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+228-d17: search= 0.127277 us update= 17.180843 us construct= 1441.059000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp228-a11-D2-S1-CW64-k32 AVG: S= 0.174640 us Udt= 14.404690 us CST= 800.420706 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+227-d1: search= 0.093468 us update= 7.339024 us construct= 230.337000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d2: search= 0.101362 us update= 10.788028 us construct= 390.040000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d3: search= 0.288750 us update= 14.230684 us construct= 588.177000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d4: search= 0.072603 us update= 14.206170 us construct= 594.651000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d5: search= 0.127302 us update= 11.395816 us construct= 511.448000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d6: search= 0.059506 us update= 7.708662 us construct= 697.737000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d7: search= 0.150218 us update= 12.375271 us construct= 632.647000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d8: search= 0.071874 us update= 9.579730 us construct= 900.816000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d9: search= 0.073441 us update= 9.111898 us construct= 824.679000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d10: search= 0.062181 us update= 7.938145 us construct= 730.896000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d11: search= 0.089561 us update= 12.888343 us construct= 880.387000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d12: search= 0.056080 us update= 15.116601 us construct= 1604.018000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d13: search= 0.084232 us update= 13.191169 us construct= 803.431000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d14: search= 0.102618 us update= 10.210970 us construct= 786.167000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d15: search= 0.113386 us update= 12.951751 us construct= 792.591000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d16: search= 0.077338 us update= 11.543987 us construct= 1187.392000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+227-d17: search= 0.060579 us update= 13.312803 us construct= 1447.603000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp227-a11-D2-S0-CW64-k32 AVG: S= 0.099088 us Udt= 11.405238 us CST= 800.177471 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+226-d1: search= 0.130622 us update= 10.760623 us construct= 231.699000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d2: search= 0.189176 us update= 11.942531 us construct= 395.896000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d3: search= 0.293317 us update= 15.077247 us construct= 596.783000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d4: search= 0.116819 us update= 16.348513 us construct= 596.749000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d5: search= 0.215662 us update= 14.530717 us construct= 513.686000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d6: search= 0.121169 us update= 11.780498 us construct= 708.038000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d7: search= 0.314017 us update= 17.262272 us construct= 639.118000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d8: search= 0.171418 us update= 13.094654 us construct= 906.451000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d9: search= 0.165951 us update= 12.586525 us construct= 833.201000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d10: search= 0.129714 us update= 12.151413 us construct= 729.724000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d11: search= 0.160845 us update= 15.216189 us construct= 877.256000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d12: search= 0.109848 us update= 19.591517 us construct= 1613.086000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d13: search= 0.122429 us update= 15.203568 us construct= 803.819000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d14: search= 0.191849 us update= 11.657783 us construct= 786.939000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d15: search= 0.199109 us update= 15.098783 us construct= 805.986000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d16: search= 0.161963 us update= 15.668424 us construct= 1184.235000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+226-d17: search= 0.121455 us update= 17.190566 us construct= 1454.032000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp226-a11-D2-S1-CW64-k32 AVG: S= 0.171492 us Udt= 14.421284 us CST= 804.511647 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+225-d1: search= 0.094245 us update= 7.261766 us construct= 227.435000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d2: search= 0.100801 us update= 10.834739 us construct= 394.835000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d3: search= 0.295988 us update= 14.321756 us construct= 592.599000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d4: search= 0.074606 us update= 14.258506 us construct= 595.285000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d5: search= 0.122051 us update= 11.467698 us construct= 519.525000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d6: search= 0.062644 us update= 7.700643 us construct= 691.607000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d7: search= 0.149447 us update= 12.422313 us construct= 632.851000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d8: search= 0.070169 us update= 9.554033 us construct= 901.880000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d9: search= 0.071335 us update= 9.085338 us construct= 827.946000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d10: search= 0.062292 us update= 8.010207 us construct= 724.854000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d11: search= 0.086760 us update= 12.928168 us construct= 885.959000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d12: search= 0.056094 us update= 15.144351 us construct= 1600.672000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d13: search= 0.083624 us update= 13.202193 us construct= 799.809000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d14: search= 0.105592 us update= 10.293739 us construct= 786.076000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d15: search= 0.110607 us update= 12.995794 us construct= 797.710000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d16: search= 0.076605 us update= 11.552390 us construct= 1189.137000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+225-d17: search= 0.062272 us update= 13.398026 us construct= 1458.598000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp225-a11-D2-S0-CW64-k32 AVG: S= 0.099125 us Udt= 11.437157 us CST= 801.575176 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+224-d1: search= 0.129353 us update= 7.125229 us construct= 227.361000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d2: search= 0.194440 us update= 9.925098 us construct= 388.893000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d3: search= 0.301874 us update= 13.086568 us construct= 579.816000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d4: search= 0.113348 us update= 12.233178 us construct= 598.328000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d5: search= 0.208890 us update= 11.332742 us construct= 515.116000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d6: search= 0.131272 us update= 7.728916 us construct= 689.581000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d7: search= 0.317704 us update= 12.114966 us construct= 629.224000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d8: search= 0.177093 us update= 9.165310 us construct= 901.262000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d9: search= 0.170911 us update= 8.764653 us construct= 822.484000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d10: search= 0.131738 us update= 7.833887 us construct= 728.209000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d11: search= 0.163340 us update= 11.483231 us construct= 874.588000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d12: search= 0.107341 us update= 14.896151 us construct= 1589.998000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d13: search= 0.120274 us update= 11.529302 us construct= 786.340000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d14: search= 0.189381 us update= 9.256826 us construct= 775.998000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d15: search= 0.195106 us update= 11.591902 us construct= 794.474000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d16: search= 0.175845 us update= 11.409311 us construct= 1179.464000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d17: search= 0.121655 us update= 12.417358 us construct= 1442.556000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp224-a11-D2-S1-CW64-k32 AVG: S= 0.173504 us Udt= 10.699684 us CST= 795.511294 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+224-d1: search= 0.132046 us update= 7.154727 us construct= 230.734000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d2: search= 0.192425 us update= 9.908281 us construct= 386.976000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d3: search= 0.299024 us update= 13.068991 us construct= 579.749000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d4: search= 0.113263 us update= 12.277803 us construct= 590.523000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d5: search= 0.210150 us update= 11.448326 us construct= 509.419000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d6: search= 0.119701 us update= 7.790318 us construct= 698.700000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d7: search= 0.305561 us update= 12.201810 us construct= 626.262000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d8: search= 0.178035 us update= 9.214538 us construct= 899.647000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d9: search= 0.161883 us update= 8.832787 us construct= 828.416000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d10: search= 0.130118 us update= 7.959184 us construct= 731.459000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d11: search= 0.162446 us update= 11.535333 us construct= 871.455000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d12: search= 0.115499 us update= 16.074172 us construct= 1597.747000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d13: search= 0.120604 us update= 11.499136 us construct= 782.425000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d14: search= 0.193744 us update= 9.329356 us construct= 783.239000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d15: search= 0.199616 us update= 11.704619 us construct= 804.003000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d16: search= 0.173587 us update= 11.504991 us construct= 1176.760000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d17: search= 0.122518 us update= 12.666306 us construct= 1446.414000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp224-a11-D2-S1-CW64-k32 AVG: S= 0.172366 us Udt= 10.833569 us CST= 796.701647 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
+224-d1: search= 0.131382 us update= 8.850827 us construct= 227.137000 ms memory= 55.353973 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d2: search= 0.188616 us update= 10.091687 us construct= 391.266000 ms memory= 64.767883 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d3: search= 0.304107 us update= 13.187063 us construct= 594.258000 ms memory= 64.642365 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d4: search= 0.154014 us update= 12.304802 us construct= 596.720000 ms memory= 64.830643 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d5: search= 0.287129 us update= 11.603822 us construct= 523.510000 ms memory= 64.516846 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d6: search= 0.147766 us update= 7.903838 us construct= 711.952000 ms memory= 128.437294 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d7: search= 0.401885 us update= 12.343904 us construct= 637.904000 ms memory= 71.796936 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d8: search= 0.208058 us update= 9.357429 us construct= 916.949000 ms memory= 128.719711 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d9: search= 0.199620 us update= 8.983901 us construct= 840.562000 ms memory= 127.244865 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d10: search= 0.153546 us update= 7.999824 us construct= 749.414000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d11: search= 0.187386 us update= 11.637327 us construct= 888.925000 ms memory= 98.532440 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d12: search= 0.125881 us update= 15.118397 us construct= 1619.314000 ms memory= 123.949997 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d13: search= 0.123109 us update= 11.519841 us construct= 786.846000 ms memory= 91.660286 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d14: search= 0.193653 us update= 9.381479 us construct= 787.453000 ms memory= 107.318756 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d15: search= 0.188813 us update= 11.622836 us construct= 802.479000 ms memory= 91.472008 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d16: search= 0.173566 us update= 11.515182 us construct= 1179.149000 ms memory= 128.468674 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+224-d17: search= 0.133221 us update= 12.519439 us construct= 1457.634000 ms memory= 129.566963 MB check= 0.000000 and= 0.000000 cmp= 0.000000 bingo= 0.000000 fail= 0.000000
+Exp224-a11-D2-S1-CW64-k32 AVG: S= 0.194221 us Udt= 10.937741 us CST= 806.557176 ms M= 530.758784 B/' CEK= 0.000000 AND= 0.000000 CMP= 0.000000 Bingo= 0.000000 Fail= 0.000000
+
 223-d1: search= 0.137750 us insert= 2.039700 us construct= 12.000000 us memory= 54.506721 MB check= 3.597012 and= 147.744378 cmp= 114.103508 bingo= 12.794074 fail= 2.004382
 223-d2: search= 0.191340 us insert= 3.089678 us construct= 223.000000 us memory= 63.795113 MB check= 1.127387 and= 146.693215 cmp= 224.760670 bingo= 14.857305 fail= 1.839475
 223-d3: search= 0.385055 us insert= 4.603691 us construct= 53.000000 us memory= 63.669594 MB check= 16.901985 and= 409.258976 cmp= 270.390376 bingo= 9.995372 fail= 8.963114
