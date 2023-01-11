@@ -9,6 +9,7 @@
 #include "HEMBS.h"
 #include "MultiLevelHash.h"
 #include "TamaSearch.h"
+#include "PTTree.h"
 #include"io/read.h"
 #include "io/constant.h"
 #include "io/Utils.h"
@@ -113,6 +114,8 @@ public:
 	void HEMBS_backward_test();
 
 	void TamaSearch_test();
+
+	void PTTree_test(); // Œ¥ µœ÷£°
 
 	void IP_visualization();
 	void Protocol_visualization();

@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/BruteForceSearch.dir/BruteForceSearch.cpp.o"
-  "libBruteForceSearch.pdb"
+  "CMakeFiles/BruteForceSearch.dir/BruteForceSearch.cpp.o.d"
   "libBruteForceSearch.a"
+  "libBruteForceSearch.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPTTree.a CMakeFiles/PTTree.dir/PTTree.cpp.o
+/usr/bin/ranlib libPTTree.a

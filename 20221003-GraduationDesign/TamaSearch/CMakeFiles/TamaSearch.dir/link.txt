@@ -1,2 +1,2 @@
-/usr/bin/ar qc libTamaSearch.a  CMakeFiles/TamaSearch.dir/TamaSearch.cpp.o
+/usr/bin/ar qc libTamaSearch.a CMakeFiles/TamaSearch.dir/TamaSearch.cpp.o
 /usr/bin/ranlib libTamaSearch.a

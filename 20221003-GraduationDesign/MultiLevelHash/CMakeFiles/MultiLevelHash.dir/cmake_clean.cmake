@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/MultiLevelHash.dir/MultiLevelHash.cpp.o"
-  "libMultiLevelHash.pdb"
+  "CMakeFiles/MultiLevelHash.dir/MultiLevelHash.cpp.o.d"
   "libMultiLevelHash.a"
+  "libMultiLevelHash.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

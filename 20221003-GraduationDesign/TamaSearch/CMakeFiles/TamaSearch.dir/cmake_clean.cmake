@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TamaSearch.dir/TamaSearch.cpp.o"
-  "libTamaSearch.pdb"
+  "CMakeFiles/TamaSearch.dir/TamaSearch.cpp.o.d"
   "libTamaSearch.a"
+  "libTamaSearch.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

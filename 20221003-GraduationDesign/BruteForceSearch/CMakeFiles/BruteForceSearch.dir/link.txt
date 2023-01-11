@@ -1,2 +1,2 @@
-/usr/bin/ar qc libBruteForceSearch.a  CMakeFiles/BruteForceSearch.dir/BruteForceSearch.cpp.o
+/usr/bin/ar qc libBruteForceSearch.a CMakeFiles/BruteForceSearch.dir/BruteForceSearch.cpp.o
 /usr/bin/ranlib libBruteForceSearch.a

@@ -745,6 +745,152 @@ void ModelsTest::TamaSearch_test()
 	Utils::WriteData2Begin(file_path, content);
 }
 
+void ModelsTest::PTTree_test(){ // 未实现！
+	double totalConstructionTimeMs = 0.0;
+	double totalAvgSearchTimeUs = 0.0;
+	double totalAvgCycleNum = 0.0;
+	double totalAvgUpdateTimeUs = 0.0;
+	double totalAvgMemorySizeB = 0.0;
+	double totalAvgCheckNum = 0;
+	double totalAvgANDNum = 0;
+	double totalAvgCMPNum = 0;
+	double totalAvgAggBingoNum = 0;
+	double totalAvgAggFailNum = 0;
+	uint64_t totalRules = 0;
+	uint64_t totalMessages = 0;
+
+	const string file_path = "output/PTTree.txt";
+	string content;
+
+//	for (int dno = 0; dno < numDataSets; dno++)
+//	{
+//		readDatasets(dno);
+//		totalRules += acl_rules->size;
+//		totalMessages += messages->size;
+//
+//		clock_t clk = clock();
+//		PTtree pttree;
+//		pttree.aggregate_forward_init_bitsets_IPv4(acl_rules->size);
+//
+//		for (int i = 0; i < acl_rules->size; i++)
+//			pttree.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + i);
+//		double constructionTimeMs = (double)(clock() - clk) * 1000.0 / CLOCKS_PER_SEC;
+//		totalConstructionTimeMs += constructionTimeMs;
+//		totalAvgMemorySizeB += pttree.calMemory() / acl_rules->size;
+//
+//		uint32_t ruleNo;
+//		uint64_t checkNum = 0, and64Num = 0, cmpNum = 0, aggBingo = 0, aggFail = 0;
+//		clk = clock();
+//		uint64_t cycleNo = GetCPUCycle();
+//		for (int i = 0; i < messages->size; i++)
+//		{
+//#if DEBUG
+//			std::array<uint64_t, 5> debugInfo = pttree.aggregate_forward_bitsets_search_IPv4(
+//				messages->list + i, acl_rules->list, ruleNo);
+//			checkNum += debugInfo[0];
+//			and64Num += debugInfo.at(1);
+//			cmpNum += debugInfo[2];
+//			aggBingo += debugInfo[3];
+//			aggFail += debugInfo[4];
+//#else
+//			pttree.aggregate_forward_bitsets_search_IPv4(messages->list + i, acl_rules->list, ruleNo);
+//#endif
+//#if VERIFICATION
+//			//			if (messages->list[i].rule_id == (unsigned int)-1)
+//			//				printf("msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
+//			//			if (messages->list[i].rule_id == 0)
+//			//				printf("msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
+//			if (messages->list[i].rule_id != ruleNo)
+//			{
+//				printf("Error result: msg %u matches rule %u while the result is %u\n", i, messages->list[i].rule_id, ruleNo);
+//				exit(0);
+//			}
+//#endif
+//		}
+//		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+//		totalAvgCycleNum += avgSearchCycleNum;
+//		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
+//		totalAvgSearchTimeUs += avgSearchTimeUs;
+//		double avgCheckNum = (double)checkNum / messages->size;
+//		totalAvgCheckNum += avgCheckNum;
+//		double avgANDNum = (double)and64Num / messages->size;
+//		totalAvgANDNum += avgANDNum;
+//		double avgCMPNum = (double)cmpNum / messages->size;
+//		totalAvgCMPNum += avgCMPNum;
+//		double avgAggBingoNum = (double)aggBingo / messages->size;
+//		totalAvgAggBingoNum += avgAggBingoNum;
+//		double avgAggFailNum = (double)aggFail / messages->size;
+//		totalAvgAggFailNum += avgAggFailNum;
+//
+////		int rand_update[acl_rules->size];
+////		RandomGenerator rg;
+////		for (int ra = 0; ra < acl_rules->size; ra++)
+////		{ //1000000
+////			rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
+////		}
+////		clk = clock();
+////		for (int ra = 0; ra < acl_rules->size; ra++)
+////		{
+////			if (rand_update[ra] == 0)
+////			{ //0:insert
+////				pttree.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
+////			}
+////			else
+////			{//1:delete
+////				pttree.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
+////			}
+////		}
+//		double avgUpdateTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / acl_rules->size;
+//		totalAvgUpdateTimeUs += avgUpdateTimeUs;
+//
+//		printf("HEM-AFBS-a%d-CW%d-k%d dataset %d: constructT= %.3f ms, searchT= %.3f us, cycleNum= %.3f, updateT= %.3f us\n"
+//			   "memorySize= %.3f MB, avgMemorySize= %.3f B/', avgCheckNum= %.3f, avgANDNum= %.3f, avgCMPNum= %.3f\n"
+//			   "avgAggBingo= %.3f, avgAggFail= %.3f\n\n", \
+//        HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, AGGREGATE_RATIO, dno + 1, \
+//        constructionTimeMs, avgSearchTimeUs, avgSearchCycleNum, avgUpdateTimeUs, \
+//            pttree.calMemory() / 1024.0 / 1024.0, pttree.calMemory() / acl_rules->size,
+//			avgCheckNum, avgANDNum, avgCMPNum, avgAggBingoNum, avgAggFailNum);
+//
+//		content += expID + "-d" + to_string(dno + 1) \
+// + ": search= " + Utils::Double2String(avgSearchTimeUs)\
+// + " us cycle= " + Utils::Double2String(avgSearchCycleNum)\
+// + " update= " + Utils::Double2String(avgUpdateTimeUs)\
+// + " us construct= " + Utils::Double2String(constructionTimeMs)\
+// + " ms memory= " + Utils::Double2String(pttree.calMemory() / 1024.0 / 1024.0) \
+// + " MB check= " + Utils::Double2String(avgCheckNum) + " and= " + Utils::Double2String(avgANDNum) \
+// + " cmp= " + Utils::Double2String(avgCMPNum) \
+// + " bingo= " + Utils::Double2String(avgAggBingoNum)\
+// + " fail= " + Utils::Double2String(avgAggFailNum) + "\n";
+//	}
+//
+//	printf("\nExp%s HEM-AFBS-k%d-a%d: constructT= %.3f ms, updateT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
+//		   "checkNum= %.3f, and64Num= %.3f, cmpNum= %.3f, bingo= %.3f, fail= %.3f\n"
+//		   "memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
+//        expID.c_str(), AGGREGATE_RATIO, HEM_BS_NUM_ATTR,
+//		totalConstructionTimeMs / numDataSets, totalAvgUpdateTimeUs / numDataSets,
+//		totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, \
+//        totalAvgCheckNum / numDataSets, totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, \
+//        totalAvgAggBingoNum / numDataSets, totalAvgAggFailNum / numDataSets, \
+//        totalAvgMemorySizeB / numDataSets, totalRules, totalMessages);
+//#if DEBUG
+//	content += "DEBUG";
+//#endif
+//	content += "Exp" + expID + "-a" + to_string(HEM_BS_NUM_ATTR) + "-D" + to_string(DATASET_NO) + "-S"
+//			   + to_string(SHUFFLEMESSAGES) + "-CW" + to_string(HEM_BS_PORT_CELLWIDTH) + "-k"
+//			   + to_string(AGGREGATE_RATIO)\
+// + " AVG: S= " + Utils::Double2String(totalAvgSearchTimeUs / numDataSets)\
+// + " us Cyc= " + Utils::Double2String(totalAvgCycleNum / numDataSets)\
+// + " Udt= " + Utils::Double2String(totalAvgUpdateTimeUs / numDataSets)\
+// + " us CST= " + Utils::Double2String(totalConstructionTimeMs / numDataSets)\
+// + " ms M= " + Utils::Double2String(totalAvgMemorySizeB / numDataSets)\
+// + " B/' CEK= " + Utils::Double2String(totalAvgCheckNum / numDataSets)\
+// + " AND= " + Utils::Double2String(totalAvgANDNum / numDataSets) \
+// + " CMP= " + Utils::Double2String(totalAvgCMPNum / numDataSets) \
+// + " Bingo= " + Utils::Double2String(totalAvgAggBingoNum / numDataSets)\
+// + " Fail= " + Utils::Double2String(totalAvgAggFailNum / numDataSets) + "\n";
+//	Utils::WriteData2Begin(file_path, content);
+}
+
 void ModelsTest::IP_visualization()
 {
 	string srcPercentStr = "srcMaskPercent=[\n";
