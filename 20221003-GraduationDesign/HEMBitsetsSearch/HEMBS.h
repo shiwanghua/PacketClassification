@@ -26,6 +26,8 @@ class HEMBS // bitsets search
 	uint32_t log2AggRatio; // =log_2 (aggRatio), use ">>log2AggRatio" instead of "/aggRatio"
 	uint32_t numAggUnit; // The number of 64-bits aggregated units in an aggregated bitset
 	uint32_t numBitsTo64; // $numBitsTo64 bits in aggBitsets can represent 64 bits in bitsets (require aggRatio<=64)
+	uint32_t num64Bits; // 1 aggregating bit represents $num64Bits 64-bits unit (require aggRatio>=64)
+	uint32_t log2Num64Bits; // =log_2(num64Bits)
 	unsigned long long* aggBeginBits; // for successive aggregating storage
 	unsigned long long*** aggBitsets; // [attrID][bitsetID][offset]
 
@@ -58,6 +60,7 @@ class HEMBS // bitsets search
 	void RLE_forward_bitsets_insert_IPv4(const rule* r);
 	void RLE_forward_construction_IPv4();
 	std::array<uint64_t, 3> RLE_forward_bitsets_search_IPv4(const message* m, const rule* rules, uint32_t& matchRuleNo);
+
 
 	void forward_bitsets_visualization(std::string& outStr);
 	void backward_bitsets_visualize_one(const char* ruleSetName);

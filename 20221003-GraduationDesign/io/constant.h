@@ -3,18 +3,18 @@
 
 #include <string>
 
-const std::string expID="238";
+const std::string expID="258";
 #define DATASET_NO 2
 
 #define VERIFICATION false
 #define DEBUG false
 #define SHUFFLEMESSAGES false
 #define SHUFFLERULES false // Do not change.
-
+#define UPDATETEST false
 #define HEM_BS_NUM_ATTR 11 // 8 (IP), 9 (IP+Protocol), 11 (IP+Protocol+Port)
 #define HEM_BS_PORT_CELLWIDTH 64
 #define HEM_BS_NUM_PORT_BITSET 1024 // HEM_BS_PORT_CELLWIDTH * HEM_BS_NUM_PORT_BITSET == PORT_NUMBER, both are power of 2
-#define AGGREGATE_RATIO 32 // used in AFBS, aggregating ratio, 1 bit represents $aggRatio bits, Compression ratio
+#define AGGREGATE_RATIO 128 // used in AFBS, aggregating ratio, 1 bit represents $aggRatio bits, Compression ratio
 #define INCREMENT 10 // used in RFBS, the add increment when searching
 
 #define TAMA_PRIORITY_CHECK false

@@ -16,6 +16,8 @@ HEMBS::HEMBS()
 	log2AggRatio = (uint32_t)log2(aggRatio);
 	//	printf("log2AggRatio= %d\n", log2AggRatio);
 	numBitsTo64 = 64 / aggRatio;
+	num64Bits = aggRatio / 64;
+	log2Num64Bits = (uint32_t)log2(num64Bits);
 	aggBeginBits = nullptr;
 	aggBitsets = nullptr;
 
@@ -423,9 +425,9 @@ HEMBS::forward_bitsets_search_IPv4(const message* msg, const rule* rules, uint32
 		{
 			// uint32_t i = 0;
 			for (matchRuleNo = bi << 6; matchRuleNo < (bi << 6) + 64; matchRuleNo++) // 787us
-			// for (i=0,matchRuleNo = bi << 6; i < 64; i++, matchRuleNo++) // 804us
+				// for (i=0,matchRuleNo = bi << 6; i < 64; i++, matchRuleNo++) // 804us
 			{
-				if(andResult&1) // if (andResult & (1ULL<<i)) // 
+				if (andResult & 1) // if (andResult & (1ULL<<i)) //
 				{
 #if DEBUG
 					checkNum++;
@@ -865,36 +867,37 @@ HEMBS::backward_bitsets_search_IPv4(const message* msg, const rule* rules, uint3
 // 				// orResult >>= 1;
 // 			}
 
-			orResult=~orResult; // several 1s
-			while(orResult){ // 949us
-			#if DEBUG
-						checkNum++;
-			#endif
-						matchRuleNo=(j << 6)+ __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
-						if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
-							msg->source_port <= rules[matchRuleNo].source_port[1] &&
-							rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
-							msg->destination_port <= rules[matchRuleNo].destination_port[1])
-						{
-			#if HEM_BS_NUM_ATTR > 8
-			#if DEBUG
-									return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-			#else
-									return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-			#endif
-			#else // HEM_BS_NUM_ATTR == 8
-							if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
-							{
-			#if DEBUG
-								return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
-			#else
-								return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
-			#endif
-							}
-			#endif
-						}
-					orResult&=orResult-1;
+			orResult = ~orResult; // several 1s
+			while (orResult)
+			{ // 949us
+#if DEBUG
+				checkNum++;
+#endif
+				matchRuleNo = (j << 6) + __builtin_ctzl(orResult); // 求 andResult 中从右数第一个 1 右边０的个数
+				if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+					msg->source_port <= rules[matchRuleNo].source_port[1] &&
+					rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+					msg->destination_port <= rules[matchRuleNo].destination_port[1])
+				{
+#if HEM_BS_NUM_ATTR > 8
+#if DEBUG
+					return std::array<uint64_t, 3>{ checkNum, or64Num, cmpNum };
+#else
+					return std::array<uint64_t, 3>{ -1ULL, -1ULL, -1ULL };
+#endif
+#else // HEM_BS_NUM_ATTR == 8
+					if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+					{
+#if DEBUG
+						return std::array<uint64_t, 3>{ checkNum, or64Num,cmpNum };
+#else
+						return std::array<uint64_t, 3>{ -1ULL, -1ULL,-1ULL };
+#endif
+					}
+#endif
 				}
+				orResult &= orResult - 1;
+			}
 		}
 
 		// unsigned long long int orResult=result[0][j]|result[1][j]|result[2][j]|result[3][j]|result[4][j]|result[5][j]|result[6][j]|result[7][j];
@@ -1079,7 +1082,7 @@ void HEMBS::aggregate_forward_bitsets_insert_IPv4(const rule* r)
 
 	uint32_t mask_by8 = (uint32_t)(r->source_mask >> 3); // 0,1,2,3,4
 	for (uint32_t ai = 0; ai < mask_by8; ai++)
-	{                                                                       // 0,1,2,3 attribute  i means the (i+1)-th byte from high/right end
+	{                                                                       // 0,1,2,3 attribute  i means the (i+1)-th byte from high/left end
 		bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo] |= offsetMask; // 多做了次减法，在读数据时用大端存储可避免；或者让低位字节为0号属性
 		aggBitsets[ai][(uint32_t)r->source_ip[3 - ai]][aggUnitNo] |= aggOffsetMask;
 		// This aggBit may include a matching bit.
@@ -1231,18 +1234,19 @@ void HEMBS::aggregate_forward_bitsets_insert_IPv4(const rule* r)
 
 }
 
-void HEMBS::aggregate_forward_aggbitsets_delete_IPv4(uint64_t unit, unsigned long long& aggUnit, const uint32_t ofi, uint64_t aggOffsetMask)
+void
+HEMBS::aggregate_forward_aggbitsets_delete_IPv4(uint64_t unit, unsigned long long& aggUnit, const uint32_t ofi, uint64_t aggOffsetMask)
 {
-	bool all64zero=true;
-	for(uint32_t pi = ofi; pi< ofi + aggRatio;pi++)
+	bool all64zero = true;
+	for (uint32_t pi = ofi; pi < ofi + aggRatio; pi++)
 	{
-		if(unit>>pi==1)
+		if (unit >> pi == 1)
 		{
-			all64zero=false;
+			all64zero = false;
 			break;
 		}
 	}
-	if(all64zero)
+	if (all64zero)
 		aggUnit &= aggOffsetMask;
 }
 
@@ -1253,14 +1257,14 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 	uint32_t aggRuleNo = r->PRI >> log2AggRatio;
 	uint32_t aggUnitNo = aggRuleNo >> 6;
 	uint64_t aggOffsetMask = ~(1ULL << (aggRuleNo & 0x0000003f));
-	uint32_t ofi = (r->PRI & 0x0000003f)/aggRatio*aggRatio;
+	uint32_t ofi = (r->PRI & 0x0000003f) / aggRatio * aggRatio;
 
 	uint32_t mask_by8 = (uint32_t)(r->source_mask >> 3); // 0,1,2,3,4
 	for (uint32_t ai = 0; ai < mask_by8; ai++)
-	{   // 0,1,2,3 attribute  i means the (i+1)-th byte from high/right end
+	{   // 0,1,2,3 attribute  i means the (i+1)-th byte from high/left end
 		bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo] &= offsetMask;
 		aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][(uint32_t)r->source_ip[3 - ai]][unitNo],
-		aggBitsets[ai][(uint32_t)r->source_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
+			aggBitsets[ai][(uint32_t)r->source_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
 	}
 
 	if (mask_by8 < 4)
@@ -1271,7 +1275,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 		{
 			bitsets[mask_by8][bi][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[mask_by8][bi][unitNo],
-		aggBitsets[mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
 		}
 		for (uint32_t ai = mask_by8 + 1; ai < 4; ai++)
 		{ // 1,2,3 attribute
@@ -1279,7 +1283,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 			{
 				bitsets[ai][bi][unitNo] &= offsetMask;
 				aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][bi][unitNo],
-		aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
+					aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
 			}
 		}
 	}
@@ -1289,7 +1293,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 	{ // 0,1,2,3 attribute i means the (i+1)-th byte from high/right end
 		bitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][unitNo] &= offsetMask;
 		aggregate_forward_aggbitsets_delete_IPv4(bitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][unitNo],
-		aggBitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
+			aggBitsets[4 + ai][(uint32_t)r->destination_ip[3 - ai]][aggUnitNo], ofi, aggOffsetMask);
 	}
 	if (mask_by8 < 4)
 	{
@@ -1299,7 +1303,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 		{
 			bitsets[4 + mask_by8][bi][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[4 + mask_by8][bi][unitNo],
-		aggBitsets[4 + mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[4 + mask_by8][bi][aggUnitNo], ofi, aggOffsetMask);
 		}
 		for (uint32_t ai = mask_by8 + 5; ai < 8; ai++)
 		{ // 5,6,7
@@ -1307,7 +1311,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 			{
 				bitsets[ai][bi][unitNo] &= offsetMask;
 				aggregate_forward_aggbitsets_delete_IPv4(bitsets[ai][bi][unitNo],
-		aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
+					aggBitsets[ai][bi][aggUnitNo], ofi, aggOffsetMask);
 			}
 		}
 	}
@@ -1319,7 +1323,7 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 		{
 			bitsets[8][bi][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][bi][unitNo],
-		aggBitsets[8][bi][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][bi][aggUnitNo], ofi, aggOffsetMask);
 		}
 	}
 	else
@@ -1329,82 +1333,82 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 		case ICMP:
 			bitsets[8][0][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][0][unitNo],
-		aggBitsets[8][0][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][0][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case IGMP:
 			bitsets[8][1][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][1][unitNo],
-		aggBitsets[8][1][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][1][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case GGP:
 			bitsets[8][2][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][2][unitNo],
-		aggBitsets[8][2][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][2][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case IP:
 			bitsets[8][3][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][3][unitNo],
-		aggBitsets[8][3][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][3][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case ST:
 			bitsets[8][4][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][4][unitNo],
-		aggBitsets[8][4][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][4][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case TCP:
 			bitsets[8][5][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][5][unitNo],
-		aggBitsets[8][5][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][5][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case CBT:
 			bitsets[8][6][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][6][unitNo],
-		aggBitsets[8][6][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][6][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case EGP:
 			bitsets[8][7][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][7][unitNo],
-		aggBitsets[8][7][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][7][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case UDP:
 			bitsets[8][8][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][8][unitNo],
-		aggBitsets[8][8][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][8][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case RSVP:
 			bitsets[8][9][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][9][unitNo],
-		aggBitsets[8][9][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][9][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case GRE:
 			bitsets[8][10][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][10][unitNo],
-		aggBitsets[8][10][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][10][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case ESP:
 			bitsets[8][11][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][11][unitNo],
-		aggBitsets[8][11][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][11][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case AH:
 			bitsets[8][12][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][12][unitNo],
-		aggBitsets[8][12][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][12][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case EIGRP:
 			bitsets[8][13][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][13][unitNo],
-		aggBitsets[8][13][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][13][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case OSPFIGP:
 			bitsets[8][14][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][14][unitNo],
-		aggBitsets[8][14][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][14][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		case ISIS:
 			bitsets[8][15][unitNo] &= offsetMask;
 			aggregate_forward_aggbitsets_delete_IPv4(bitsets[8][15][unitNo],
-		aggBitsets[8][15][aggUnitNo], ofi, aggOffsetMask);
+				aggBitsets[8][15][aggUnitNo], ofi, aggOffsetMask);
 			break;
 		default:
 			fprintf(stderr, "Rule %d Error - unknown rule protocol %u !\n", r->PRI, r->protocol[1]);
@@ -1419,15 +1423,15 @@ void HEMBS::aggregate_forward_bitsets_delete_IPv4(const rule* r)
 	{
 		bitsets[9][bi][unitNo] &= offsetMask;
 		aggregate_forward_aggbitsets_delete_IPv4(bitsets[9][bi][unitNo],
-		aggBitsets[9][bi][aggUnitNo], ofi, aggOffsetMask);
+			aggBitsets[9][bi][aggUnitNo], ofi, aggOffsetMask);
 	}
 
 	for (int bi = r->destination_port[0] / HEM_BS_PORT_CELLWIDTH;
 		 bi <= r->destination_port[1] / HEM_BS_PORT_CELLWIDTH; bi++)
 	{
 		bitsets[10][bi][unitNo] &= offsetMask;
-				aggregate_forward_aggbitsets_delete_IPv4(bitsets[10][bi][unitNo],
-		aggBitsets[10][bi][aggUnitNo], ofi, aggOffsetMask);
+		aggregate_forward_aggbitsets_delete_IPv4(bitsets[10][bi][unitNo],
+			aggBitsets[10][bi][aggUnitNo], ofi, aggOffsetMask);
 	}
 #endif
 
@@ -1551,7 +1555,7 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 			aggAndResult &= aggB[ai][abi];
 			if (aggAndResult == 0)
 				break;
-			ai++;
+			ai++; // 没统计循环+1的算术运算次数
 		}
 #if DEBUG
 		and64Num += std::min(10, (int)ai);      // V2.   and64Num += ai - 1; // V1
@@ -1563,7 +1567,7 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 #endif
 
 		// Directly use aggBitsets to find and check the candidate rules! still needs to check all attributes !
-		// 只用二级索引,需检查所有属性
+		// 只用二级索引,需检查所有属性（该版本只支持 AGGREGATE_RATIO<=64）
 //#if DEBUG
 //		cmpNum++;
 //#endif
@@ -1618,12 +1622,16 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 
 		//    用 两级位集 联合检查版本
 		if (aggAndResult)
-		{
-			for (uint32_t bi = abi << log2AggRatio; bi < (abi << log2AggRatio) + aggRatio; bi++)
+		{ // 开始检查一级位集
+#if AGGREGATE_RATIO < 64
+			for (uint32_t bi = abi << log2AggRatio; bi < (abi << log2AggRatio) + aggRatio; // 此时多个二级位才代表64个一级位单元，可以一个个单元处理
+				 bi++) // 第abi个64二级位代表aggRatio个64一级位
 			{ // 第 bi 个 64 bits of bitsets
+
+				// aggRatio<=64的情况
 				// 1.0 挨个找
 				// bool flag = false;
-				// for (uint32_t j = 0; j < numBitsTo64; j++)
+				// for (uint32_t j = 0; j < numBitsTo64; j++) // $numBitsTo64 个二级位代表 64 个一级位
 				// {
 				// 	if (aggAndResult & 1)
 				// 	{
@@ -1635,24 +1643,26 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 				// }
 				// 2.0 用高效位运算找
 				if (__builtin_ctzl(aggAndResult) >= numBitsTo64)
-				{
+				{ // 低 $numBitsTo64 位都是0，说明对应的64个一级位也都是0
 					aggAndResult >>= numBitsTo64;
 					continue;
 				}
 				aggAndResult >>= numBitsTo64;
-
 				// if (flag)
 				// {	// The AND result must be not 0.
 #if HEM_BS_NUM_ATTR == 11
-				//					uint64_t andResult = ~0ULL;
-				//					andResult = andResult & b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi];
-				//					andResult = andResult & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi];
-				//					andResult = andResult & b[8][bi] & b[9][bi] & b[10][bi];
+				// 187ms
+//									uint64_t andResult = ~0ULL;
+//									andResult = andResult & b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi];
+//									andResult = andResult & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi];
+//									andResult = andResult & b[8][bi] & b[9][bi] & b[10][bi];
 
+				// 172ms
 				uint64_t andResult = b[0][bi] & b[1][bi] & b[2][bi];
 				andResult = andResult & b[3][bi] & b[4][bi] & b[5][bi] & b[6][bi];
 				andResult = andResult & b[7][bi] & b[8][bi] & b[9][bi] & b[10][bi];
-//
+
+				// 176ms
 //					uint64_t andResult =
 //						b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi] & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi] & b[8][bi]
 //						& b[9][bi] & b[10][bi];
@@ -1668,39 +1678,7 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 				and64Num += HEM_BS_NUM_ATTR - 1;
 #endif
 
-//  2.  __builtin_ctzl to find candidate rule
-				while (andResult)
-				{
-#if DEBUG
-					checkNum++;
-#endif
-					matchRuleNo = (bi << 6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
-					if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
-						msg->source_port <= rules[matchRuleNo].source_port[1] &&
-						rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
-						msg->destination_port <= rules[matchRuleNo].destination_port[1])
-					{
-#if HEM_BS_NUM_ATTR > 8
-#if DEBUG
-						return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
-#else
-						return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
-#endif
-#else // HEM_BS_NUM_ATTR == 8
-						if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
-						{
-#if DEBUG
-							return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
-#else
-							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
-#endif
-						}
-#endif
-					}
-					andResult &= (andResult - 1);
-				}
-
-// 1. for loop 64 to find candidate rule
+				// 1. for loop 64 to find candidate rule
 // 				for (matchRuleNo = bi << 6; matchRuleNo < (bi << 6) + 64; matchRuleNo++)
 // 				{
 // 					if (andResult & 1)
@@ -1734,9 +1712,118 @@ HEMBS::aggregate_forward_bitsets_search_IPv4(const message* msg, const rule* rul
 // 					andResult = andResult >> 1;
 // 				} // End  traversing each bit
 // 				}	  // End processing one not-zero andResult ‘if (flag)’
-			}      // End processing one 64-bits unit in bitsets
-		}          // End processing one not-zero aggAndResult
 
+// 2.  __builtin_ctzl to find candidate rule
+				while (andResult)
+				{
+#if DEBUG
+					checkNum++;
+#endif
+					matchRuleNo = (bi << 6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
+					if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+						msg->source_port <= rules[matchRuleNo].source_port[1] &&
+						rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+						msg->destination_port <= rules[matchRuleNo].destination_port[1])
+					{
+#if HEM_BS_NUM_ATTR > 8
+#if DEBUG
+						return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+#else
+						return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+#endif
+#else // HEM_BS_NUM_ATTR == 8
+						if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+						{
+#if DEBUG
+							return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+#else
+							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+#endif
+						}
+#endif
+					}
+					andResult &= (andResult - 1);
+				} // End checking the andResult
+
+			}      // End processing one 64-bits unit in bitsets
+#else // 此时一个二级位代表1个或多个64一级位单元，每轮检查 $num64Bits 个一级单元
+
+//			for (uint32_t ari = abi << log2AggRatio; ari < (abi << log2AggRatio)+aggRatio; ari+=num64Bits) // $numBitsTo64 个二级位代表 64 个一级位
+//				 {
+//				 	if (aggAndResult & 1)
+//				 	{
+			while (aggAndResult) // 和上面的for相比，比较次数从 284 下降到 138
+			{
+#if DEBUG
+				cmpNum += 1;
+#endif
+				uint32_t ari = (abi << log2AggRatio) + (__builtin_ctzl(aggAndResult) << log2Num64Bits);
+				for (uint32_t bi = ari; bi < ari + num64Bits; bi++)
+				{
+#if HEM_BS_NUM_ATTR == 11
+					//
+//									uint64_t andResult = ~0ULL;
+//									andResult = andResult & b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi];
+//									andResult = andResult & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi];
+//									andResult = andResult & b[8][bi] & b[9][bi] & b[10][bi];
+
+					//
+					uint64_t andResult = b[0][bi] & b[1][bi] & b[2][bi];
+					andResult = andResult & b[3][bi] & b[4][bi] & b[5][bi] & b[6][bi];
+					andResult = andResult & b[7][bi] & b[8][bi] & b[9][bi] & b[10][bi];
+
+					//
+//					uint64_t andResult =
+//						b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi] & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi] & b[8][bi]
+//						& b[9][bi] & b[10][bi];
+#elif HEM_BS_NUM_ATTR == 9
+					uint64_t andResult = b[0][bi];
+					andResult = andResult & b[1][bi] & b[2][bi] & b[3][bi] & b[4][bi];
+					andResult = andResult & b[5][bi] & b[6][bi] & b[7][bi] & b[8][bi];
+#else
+					uint64_t andResult = b[0][bi] & b[1][bi] & b[2][bi] & b[3][bi];
+					andResult = andResult & b[4][bi] & b[5][bi] & b[6][bi] & b[7][bi];
+#endif
+#if DEBUG
+					and64Num += HEM_BS_NUM_ATTR - 1;
+#endif
+					while (andResult)
+					{
+#if DEBUG
+						checkNum++;
+#endif
+						matchRuleNo = (bi << 6) + __builtin_ctzl(andResult); // 求 andResult 中从右数第一个 1 右边０的个数
+						if (rules[matchRuleNo].source_port[0] <= msg->source_port &&
+							msg->source_port <= rules[matchRuleNo].source_port[1] &&
+							rules[matchRuleNo].destination_port[0] <= msg->destination_port &&
+							msg->destination_port <= rules[matchRuleNo].destination_port[1])
+						{
+#if HEM_BS_NUM_ATTR > 8
+#if DEBUG
+							return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+#else
+							return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+#endif
+#else // HEM_BS_NUM_ATTR == 8
+							if ((rules[matchRuleNo].protocol[1] == msg->protocol) || (rules[matchRuleNo].protocol[0] == 0))
+				{
+#if DEBUG
+					return std::array<uint64_t, 5>{ checkNum, and64Num, cmpNum, aggBingo, aggFail };
+#else
+					return std::array<uint64_t, 5>{ -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
+#endif
+				}
+#endif
+						}
+						andResult &= (andResult - 1);
+					} // End checking the andResult
+				} //
+//					}
+//				 	aggAndResult >>= 1;
+				aggAndResult = aggAndResult & (aggAndResult - 1);
+			}
+#endif
+		}          // End processing one not-zero aggAndResult
 	}              // End traversing aggBitsets
 
 	return { -1ULL, -1ULL, -1ULL, -1ULL, -1ULL };
@@ -2180,10 +2267,10 @@ HEMBS::RLE_forward_bitsets_search_IPv4(const message* msg, const rule* rules, ui
 	return { -1ULL, -1ULL, -1ULL };
 }
 
-void HEMBS::forward_bitsets_visualization(std::string& outStr) 
+void HEMBS::forward_bitsets_visualization(std::string& outStr)
 {
 	uint32_t n64 = aggRatio; // 连续 n64 个 64位为0
-	uint32_t numUnit2 = (numUnit+n64-1)/n64;
+	uint32_t numUnit2 = (numUnit + n64 - 1) / n64;
 	uint32_t zeroCount[11];
 	memset(zeroCount, 0, sizeof(zeroCount));
 
@@ -2197,28 +2284,32 @@ void HEMBS::forward_bitsets_visualization(std::string& outStr)
 		else if (ai > 8) numv = HEM_BS_NUM_PORT_BITSET;
 		for (uint32_t bi = 0; bi < numv; bi++)
 		{
-			for (uint32_t k = 0; k < numUnit; k+=n64)
+			for (uint32_t k = 0; k < numUnit; k += n64)
 			{
 				uint32_t t = k;
-				while (t<min(numUnit,k+n64)&&bitsets[ai][bi][t] == 0) // 其实可以插入AFBS，直接判断 aggBitsets
+				while (t < min(numUnit, k + n64) && bitsets[ai][bi][t] == 0) // 其实可以插入AFBS，直接判断 aggBitsets
 					t++;
-				if(t==min(numUnit,k+n64))
+				if (t == min(numUnit, k + n64))
 					zeroCount[ai]++;
 			}
 		}
 
 		outStr.append(Utils::Double2String(zeroCount[ai] / (double)(numUnit2 * numv)));
-		outTmpStr+="a"+to_string(ai)+"= "+Utils::Int2String((int)zeroCount[ai])+"/"\
-		         +Utils::Int2String((double)(numUnit2 * numv))+" = "+Utils::Double2String(zeroCount[ai] / (double)(numUnit2 * numv));
-		if(ai+1!=HEM_BS_NUM_ATTR){
+		outTmpStr += "a" + to_string(ai) + "= " + Utils::Int2String((int)zeroCount[ai]) + "/"\
+ + Utils::Int2String((double)(numUnit2 * numv)) + " = "
+					 + Utils::Double2String(zeroCount[ai] / (double)(numUnit2 * numv));
+		if (ai + 1 != HEM_BS_NUM_ATTR)
+		{
 			outStr.append(", ");
 			outTmpStr.append(", ");
-		}else{
+		}
+		else
+		{
 			outStr.append("]");
 			outTmpStr.append("]\n");
 		}
 	}
-	std::cout<<outTmpStr;
+	std::cout << outTmpStr;
 }
 
 void HEMBS::backward_bitsets_visualize_one(const char* ruleSetName)

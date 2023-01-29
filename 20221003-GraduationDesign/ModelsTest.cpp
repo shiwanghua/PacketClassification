@@ -414,8 +414,8 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 
 		uint32_t ruleNo;
 		uint64_t checkNum = 0, and64Num = 0, cmpNum = 0, aggBingo = 0, aggFail = 0;
-		clk = clock();
 		uint64_t cycleNo = GetCPUCycle();
+		clk = clock();
 		for (int i = 0; i < messages->size; i++)
 		{
 #if DEBUG
@@ -441,10 +441,10 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 			}
 #endif
 		}
-		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
-		totalAvgCycleNum += avgSearchCycleNum;
 		double avgSearchTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / messages->size;
 		totalAvgSearchTimeUs += avgSearchTimeUs;
+		double avgSearchCycleNum = (double)(GetCPUCycle() - cycleNo) / messages->size;
+		totalAvgCycleNum += avgSearchCycleNum;
 		double avgCheckNum = (double)checkNum / messages->size;
 		totalAvgCheckNum += avgCheckNum;
 		double avgANDNum = (double)and64Num / messages->size;
@@ -456,24 +456,28 @@ void ModelsTest::HEMBS_aggregate_forward_test()
 		double avgAggFailNum = (double)aggFail / messages->size;
 		totalAvgAggFailNum += avgAggFailNum;
 
-//		int rand_update[acl_rules->size];
-//		RandomGenerator rg;
-//		for (int ra = 0; ra < acl_rules->size; ra++)
-//		{ //1000000
-//			rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
-//		}
-//		clk = clock();
-//		for (int ra = 0; ra < acl_rules->size; ra++)
-//		{
-//			if (rand_update[ra] == 0)
-//			{ //0:insert
-//				hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
-//			}
-//			else
-//			{//1:delete
-//				hem_afbs.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
-//			}
-//		}
+#if UPDATETEST
+		int rand_update[acl_rules->size];
+		RandomGenerator rg;
+		for (int ra = 0; ra < acl_rules->size; ra++)
+		{ //1000000
+			rand_update[ra] = rg.rand_int(2); //0:insert 1:delete
+		}
+		clk = clock();
+		for (int ra = 0; ra < acl_rules->size; ra++)
+		{
+			if (rand_update[ra] == 0)
+			{ //0:insert
+				hem_afbs.aggregate_forward_bitsets_insert_IPv4(acl_rules->list + ra);
+			}
+			else
+			{//1:delete
+				hem_afbs.aggregate_forward_bitsets_delete_IPv4(acl_rules->list + ra);
+			}
+		}
+#else
+		clk=clock();
+#endif
 		double avgUpdateTimeUs = (double)(clock() - clk) * 1000000.0 / CLOCKS_PER_SEC / acl_rules->size;
 		totalAvgUpdateTimeUs += avgUpdateTimeUs;
 
@@ -497,10 +501,10 @@ void ModelsTest::HEMBS_aggregate_forward_test()
  + " fail= " + Utils::Double2String(avgAggFailNum) + "\n";
 	}
 
-	printf("\nExp%s HEM-AFBS-k%d-a%d: constructT= %.3f ms, updateT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
+	printf("\nExp%s HEM-AFBS-a%d-CW%d-k%d: constructT= %.3f ms, updateT= %.3f us, searchT= %.3f us, cycle= %.3f\n"
 		   "checkNum= %.3f, and64Num= %.3f, cmpNum= %.3f, bingo= %.3f, fail= %.3f\n"
 		   "memorySize= %.3f B/' ruleNum= %lu, msgNum= %lu\n\n\n\n", \
-        expID.c_str(), AGGREGATE_RATIO, HEM_BS_NUM_ATTR,
+        expID.c_str(), HEM_BS_NUM_ATTR, HEM_BS_PORT_CELLWIDTH, AGGREGATE_RATIO,
 		totalConstructionTimeMs / numDataSets, totalAvgUpdateTimeUs / numDataSets,
 		totalAvgSearchTimeUs / numDataSets, totalAvgCycleNum / numDataSets, \
         totalAvgCheckNum / numDataSets, totalAvgANDNum / numDataSets, totalAvgCMPNum / numDataSets, \
